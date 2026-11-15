@@ -1,0 +1,84 @@
+{
+  "id": "interior-meeting",
+  "title": "会議室：床・壁・什器",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a modern corporate meeting room, realistic photographic materials",
+  "cells": [
+    {
+      "id": "conf-carpet",
+      "name": "会議室のカーペット",
+      "meters": 1.0,
+      "roughness": 1.0,
+      "normalStrength": 0.7,
+      "prompt": "charcoal and slate blue commercial carpet tile with a subtle linear striped pattern, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "oak-slats",
+      "name": "木製スリット壁",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 1.6,
+      "prompt": "acoustic wall of vertical light oak slats with narrow black felt gaps between them, slats running top to bottom, about 1 m across"
+    },
+    {
+      "id": "table-oak",
+      "name": "オークの天板",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "normalStrength": 0.3,
+      "prompt": "pale white oak table top veneer with straight grain running left to right, matte lacquer, about 1 m across"
+    },
+    {
+      "id": "whiteboard",
+      "name": "ホワイトボード",
+      "meters": 1.2,
+      "roughness": 0.15,
+      "normalStrength": 0.1,
+      "prompt": "clean glossy whiteboard surface with very faint erased marker ghosting, no writing, about 1.2 m across"
+    },
+    {
+      "id": "mesh-fabric",
+      "name": "メッシュチェアの生地",
+      "meters": 0.3,
+      "roughness": 0.7,
+      "normalStrength": 1.2,
+      "prompt": "black elastic office chair mesh fabric with a fine diamond weave, about 0.3 m across"
+    },
+    {
+      "id": "frosted-film",
+      "name": "すりガラスフィルム",
+      "meters": 1.0,
+      "roughness": 0.2,
+      "normalStrength": 0.2,
+      "prompt": "glass partition with a frosted window film of horizontal translucent bands alternating with clearer stripes, cool white, about 1 m across"
+    },
+    {
+      "id": "felt-panel",
+      "name": "フェルト吸音パネル",
+      "meters": 1.0,
+      "roughness": 1.0,
+      "normalStrength": 0.9,
+      "prompt": "thick dark grey wool felt acoustic panel with a soft fuzzy texture, about 1 m across"
+    },
+    {
+      "id": "moss-wall",
+      "name": "苔の壁",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 2.0,
+      "prompt": "preserved moss wall panel densely covered with lush green cushion moss and reindeer lichen, seen straight on, about 1 m across"
+    },
+    {
+      "id": "venetian-blind",
+      "name": "ブラインド",
+      "meters": 0.8,
+      "roughness": 0.4,
+      "metalness": 0.4,
+      "normalStrength": 1.4,
+      "emissive": 0.35,
+      "prompt": "closed horizontal aluminium venetian blind slats in light grey with a soft daylight glow between the slats, about 0.8 m across"
+    }
+  ]
+}

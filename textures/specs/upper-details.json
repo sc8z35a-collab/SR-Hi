@@ -1,0 +1,86 @@
+{
+  "id": "upper-details",
+  "title": "観測棟2階 管制室：機器と小物",
+  "quality": "medium",
+  "theme": "equipment and small details in a compact geological monitoring control room inside a cave, realistic",
+  "cells": [
+    {
+      "id": "wired-glass",
+      "name": "網入りガラス",
+      "meters": 0.6,
+      "roughness": 0.15,
+      "normalStrength": 0.2,
+      "prompt": "frosted wired safety glass with an embedded square steel wire mesh, pale blue-grey and slightly translucent looking, about 0.6 m across"
+    },
+    {
+      "id": "rubber-tread",
+      "name": "ゴム製の階段踏面",
+      "meters": 0.6,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "black anti-slip rubber stair tread mat with raised parallel ribs running left to right and a little grit, seen from above, about 0.6 m across"
+    },
+    {
+      "id": "cable-bundle",
+      "name": "ケーブル束",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 1.8,
+      "prompt": "tightly bundled parallel electrical cables running left to right in grey, black, blue and orange insulation, held by zip ties, about 0.6 m across"
+    },
+    {
+      "id": "dial-panel",
+      "name": "計器盤",
+      "meters": 0.8,
+      "roughness": 0.5,
+      "metalness": 0.2,
+      "normalStrength": 1.0,
+      "seamless": false,
+      "prompt": "beige retro instrument control panel with rows of round analogue dials, toggle switches and small square indicator lamps, no text, no numbers, no labels, filling the whole square"
+    },
+    {
+      "id": "carpet-tile",
+      "name": "タイルカーペット",
+      "meters": 1.0,
+      "roughness": 1.0,
+      "normalStrength": 0.7,
+      "prompt": "blue-grey industrial loop-pile carpet tile with a fine woven texture, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "upholstery",
+      "name": "椅子の布地",
+      "meters": 0.4,
+      "roughness": 1.0,
+      "normalStrength": 1.0,
+      "prompt": "dark charcoal woven office chair upholstery fabric with a tight basket weave, about 0.4 m across"
+    },
+    {
+      "id": "steel-locker",
+      "name": "スチールロッカー",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.5,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "front of three grey steel locker doors side by side, each with a small vent louvre near the top and a simple handle, no text, filling the whole square"
+    },
+    {
+      "id": "chalkboard",
+      "name": "黒板",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 0.3,
+      "prompt": "dark green slate chalkboard surface with faint erased chalk smudges, no writing, about 1.5 m across"
+    },
+    {
+      "id": "seismo-paper",
+      "name": "地震計の記録紙",
+      "meters": 0.6,
+      "roughness": 0.9,
+      "normalStrength": 0.2,
+      "prompt": "seismograph chart paper with a fine pale green grid and several thin black ink trace lines running left to right with small wiggles, no text, no numbers, about 0.6 m across"
+    }
+  ],
+  "tileSize": 512,
+  "normalSize": 512
+}

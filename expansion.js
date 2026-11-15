@@ -1,3 +1,5 @@
+import {CAVERN_ROOMS,DOOR12} from './cavern-layout.js';
+
 export const WING_HALL = { code:'WING', name:'増設棟 連絡通路', view:'equipped-wing', short:'増設棟' };
 export const ACCESS = { code:'ACCESS', name:'増設棟', x:0, z:4.02, axis:'z', width:2.76, height:3.18 };
 export const THROAT = { x1:-2.85, x2:2.85, z1:4.02, z2:8 };
@@ -74,11 +76,14 @@ export const EXPANSION_ROOMS = [
       prop('switchgear',7.8,78.44,3.75,1.90),prop('console',-5.2,66.85,3.4,1.48),
     ],
   },
+  ...CAVERN_ROOMS,
 ];
 
-export const WING_FLOORS=[THROAT,WING_SPINE,...EXPANSION_ROOMS];
+// Walkable areas of the wing. Rooms with `floors` (the cavern zones) supply their own shapes.
+export const WING_FLOORS=[THROAT,WING_SPINE,...EXPANSION_ROOMS.flatMap(room=>room.floors??[room])];
 
 export function within(bounds,x,z){
+  if(bounds.contains)return bounds.contains(x,z);
   return x>=bounds.x1&&x<=bounds.x2&&z>=bounds.z1&&z<=bounds.z2;
 }
 
@@ -105,9 +110,9 @@ export function wingWalls(){
     }
   }
   run('z',ACCESS.z,THROAT.x1,THROAT.x2,[ACCESS]);
-  const vault=EXPANSION_ROOMS.at(-1);
+  const vault=EXPANSION_ROOMS.find(room=>room.code==='11');
   run('z',vault.z1,vault.x1,vault.x2,[vault.entry]);
-  run('z',vault.z2,vault.x1,vault.x2);
+  run('z',vault.z2,vault.x1,vault.x2,[DOOR12]);
   run('x',vault.x1,vault.z1,vault.z2);
   run('x',vault.x2,vault.z1,vault.z2);
   return segments;

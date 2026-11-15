@@ -1,0 +1,83 @@
+{
+  "id": "interior-yoshitsu",
+  "title": "洋室：床・壁・家具",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a classic Western-style drawing room with a fireplace, realistic photographic materials",
+  "cells": [
+    {
+      "id": "oak-herringbone",
+      "name": "ヘリンボーンの床",
+      "meters": 1.2,
+      "roughness": 0.45,
+      "normalStrength": 0.8,
+      "prompt": "honey oak herringbone parquet floor, seen from directly above, satin varnish with light wear, about 1.2 m across"
+    },
+    {
+      "id": "damask-wallpaper",
+      "name": "ダマスク柄の壁紙",
+      "meters": 0.8,
+      "roughness": 0.8,
+      "normalStrength": 0.5,
+      "prompt": "deep green damask wallpaper with a repeating ornate floral medallion pattern in muted gold, about 0.8 m across"
+    },
+    {
+      "id": "wainscot-white",
+      "name": "白い腰板",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "normalStrength": 1.2,
+      "prompt": "white painted wooden wainscot panelling with raised rectangular panels and mouldings, slightly glossy, about 1 m across"
+    },
+    {
+      "id": "persian-rug",
+      "name": "ペルシャ絨毯",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 0.6,
+      "seamless": false,
+      "prompt": "top-down view of a whole Persian rug with deep red field, ornate central medallion and navy decorative border, filling the whole square"
+    },
+    {
+      "id": "velvet-green",
+      "name": "ベルベット",
+      "meters": 0.5,
+      "roughness": 0.8,
+      "normalStrength": 0.6,
+      "prompt": "emerald green crushed velvet upholstery fabric with soft sheen variations, about 0.5 m across"
+    },
+    {
+      "id": "chesterfield-leather",
+      "name": "革張り",
+      "meters": 0.5,
+      "roughness": 0.5,
+      "normalStrength": 1.8,
+      "prompt": "oxblood brown chesterfield leather with deep diamond button tufting and creases, about 0.5 m across"
+    },
+    {
+      "id": "carrara-marble",
+      "name": "大理石",
+      "meters": 1.0,
+      "roughness": 0.2,
+      "normalStrength": 0.2,
+      "prompt": "polished white Carrara marble with soft grey veining, about 1 m across"
+    },
+    {
+      "id": "walnut-veneer",
+      "name": "ウォルナット材",
+      "meters": 0.8,
+      "roughness": 0.4,
+      "normalStrength": 0.4,
+      "prompt": "dark walnut wood veneer with rich flowing grain running left to right, satin lacquer finish, about 0.8 m across"
+    },
+    {
+      "id": "linen-curtain",
+      "name": "リネンのカーテン",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.4,
+      "prompt": "heavy natural oatmeal linen curtain fabric hanging in soft vertical folds running top to bottom, about 1 m across"
+    }
+  ]
+}

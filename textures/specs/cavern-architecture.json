@@ -1,0 +1,84 @@
+{
+  "id": "cavern-architecture",
+  "title": "地底空洞ステーション：岩盤と建築",
+  "theme": "a scientific research outpost built inside a vast natural underground cavern, gritty realistic industrial style",
+  "cells": [
+    {
+      "id": "cave-basalt",
+      "name": "空洞の玄武岩",
+      "meters": 3,
+      "roughness": 0.92,
+      "normalStrength": 2.2,
+      "prompt": "dark wet basalt cave rock wall, fractured columnar joints, damp sheen, grey-black with faint brown mineral staining, about 3 m across"
+    },
+    {
+      "id": "cave-gravel",
+      "name": "砕石の床",
+      "meters": 2,
+      "roughness": 0.95,
+      "normalStrength": 1.8,
+      "prompt": "compacted crushed-rock gravel cave floor seen from directly above, mixed grey and ochre stones 1-4 cm, packed dust between them, about 2 m across"
+    },
+    {
+      "id": "shotcrete",
+      "name": "吹付けコンクリート",
+      "meters": 3,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "sprayed shotcrete tunnel lining, lumpy grey concrete with rough aggregate texture and faint damp streaks, about 3 m across"
+    },
+    {
+      "id": "corrugated-siding",
+      "name": "波板の外壁",
+      "meters": 2,
+      "roughness": 0.55,
+      "metalness": 0.6,
+      "normalStrength": 2.0,
+      "prompt": "vertical corrugated steel cladding panels painted off-white, light grime and a few rust spots, corrugations running top to bottom, about 2 m across"
+    },
+    {
+      "id": "standing-seam-roof",
+      "name": "金属屋根",
+      "meters": 2,
+      "roughness": 0.5,
+      "metalness": 0.7,
+      "normalStrength": 1.4,
+      "prompt": "dark graphite standing-seam metal roofing, straight raised seams running top to bottom every 40 cm, subtle dust and water marks, about 2 m across"
+    },
+    {
+      "id": "form-concrete",
+      "name": "打放しの基礎",
+      "meters": 2,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "smooth cast-in-place concrete slab with formwork panel joints in a regular grid and small round tie holes, light grey, about 2 m across"
+    },
+    {
+      "id": "corten-plate",
+      "name": "耐候性鋼板",
+      "meters": 1.5,
+      "roughness": 0.8,
+      "metalness": 0.35,
+      "normalStrength": 1.3,
+      "prompt": "weathering corten steel plate, deep orange-brown rust patina with darker streaks and pitting, about 1.5 m across"
+    },
+    {
+      "id": "bar-grating",
+      "name": "床グレーチング",
+      "meters": 1,
+      "roughness": 0.6,
+      "metalness": 0.8,
+      "normalStrength": 2.4,
+      "prompt": "galvanized steel bar grating walkway seen from directly above, parallel load bars with twisted cross rods, silver-grey metal over a black void, about 1 m across"
+    },
+    {
+      "id": "hazard-stripe",
+      "name": "警告ストライプ",
+      "meters": 1,
+      "roughness": 0.65,
+      "normalStrength": 0.6,
+      "prompt": "worn yellow and black diagonal hazard stripes painted on steel, scuffed and chipped paint, stripes at 45 degrees, about 1 m across"
+    }
+  ],
+  "quality": "xhigh"
+}

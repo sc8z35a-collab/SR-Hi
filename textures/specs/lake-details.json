@@ -1,0 +1,87 @@
+{
+  "id": "lake-details",
+  "title": "追加要素：湖岸の資材と鉱物",
+  "quality": "medium",
+  "theme": "supplies, machinery and mineral formations around a research pier on an underground lake, realistic",
+  "cells": [
+    {
+      "id": "pyrite-ore",
+      "name": "黄鉄鉱の鉱石",
+      "meters": 0.6,
+      "roughness": 0.5,
+      "metalness": 0.6,
+      "normalStrength": 1.8,
+      "prompt": "dark grey rock with glittering golden pyrite ore veins and cubic crystals, about 0.6 m across"
+    },
+    {
+      "id": "salt-crust",
+      "name": "塩の結晶殻",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.6,
+      "prompt": "white crystalline salt crust deposit on rock with small cubic crystals and faint brown staining, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "blue-drum",
+      "name": "青いドラム缶",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "metalness": 0.5,
+      "normalStrength": 1.0,
+      "prompt": "blue painted steel oil drum side with two horizontal rolled ribs, scratches and a few rust spots, no text, about 1 m across"
+    },
+    {
+      "id": "burlap-sandbag",
+      "name": "麻袋の土のう",
+      "meters": 0.5,
+      "roughness": 1.0,
+      "normalStrength": 1.4,
+      "prompt": "coarse brown burlap jute sack fabric with a loose weave and a little dust, about 0.5 m across"
+    },
+    {
+      "id": "fiberglass-yellow",
+      "name": "黄色のFRP",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "normalStrength": 0.7,
+      "prompt": "yellow fibreglass composite surface with a visible woven glass-fibre texture under glossy resin, about 0.6 m across"
+    },
+    {
+      "id": "coin-mat",
+      "name": "コインパターンのゴム床",
+      "meters": 0.6,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "prompt": "black rubber floor matting with a raised round coin pattern in a regular grid, seen from directly above, about 0.6 m across"
+    },
+    {
+      "id": "teal-enamel",
+      "name": "青緑のポンプ塗装",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.7,
+      "prompt": "teal industrial machine enamel paint on cast iron with chips, oil stains and slight rust at the edges, about 1 m across"
+    },
+    {
+      "id": "perforated-black",
+      "name": "黒いパンチングメタル",
+      "meters": 0.5,
+      "roughness": 0.55,
+      "metalness": 0.7,
+      "normalStrength": 1.4,
+      "prompt": "black powder-coated perforated steel sheet with a staggered grid of round holes, about 0.5 m across"
+    },
+    {
+      "id": "amethyst",
+      "name": "紫水晶",
+      "meters": 0.5,
+      "roughness": 0.2,
+      "normalStrength": 1.5,
+      "emissive": 1.2,
+      "prompt": "glowing violet amethyst crystal cluster surface with sharp translucent purple points and a soft inner light, about 0.5 m across"
+    }
+  ],
+  "tileSize": 512,
+  "normalSize": 512
+}

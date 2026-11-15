@@ -1,0 +1,112 @@
+{
+  "id": "wall-ceiling-refresh",
+  "title": "壁と天井の刷新",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "walls and ceilings of a modern underground research facility, realistic photographic architectural materials",
+  "cells": [
+    {
+      "id": "board-form-concrete",
+      "name": "杉板型枠コンクリート",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "targets": [
+        "B4 board-form"
+      ],
+      "prompt": "architectural board-formed concrete wall with crisp horizontal timber plank imprints and visible wood grain in the concrete, neat rows of round tie holes, light warm grey, about 2 m across"
+    },
+    {
+      "id": "exposed-concrete",
+      "name": "打放しコンクリート",
+      "meters": 2.4,
+      "roughness": 0.8,
+      "normalStrength": 0.9,
+      "targets": [
+        "Cast-in-place concrete | base-concrete"
+      ],
+      "prompt": "smooth exposed architectural concrete wall with large formwork panels, faint plywood imprint, neat round tie holes in a grid, subtle water staining, mid grey, about 2.4 m across"
+    },
+    {
+      "id": "corridor-concrete",
+      "name": "通路のコンクリート",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "targets": [
+        "Cast-in-place concrete | corridor-board-concrete"
+      ],
+      "prompt": "board-marked concrete with narrow horizontal planks and slight colour variation between boards, cool grey, about 2 m across"
+    },
+    {
+      "id": "pebble-render",
+      "name": "骨材入りの塗り壁",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "targets": [
+        "B4 pebble-paint"
+      ],
+      "prompt": "warm grey painted pebble-dash render wall with small embedded pebbles, slightly dusty, about 1.5 m across"
+    },
+    {
+      "id": "acoustic-mesh-panel",
+      "name": "吸音メッシュパネル",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normalStrength": 1.6,
+      "targets": [
+        "B4 acoustic-mesh"
+      ],
+      "prompt": "dark graphite expanded metal mesh acoustic wall panel with small diamond openings over black felt, about 1 m across"
+    },
+    {
+      "id": "mineral-concrete",
+      "name": "白華の出たコンクリート",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 1.1,
+      "targets": [
+        "Cast-in-place concrete | plant-mineral-concrete"
+      ],
+      "prompt": "industrial concrete wall with white mineral efflorescence stains, rough float finish and faint rust streaks, about 2 m across"
+    },
+    {
+      "id": "lime-plaster",
+      "name": "漆喰の壁",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 0.6,
+      "targets": [
+        "Cast-in-place concrete | lab-lime-plaster"
+      ],
+      "prompt": "smooth pale lime plaster wall with soft cloudy trowel marks, warm off-white, about 2 m across"
+    },
+    {
+      "id": "anodized-cladding",
+      "name": "アルマイトの外装パネル",
+      "meters": 1.2,
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normalStrength": 0.8,
+      "targets": [
+        "B4 anodized-graphite"
+      ],
+      "prompt": "dark graphite anodized aluminium cladding panels with thin vertical joints every 60 cm and a soft brushed sheen, about 1.2 m across"
+    },
+    {
+      "id": "perforated-ceiling-panel",
+      "name": "有孔天井パネル",
+      "meters": 1.2,
+      "roughness": 0.6,
+      "metalness": 0.3,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 perforated-ceiling"
+      ],
+      "prompt": "white perforated metal ceiling panels with fine round holes in a regular grid and thin joints between 60 cm panels, seen from below, about 1.2 m across"
+    }
+  ]
+}

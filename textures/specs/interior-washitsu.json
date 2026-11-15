@@ -1,0 +1,84 @@
+{
+  "id": "interior-washitsu",
+  "title": "和室：畳・建具・壁",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a traditional Japanese tatami room (washitsu), realistic photographic materials",
+  "cells": [
+    {
+      "id": "tatami",
+      "name": "畳",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "fresh green-gold tatami mat surface, fine tightly woven igusa rush lines running left to right, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "tatami-heri",
+      "name": "畳縁",
+      "meters": 0.3,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "dark navy tatami border cloth (heri) with a subtle woven geometric pattern, fabric texture, about 0.3 m across"
+    },
+    {
+      "id": "shoji",
+      "name": "障子",
+      "meters": 0.9,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "emissive": 0.55,
+      "prompt": "Japanese shoji screen: white translucent washi paper with a regular grid of thin pale wooden lattice bars, softly lit from behind, about 0.9 m across"
+    },
+    {
+      "id": "fusuma",
+      "name": "襖",
+      "meters": 0.9,
+      "roughness": 0.85,
+      "normalStrength": 0.4,
+      "prompt": "Japanese fusuma sliding door paper (karakami) in pale cream with a faint repeating woodblock-printed paulownia pattern in light gold, about 0.9 m across"
+    },
+    {
+      "id": "hinoki",
+      "name": "檜材",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 0.5,
+      "prompt": "smooth pale hinoki cypress wood with straight fine grain running top to bottom, planed and unfinished, about 0.6 m across"
+    },
+    {
+      "id": "juraku-wall",
+      "name": "聚楽壁",
+      "meters": 1.2,
+      "roughness": 0.95,
+      "normalStrength": 1.0,
+      "prompt": "traditional Japanese juraku clay plaster wall, warm sandy beige with fine sand and straw fibres, matte, about 1.2 m across"
+    },
+    {
+      "id": "tokonoma-board",
+      "name": "床の間の床板",
+      "meters": 1.0,
+      "roughness": 0.35,
+      "normalStrength": 0.4,
+      "prompt": "polished dark keyaki zelkova wood board with rich flowing grain running left to right, satin finish, about 1 m across"
+    },
+    {
+      "id": "sugi-ceiling",
+      "name": "杉の天井板",
+      "meters": 1.2,
+      "roughness": 0.7,
+      "normalStrength": 0.7,
+      "prompt": "Japanese sugi cedar ceiling boards with straight grain running top to bottom and thin dark battens between boards, seen from below, about 1.2 m across"
+    },
+    {
+      "id": "washi-paper",
+      "name": "和紙",
+      "meters": 0.5,
+      "roughness": 0.9,
+      "normalStrength": 0.4,
+      "emissive": 0.9,
+      "prompt": "handmade Japanese washi paper with visible long kozo fibres, warm white, softly glowing as if lit from behind, about 0.5 m across"
+    }
+  ]
+}

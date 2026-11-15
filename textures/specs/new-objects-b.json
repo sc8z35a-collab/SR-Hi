@@ -1,0 +1,86 @@
+{
+  "id": "new-objects-b",
+  "title": "新しいオブジェクト B",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "new props for a Japanese mountain mine yard with a small shrine, realistic photographic materials",
+  "cells": [
+    {
+      "id": "barrel-staves",
+      "name": "木樽",
+      "meters": 0.8,
+      "roughness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "oak barrel staves running top to bottom with dark iron hoop bands across, weathered, about 0.8 m across"
+    },
+    {
+      "id": "cardboard",
+      "name": "段ボール",
+      "meters": 0.6,
+      "roughness": 0.95,
+      "normalStrength": 0.6,
+      "prompt": "brown corrugated cardboard box surface with a strip of tape and scuffs, no text, about 0.6 m across"
+    },
+    {
+      "id": "pallet-wood",
+      "name": "パレット材",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "rough sawn pale pine pallet boards running left to right with nail heads and dirt, about 1 m across"
+    },
+    {
+      "id": "post-red",
+      "name": "郵便ポストの赤",
+      "meters": 0.6,
+      "roughness": 0.35,
+      "metalness": 0.4,
+      "normalStrength": 0.5,
+      "prompt": "glossy red painted cast metal of an old Japanese round mailbox with small dents, no text, about 0.6 m across"
+    },
+    {
+      "id": "concrete-pole",
+      "name": "コンクリート電柱",
+      "meters": 0.8,
+      "roughness": 0.85,
+      "normalStrength": 0.8,
+      "prompt": "grey spun concrete utility pole surface with fine horizontal casting lines and dirt streaks, about 0.8 m across"
+    },
+    {
+      "id": "shrine-copper",
+      "name": "銅葺き屋根",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normalStrength": 1.4,
+      "prompt": "Japanese shrine roof of overlapping copper plates with a soft pale green verdigris patina, about 1 m across"
+    },
+    {
+      "id": "ema-plaques",
+      "name": "絵馬",
+      "meters": 0.8,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "seamless": false,
+      "prompt": "many small pentagonal wooden ema votive plaques hanging in overlapping rows with red cords and simple painted horses, no writing, no text, filling the whole square"
+    },
+    {
+      "id": "bamboo",
+      "name": "竹",
+      "meters": 0.8,
+      "roughness": 0.5,
+      "normalStrength": 1.2,
+      "prompt": "green bamboo stalks standing vertically side by side with nodes, glossy, filling the frame, about 0.8 m across"
+    },
+    {
+      "id": "koi-pond",
+      "name": "鯉の池",
+      "meters": 2.0,
+      "roughness": 0.08,
+      "metalness": 0.1,
+      "normalStrength": 0.4,
+      "prompt": "clear dark garden pond water seen from above with orange, white and black koi fish swimming and a few lily pads, about 2 m across"
+    }
+  ]
+}

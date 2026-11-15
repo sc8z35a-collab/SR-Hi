@@ -1,8 +1,9 @@
 import * as THREE from './vendor/three.module.js';
 import {HALL,zoneAt} from './layout.js';
 import {WING_HALL,THROAT} from './expansion.js';
+import {CUT} from './cavern-layout.js';
 
-const BOUNDS=[-24.4,-42.9,49.2,124.8];
+const BOUNDS=[-24.4,-42.9,86.4,257.9];
 const FILLS={
   HALL:[.79,.84,.88],
   WING:[.83,.87,.92],
@@ -17,6 +18,14 @@ const FILLS={
   '09':[.79,.76,.62],
   '10':[.76,.86,.96],
   '11':[.89,.85,.80],
+  '12':[.70,.76,.80],
+  '13':[.84,.87,.90],
+  '14':[.60,.70,.76],
+  '15':[.86,.86,.84],
+  '16':[.90,.84,.74],
+  '17':[.86,.79,.70],
+  '18':[.84,.88,.92],
+  '19':[1.25,1.24,1.18],
 };
 
 function roomBoundaryDistance(room,x,z){
@@ -33,7 +42,7 @@ export function createLightingData(fixtures){
     tint:new THREE.Color(fixture.color).toArray()
   }));
   const [left,back,spanX,spanZ]=BOUNDS;
-  const width=160, height=408;
+  const width=281, height=843;
   const rgba=new Uint8Array(width*height*4);
   for(let row=0;row<height;row++){
     const z=back+(row+.5)/height*spanZ;
@@ -41,7 +50,7 @@ export function createLightingData(fixtures){
     for(let column=0;column<width;column++){
       const x=left+(column+.5)/width*spanX;
       const room=zoneAt(x,z);
-      const color=FILLS[room.code].slice();
+      const color=(room.fill?.(x,z)??FILLS[room.code]).slice();
       const edge=roomBoundaryDistance(room,x,z);
       const bounce=.06*Math.exp(-edge*1.1);
       for(const source of localSources){
@@ -63,23 +72,37 @@ export function createLightingData(fixtures){
   return {texture,sources};
 }
 
+const cutMin=new THREE.Vector3(...CUT.min), cutMax=new THREE.Vector3(...CUT.max);
+
+// `material.userData.facilityCut` marks the wing's original materials: their fragments inside
+// CUT are discarded, which opens the doorway in room 11's back wall without editing the model.
 export function applyIndoorLighting(material,texture){
   const rect=new THREE.Vector4(...BOUNDS);
+  const cut=Boolean(material.userData.facilityCut);
   material.onBeforeCompile=shader=>{
     shader.uniforms.facilityLight={value:texture};
     shader.uniforms.facilityRect={value:rect};
+    shader.uniforms.facilityCutMin={value:cutMin};
+    shader.uniforms.facilityCutMax={value:cutMax};
     shader.vertexShader=shader.vertexShader
-      .replace('#include <common>','#include <common>\nvarying vec2 facilityXZ;')
+      .replace('#include <common>','#include <common>\nvarying vec3 facilityWorld;')
       .replace('#include <project_vertex>',[
         '#include <project_vertex>',
-        'facilityXZ = (modelMatrix * vec4(transformed, 1.0)).xz;'
+        'facilityWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;'
       ].join('\n'));
     shader.fragmentShader=shader.fragmentShader
       .replace('#include <common>',[
         '#include <common>',
-        'varying vec2 facilityXZ;',
+        'varying vec3 facilityWorld;',
+        '#define facilityXZ facilityWorld.xz',
         'uniform sampler2D facilityLight;',
-        'uniform vec4 facilityRect;'
+        'uniform vec4 facilityRect;',
+        'uniform vec3 facilityCutMin;',
+        'uniform vec3 facilityCutMax;'
+      ].join('\n'))
+      .replace('#include <clipping_planes_fragment>',[
+        '#include <clipping_planes_fragment>',
+        cut?'if(all(greaterThan(facilityWorld,facilityCutMin))&&all(lessThan(facilityWorld,facilityCutMax)))discard;':''
       ].join('\n'))
       .replace('#include <lights_fragment_maps>',[
         '#include <lights_fragment_maps>',
@@ -89,7 +112,7 @@ export function applyIndoorLighting(material,texture){
         'iblIrradiance *= mix(vec3(1.0), facilityFill, 0.70);'
       ].join('\n'));
   };
-  material.customProgramCacheKey=()=> 'strata-indoor-ambient-v1';
+  material.customProgramCacheKey=()=> cut?'strata-indoor-ambient-v2-cut':'strata-indoor-ambient-v2';
 }
 
 export function createFixtureController(scene,sources){

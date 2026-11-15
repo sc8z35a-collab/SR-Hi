@@ -1,0 +1,88 @@
+{
+  "id": "new-objects-a",
+  "title": "新しいオブジェクト A",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "new props for a Japanese underground research facility and its mountain mine yard, realistic photographic materials",
+  "cells": [
+    {
+      "id": "vending-front",
+      "name": "自動販売機の正面",
+      "meters": 1.0,
+      "roughness": 0.3,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "emissive": 0.8,
+      "prompt": "front of a Japanese drink vending machine with a lit display of rows of colourful drink bottles and cans behind glass and small buttons below each, no text, no logos, filling the whole square"
+    },
+    {
+      "id": "extinguisher-red",
+      "name": "消火器の赤",
+      "meters": 0.4,
+      "roughness": 0.3,
+      "metalness": 0.4,
+      "normalStrength": 0.3,
+      "prompt": "glossy bright red painted steel cylinder surface of a fire extinguisher with slight scratches, about 0.4 m across"
+    },
+    {
+      "id": "first-aid",
+      "name": "救急箱",
+      "meters": 0.6,
+      "roughness": 0.4,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "prompt": "front of a white enamel wall-mounted first aid cabinet with a large green cross symbol, no text, filling the whole square"
+    },
+    {
+      "id": "vermilion-lacquer",
+      "name": "朱塗り",
+      "meters": 0.8,
+      "roughness": 0.45,
+      "normalStrength": 0.6,
+      "prompt": "vermilion red lacquered wood of a Shinto torii gate, slightly weathered with fine cracks, about 0.8 m across"
+    },
+    {
+      "id": "straw-rope",
+      "name": "しめ縄",
+      "meters": 0.4,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "close-up of thick twisted golden rice straw shimenawa rope strands running left to right, filling the frame, about 0.4 m across"
+    },
+    {
+      "id": "lantern-stone",
+      "name": "石灯籠の石",
+      "meters": 0.6,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "weathered grey granite of a Japanese stone lantern with soft moss patches and lichen, about 0.6 m across"
+    },
+    {
+      "id": "loco-paint",
+      "name": "鉱山機関車の塗装",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normalStrength": 1.0,
+      "prompt": "dark green painted steel of an old mine locomotive with rivet rows, chipped paint and oily grime, about 1 m across"
+    },
+    {
+      "id": "forklift-yellow",
+      "name": "フォークリフトの黄色",
+      "meters": 0.8,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.6,
+      "prompt": "industrial yellow painted steel of a forklift with scratches, oily dirt and black scuffs, about 0.8 m across"
+    },
+    {
+      "id": "tire-rubber",
+      "name": "タイヤ",
+      "meters": 0.6,
+      "roughness": 0.9,
+      "normalStrength": 2.0,
+      "prompt": "black rubber tyre tread with deep blocky lugs and dust in the grooves, tread running top to bottom, about 0.6 m across"
+    }
+  ]
+}

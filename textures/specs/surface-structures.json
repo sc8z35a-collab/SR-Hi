@@ -1,0 +1,90 @@
+{
+  "id": "surface-structures",
+  "title": "地上の構造物",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "structures and equipment in an old Japanese mountain mine yard, realistic photographic materials",
+  "cells": [
+    {
+      "id": "headframe-steel",
+      "name": "立坑櫓の鉄骨",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normalStrength": 1.0,
+      "prompt": "red oxide painted structural steel with rivets, chipped paint and rust runs, about 1 m across"
+    },
+    {
+      "id": "kawara-roof",
+      "name": "瓦屋根",
+      "meters": 2.0,
+      "roughness": 0.6,
+      "normalStrength": 2.0,
+      "prompt": "Japanese grey kawara clay roof tiles in neat overlapping wavy rows, seen straight on, rows running left to right, about 2 m across"
+    },
+    {
+      "id": "green-roof",
+      "name": "緑の鉄板屋根",
+      "meters": 2.0,
+      "roughness": 0.6,
+      "metalness": 0.4,
+      "normalStrength": 1.6,
+      "prompt": "faded green painted corrugated steel roofing, corrugations running top to bottom, light rust spots, about 2 m across"
+    },
+    {
+      "id": "office-window",
+      "name": "事務所の窓",
+      "meters": 2.0,
+      "roughness": 0.1,
+      "metalness": 0.3,
+      "normalStrength": 0.4,
+      "emissive": 0.25,
+      "prompt": "exterior of a grid of office windows with thin aluminium mullions and soft sky reflections, slightly dirty glass, about 2 m across"
+    },
+    {
+      "id": "roller-shutter",
+      "name": "シャッター",
+      "meters": 2.0,
+      "roughness": 0.55,
+      "metalness": 0.6,
+      "normalStrength": 1.6,
+      "prompt": "closed grey steel roller shutter door with horizontal interlocking slats and grime at the bottom, slats running left to right, about 2 m across"
+    },
+    {
+      "id": "road-marking",
+      "name": "道路標示",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "dark asphalt with a worn white painted lane line running top to bottom in the centre, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "manhole",
+      "name": "マンホール",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "metalness": 0.6,
+      "normalStrength": 1.6,
+      "seamless": false,
+      "prompt": "round cast iron manhole cover with a raised geometric pattern set in asphalt, seen from directly above, no text, filling the whole square"
+    },
+    {
+      "id": "orange-plastic",
+      "name": "オレンジの樹脂",
+      "meters": 0.5,
+      "roughness": 0.5,
+      "normalStrength": 0.4,
+      "prompt": "scuffed bright orange moulded plastic like a traffic cone, about 0.5 m across"
+    },
+    {
+      "id": "cast-iron",
+      "name": "鋳鉄",
+      "meters": 0.6,
+      "roughness": 0.7,
+      "metalness": 0.7,
+      "normalStrength": 1.4,
+      "prompt": "dark grey cast iron surface with a rough sand-cast texture and rust bloom, about 0.6 m across"
+    }
+  ]
+}
