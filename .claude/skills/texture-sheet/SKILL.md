@@ -65,8 +65,9 @@ export OPENAI_API_KEY_FILE=/path/to/key # キーだけを書いたファイル�
 | `emissive` | 発光の強さ（光る結晶、障子、画面など） |
 | `targets` | 既存の glTF マテリアル名の配列。指定すると、その素材の模様を自動で差し替える |
 | `normalStrength` | 明るさから作るノーマルマップの強さ。`0` で作らない |
+| `tone` | 色の仕上げ（既定 `{"saturation":0.86,"contrast":0.9,"lift":0.035}`）。濃すぎ・暗すぎを防ぐ。`false` で無効。シート全体にも書ける |
 
-プロンプトのコツ: 「真上から／正面から」「about N m across」を書く。文字が出やすい物（看板、本、画面）には
+プロンプトのコツ: 「真上から／正面から」「about N m across」を書く。色は濃くしすぎず「soft muted natural colours, moderate contrast」を添える。文字が出やすい物（看板、本、画面）には
 `no text, no letters, no numbers` を必ず入れる。
 
 ## 出力とゲームへの組み込み

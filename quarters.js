@@ -131,7 +131,6 @@ function washitsu(kit,group){
   kit.add(box(tok.w,.1,.08,.6),hinoki,{pos:[tok.x,2.15,tok.z-tok.d/2+.04]});
   kit.add(new THREE.PlaneGeometry(.62,1.55),kit.tex('kakejiku'),{pos:[tok.x+.2,1.4,s.z2-.025],rot:[0,Math.PI,0]});
   kit.add(cyl(.09,.3,.6,{top:.06,seg:16}),lacquer,{pos:[tok.x+1.0,.33,tok.z+.1]});
-  kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.4,3,2),.6),kit.tex('foliage',{variant:'leaf',side:THREE.DoubleSide}),{pos:[tok.x+1.0,.62,tok.z+.1],scale:[.2,.16,.18]});
   const sh=props(WASHITSU,'shelves')[0],fusuma=kit.tex('fusuma');
   kit.add(box(sh.w-.1,.4,.85,.6,{swap:true}),hinoki,{pos:[sh.x,.2,sh.z]});
   kit.add(box(sh.w-.1,.4,.85,.6,{swap:true}),hinoki,{pos:[sh.x,top-.25,sh.z]});
@@ -199,8 +198,6 @@ function yoshitsu(kit,group){
   for(const dx of [-.55,.55])kit.add(box(.02,.75,.32,1),kit.tex('fireplace-brick'),{pos:[fp.x+dx,.375,fz]});
   for(const dz of [-.06,.06])kit.add(cyl(.07,.7,.5),kit.tex('timber-beam'),{pos:[fp.x,.12,fz+dz],rot:[0,0,Math.PI/2+(R()-.5)*.2]});
   kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.4,3,1),1),kit.plain('fire',{color:0xff7a2a,emissive:0xff6a1a,intensity:2.6,metalness:0}),{pos:[fp.x,.28,fz],scale:[.32,.18,.1]});
-  kit.add(box(1.0,.7,.02,1),kit.plain('mirror',{color:0xc8ced2,roughness:.05,metalness:1}),{pos:[fp.x,1.85,s.z2-.03]});
-  for(const [dx,dy,w,hgt] of [[0,.37,1.1,.05],[0,-.37,1.1,.05],[-.53,0,.05,.78],[.53,0,.05,.78]])kit.add(box(w,hgt,.04,.4),brass,{pos:[fp.x+dx,1.85+dy,s.z2-.04]});
   // seating
   const velvet=kit.tex('velvet-green'),sofa=props(YOSHITSU,'sofa')[0];
   kit.add(box(2.4,.42,.9,.5),velvet,{pos:[sofa.x,.21,sofa.z]});

@@ -79,6 +79,8 @@ export const CAVERN = {
     prop('crates', -5.5, 112.0, 2.4, 1.3), prop('tarp', -2.2, 112.6, 2.6, 1.7),
     prop('mast', -4.4, 90.6, .4, .4), prop('mast', 3.8, 98.5, .4, .4), prop('mast', -2.6, 106.2, .4, .4), prop('mast', 2.6, 112.4, .4, .4),
     prop('pipe-post', -8, 108.6, .3, .3), prop('pipe-post', -4, 108.6, .3, .3), prop('pipe-post', 0, 108.6, .3, .3), prop('pipe-post', 3, 108.6, .3, .3),
+    prop('toolboxes', -4.9, 99.7, 1.2, .6), prop('drums-yellow', -9.6, 104.2, 1.6, 1.0), prop('battery', 6.9, 93.2, .9, 1.6),
+    prop('parts-rack', -8.4, 112.7, 1.8, .6), prop('lab-bench', 1.2, 103.6, 2.6, .9),
     prop('crystal', -14.6, 100.5, 2.2, 2.2), prop('painting', -15.1, 95.6, 1.0, 2.6), prop('crystal', 6.6, 89.6, 1.6, 1.6), prop('crystal', 12.3, 111.4, 2.0, 2.0),
     prop('stalagmite', -15.2, 95.5, 1.2, 1.2), prop('stalagmite', 8.0, 114.6, 1.0, 1.0),
     prop('stalagmite', -9.5, 114.2, 1.0, 1.0), prop('stalagmite', 15.0, 104.0, 1.2, 1.2), prop('stalagmite', -14.8, 108.0, 1.2, 1.2),
@@ -139,7 +141,7 @@ export const WASHITSU = {
   entry:suiteDoor('16'), terminal:[26.75, 85.0],
   data:[['畳','16 枚'],['床の間','掛軸 1 幅'],['室温','22.0 °C'],['湿度','52 %']],
   floors:suiteFloors('16'),
-  props:[prop('tokonoma', 30.1, 91.4, 3.0, 1.0), prop('shelves', 27.35, 91.4, 2.5, 1.0), prop('chabudai', 28.8, 87.8, 1.15, 1.15), prop('andon', 31.1, 84.6, .45, .45)],
+  props:[prop('tansu', 26.42, 89.8, .55, 1.5), prop('tokonoma', 30.1, 91.4, 3.0, 1.0), prop('shelves', 27.35, 91.4, 2.5, 1.0), prop('chabudai', 28.8, 87.8, 1.15, 1.15), prop('andon', 31.1, 84.6, .45, .45)],
 };
 export const YOSHITSU = {
   code:'17', name:'洋室', view:'yoshitsu', short:'洋室', side:0,
@@ -148,7 +150,8 @@ export const YOSHITSU = {
   data:[['暖炉','点火中'],['蔵書','312 冊'],['室温','23.4 °C'],['照明','シャンデリア']],
   floors:suiteFloors('17'),
   props:[prop('fireplace', 29.0, 99.55, 2.3, .75), prop('sofa', 29.0, 97.0, 2.5, 1.0), prop('armchair', 27.2, 98.3, .95, .95),
-    prop('armchair', 30.85, 98.3, .95, .95), prop('coffee-table', 29.0, 98.45, 1.0, .55), prop('bookshelf', 31.35, 94.2, .45, 1.9), prop('floor-lamp', 26.6, 99.3, .4, .4)],
+    prop('armchair', 30.85, 98.3, .95, .95), prop('coffee-table', 29.0, 98.45, 1.0, .55), prop('bookshelf', 31.35, 94.2, .45, 1.9), prop('floor-lamp', 26.6, 99.3, .4, .4),
+    prop('piano', 30.85, 92.5, 1.4, .65), prop('globe', 31.1, 96.1, .6, .6)],
 };
 export const MEETING = {
   code:'18', name:'会議室', view:'meeting', short:'会議', side:0,

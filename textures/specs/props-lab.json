@@ -1,0 +1,92 @@
+{
+  "id": "props-lab",
+  "title": "地下の研究設備",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "equipment and supplies in a tidy underground geology research station, realistic photographic materials, soft natural daylight, muted gentle colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "core-samples",
+      "name": "岩石コア試料",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "top view of a wooden core box with rows of cylindrical grey, beige and reddish rock drill core samples lying in long compartments, no labels, no text, filling the whole square"
+    },
+    {
+      "id": "lab-glassware",
+      "name": "実験ガラス器具",
+      "meters": 1.0,
+      "roughness": 0.2,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "prompt": "front view of a laboratory shelf with clear glass beakers, flasks and bottles holding pale blue, amber and green liquids, no labels, no text, filling the whole square"
+    },
+    {
+      "id": "toolbox-red",
+      "name": "赤い工具箱",
+      "meters": 0.5,
+      "roughness": 0.45,
+      "metalness": 0.4,
+      "normalStrength": 0.6,
+      "prompt": "soft red powder-coated steel toolbox side with small scratches and a pressed rib, about 0.5 m across"
+    },
+    {
+      "id": "pipe-insulation",
+      "name": "配管の保温材",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normalStrength": 1.2,
+      "prompt": "aluminium foil pipe insulation lagging with overlapping bands and banding straps, bands running top to bottom, about 1 m across"
+    },
+    {
+      "id": "drum-yellow",
+      "name": "黄色い薬品ドラム",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.4,
+      "normalStrength": 0.8,
+      "prompt": "pale yellow painted steel chemical drum side with two rolled ribs and a simple black diamond symbol, no text, about 1 m across"
+    },
+    {
+      "id": "microscope-enamel",
+      "name": "顕微鏡の塗装",
+      "meters": 0.3,
+      "roughness": 0.35,
+      "metalness": 0.2,
+      "normalStrength": 0.3,
+      "prompt": "cream white and charcoal enamel paint of a laboratory microscope body with a soft sheen, about 0.3 m across"
+    },
+    {
+      "id": "battery-cells",
+      "name": "蓄電池",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.3,
+      "normalStrength": 1.0,
+      "emissive": 0.2,
+      "prompt": "front view of rows of grey industrial battery cells with small green status lights and cable links, no text, about 1 m across"
+    },
+    {
+      "id": "breaker-panel",
+      "name": "分電盤",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.3,
+      "normalStrength": 1.0,
+      "seamless": false,
+      "prompt": "open grey electrical distribution panel with neat rows of small circuit breaker switches and tidy wiring, no text, no labels, filling the whole square"
+    },
+    {
+      "id": "parts-bins",
+      "name": "部品の小箱",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "normalStrength": 1.0,
+      "prompt": "front view of a wall rack of small pale blue plastic parts bins in neat rows, no labels, no text, about 1 m across"
+    }
+  ]
+}

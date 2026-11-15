@@ -35,6 +35,9 @@ DEFAULTS = {
     "normalSize": 512,     # normal map output size (px)
     "inset": 16,           # px trimmed from every cell edge (removes bleed from neighbours)
     "blend": 80,           # px cross-faded to make each cell tile seamlessly
+    # Gentle finishing so textures are not too dark or too intense in the game:
+    # saturation and contrast are scaled towards neutral grey and the shadows are lifted a little.
+    "tone": {"saturation": 0.86, "contrast": 0.9, "lift": 0.035},
 }
 
 SHEET_PROMPT = """A single square image divided into an exact 3x3 grid of nine square texture swatches \
@@ -186,6 +189,19 @@ def normal_from_albedo(img: Image.Image, size: int, strength: float) -> Image.Im
     return Image.fromarray(((n * 0.5 + 0.5) * 255).round().astype(np.uint8), "RGB")
 
 
+def soften(tile: np.ndarray, tone: dict | None) -> np.ndarray:
+    """Pull colours towards a calmer look: less saturation and contrast, slightly lifted shadows."""
+    if not tone:
+        return tile
+    c = tile / 255.0
+    lum = (c * np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)).sum(axis=2, keepdims=True)
+    c = lum + (c - lum) * tone.get("saturation", 1.0)
+    c = 0.5 + (c - 0.5) * tone.get("contrast", 1.0)
+    lift = tone.get("lift", 0.0)
+    c = c * (1 - lift) + lift
+    return (c.clip(0, 1) * 255.0).astype(np.float32)
+
+
 def slice_sheet(spec_path: Path) -> None:
     spec = load_spec(spec_path)
     root = repo_root()
@@ -221,6 +237,8 @@ def slice_sheet(spec_path: Path) -> None:
         seamless = cell.get("seamless", True)
         axes = seamless if isinstance(seamless, str) else "xy"
         tile = make_seamless(crop, spec["blend"], axes) if seamless else crop
+        tone = cell.get("tone", spec["tone"])
+        tile = soften(tile, tone)
         img = Image.fromarray(tile.clip(0, 255).round().astype(np.uint8), "RGB")
         img = img.resize((spec["tileSize"], spec["tileSize"]), Image.LANCZOS)
         albedo = f"{cell['id']}.webp"

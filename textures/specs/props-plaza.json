@@ -1,0 +1,88 @@
+{
+  "id": "props-plaza",
+  "title": "広場と街の小物",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "street furniture and small objects around the plaza and parking of a calm Japanese research institute, realistic photographic materials, soft natural daylight, muted gentle colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "bike-frame",
+      "name": "自転車のフレーム",
+      "meters": 0.5,
+      "roughness": 0.4,
+      "metalness": 0.4,
+      "normalStrength": 0.4,
+      "prompt": "pale teal powder-coated bicycle frame steel tube surface with small scratches, about 0.5 m across"
+    },
+    {
+      "id": "bin-plastic",
+      "name": "分別ごみ箱",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 0.8,
+      "prompt": "light grey-green moulded plastic recycling bin surface with a soft ribbed texture, about 0.6 m across"
+    },
+    {
+      "id": "flower-bed",
+      "name": "花壇",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "prompt": "flower bed seen from directly above with pale yellow and white pansies, soft pink tulips and green leaves on dark soil, about 1 m across"
+    },
+    {
+      "id": "parasol-canvas",
+      "name": "パラソル",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "cream and pale sage striped outdoor parasol canvas fabric with soft folds, stripes running top to bottom, about 1 m across"
+    },
+    {
+      "id": "cafe-table",
+      "name": "カフェテーブル",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 1.0,
+      "prompt": "white powder-coated perforated steel cafe table top with a regular pattern of small round holes, seen from above, about 0.6 m across"
+    },
+    {
+      "id": "ev-charger",
+      "name": "EV充電器",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "emissive": 0.3,
+      "prompt": "front of a slim white electric vehicle charging post with a small dark display, a green ring light and a charging cable holster, no text, no logos, filling the whole square"
+    },
+    {
+      "id": "info-map",
+      "name": "案内地図",
+      "meters": 1.5,
+      "roughness": 0.6,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "a friendly illustrated campus guide map painted in soft pastel colours showing green lawns, grey paths, a pond, trees and small building shapes from above, no text, no letters, no numbers, filling the whole square"
+    },
+    {
+      "id": "led-bollard",
+      "name": "LEDボラード",
+      "meters": 0.4,
+      "roughness": 0.3,
+      "normalStrength": 0.2,
+      "emissive": 0.8,
+      "prompt": "frosted white acrylic diffuser of a low garden light bollard glowing softly, about 0.4 m across"
+    },
+    {
+      "id": "hedge-privet",
+      "name": "生け垣",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "neatly clipped privet hedge surface of small green leaves, seen straight on, about 1 m across"
+    }
+  ]
+}
