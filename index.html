@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1012">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="スマホを横にして、地下研究所 STRATA B4 を探索する3Dウォークスルー。">
+  <title>STRATA B4｜地下研究所</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/lab-192.png">
+  <link rel="apple-touch-icon" href="./assets/lab-192.png">
+  <link rel="stylesheet" href="./lab.css">
+  <link rel="preload" as="image" href="./views/refit-hall.webp" media="(orientation: landscape)">
+</head>
+<body>
+  <svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="expand" viewBox="0 0 24 24"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5"/></symbol>
+    <symbol id="rotate" viewBox="0 0 50 50"><rect x="16" y="8" width="17" height="29" rx="3" transform="rotate(-31 24 23)"/><path d="M19 10a17 17 0 0 1 23 14m-7-4 7 4 2-8M31 41A17 17 0 0 1 8 27m7 4-7-4-2 8"/></symbol>
+    <symbol id="settings-icon" viewBox="0 0 24 24"><path d="M4 7h8m4 0h4M4 17h3m4 0h9"/><circle cx="14" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="torch" viewBox="0 0 24 24"><path d="M7 4h10v4l-3 4v7a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-7L7 8zm0 4h10m-5 7v2"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="door" viewBox="0 0 24 24"><path d="M5 20h14M7 20V4h10v16m-4-7h1"/></symbol>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h13m-5-5 5 5-5 5"/></symbol>
+    <symbol id="clipboard-icon" viewBox="0 0 24 24"><path d="M9 5H6a1 1 0 0 0-1 1v14h14V6a1 1 0 0 0-1-1h-3M9 4h6v3H9zM8 13l2 2 5-5"/></symbol>
+    <symbol id="image-icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="m4 16 5-5 4 4 2-2 5 4"/><circle cx="15.8" cy="9" r="1"/></symbol>
+  </svg>
+  <main id="app" aria-label="STRATA B4 地下研究所">
+    <canvas id="canvas" aria-label="地下研究所のリアルタイム3D表示" hidden></canvas>
+    <div class="lens" aria-hidden="true"></div>
+    <div id="look" class="look-zone" aria-label="ドラッグで視点を操作" hidden></div>
+    <section id="intro" class="screen intro">
+      <div class="intro-shade"></div>
+      <div class="intro-content">
+        <div class="idplate"><span></span>地下研究施設 <i></i> 地下4階</div>
+        <h1>STRATA <b>B4</b></h1>
+        <p class="subtitle">地下研究所を歩く</p>
+        <button class="primary" type="button" id="start"><svg><use href="#expand"/></svg><span id="start-label">全画面で探索</span><svg class="next"><use href="#arrow"/></svg></button>
+        <button type="button" id="gallery-intro" class="gallery-link"><svg><use href="#image-icon"/></svg>レンダリングで見学</button>
+        <p id="intro-help" class="intro-help">左で移動 <span>／</span> 右をスワイプして視点操作</p>
+      </div>
+      <div class="intro-location"><i></i>連絡通路</div>
+    </section>
+    <section id="hud" aria-label="探索の操作" hidden>
+      <div class="location"><b>B4</b><div><small id="room-code">HALL</small><strong id="room-name">連絡通路</strong></div></div>
+      <div class="tools">
+        <button type="button" class="icon" id="light" aria-label="ライトを点灯" aria-pressed="false"><svg><use href="#torch"/></svg></button>
+        <button type="button" class="icon" id="full" aria-label="全画面に切り替える"><svg><use href="#expand"/></svg></button>
+        <button type="button" class="icon" id="settings" aria-label="設定"><svg><use href="#settings-icon"/></svg></button>
+      </div>
+      <button type="button" id="record" class="record-button" aria-haspopup="dialog"><svg><use href="#clipboard-icon"/></svg><span id="record-count">点検</span></button>
+      <div class="reticle" aria-hidden="true"></div>
+      <div id="move" class="move-zone"><div id="joystick" class="joystick" role="img" aria-label="仮想スティックで移動"><span id="knob"></span></div></div>
+      <button class="interact" type="button" id="interact" hidden><svg><use href="#door"/></svg><span></span></button>
+    </section>
+    <section id="gallery" class="gallery screen" aria-label="研究所のレンダリング画像" hidden>
+      <img id="gallery-image" alt="">
+      <div class="gallery-shade" aria-hidden="true"></div>
+      <div class="location"><b>B4</b><div><small id="gallery-code">HALL</small><strong id="gallery-name">連絡通路</strong></div></div>
+      <div class="tools">
+        <button type="button" id="gallery-retry" class="gallery-retry" hidden>3Dを再試行</button>
+        <button type="button" class="icon" id="gallery-full" aria-label="全画面に切り替える"><svg><use href="#expand"/></svg></button>
+        <button type="button" class="icon" id="gallery-close" aria-label="見学を終了する"><svg><use href="#close"/></svg></button>
+      </div>
+      <p id="gallery-status" class="gallery-status" role="status" hidden></p>
+      <nav class="gallery-nav" aria-label="見学地点">
+        <button type="button" id="gallery-prev" aria-label="前の区画"><svg><use href="#arrow"/></svg></button>
+        <div id="gallery-choices" role="group" aria-label="区画を選ぶ"></div>
+        <button type="button" id="gallery-next" aria-label="次の区画"><svg><use href="#arrow"/></svg></button>
+      </nav>
+    </section>
+    <section id="settings-panel" class="overlay screen" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+      <div class="panel">
+        <header><h2 id="settings-title">環境設定</h2><button type="button" class="icon" id="settings-close" aria-label="設定を閉じる"><svg><use href="#close"/></svg></button></header>
+        <div class="setting-row"><span>描画品質</span><div class="choices" role="group" aria-label="描画品質"><button type="button" data-quality="high">高画質</button><button type="button" data-quality="balanced">標準</button><button type="button" data-quality="light">軽量</button></div></div>
+        <p id="quality-note" class="note"></p>
+        <div class="setting-row"><span>環境音と足音</span><button type="button" id="sound" aria-pressed="true">オン</button></div>
+        <footer><button type="button" id="reset">入口に戻る</button><button type="button" id="resume">探索を続ける <svg><use href="#arrow"/></svg></button></footer>
+      </div>
+    </section>
+    <section id="terminal-panel" class="overlay screen" role="dialog" aria-modal="true" aria-labelledby="terminal-title" hidden>
+      <div class="panel terminal">
+        <div id="terminal-code" class="eyebrow"></div>
+        <header><h2 id="terminal-title"></h2><button type="button" class="icon" id="terminal-close" aria-label="端末を閉じる"><svg><use href="#close"/></svg></button></header>
+        <dl id="terminal-readout"></dl>
+      </div>
+    </section>
+    <section id="record-panel" class="overlay screen" role="dialog" aria-modal="true" aria-labelledby="record-title" hidden>
+      <div class="panel inspection">
+        <header><h2 id="record-title">点検記録</h2><button type="button" class="icon" id="record-close" aria-label="点検記録を閉じる"><svg><use href="#close"/></svg></button></header>
+        <p id="record-status" class="note">各区画の端末を開いて点検します。</p>
+        <ol id="record-rooms"></ol>
+      </div>
+    </section>
+    <div id="toast" role="status" hidden></div>
+    <section id="portrait" class="screen portrait" aria-label="スマホを横向きにする">
+      <svg><use href="#rotate"/></svg><p>スマホを横向きに</p><small>横画面で地下研究所を探索できます</small>
+    </section>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
