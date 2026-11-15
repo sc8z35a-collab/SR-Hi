@@ -8,6 +8,7 @@ import {
 import {buildQuarters} from './quarters.js';
 import {buildSurface,buildIncline,extinguisher} from './surface.js';
 import {buildOutside} from './outside.js';
+import {buildOutdoorProps,buildUndergroundProps} from './props.js';
 import {floorHeight} from './cavern-layout.js';
 
 /**
@@ -29,9 +30,11 @@ export async function buildExtension(){
   hut(under,underground);
   lake(under,underground);
   buildQuarters(under,underground);
+  buildUndergroundProps(under,underground);
   buildIncline(shaft,group);
   buildSurface(open,outdoor);
   const updateSky=buildOutside(open,outdoor);
+  buildOutdoorProps(open,outdoor);
   group.userData.frame=(player,camera,scene)=>{
     updateSky(player,camera,scene,loaded);
     const level=floorHeight(player.x,player.z);

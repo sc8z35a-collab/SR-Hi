@@ -443,7 +443,7 @@ function village(kit,group,R){
   hipRoof(kit,kit.tex('kawara-roof'),{x1:kx1,x2:kx2,z1:kz1,z2:kz2,eave:ky+4.25,ridge:ky+5.8,over:.5,meters:2});
   kit.add(box(.08,2.0,1.4,1),kit.tex('cast-iron'),{pos:[kx1-.05,ky+1.0,k.z]});
   // field crops and tea rows
-  for(let z=303;z<312;z+=1.2)ribbon(kit,kit.tex('field-soil',{variant:'ridge'}),[[64.5,z],[75.5,z]],.6,{lift:.12,meters:1.5});
+  for(let z=303;z<312;z+=1.2)ribbon(kit,kit.tex('cabbage-field'),[[64.5,z],[75.5,z]],.8,{lift:.14,meters:1.5});
   for(let z=297;z<326;z+=1.8)for(let x=81;x<111;x+=6){
     const y=G(x+3,z);
     kit.add(planarUV(lumpy(new THREE.BoxGeometry(6,1,1,6,2,2),.08,1.5,x+z),2),kit.tex('tea-rows'),{pos:[x+3,y+.45,z],scale:[1,.9,1]});
@@ -498,25 +498,52 @@ function village(kit,group,R){
 
 // ---------- trees ----------
 function trees(kit,R){
+  const bark=kit.tex('tree-bark');
   for(const t of TREES){
-    const y=G(t.x,t.z)-.1,s=t.s;
+    const y=G(t.x,t.z)-.15,s=t.s,spin=R()*Math.PI*2;
+    const lean=[(R()-.5)*.12,(R()-.5)*.12];
     if(t.kind==='cedar'){
-      kit.add(cyl(.22*s,7*s,1,{top:.12*s,seg:8}),kit.tex('tree-bark'),{pos:[t.x,y+3.5*s,t.z]});
-      for(const [r,h,o] of [[2.1,3.2,2.6],[1.6,2.6,4.3],[1.0,2.0,5.8]])
-        kit.add(roundUV(new THREE.ConeGeometry(r*s,h*s,8),1,r*s),kit.tex('pine-needles'),{pos:[t.x,y+o*s,t.z],rot:[0,R()*3,0]});
+      kit.add(cyl(.22*s,7.5*s,1,{top:.1*s,seg:8}),bark,{pos:[t.x,y+3.75*s,t.z],rot:[lean[0]*.5,0,lean[1]*.5]});
+      for(const [r,h,o] of [[2.2,3.0,2.4],[1.8,2.6,3.8],[1.35,2.2,5.1],[.8,1.8,6.4]])
+        kit.add(roundUV(new THREE.ConeGeometry(r*s*(.92+R()*.16),h*s,9),1,r*s),kit.tex('pine-needles'),{pos:[t.x+lean[1]*o*s,y+o*s,t.z+lean[0]*o*s],rot:[0,spin+o,0]});
     }else if(t.kind==='pine'){
-      const lean=(R()-.5)*.25;
-      kit.add(cyl(.2*s,8*s,.8,{top:.14*s,seg:8}),kit.tex('red-pine-bark'),{pos:[t.x,y+4*s,t.z],rot:[lean,0,lean*.6]});
-      for(let k=0;k<3;k++)leafy(kit,'pine-needles',[t.x+(R()-.5)*1.6*s+lean*6,y+(6.2+k*.9)*s,t.z+(R()-.5)*1.6*s],[1.8*s,.55*s,1.6*s],k+t.x);
+      const h=7.5*s,top=[t.x+lean[0]*h*2,y+h,t.z+lean[1]*h*2];
+      kit.beam([t.x,y,t.z],[(t.x+top[0])/2+(R()-.5)*.6,y+h*.55,(t.z+top[2])/2+(R()-.5)*.6],.2*s,kit.tex('red-pine-bark'),.8,8);
+      kit.beam([(t.x+top[0])/2,y+h*.5,(t.z+top[2])/2],top,.15*s,kit.tex('red-pine-bark'),.8,8);
+      for(let k=0;k<4;k++){
+        const a=spin+k*1.7,r=(1.0+R()*1.2)*s,cy=y+h*(.62+k*.12);
+        const end=[top[0]+Math.cos(a)*r,cy,top[2]+Math.sin(a)*r];
+        kit.beam([top[0]-lean[0]*h*(1-.62-k*.12),cy-.4,top[2]-lean[1]*h*(1-.62-k*.12)],end,.06*s,kit.tex('red-pine-bark'),.8,5);
+        leafy(kit,'pine-needles',[end[0],end[1]+.2*s,end[2]],[(1.0+R()*.4)*s,(.7+R()*.15)*s,(.95+R()*.4)*s],t.x+k);
+      }
     }else if(t.kind==='birch'){
-      kit.add(cyl(.12*s,6.5*s,.6,{top:.08*s,seg:8}),kit.tex('birch-bark'),{pos:[t.x,y+3.25*s,t.z]});
-      leafy(kit,'bush-leaves',[t.x,y+5.4*s,t.z],[1.4*s,2.0*s,1.4*s],t.z);
+      kit.add(cyl(.12*s,7*s,.6,{top:.06*s,seg:8}),kit.tex('birch-bark'),{pos:[t.x,y+3.5*s,t.z],rot:[lean[0],0,lean[1]]});
+      for(let k=0;k<3;k++)leafy(kit,'bush-leaves',[t.x+(R()-.5)*.8*s+lean[1]*4,y+(4.4+k*1.0)*s,t.z+(R()-.5)*.8*s-lean[0]*4],[(1.25-k*.25)*s,(1.0-k*.12)*s,(1.2-k*.25)*s],t.z+k);
     }else{
-      const id=t.kind==='sakura'?'sakura':'momiji';
-      kit.add(cyl(.2*s,3.2*s,1,{top:.14*s,seg:8}),kit.tex('tree-bark'),{pos:[t.x,y+1.6*s,t.z]});
-      leafy(kit,id,[t.x,y+3.6*s,t.z],[2.3*s,1.5*s,2.3*s],t.x+t.z);
-      leafy(kit,id,[t.x+.8*s,y+4.3*s,t.z-.5*s],[1.4*s,1.0*s,1.4*s],t.x-t.z);
+      const id=t.kind==='sakura'?'sakura':'momiji',trunk=2.0*s,base=[t.x,y,t.z],fork=[t.x,y+trunk,t.z];
+      kit.beam(base,fork,.22*s,bark,1,8);
+      const n=t.kind==='sakura'?3:2+Math.floor(R()*2);
+      for(let k=0;k<n;k++){
+        const a=spin+k*Math.PI*2/n,end=[t.x+Math.cos(a)*1.4*s,y+trunk+1.4*s+R()*.6*s,t.z+Math.sin(a)*1.4*s];
+        kit.beam(fork,end,.11*s,bark,1,6);
+        leafy(kit,id,[end[0],end[1]+.35*s,end[2]],[(1.5+R()*.4)*s,(1.0+R()*.25)*s,(1.4+R()*.4)*s],t.x+k*3);
+      }
+      leafy(kit,id,[t.x,y+trunk+2.4*s,t.z],[1.6*s,1.1*s,1.6*s],t.z-t.x);
     }
+  }
+  // undergrowth: ferns and shrubs under groves, grass tufts in open meadows
+  for(const t of TREES){
+    if(R()>.35||t.kind==='sakura')continue;
+    const a=R()*Math.PI*2,d=1.4+R()*1.6,x=t.x+Math.cos(a)*d,z=t.z+Math.sin(a)*d,y=G(x,z);
+    const id=R()<.6?'fern':'bush-leaves';
+    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,10,6,0,Math.PI*2,0,Math.PI/2),.25,2,x),1),kit.tex(id,{variant:'low',side:THREE.DoubleSide}),{pos:[x,y-.05,z],scale:[.55+R()*.4,.35+R()*.25,.55+R()*.4]});
+  }
+  for(let i=0;i<140;i++){
+    const x=-56+R()*178,z=200+R()*134;
+    if(ROADS.some(r=>inRect(r,x,z,1.5))||PADDIES.some(p=>inRect(p,x,z,1))||inRect(PLAZA,x,z,1)||inRect(PARKING,x,z,1)||inRect(HQ,x,z,2))continue;
+    if(x>RIVER.x1-3&&Math.abs(z-RIVER.z(x))<RIVER.half+2)continue;
+    const y=G(x,z);if(Math.abs(G(x+1,z)-G(x-1,z))>.8)continue;
+    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,8,5,0,Math.PI*2,0,Math.PI/2),.3,3,i),1),kit.tex(R()<.7?'meadow-grass':'dry-grass',{variant:'tuft',side:THREE.DoubleSide}),{pos:[x,y-.04,z],scale:[.35+R()*.3,.25+R()*.25,.35+R()*.3]});
   }
 }
 

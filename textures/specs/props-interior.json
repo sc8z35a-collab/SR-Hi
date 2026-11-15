@@ -1,0 +1,88 @@
+{
+  "id": "props-interior",
+  "title": "室内の小物",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "decorative objects in calm Japanese and Western style rooms and a meeting room, realistic photographic materials, soft natural daylight, muted gentle colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "raku-ceramic",
+      "name": "楽焼の器",
+      "meters": 0.3,
+      "roughness": 0.4,
+      "normalStrength": 0.6,
+      "prompt": "glaze of a hand-made Japanese raku tea bowl in soft black and warm grey with a crackle pattern, about 0.3 m across"
+    },
+    {
+      "id": "antique-globe",
+      "name": "アンティークの地球儀",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 0.3,
+      "seamless": false,
+      "prompt": "an antique world globe map surface in faded sepia and soft sea-green tones with continents and a fine grid, no text, no letters, filling the whole square"
+    },
+    {
+      "id": "clock-face",
+      "name": "時計の文字盤",
+      "meters": 0.4,
+      "roughness": 0.4,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "a simple ivory wall clock face with thin black hour marks as small bars, two slim black hands and no numbers, no text, filling the whole square"
+    },
+    {
+      "id": "oil-painting",
+      "name": "油絵",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 0.6,
+      "seamless": false,
+      "prompt": "a calm oil painting of a misty lake with mountains and pine trees in soft muted colours, visible brush strokes, no frame, no signature, filling the whole square"
+    },
+    {
+      "id": "bonsai-foliage",
+      "name": "盆栽の葉",
+      "meters": 0.4,
+      "roughness": 0.8,
+      "normalStrength": 1.2,
+      "prompt": "dense fine green juniper bonsai foliage pads, about 0.4 m across"
+    },
+    {
+      "id": "piano-keys",
+      "name": "ピアノの鍵盤",
+      "meters": 1.2,
+      "roughness": 0.3,
+      "normalStrength": 0.6,
+      "seamless": "x",
+      "prompt": "top view of a piano keyboard with ivory white keys and black keys in the correct pattern, filling the whole square"
+    },
+    {
+      "id": "laptop-screen",
+      "name": "ノートPCの画面",
+      "meters": 0.4,
+      "roughness": 0.2,
+      "normalStrength": 0.1,
+      "seamless": false,
+      "emissive": 0.9,
+      "prompt": "a laptop screen showing a calm dashboard with soft blue line graphs and pale panels, no text, no numbers, no letters, filling the whole square"
+    },
+    {
+      "id": "ikebana-flowers",
+      "name": "生け花",
+      "meters": 0.5,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "a soft ikebana arrangement of white camellias, pale pink blossoms and green pine sprigs, filling the frame, about 0.5 m across"
+    },
+    {
+      "id": "paulownia",
+      "name": "桐の箪笥",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.6,
+      "prompt": "pale paulownia (kiri) wood of a Japanese chest of drawers with straight soft grain running left to right and small iron handles, about 1 m across"
+    }
+  ]
+}

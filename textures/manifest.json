@@ -809,6 +809,156 @@
         },
         "total_tokens": 2006
       }
+    },
+    "props-camp": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/props-camp.webp",
+      "textures": [
+        "camp-chair",
+        "cooler-box",
+        "telescope-white",
+        "trail-sign",
+        "log-pile-bark",
+        "stevenson-louvre",
+        "utility-olive",
+        "cable-reel",
+        "danger-sign"
+      ],
+      "usage": {
+        "input_tokens": 534,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 534
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2017
+      }
+    },
+    "props-interior": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/props-interior.webp",
+      "textures": [
+        "raku-ceramic",
+        "antique-globe",
+        "clock-face",
+        "oil-painting",
+        "bonsai-foliage",
+        "piano-keys",
+        "laptop-screen",
+        "ikebana-flowers",
+        "paulownia"
+      ],
+      "usage": {
+        "input_tokens": 553,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 553
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2036
+      }
+    },
+    "props-lab": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/props-lab.webp",
+      "textures": [
+        "core-samples",
+        "lab-glassware",
+        "toolbox-red",
+        "pipe-insulation",
+        "drum-yellow",
+        "microscope-enamel",
+        "battery-cells",
+        "breaker-panel",
+        "parts-bins"
+      ],
+      "usage": {
+        "input_tokens": 539,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 539
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2022
+      }
+    },
+    "props-plaza": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/props-plaza.webp",
+      "textures": [
+        "bike-frame",
+        "bin-plastic",
+        "flower-bed",
+        "parasol-canvas",
+        "cafe-table",
+        "ev-charger",
+        "info-map",
+        "led-bollard",
+        "hedge-privet"
+      ],
+      "usage": {
+        "input_tokens": 545,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 545
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2028
+      }
+    },
+    "props-village": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/props-village.webp",
+      "textures": [
+        "waterwheel-wood",
+        "glazed-pottery",
+        "firewood-ends",
+        "cabbage-field",
+        "persimmon-string",
+        "woven-basket",
+        "patched-cloth",
+        "rowboat-paint",
+        "fishing-net"
+      ],
+      "usage": {
+        "input_tokens": 525,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 525
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2008
+      }
     }
   },
   "textures": {
@@ -819,7 +969,8 @@
       "albedo": "cave-basalt.webp",
       "roughness": 0.92,
       "metalness": 0.0,
-      "normal": "cave-basalt-normal.webp"
+      "normal": "cave-basalt-normal.webp",
+      "meters": 3
     },
     "cave-gravel": {
       "name": "砕石の床",
@@ -828,7 +979,8 @@
       "albedo": "cave-gravel.webp",
       "roughness": 0.95,
       "metalness": 0.0,
-      "normal": "cave-gravel-normal.webp"
+      "normal": "cave-gravel-normal.webp",
+      "meters": 2
     },
     "shotcrete": {
       "name": "吹付けコンクリート",
@@ -837,7 +989,8 @@
       "albedo": "shotcrete.webp",
       "roughness": 0.9,
       "metalness": 0.0,
-      "normal": "shotcrete-normal.webp"
+      "normal": "shotcrete-normal.webp",
+      "meters": 3
     },
     "corrugated-siding": {
       "name": "波板の外壁",
@@ -846,7 +999,8 @@
       "albedo": "corrugated-siding.webp",
       "roughness": 0.55,
       "metalness": 0.6,
-      "normal": "corrugated-siding-normal.webp"
+      "normal": "corrugated-siding-normal.webp",
+      "meters": 2
     },
     "standing-seam-roof": {
       "name": "金属屋根",
@@ -855,7 +1009,8 @@
       "albedo": "standing-seam-roof.webp",
       "roughness": 0.5,
       "metalness": 0.7,
-      "normal": "standing-seam-roof-normal.webp"
+      "normal": "standing-seam-roof-normal.webp",
+      "meters": 2
     },
     "form-concrete": {
       "name": "打放しの基礎",
@@ -864,7 +1019,8 @@
       "albedo": "form-concrete.webp",
       "roughness": 0.85,
       "metalness": 0.0,
-      "normal": "form-concrete-normal.webp"
+      "normal": "form-concrete-normal.webp",
+      "meters": 2
     },
     "corten-plate": {
       "name": "耐候性鋼板",
@@ -873,7 +1029,8 @@
       "albedo": "corten-plate.webp",
       "roughness": 0.8,
       "metalness": 0.35,
-      "normal": "corten-plate-normal.webp"
+      "normal": "corten-plate-normal.webp",
+      "meters": 1.5
     },
     "bar-grating": {
       "name": "床グレーチング",
@@ -882,7 +1039,8 @@
       "albedo": "bar-grating.webp",
       "roughness": 0.6,
       "metalness": 0.8,
-      "normal": "bar-grating-normal.webp"
+      "normal": "bar-grating-normal.webp",
+      "meters": 1
     },
     "hazard-stripe": {
       "name": "警告ストライプ",
@@ -891,7 +1049,8 @@
       "albedo": "hazard-stripe.webp",
       "roughness": 0.65,
       "metalness": 0.0,
-      "normal": "hazard-stripe-normal.webp"
+      "normal": "hazard-stripe-normal.webp",
+      "meters": 1
     },
     "tank-green": {
       "name": "緑の塗装タンク",
@@ -900,7 +1059,8 @@
       "albedo": "tank-green.webp",
       "roughness": 0.55,
       "metalness": 0.5,
-      "normal": "tank-green-normal.webp"
+      "normal": "tank-green-normal.webp",
+      "meters": 1.5
     },
     "plywood-crate": {
       "name": "合板の木箱",
@@ -909,7 +1069,8 @@
       "albedo": "plywood-crate.webp",
       "roughness": 0.85,
       "metalness": 0.0,
-      "normal": "plywood-crate-normal.webp"
+      "normal": "plywood-crate-normal.webp",
+      "meters": 1
     },
     "canvas-tarp": {
       "name": "帆布シート",
@@ -918,7 +1079,8 @@
       "albedo": "canvas-tarp.webp",
       "roughness": 0.95,
       "metalness": 0.0,
-      "normal": "canvas-tarp-normal.webp"
+      "normal": "canvas-tarp-normal.webp",
+      "meters": 1.5
     },
     "timber-beam": {
       "name": "坑木",
@@ -927,7 +1089,8 @@
       "albedo": "timber-beam.webp",
       "roughness": 0.9,
       "metalness": 0.0,
-      "normal": "timber-beam-normal.webp"
+      "normal": "timber-beam-normal.webp",
+      "meters": 1
     },
     "glow-crystal": {
       "name": "発光鉱物",
@@ -937,6 +1100,7 @@
       "roughness": 0.25,
       "metalness": 0.0,
       "normal": "glow-crystal-normal.webp",
+      "meters": 0.5,
       "emissive": 1.6
     },
     "patina-copper": {
@@ -946,7 +1110,8 @@
       "albedo": "patina-copper.webp",
       "roughness": 0.6,
       "metalness": 0.55,
-      "normal": "patina-copper-normal.webp"
+      "normal": "patina-copper-normal.webp",
+      "meters": 1
     },
     "vented-aluminum": {
       "name": "通気口付きアルミ筐体",
@@ -955,7 +1120,8 @@
       "albedo": "vented-aluminum.webp",
       "roughness": 0.45,
       "metalness": 0.85,
-      "normal": "vented-aluminum-normal.webp"
+      "normal": "vented-aluminum-normal.webp",
+      "meters": 1
     },
     "ribbed-rubber": {
       "name": "ゴム製コンベアベルト",
@@ -964,7 +1130,8 @@
       "albedo": "ribbed-rubber.webp",
       "roughness": 0.9,
       "metalness": 0.0,
-      "normal": "ribbed-rubber-normal.webp"
+      "normal": "ribbed-rubber-normal.webp",
+      "meters": 1
     },
     "iron-flowstone": {
       "name": "酸化鉄の流れ石",
@@ -973,7 +1140,8 @@
       "albedo": "iron-flowstone.webp",
       "roughness": 0.7,
       "metalness": 0.0,
-      "normal": "iron-flowstone-normal.webp"
+      "normal": "iron-flowstone-normal.webp",
+      "meters": 1.5
     },
     "painted-metal-slate": {
       "name": "灰青の塗装鋼板",
@@ -3323,6 +3491,460 @@
       "roughness": 0.95,
       "metalness": 0.0,
       "normal": "straw-hay-normal.webp",
+      "meters": 1.0
+    },
+    "camp-chair": {
+      "name": "キャンプチェアの布",
+      "sheet": "props-camp",
+      "cell": 0,
+      "albedo": "camp-chair.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "camp-chair-normal.webp",
+      "meters": 0.5
+    },
+    "cooler-box": {
+      "name": "クーラーボックス",
+      "sheet": "props-camp",
+      "cell": 1,
+      "albedo": "cooler-box.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "cooler-box-normal.webp",
+      "meters": 0.6
+    },
+    "telescope-white": {
+      "name": "望遠鏡の白塗装",
+      "sheet": "props-camp",
+      "cell": 2,
+      "albedo": "telescope-white.webp",
+      "roughness": 0.35,
+      "metalness": 0.2,
+      "normal": "telescope-white-normal.webp",
+      "meters": 0.4
+    },
+    "trail-sign": {
+      "name": "道標",
+      "sheet": "props-camp",
+      "cell": 3,
+      "albedo": "trail-sign.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "trail-sign-normal.webp",
+      "meters": 1.0
+    },
+    "log-pile-bark": {
+      "name": "丸太の樹皮",
+      "sheet": "props-camp",
+      "cell": 4,
+      "albedo": "log-pile-bark.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "log-pile-bark-normal.webp",
+      "meters": 1.0
+    },
+    "stevenson-louvre": {
+      "name": "百葉箱",
+      "sheet": "props-camp",
+      "cell": 5,
+      "albedo": "stevenson-louvre.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "stevenson-louvre-normal.webp",
+      "meters": 0.6
+    },
+    "utility-olive": {
+      "name": "作業車の塗装",
+      "sheet": "props-camp",
+      "cell": 6,
+      "albedo": "utility-olive.webp",
+      "roughness": 0.5,
+      "metalness": 0.4,
+      "normal": "utility-olive-normal.webp",
+      "meters": 1.0
+    },
+    "cable-reel": {
+      "name": "ケーブルドラム",
+      "sheet": "props-camp",
+      "cell": 7,
+      "albedo": "cable-reel.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "cable-reel-normal.webp",
+      "meters": 1.0
+    },
+    "danger-sign": {
+      "name": "高圧注意の標識",
+      "sheet": "props-camp",
+      "cell": 8,
+      "albedo": "danger-sign.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "danger-sign-normal.webp",
+      "meters": 0.6
+    },
+    "raku-ceramic": {
+      "name": "楽焼の器",
+      "sheet": "props-interior",
+      "cell": 0,
+      "albedo": "raku-ceramic.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "raku-ceramic-normal.webp",
+      "meters": 0.3
+    },
+    "antique-globe": {
+      "name": "アンティークの地球儀",
+      "sheet": "props-interior",
+      "cell": 1,
+      "albedo": "antique-globe.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "antique-globe-normal.webp",
+      "meters": 0.6
+    },
+    "clock-face": {
+      "name": "時計の文字盤",
+      "sheet": "props-interior",
+      "cell": 2,
+      "albedo": "clock-face.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "clock-face-normal.webp",
+      "meters": 0.4
+    },
+    "oil-painting": {
+      "name": "油絵",
+      "sheet": "props-interior",
+      "cell": 3,
+      "albedo": "oil-painting.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "oil-painting-normal.webp",
+      "meters": 1.0
+    },
+    "bonsai-foliage": {
+      "name": "盆栽の葉",
+      "sheet": "props-interior",
+      "cell": 4,
+      "albedo": "bonsai-foliage.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "bonsai-foliage-normal.webp",
+      "meters": 0.4
+    },
+    "piano-keys": {
+      "name": "ピアノの鍵盤",
+      "sheet": "props-interior",
+      "cell": 5,
+      "albedo": "piano-keys.webp",
+      "roughness": 0.3,
+      "metalness": 0.0,
+      "normal": "piano-keys-normal.webp",
+      "meters": 1.2
+    },
+    "laptop-screen": {
+      "name": "ノートPCの画面",
+      "sheet": "props-interior",
+      "cell": 6,
+      "albedo": "laptop-screen.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "laptop-screen-normal.webp",
+      "meters": 0.4,
+      "emissive": 0.9
+    },
+    "ikebana-flowers": {
+      "name": "生け花",
+      "sheet": "props-interior",
+      "cell": 7,
+      "albedo": "ikebana-flowers.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "ikebana-flowers-normal.webp",
+      "meters": 0.5
+    },
+    "paulownia": {
+      "name": "桐の箪笥",
+      "sheet": "props-interior",
+      "cell": 8,
+      "albedo": "paulownia.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "paulownia-normal.webp",
+      "meters": 1.0
+    },
+    "core-samples": {
+      "name": "岩石コア試料",
+      "sheet": "props-lab",
+      "cell": 0,
+      "albedo": "core-samples.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "core-samples-normal.webp",
+      "meters": 1.0
+    },
+    "lab-glassware": {
+      "name": "実験ガラス器具",
+      "sheet": "props-lab",
+      "cell": 1,
+      "albedo": "lab-glassware.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "lab-glassware-normal.webp",
+      "meters": 1.0
+    },
+    "toolbox-red": {
+      "name": "赤い工具箱",
+      "sheet": "props-lab",
+      "cell": 2,
+      "albedo": "toolbox-red.webp",
+      "roughness": 0.45,
+      "metalness": 0.4,
+      "normal": "toolbox-red-normal.webp",
+      "meters": 0.5
+    },
+    "pipe-insulation": {
+      "name": "配管の保温材",
+      "sheet": "props-lab",
+      "cell": 3,
+      "albedo": "pipe-insulation.webp",
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normal": "pipe-insulation-normal.webp",
+      "meters": 1.0
+    },
+    "drum-yellow": {
+      "name": "黄色い薬品ドラム",
+      "sheet": "props-lab",
+      "cell": 4,
+      "albedo": "drum-yellow.webp",
+      "roughness": 0.5,
+      "metalness": 0.4,
+      "normal": "drum-yellow-normal.webp",
+      "meters": 1.0
+    },
+    "microscope-enamel": {
+      "name": "顕微鏡の塗装",
+      "sheet": "props-lab",
+      "cell": 5,
+      "albedo": "microscope-enamel.webp",
+      "roughness": 0.35,
+      "metalness": 0.2,
+      "normal": "microscope-enamel-normal.webp",
+      "meters": 0.3
+    },
+    "battery-cells": {
+      "name": "蓄電池",
+      "sheet": "props-lab",
+      "cell": 6,
+      "albedo": "battery-cells.webp",
+      "roughness": 0.5,
+      "metalness": 0.3,
+      "normal": "battery-cells-normal.webp",
+      "meters": 1.0,
+      "emissive": 0.2
+    },
+    "breaker-panel": {
+      "name": "分電盤",
+      "sheet": "props-lab",
+      "cell": 7,
+      "albedo": "breaker-panel.webp",
+      "roughness": 0.5,
+      "metalness": 0.3,
+      "normal": "breaker-panel-normal.webp",
+      "meters": 1.0
+    },
+    "parts-bins": {
+      "name": "部品の小箱",
+      "sheet": "props-lab",
+      "cell": 8,
+      "albedo": "parts-bins.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "parts-bins-normal.webp",
+      "meters": 1.0
+    },
+    "bike-frame": {
+      "name": "自転車のフレーム",
+      "sheet": "props-plaza",
+      "cell": 0,
+      "albedo": "bike-frame.webp",
+      "roughness": 0.4,
+      "metalness": 0.4,
+      "normal": "bike-frame-normal.webp",
+      "meters": 0.5
+    },
+    "bin-plastic": {
+      "name": "分別ごみ箱",
+      "sheet": "props-plaza",
+      "cell": 1,
+      "albedo": "bin-plastic.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "bin-plastic-normal.webp",
+      "meters": 0.6
+    },
+    "flower-bed": {
+      "name": "花壇",
+      "sheet": "props-plaza",
+      "cell": 2,
+      "albedo": "flower-bed.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "flower-bed-normal.webp",
+      "meters": 1.0
+    },
+    "parasol-canvas": {
+      "name": "パラソル",
+      "sheet": "props-plaza",
+      "cell": 3,
+      "albedo": "parasol-canvas.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "parasol-canvas-normal.webp",
+      "meters": 1.0
+    },
+    "cafe-table": {
+      "name": "カフェテーブル",
+      "sheet": "props-plaza",
+      "cell": 4,
+      "albedo": "cafe-table.webp",
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normal": "cafe-table-normal.webp",
+      "meters": 0.6
+    },
+    "ev-charger": {
+      "name": "EV充電器",
+      "sheet": "props-plaza",
+      "cell": 5,
+      "albedo": "ev-charger.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "ev-charger-normal.webp",
+      "meters": 1.0,
+      "emissive": 0.3
+    },
+    "info-map": {
+      "name": "案内地図",
+      "sheet": "props-plaza",
+      "cell": 6,
+      "albedo": "info-map.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "info-map-normal.webp",
+      "meters": 1.5
+    },
+    "led-bollard": {
+      "name": "LEDボラード",
+      "sheet": "props-plaza",
+      "cell": 7,
+      "albedo": "led-bollard.webp",
+      "roughness": 0.3,
+      "metalness": 0.0,
+      "normal": "led-bollard-normal.webp",
+      "meters": 0.4,
+      "emissive": 0.8
+    },
+    "hedge-privet": {
+      "name": "生け垣",
+      "sheet": "props-plaza",
+      "cell": 8,
+      "albedo": "hedge-privet.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "hedge-privet-normal.webp",
+      "meters": 1.0
+    },
+    "waterwheel-wood": {
+      "name": "水車の木材",
+      "sheet": "props-village",
+      "cell": 0,
+      "albedo": "waterwheel-wood.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "waterwheel-wood-normal.webp",
+      "meters": 1.0
+    },
+    "glazed-pottery": {
+      "name": "陶器の甕",
+      "sheet": "props-village",
+      "cell": 1,
+      "albedo": "glazed-pottery.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "glazed-pottery-normal.webp",
+      "meters": 0.6
+    },
+    "firewood-ends": {
+      "name": "薪の木口",
+      "sheet": "props-village",
+      "cell": 2,
+      "albedo": "firewood-ends.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "firewood-ends-normal.webp",
+      "meters": 0.8
+    },
+    "cabbage-field": {
+      "name": "キャベツ畑",
+      "sheet": "props-village",
+      "cell": 3,
+      "albedo": "cabbage-field.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "cabbage-field-normal.webp",
+      "meters": 1.5
+    },
+    "persimmon-string": {
+      "name": "干し柿",
+      "sheet": "props-village",
+      "cell": 4,
+      "albedo": "persimmon-string.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "persimmon-string-normal.webp",
+      "meters": 0.8
+    },
+    "woven-basket": {
+      "name": "竹かご",
+      "sheet": "props-village",
+      "cell": 5,
+      "albedo": "woven-basket.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "woven-basket-normal.webp",
+      "meters": 0.4
+    },
+    "patched-cloth": {
+      "name": "野良着の布",
+      "sheet": "props-village",
+      "cell": 6,
+      "albedo": "patched-cloth.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "patched-cloth-normal.webp",
+      "meters": 0.6
+    },
+    "rowboat-paint": {
+      "name": "小舟の塗装",
+      "sheet": "props-village",
+      "cell": 7,
+      "albedo": "rowboat-paint.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "rowboat-paint-normal.webp",
+      "meters": 1.0
+    },
+    "fishing-net": {
+      "name": "漁網",
+      "sheet": "props-village",
+      "cell": 8,
+      "albedo": "fishing-net.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "fishing-net-normal.webp",
       "meters": 1.0
     }
   }

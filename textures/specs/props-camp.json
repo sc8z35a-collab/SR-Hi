@@ -1,0 +1,87 @@
+{
+  "id": "props-camp",
+  "title": "台地とキャンプ場の小物",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "outdoor gear and small utility objects on a grassy plateau with a campsite and a weather station, realistic photographic materials, soft natural daylight, muted gentle colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "camp-chair",
+      "name": "キャンプチェアの布",
+      "meters": 0.5,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "soft navy and grey polyester camping chair fabric with a fine weave and a seam, about 0.5 m across"
+    },
+    {
+      "id": "cooler-box",
+      "name": "クーラーボックス",
+      "meters": 0.6,
+      "roughness": 0.55,
+      "normalStrength": 0.6,
+      "prompt": "off-white and pale blue moulded plastic cooler box side with a soft ribbed texture, about 0.6 m across"
+    },
+    {
+      "id": "telescope-white",
+      "name": "望遠鏡の白塗装",
+      "meters": 0.4,
+      "roughness": 0.35,
+      "metalness": 0.2,
+      "normalStrength": 0.3,
+      "prompt": "white enamel painted telescope tube surface with a subtle sheen and a thin black band, about 0.4 m across"
+    },
+    {
+      "id": "trail-sign",
+      "name": "道標",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "front of a weathered wooden trail signboard with simple carved arrow shapes pointing left and right and a carved mountain symbol, no text, no letters, filling the whole square"
+    },
+    {
+      "id": "log-pile-bark",
+      "name": "丸太の樹皮",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "side view of a neat pile of oak logs showing grey-brown bark, logs running left to right, about 1 m across"
+    },
+    {
+      "id": "stevenson-louvre",
+      "name": "百葉箱",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 1.4,
+      "prompt": "white painted wooden louvred panel of a weather instrument shelter with angled slats running left to right, about 0.6 m across"
+    },
+    {
+      "id": "utility-olive",
+      "name": "作業車の塗装",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.4,
+      "normalStrength": 0.4,
+      "prompt": "soft olive green painted steel body panel of a small utility vehicle with light dust, about 1 m across"
+    },
+    {
+      "id": "cable-reel",
+      "name": "ケーブルドラム",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "pale plywood side disc of a large electrical cable reel with bolts in a ring, seen straight on, filling the whole square"
+    },
+    {
+      "id": "danger-sign",
+      "name": "高圧注意の標識",
+      "meters": 0.6,
+      "roughness": 0.5,
+      "normalStrength": 0.3,
+      "seamless": false,
+      "prompt": "a square yellow warning sign with a black border and a simple black lightning bolt symbol in the centre, no text, no letters, filling the whole square"
+    }
+  ]
+}

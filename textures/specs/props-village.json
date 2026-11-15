@@ -1,0 +1,82 @@
+{
+  "id": "props-village",
+  "title": "集落と川辺の小物",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "everyday objects of a quiet Japanese farming village by a river, realistic photographic materials, soft natural daylight, muted gentle colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "waterwheel-wood",
+      "name": "水車の木材",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.2,
+      "prompt": "wet weathered brown wooden boards of an old water wheel with iron straps and a little moss, about 1 m across"
+    },
+    {
+      "id": "glazed-pottery",
+      "name": "陶器の甕",
+      "meters": 0.6,
+      "roughness": 0.35,
+      "normalStrength": 0.5,
+      "prompt": "soft brown and amber glazed stoneware storage jar surface with gentle drips in the glaze, about 0.6 m across"
+    },
+    {
+      "id": "firewood-ends",
+      "name": "薪の木口",
+      "meters": 0.8,
+      "roughness": 0.9,
+      "normalStrength": 1.4,
+      "prompt": "stacked split firewood seen end-on, pale cut log ends with growth rings and bark edges, filling the frame, about 0.8 m across"
+    },
+    {
+      "id": "cabbage-field",
+      "name": "キャベツ畑",
+      "meters": 1.5,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "vegetable field seen from above with neat rows of pale green cabbages on soft brown soil, rows running left to right, about 1.5 m across"
+    },
+    {
+      "id": "persimmon-string",
+      "name": "干し柿",
+      "meters": 0.8,
+      "roughness": 0.7,
+      "normalStrength": 1.0,
+      "prompt": "strings of orange dried persimmons hanging in vertical rows under eaves, strings running top to bottom, about 0.8 m across"
+    },
+    {
+      "id": "woven-basket",
+      "name": "竹かご",
+      "meters": 0.4,
+      "roughness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "close-up of a light tan woven bamboo basket in a hexagonal weave, about 0.4 m across"
+    },
+    {
+      "id": "patched-cloth",
+      "name": "野良着の布",
+      "meters": 0.6,
+      "roughness": 0.95,
+      "normalStrength": 0.6,
+      "prompt": "faded indigo and grey patched cotton farm work clothes fabric with visible stitching, about 0.6 m across"
+    },
+    {
+      "id": "rowboat-paint",
+      "name": "小舟の塗装",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 1.0,
+      "prompt": "weathered pale blue and white painted wooden boat planks running left to right with chipped paint, about 1 m across"
+    },
+    {
+      "id": "fishing-net",
+      "name": "漁網",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "soft green fishing net mesh with small white floats, hanging loosely in front of a plain black background, about 1 m across"
+    }
+  ]
+}

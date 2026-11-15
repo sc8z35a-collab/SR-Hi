@@ -119,24 +119,43 @@ const keepClear = [
   {x1:98, x2:118, z1:170, z2:188}, {x1:86, x2:99, z1:176, z2:190},
 ];
 export const TREES = (() => {
-  const R = rng(2024), list = [];
-  for (let x = WORLD.x1 + 2; x < WORLD.x2 + 8; x += 7.5) for (let z = 162; z < WORLD.z2 + 8; z += 7.5) {
-    const tx = x + (R() - .5) * 6, tz = z + (R() - .5) * 6, roll = R();
-    if (keepClear.some(r => inRect(r, tx, tz)) || ROADS.some(r => inRect(r, tx, tz, 3)) || PADDIES.some(p => inRect(p, tx, tz, 2))) continue;
-    if (Math.abs(tx - STREAM.x) < 2.8 && tz < STREAM.z2) continue;
-    const dz = tx > RIVER.x1 - 3 ? Math.abs(tz - RIVER.z(tx)) : 99;
-    if (dz < RIVER.half + 2.5) continue;
-    if (onBridge(tx, tz)) continue;
+  // Groves and clearings from low-frequency noise; trees keep their distance from each other,
+  // stay off roads, paths, water and steep rock, and species follow the local landscape.
+  const R = rng(2024), list = [], cell = 3.4, grid = new Map();
+  const key = (x, z) => `${Math.floor(x / 4)},${Math.floor(z / 4)}`;
+  const near = (x, z, d) => {
+    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) {
+      for (const t of grid.get(`${Math.floor(x / 4) + i},${Math.floor(z / 4) + j}`) ?? []) if (Math.hypot(t.x - x, t.z - z) < d) return true;
+    }
+    return false;
+  };
+  const paths = [[[92, 200], [108, 178.5]], [[-30, 313.8], [1, 313.8]], [[2.6, 298], [2.6, 329]], [[-41, 300], [-41, 320]]];
+  const onPath = (x, z) => paths.some(([[ax, az], [bx, bz]]) => {
+    const dx = bx - ax, dz = bz - az, t = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz)));
+    return Math.hypot(x - ax - dx * t, z - az - dz * t) < 2.6;
+  });
+  const add = t => { list.push(t); const k = key(t.x, t.z); if (!grid.has(k)) grid.set(k, []); grid.get(k).push(t); };
+  for (const [x, z] of [[8.5, 219], [8.5, 233], [31.5, 219], [31.5, 233], [47.8, 312], [64, 326], [-36, 322], [-44, 322]])
+    add({x, z, kind:'sakura', s:.85});
+  for (let gx = WORLD.x1 + 1; gx < WORLD.x2 + 10; gx += cell) for (let gz = 162; gz < WORLD.z2 + 10; gz += cell) {
+    const x = gx + R() * cell, z = gz + R() * cell, roll = R();
+    const forest = sstep(.42, .62, fbm2(x * .022 + 40, z * .022));
+    if (R() > .12 + forest * .8) continue;
+    if (keepClear.some(r => inRect(r, x, z)) || ROADS.some(r => inRect(r, x, z, 3.5)) || PADDIES.some(p => inRect(p, x, z, 2.2))) continue;
+    if (onPath(x, z) || onBridge(x, z) || (Math.abs(x - STREAM.x) < 3 && z < STREAM.z2)) continue;
+    const dz = x > RIVER.x1 - 3 ? Math.abs(z - RIVER.z(x)) : 99;
+    if (dz < RIVER.half + 2.8) continue;
+    const e = 1, slope = Math.hypot(groundHeight(x + e, z) - groundHeight(x - e, z), groundHeight(x, z + e) - groundHeight(x, z - e)) / (2 * e);
+    if (slope > .85) continue;
+    if (near(x, z, 3.0 + R() * 1.5)) continue;
+    const mix = fbm2(x * .05 + 9, z * .05);
     let kind;
     if (dz < 13) kind = roll < .55 ? 'birch' : roll < .8 ? 'momiji' : 'cedar';
-    else if (Math.hypot(tx - 108, tz - 178) < 30 || Math.hypot(tx + 41, tz - 327) < 18) kind = roll < .65 ? 'pine' : 'momiji';
-    else if (tz > 290 && tx > -30 && tx < 80) kind = roll < .35 ? 'sakura' : roll < .6 ? 'momiji' : 'cedar';
-    else kind = roll < .7 ? 'cedar' : roll < .85 ? 'pine' : 'momiji';
-    if (roll > .93 && kind === 'cedar') continue;
-    list.push({x:tx, z:tz, kind, s:.8 + R() * .5});
+    else if (Math.hypot(x - 108, z - 178) < 32 || Math.hypot(x + 41, z - 327) < 20 || slope > .55) kind = roll < .7 ? 'pine' : 'momiji';
+    else if (z > 290 && x > -30 && x < 80) kind = mix > .55 ? 'momiji' : roll < .3 ? 'sakura' : 'cedar';
+    else kind = mix > .6 ? (roll < .6 ? 'momiji' : 'pine') : mix < .4 ? 'cedar' : roll < .5 ? 'cedar' : 'pine';
+    add({x, z, kind, s:.75 + R() * .55 + forest * .15});
   }
-  for (const [x, z] of [[8.5, 219], [8.5, 233], [31.5, 219], [31.5, 233], [47.8, 312], [64, 326], [-36, 322], [-44, 322]])
-    list.push({x, z, kind:'sakura', s:.85});
   return list;
 })();
 
@@ -153,6 +172,10 @@ export const HQ_ZONE = {
   props:[
     prop('hq', (HQ.x1 + HQ.x2) / 2, (HQ.z1 + HQ.z2) / 2, HQ.x2 - HQ.x1 + .4, HQ.z2 - HQ.z1 + .4),
     prop('fountain', 20, 226, 6.6, 6.6), prop('monolith', 9.2, 215.2, 2.6, .7), prop('bamboo', 42, 198.5, 10.4, 7.8),
+    prop('bikes', 6.9, 227.8, 1.6, 4.6), prop('bins', 12, 226, 1.4, .6), prop('bins', 28, 226, 1.4, .6),
+    prop('flowerbed', 14, 214, 6, .9), prop('flowerbed', 26, 214, 6, .9), prop('info-map', 21.8, 213.3, 1.6, .4),
+    prop('cafe', 11.6, 218.4, 2.0, 2.0), prop('cafe', 15.4, 218.4, 2.0, 2.0),
+    prop('ev', 50.5, 218.5, .5, .45), prop('ev', 50.5, 221.6, .5, .45), prop('hedge', 49.3, 237, .9, 26),
     prop('flagpole', 11, 236.2, .3, .3), prop('flagpole', 13.2, 236.2, .3, .3), prop('flagpole', 15.4, 236.2, .3, .3),
     prop('canopy-column', 14.6, 234.6, .45, .45), prop('canopy-column', 25.4, 234.6, .45, .45),
     prop('planter', 9.6, 238.6, 7.2, 1.1), prop('planter', 30.4, 238.6, 7.2, 1.1),
@@ -183,6 +206,8 @@ export const VILLAGE = {
     prop('bell-tower', -45, 328.5, 4.6, 4.6), prop('temple', -37, 332.3, 8.4, 5.9),
     prop('torii-post', -42.3, 319.4, .5, .5), prop('torii-post', -39.7, 319.4, .5, .5),
     prop('lantern', -43.2, 323, .55, .55), prop('lantern', -38.8, 323, .55, .55),
+    prop('mill', 27.6, 294.2, 4.4, 3.6), prop('jars', 54.5, 310.1, 2.0, .9), prop('firewood', 65, 315.3, 4.6, .9),
+    prop('scarecrow', 37.4, 300.6, .6, .6), prop('boat', -6, RIVER.z(-6) + 7.4, 3.6, 1.4), prop('net', -1, RIVER.z(-1) + 8.6, 3.2, .4),
   ],
 };
 export const PLATEAU = {
@@ -199,6 +224,10 @@ export const PLATEAU = {
     prop('stack', 68, 252, 2.8, 2.8), prop('stack', 74, 256, 2.8, 2.8), prop('stack', 80, 252, 2.8, 2.8),
     prop('lookout', 108, 178, 4.6, 4.6), prop('picnic', 102.5, 184.5, 2.2, 1.8), prop('picnic', 114, 172.5, 2.2, 1.8),
     prop('tent', 92, 181, 2.6, 2.6), prop('tent', 95.6, 185.6, 2.6, 2.6), prop('campfire', 91.2, 186.4, 1.3, 1.3),
+    ...[0.6, 2.2, 3.8, 5.2].map(a => prop('camp-chair', 91.2 + Math.cos(a) * 1.75, 186.4 + Math.sin(a) * 1.75, .6, .6)),
+    prop('cooler', 93.9, 183.0, .7, .5), prop('telescope', 104.6, 181.8, .7, .7), prop('trail-sign', 92.6, 201.4, .4, .4),
+    prop('trail-sign', 100.4, 187.6, .4, .4), prop('logs', 88.4, 183.2, 2.0, .9), prop('weather', 88.6, 246.2, 2.6, 1.2),
+    prop('utility-car', 77, 233.4, 3.6, 1.8), prop('reels', 70.4, 232.6, 2.4, 1.2),
   ],
 };
 for (const t of TREES) HQ_ZONE.props.push(prop('tree', t.x, t.z, .55 * t.s, .55 * t.s));
