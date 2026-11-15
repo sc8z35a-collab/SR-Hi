@@ -1,0 +1,83 @@
+{
+  "id": "outdoor-terrain",
+  "title": "屋外の地形",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "mountain valley landscape in rural Japan, realistic photographic ground materials",
+  "cells": [
+    {
+      "id": "meadow-grass",
+      "name": "草原",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 1.2,
+      "prompt": "lush green meadow grass with some taller blades and small clover, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "rocky-cliff",
+      "name": "岩壁",
+      "meters": 4.0,
+      "roughness": 0.9,
+      "normalStrength": 2.2,
+      "prompt": "steep weathered grey andesite cliff face with fractures, ledges and patches of moss, seen straight on, about 4 m across"
+    },
+    {
+      "id": "river-water",
+      "name": "川の水",
+      "meters": 3.0,
+      "roughness": 0.06,
+      "metalness": 0.1,
+      "normalStrength": 0.9,
+      "prompt": "flowing clear green mountain river water seen from above with ripples, white riffles and stones visible below, about 3 m across"
+    },
+    {
+      "id": "river-sand",
+      "name": "川原の砂",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 1.0,
+      "prompt": "pale grey riverbank sand with scattered small pebbles and drift lines, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "mountain-trail",
+      "name": "山道",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "narrow packed earth mountain trail with exposed tree roots, small stones and fallen needles, seen from directly above, about 1.5 m across"
+    },
+    {
+      "id": "rice-paddy",
+      "name": "水田",
+      "meters": 3.0,
+      "roughness": 0.15,
+      "normalStrength": 0.6,
+      "prompt": "flooded rice paddy seen from above with neat rows of young green rice seedlings in still muddy water reflecting the sky, about 3 m across"
+    },
+    {
+      "id": "tea-rows",
+      "name": "茶畑",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "top view of a Japanese tea plantation with neatly trimmed rounded rows of bright green tea bushes, rows running left to right, about 2 m across"
+    },
+    {
+      "id": "scree-slope",
+      "name": "ガレ場",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 2.0,
+      "prompt": "loose grey scree slope of angular broken rocks of many sizes, seen from above, about 2 m across"
+    },
+    {
+      "id": "field-soil",
+      "name": "耕した畑",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 1.6,
+      "prompt": "freshly ploughed dark brown field soil in straight furrows, furrows running left to right, seen from directly above, about 2 m across"
+    }
+  ]
+}

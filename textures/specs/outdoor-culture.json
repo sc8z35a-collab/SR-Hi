@@ -1,0 +1,87 @@
+{
+  "id": "outdoor-culture",
+  "title": "展望台と里の文化",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a mountain lookout, campsite and village temple in rural Japan, realistic photographic materials",
+  "cells": [
+    {
+      "id": "lookout-timber",
+      "name": "展望台の木材",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "prompt": "weathered grey-brown structural timber of a wooden lookout tower with bolts and checks, grain running top to bottom, about 1 m across"
+    },
+    {
+      "id": "tent-canvas",
+      "name": "テントの生地",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.8,
+      "prompt": "taut orange and olive ripstop nylon tent fabric with seams and a slight sheen, about 1 m across"
+    },
+    {
+      "id": "picnic-wood",
+      "name": "ピクニックテーブル材",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 1.0,
+      "prompt": "varnished pine picnic table planks with small gaps, worn edges, boards running left to right, about 1 m across"
+    },
+    {
+      "id": "campfire",
+      "name": "焚き火",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "emissive": 1.2,
+      "prompt": "top view of a campfire: charred logs, glowing orange embers and grey ash in a ring of stones, filling the whole square"
+    },
+    {
+      "id": "jizo",
+      "name": "お地蔵さま",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "front view of a small weathered Japanese stone jizo statue wearing a red cloth bib, mossy granite, plain dark background, no text, filling the whole square"
+    },
+    {
+      "id": "temple-bronze",
+      "name": "梵鐘の青銅",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "dark aged bronze of a Japanese temple bell with raised nipple bosses in a grid and green patina, about 1 m across"
+    },
+    {
+      "id": "chochin-red",
+      "name": "赤い提灯",
+      "meters": 0.6,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "emissive": 1.0,
+      "prompt": "glowing red Japanese paper lantern (chochin) surface with thin bamboo ribs running left to right, warm light shining through, no text, about 0.6 m across"
+    },
+    {
+      "id": "torii-granite",
+      "name": "石の鳥居",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "weathered pale granite of an old stone torii with lichen spots and rain streaks, about 1 m across"
+    },
+    {
+      "id": "straw-hay",
+      "name": "稲架掛け",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 1.6,
+      "prompt": "bundles of golden rice straw hung to dry on a wooden rack (hazagake), dense straw stalks running top to bottom, about 1 m across"
+    }
+  ]
+}

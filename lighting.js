@@ -3,7 +3,7 @@ import {HALL,zoneAt} from './layout.js';
 import {WING_HALL,THROAT} from './expansion.js';
 import {CUT} from './cavern-layout.js';
 
-const BOUNDS=[-24.4,-42.9,86.4,257.9];
+const BOUNDS=[-62,-42.9,190,381];
 const FILLS={
   HALL:[.79,.84,.88],
   WING:[.83,.87,.92],
@@ -26,6 +26,10 @@ const FILLS={
   '17':[.86,.79,.70],
   '18':[.84,.88,.92],
   '19':[1.25,1.24,1.18],
+  '20':[1.25,1.24,1.18],
+  '21':[1.2,1.22,1.18],
+  '22':[1.25,1.23,1.16],
+  '23':[1.25,1.24,1.18],
 };
 
 function roomBoundaryDistance(room,x,z){
@@ -42,7 +46,7 @@ export function createLightingData(fixtures){
     tint:new THREE.Color(fixture.color).toArray()
   }));
   const [left,back,spanX,spanZ]=BOUNDS;
-  const width=281, height=843;
+  const width=618, height=1246;
   const rgba=new Uint8Array(width*height*4);
   for(let row=0;row<height;row++){
     const z=back+(row+.5)/height*spanZ;
