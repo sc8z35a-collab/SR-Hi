@@ -1,0 +1,88 @@
+{
+  "id": "outdoor-infrastructure",
+  "title": "道路と橋",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "roads, bridge and vehicles in a Japanese mountain valley, realistic photographic materials",
+  "cells": [
+    {
+      "id": "truss-green",
+      "name": "鉄橋のトラス",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normalStrength": 1.0,
+      "prompt": "pale green painted steel of a riveted truss bridge member with chipped paint and rust at the rivets, about 1 m across"
+    },
+    {
+      "id": "guardrail",
+      "name": "ガードレール",
+      "meters": 2.0,
+      "roughness": 0.45,
+      "metalness": 0.6,
+      "normalStrength": 1.4,
+      "prompt": "white painted corrugated W-beam highway guardrail with bolts and road grime, corrugations running left to right, about 2 m across"
+    },
+    {
+      "id": "bridge-deck",
+      "name": "橋の床版",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "concrete bridge deck road surface with tyre polish, expansion joint lines and fine cracks, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "tactile-paving",
+      "name": "点字ブロック",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 1.8,
+      "prompt": "bright yellow Japanese tactile paving blocks with raised linear bars, set in grey sidewalk, seen from directly above, about 0.6 m across"
+    },
+    {
+      "id": "curb-granite",
+      "name": "縁石",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 1.0,
+      "prompt": "light grey granite kerb stone with a smooth bevelled top and rough sawn face, about 1 m across"
+    },
+    {
+      "id": "gutter-grate",
+      "name": "側溝の蓋",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "metalness": 0.6,
+      "normalStrength": 1.8,
+      "prompt": "cast iron road gutter grating with long rectangular slots over a dark channel, seen from directly above, slots running top to bottom, about 0.6 m across"
+    },
+    {
+      "id": "car-red",
+      "name": "赤い車の塗装",
+      "meters": 1.0,
+      "roughness": 0.15,
+      "metalness": 0.6,
+      "normalStrength": 0.1,
+      "prompt": "glossy metallic deep red car body paint with soft reflections, about 1 m across"
+    },
+    {
+      "id": "car-white",
+      "name": "白い車の塗装",
+      "meters": 1.0,
+      "roughness": 0.15,
+      "metalness": 0.4,
+      "normalStrength": 0.1,
+      "prompt": "glossy pearl white car body paint with soft reflections and slight road dust, about 1 m across"
+    },
+    {
+      "id": "car-glass",
+      "name": "車の窓ガラス",
+      "meters": 1.0,
+      "roughness": 0.05,
+      "metalness": 0.5,
+      "normalStrength": 0.1,
+      "prompt": "dark tinted car window glass with soft sky and tree reflections, about 1 m across"
+    }
+  ]
+}

@@ -6,7 +6,9 @@ import {
   CAVERN,CONTROL_ROOM,LAKE_ROOM,
 } from './cavern-layout.js';
 import {buildQuarters} from './quarters.js';
-import {buildSurface,extinguisher} from './surface.js';
+import {buildSurface,buildIncline,extinguisher} from './surface.js';
+import {buildOutside} from './outside.js';
+import {floorHeight} from './cavern-layout.js';
 
 /**
  * Builds everything beyond room 11: the doorway, the cavern (12) with its two-storey hut (13),
@@ -14,18 +16,30 @@ import {buildSurface,extinguisher} from './surface.js';
  */
 export async function buildExtension(){
   const {textures={}}=await loadManifest();
-  const kit=new Kit(await loadTextures(Object.keys(textures)));
-  const group=new THREE.Group();
-  group.name='Wing 12';
-  doorway(kit,group);
-  tunnels(kit);
-  cave(kit,group);
-  hut(kit,group);
-  lake(kit,group);
-  buildQuarters(kit,group);
-  group.userData.frame=buildSurface(kit,group);
-  const drift={'lake-water':[.006,.004],'stream-water':[0,-.05],'koi-pond':[.004,.002]};
-  kit.after.push(mesh=>{
+  const loaded=await loadTextures(Object.keys(textures));
+  // three kits share one material cache: underground, the shaft (seen from both sides) and the open air
+  const under=new Kit(loaded),shaft=new Kit(loaded),open=new Kit(loaded);
+  shaft.materials=open.materials=under.materials;
+  const group=new THREE.Group(),underground=new THREE.Group(),outdoor=new THREE.Group();
+  group.name='Wing 12';underground.name='Underground';outdoor.name='Outdoor';
+  group.add(underground,outdoor);
+  doorway(under,underground);
+  tunnels(under);
+  cave(under,underground);
+  hut(under,underground);
+  lake(under,underground);
+  buildQuarters(under,underground);
+  buildIncline(shaft,group);
+  buildSurface(open,outdoor);
+  const updateSky=buildOutside(open,outdoor);
+  group.userData.frame=(player,camera,scene)=>{
+    updateSky(player,camera,scene,loaded);
+    const level=floorHeight(player.x,player.z);
+    outdoor.visible=level>1||player.z>158;
+    underground.visible=player.z<168;
+  };
+  const drift={'lake-water':[.006,.004],'stream-water':[0,-.05],'koi-pond':[.004,.002],'river-water':[-.035,.004],'waterfall':[0,.3],'fountain-water':[.01,.008]};
+  const animate=mesh=>{
     const id=Object.keys(drift).find(key=>mesh.material.name.endsWith(key));
     if(!id)return;
     const {map,normalMap}=mesh.material,[u,v]=drift[id];
@@ -34,8 +48,11 @@ export async function buildExtension(){
       map?.offset.set(t*u,t*v);
       normalMap?.offset.set(-t*u*1.4,t*v*1.2);
     };
-  });
-  kit.build(group,'Cavern');
+  };
+  for(const k of [under,shaft,open])k.after.push(animate);
+  under.build(underground,'Cavern');
+  shaft.build(group,'Shaft');
+  open.build(outdoor,'Outdoor');
   return group;
 }
 

@@ -1,0 +1,83 @@
+{
+  "id": "outdoor-village",
+  "title": "里山の集落",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "traditional buildings of a small Japanese mountain village (satoyama), realistic photographic materials",
+  "cells": [
+    {
+      "id": "thatched-roof",
+      "name": "茅葺き屋根",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 2.0,
+      "prompt": "thick old Japanese thatched roof of tightly packed reeds (kayabuki), trimmed surface with grey weathering and moss, straws running top to bottom, about 2 m across"
+    },
+    {
+      "id": "earthen-wall",
+      "name": "土壁",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 1.2,
+      "prompt": "traditional Japanese earthen clay wall with chopped straw fibres, warm ochre brown, slightly cracked, about 1.5 m across"
+    },
+    {
+      "id": "yakisugi",
+      "name": "焼杉板",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 1.8,
+      "prompt": "charred black yakisugi cedar wall boards with crackled alligator texture, vertical boards running top to bottom, about 1.2 m across"
+    },
+    {
+      "id": "namako-wall",
+      "name": "なまこ壁",
+      "meters": 1.2,
+      "roughness": 0.6,
+      "normalStrength": 1.6,
+      "prompt": "Japanese namako wall of square dark grey tiles set diagonally with raised white plaster joints, about 1.2 m across"
+    },
+    {
+      "id": "koshi-lattice",
+      "name": "格子戸",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 1.4,
+      "emissive": 0.2,
+      "prompt": "dark brown wooden koshi lattice of thin vertical slats with narrow gaps and a softly lit paper screen behind, slats running top to bottom, about 1 m across"
+    },
+    {
+      "id": "stone-steps",
+      "name": "石段",
+      "meters": 1.5,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "prompt": "old granite stone steps worn smooth with moss in the joints, seen from above at an angle, steps running left to right, about 1.5 m across"
+    },
+    {
+      "id": "ishigaki",
+      "name": "石垣",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 2.2,
+      "prompt": "Japanese dry stone retaining wall (nozura-zumi) of rough fitted natural stones with ferns in the gaps, seen straight on, about 2 m across"
+    },
+    {
+      "id": "noren-indigo",
+      "name": "藍染めの暖簾",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 0.8,
+      "prompt": "indigo dyed cotton noren curtain fabric with a white wave (seigaiha) pattern and soft folds, no text, about 1 m across"
+    },
+    {
+      "id": "kokera-shingle",
+      "name": "こけら葺き",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 1.6,
+      "prompt": "thin overlapping wooden shingles of a Japanese kokera roof, weathered silver grey, rows running left to right, about 1.2 m across"
+    }
+  ]
+}

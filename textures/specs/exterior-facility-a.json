@@ -1,0 +1,88 @@
+{
+  "id": "exterior-facility-a",
+  "title": "施設の外観 A：本館と広場",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "the above-ground headquarters building of a modern Japanese underground research institute and its entrance plaza, realistic photographic architectural materials",
+  "cells": [
+    {
+      "id": "facade-concrete",
+      "name": "プレキャストの外壁",
+      "meters": 3.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "light grey precast concrete facade panels with crisp horizontal and vertical reveal joints and a fine sandblasted finish, seen straight on, about 3 m across"
+    },
+    {
+      "id": "curtain-wall",
+      "name": "ガラスのカーテンウォール",
+      "meters": 3.0,
+      "roughness": 0.08,
+      "metalness": 0.4,
+      "normalStrength": 0.3,
+      "emissive": 0.15,
+      "prompt": "blue-green tinted glass curtain wall with slim dark aluminium mullions in a regular grid, reflecting a soft cloudy sky, seen straight on, about 3 m across"
+    },
+    {
+      "id": "metal-louver",
+      "name": "アルミのルーバー",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normalStrength": 1.6,
+      "prompt": "vertical bronze anodised aluminium sun-shading louvre fins in a close regular row with dark gaps, seen straight on, fins running top to bottom, about 1 m across"
+    },
+    {
+      "id": "granite-paving",
+      "name": "御影石の舗装",
+      "meters": 2.0,
+      "roughness": 0.7,
+      "normalStrength": 0.8,
+      "prompt": "plaza paving of grey and charcoal flamed granite slabs in a staggered bond with thin joints, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "white-composite",
+      "name": "白い複合パネル",
+      "meters": 2.0,
+      "roughness": 0.35,
+      "metalness": 0.3,
+      "normalStrength": 0.6,
+      "prompt": "smooth white aluminium composite cladding panels with narrow dark open joints in a rectangular grid, seen straight on, about 2 m across"
+    },
+    {
+      "id": "sedum-roof",
+      "name": "屋上緑化",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 1.4,
+      "prompt": "green roof covered with low sedum plants in green, red and yellow patches, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "helipad",
+      "name": "ヘリポート",
+      "meters": 14.0,
+      "roughness": 0.8,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "prompt": "top-down view of a concrete helipad with a large painted yellow letter H inside a white circle and a white square border, no other text, filling the whole square"
+    },
+    {
+      "id": "parking-lines",
+      "name": "駐車場のアスファルト",
+      "meters": 5.0,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "top-down view of dark asphalt parking lot with crisp white painted parking bay lines in a regular row, lines running top to bottom, no text, about 5 m across"
+    },
+    {
+      "id": "fountain-water",
+      "name": "噴水の水面",
+      "meters": 1.5,
+      "roughness": 0.05,
+      "metalness": 0.1,
+      "normalStrength": 0.8,
+      "prompt": "sparkling clear fountain basin water surface with ripples and bright highlights over pale stone, seen from above, about 1.5 m across"
+    }
+  ]
+}

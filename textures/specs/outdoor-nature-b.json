@@ -1,0 +1,83 @@
+{
+  "id": "outdoor-nature-b",
+  "title": "四季の自然",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "seasonal trees and plants of a Japanese mountain valley, realistic photographic materials",
+  "cells": [
+    {
+      "id": "momiji",
+      "name": "紅葉",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "dense red and orange Japanese maple (momiji) leaves filling the frame, about 1 m across"
+    },
+    {
+      "id": "sakura",
+      "name": "桜",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "dense pale pink cherry blossoms on dark twigs filling the frame, about 1 m across"
+    },
+    {
+      "id": "birch-bark",
+      "name": "白樺の樹皮",
+      "meters": 0.6,
+      "roughness": 0.7,
+      "normalStrength": 1.2,
+      "prompt": "white birch tree bark with dark horizontal lenticels and black scars, bark running top to bottom, about 0.6 m across"
+    },
+    {
+      "id": "fern",
+      "name": "シダ",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "prompt": "dense green fern fronds of a forest undergrowth seen from above, about 1 m across"
+    },
+    {
+      "id": "waterfall",
+      "name": "滝",
+      "meters": 3.0,
+      "roughness": 0.2,
+      "normalStrength": 1.0,
+      "emissive": 0.25,
+      "prompt": "white rushing waterfall water falling straight down in streaks and foam, seen straight on, streaks running top to bottom, about 3 m across"
+    },
+    {
+      "id": "reeds",
+      "name": "川辺の葦",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "tall green and golden riverside reeds and rushes seen from the side, dense stems running top to bottom, about 1 m across"
+    },
+    {
+      "id": "red-pine-bark",
+      "name": "赤松の樹皮",
+      "meters": 0.8,
+      "roughness": 0.85,
+      "normalStrength": 1.8,
+      "prompt": "Japanese red pine bark with flaky orange-red plates and grey cracks, bark running top to bottom, about 0.8 m across"
+    },
+    {
+      "id": "hydrangea",
+      "name": "紫陽花",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "dense blue and violet hydrangea (ajisai) flower clusters with green leaves filling the frame, about 1 m across"
+    },
+    {
+      "id": "stepping-path",
+      "name": "飛び石の小径",
+      "meters": 1.5,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "prompt": "Japanese garden path of flat round stepping stones set in fine moss and gravel, seen from directly above, about 1.5 m across"
+    }
+  ]
+}

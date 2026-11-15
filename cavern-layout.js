@@ -33,9 +33,8 @@ export const SUITES = {
 export const PIER = {x1:-0.9, x2:0.9, z1:126.6, z2:134.2, head:{x1:-2.2, x2:2.2, z1:134.2, z2:137.4}, deck:0.12};
 
 // Inclined shaft from the quarters' hall up to the surface yard (zone 19).
-export const INCLINE = {half:1.6, wall:2.5, crown:3.1, x:24, z1:108.0, z2:160.0, rise:14};
-export const YARD = {x1:8, x2:40, z1:160.3, z2:194, y:14};
-export const inclineFloor = z => Math.min(1, Math.max(0, (z - INCLINE.z1) / (INCLINE.z2 - INCLINE.z1))) * INCLINE.rise;
+import {INCLINE, YARD, inclineFloor, groundHeight, onBridge, bridgeHeight, outdoorWalkable, OUTDOOR_ROOMS, OUTDOOR_FIXTURES} from './outdoor-layout.js';
+export {INCLINE, YARD, inclineFloor};
 
 const inRect = (r, x, z, inset = 0) => x >= r.x1 + inset && x <= r.x2 - inset && z >= r.z1 + inset && z <= r.z2 - inset;
 const inEllipse = (e, x, z, margin) => ((x - e.cx) / (e.rx - margin)) ** 2 + ((z - e.cz) / (e.rz - margin)) ** 2 <= 1;
@@ -45,7 +44,7 @@ const rect = (x1, z1, x2, z2) => ({x1, z1, x2, z2, contains: (x, z) => x >= x1 &
 export function floorHeight(x, z) {
   if (z < 81) return 0;
   if (z >= INCLINE.z1 && z <= INCLINE.z2 + .6 && Math.abs(x - INCLINE.x) <= INCLINE.half) return inclineFloor(z);
-  if (z > INCLINE.z2 && x > -20 && x < 70) return YARD.y;
+  if (z > INCLINE.z2) return onBridge(x, z) ? bridgeHeight(x, z) : groundHeight(x, z);
   if (inRect(STAIR, x, z)) return Math.min(1, Math.max(0, (x - STAIR.x1) / (STAIR.top - STAIR.x1))) * HUT.upper;
   if (inRect(HUT, x, z)) return HUT.upper;
   if (z > SHORE - 0.8 && (inRect(PIER, x, z) || inRect(PIER.head, x, z))) return PIER.deck;
@@ -163,15 +162,16 @@ export const MEETING = {
 
 export const SURFACE = {
   code:'19', name:'地上 坑口ヤード', view:'surface', short:'地上', side:0,
-  x1:-20, x2:70, z1:108.1, z2:215,
+  x1:-62, x2:60, z1:108.1, z2:196,
   entry:{x:INCLINE.x, z:INCLINE.z2, axis:'z', width:3.2, height:3.1, door:false}, terminal:[26.6, 162.4], terminalY:YARD.y,
   // the shaft keeps a tunnel-like ambient light; the open yard is bright
-  fill:(x, z) => z < INCLINE.z2 - .5 ? [.74, .72, .68] : [1.25, 1.24, 1.18],
+  fill:(x, z) => z < INCLINE.z2 - .5 && Math.abs(x - INCLINE.x) < 4 ? [.74, .72, .68] : [1.25, 1.24, 1.18],
   data:[['標高','地上 +38 m'],['天候','晴れ時々くもり'],['気温','14.2 °C'],['風速','2.1 m/s']],
   floors:[
     rect(INCLINE.x-.95, 107.4, INCLINE.x+.95, 108.6),
     rect(INCLINE.x-1.35, 108.4, INCLINE.x+1.35, 160.6),
     rect(YARD.x1+.4, YARD.z1+.1, YARD.x2-.4, YARD.z2-.4),
+    {contains:outdoorWalkable},
   ],
   props:[
     prop('gabions', 14.5, 160.85, 11, .9), prop('gabions', 33.5, 160.85, 11, .9),
@@ -180,7 +180,9 @@ export const SURFACE = {
     prop('warehouse', 35, 171, 8.2, 10.2), prop('forklift', 28.4, 168.8, 1.3, 2.4), prop('pallets', 28.9, 173.6, 1.5, 1.3),
     prop('barrels', 28.8, 176.6, 1.8, 1.1), prop('tires', 38.4, 178.4, 1.3, 1.3), prop('hoist-house', 34, 179.8, 5.2, 3.2),
     prop('headframe', 34, 186.2, 4.6, 4.6), prop('locomotive', 19.5, 170, 1.7, 3.6), prop('guardhouse', 17.5, 191.5, 3.2, 3.2),
-    prop('pole', 20.4, 186, .4, .4), prop('pole', 27.6, 178, .4, .4), prop('cones', 24, 193.1, 4.6, .5),
+    prop('pole', 20.4, 186, .4, .4), prop('pole', 27.6, 178, .4, .4), prop('cones', 30.4, 192.8, 2.6, .5),
+    prop('fence', YARD.x1-.1, 177.2, .3, 34.4), prop('fence', YARD.x2+.1, 177.2, .3, 34.4),
+    prop('wall', 14.55, YARD.z2+.2, 13.3, .45), prop('wall', 33.45, YARD.z2+.2, 13.3, .45),
     prop('torii-post', 36.9, 188.9, .35, .35), prop('torii-post', 38.7, 188.9, .35, .35),
     prop('lantern', 36.4, 190.3, .55, .55), prop('lantern', 39.2, 190.3, .55, .55),
     prop('hokora', 37.8, 192.6, 1.7, 1.5), prop('ema', 39.45, 191.4, .3, 1.3),
@@ -188,10 +190,11 @@ export const SURFACE = {
   ],
 };
 
-export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, SURFACE];
+export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, SURFACE, ...OUTDOOR_ROOMS];
 
 // Light sources for the shared lighting texture and the dynamic point-light pool.
 export const CAVERN_FIXTURES = [
+  ...OUTDOOR_FIXTURES,
   {x:0, y:3.15, z:83.6, color:0xffd9a0, intensity:28, range:8},
   {x:0, y:3.15, z:86.4, color:0xffd9a0, intensity:24, range:8},
   {x:-4.4, y:5.9, z:90.6, color:0xfff1d6, intensity:60, range:16},
@@ -223,8 +226,4 @@ export const CAVERN_FIXTURES = [
   {x:24, y:2.9+INCLINE.rise*.25, z:121, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.5, z:134, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.75, z:147, color:0xffd9a0, intensity:20, range:8},
-  {x:16, y:YARD.y+9, z:170, color:0xfff4e0, intensity:140, range:30},
-  {x:32, y:YARD.y+9, z:172, color:0xfff4e0, intensity:140, range:30},
-  {x:16, y:YARD.y+9, z:186, color:0xfff4e0, intensity:140, range:30},
-  {x:32, y:YARD.y+9, z:188, color:0xfff4e0, intensity:140, range:30},
 ];

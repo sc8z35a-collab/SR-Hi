@@ -1,28 +1,17 @@
 import * as THREE from './vendor/three.module.js';
 import {box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,smoothstep,rng,kiosk,sign,tube,bulkhead,profile} from './kit.js';
 import {INCLINE,YARD,SURFACE,inclineFloor} from './cavern-layout.js';
+import {groundHeight} from './outdoor-layout.js';
 
 // Zone 19: the inclined shaft from the living quarters up to a mountain mine yard under an open sky.
 const props=type=>SURFACE.props.filter(p=>p.type===type);
 const Y=YARD.y;
 const HAZE=new THREE.Color(0xc4d1da),SKY=new THREE.Color(0x9fc3e6);
 
-/** Ground height of the surface terrain (the yard itself is flat at YARD.y). */
-export function groundHeight(x,z){
-  const n=fbm(x*.07,3,z*.07)-.5;
-  if(z<YARD.z1)return Y+Math.min(8,(YARD.z1-z)*1.6)+n*1.6*smoothstep(0,3,YARD.z1-z);
-  const dx=Math.max(YARD.x1-.6-x,x-(YARD.x2+.6),0),dz=Math.max(z-(YARD.z2+.6),0),d=Math.hypot(dx,dz);
-  let h=Y+Math.min(9,d*.35)+n*2.2*smoothstep(0,4,d);
-  const s=Math.abs(x-STREAM.x);
-  if(s<2.6&&z>YARD.z1+.7)h=Math.min(h,STREAM.y-.15+(s/2.6)**2*1.1);
-  return h;
-}
-const STREAM={x:4.2,y:Y-.3};
+
 
 export function buildSurface(kit,group){
   const R=rng(19);
-  incline(kit,group);
-  terrain(kit);
   portal(kit,group);
   yard(kit,group,R);
   buildings(kit,group);
@@ -30,11 +19,10 @@ export function buildSurface(kit,group){
   shrine(kit);
   nature(kit,R);
   kiosk(kit,group,SURFACE,[SURFACE.terminal[0],Y,SURFACE.terminal[1]],Math.PI);
-  return sky(kit,group);
 }
 
 // ---------- inclined shaft ----------
-function incline(kit,group){
+export function buildIncline(kit,group){
   const t=INCLINE,lining=kit.tex('limestone-wall',{variant:'lining',side:THREE.DoubleSide});
   const g=tube(t,t.z1+.15,t.z2+.2,2);
   const p=g.attributes.position;
@@ -60,41 +48,6 @@ function incline(kit,group){
   kit.beam([t.x-t.half+.08,2.1,t.z1+.4],[t.x-t.half+.08,t.rise+2.1,t.z2],.05,cable,.6);
   for(let z=t.z1+1;z<t.z2;z+=.6)kit.add(box(1.6,.04,.08,1),wood,{pos:[t.x-.4,inclineFloor(z)+.03,z],rot:[-Math.atan(t.rise/(t.z2-t.z1)),0,0]});
   sign(group,[['↑ 地上 坑口ヤード',58],['第一斜坑  INCLINE TO SURFACE',30]],[t.x,2.85,107.88],Math.PI,[1.9,.42],{width:620,height:140,border:false,bg:'#20282a'});
-}
-
-// ---------- terrain ----------
-function terrain(kit){
-  const x1=-14,x2=62,z1=136,z2=216,step=1;
-  const nx=(x2-x1)/step,nz=(z2-z1)/step;
-  const buckets={'grass-field':[],'forest-floor':[],'hillside-soil':[],'moss-ground':[],'river-pebbles':[]};
-  const H=[];
-  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++){const x=x1+i*step,z=z1+j*step;H.push([x,groundHeight(x,z),z]);}
-  const at=(i,j)=>H[j*(nx+1)+i];
-  const crownAt=z=>inclineFloor(z)+INCLINE.crown+.4;
-  for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
-    const quad=[at(i,j),at(i+1,j),at(i+1,j+1),at(i,j+1)];
-    const cx=(quad[0][0]+quad[1][0])/2,cz=(quad[0][2]+quad[3][2])/2;
-    if(cz<YARD.z1+.6&&Math.abs(cx-INCLINE.x)<2.6&&Math.min(...quad.map(q=>q[1]-crownAt(q[2])))<0)continue;
-    const dx=Math.max(YARD.x1-cx,cx-YARD.x2,0),dz=Math.max(cz-YARD.z2,0),d=Math.hypot(dx,dz);
-    const s=Math.abs(cx-STREAM.x);
-    let key='grass-field';
-    if(cz<YARD.z1)key=cz>YARD.z1-6?'hillside-soil':'grass-field';
-    else if(s<.9&&cz>YARD.z1+.7)key='river-pebbles';
-    else if(s<2.4&&cz>YARD.z1+.7)key='moss-ground';
-    else if(d>4)key='forest-floor';
-    buckets[key].push(quad[0],quad[3],quad[1],quad[1],quad[3],quad[2]);
-  }
-  for(const [id,tris] of Object.entries(buckets)){
-    if(!tris.length)continue;
-    const g=new THREE.BufferGeometry();
-    g.setAttribute('position',new THREE.Float32BufferAttribute(tris.flat(),3));
-    g.computeVertexNormals();
-    kit.add(g,kit.tex(id),{world:id==='river-pebbles'||id==='moss-ground'?1:2});
-  }
-  // stream
-  const water=new THREE.PlaneGeometry(1.9,z2-YARD.z1-1);
-  water.rotateX(-Math.PI/2);
-  kit.add(water,kit.tex('stream-water'),{pos:[STREAM.x,STREAM.y,(YARD.z1+1+z2)/2],world:1.5});
 }
 
 // ---------- portal facade ----------
@@ -136,8 +89,9 @@ function yard(kit,group,R){
     kit.add(box(.62,.12,.62),kit.tex('retaining-concrete'),{pos:[x,Y+1.96,YARD.z2+.2]});
   }
   const iron=kit.tex('cast-iron');
-  for(const y of [.15,1.55])kit.add(box(5.5,.08,.08,.6),iron,{pos:[24,Y+y,YARD.z2+.25]});
-  for(let x=21.4;x<26.7;x+=.22)kit.add(box(.04,1.45,.04,.6),iron,{pos:[x,Y+.85,YARD.z2+.25]});
+  // the gate stands open, slid behind the east wall
+  for(const y of [.15,1.55])kit.add(box(5.5,.08,.08,.6),iron,{pos:[30.0,Y+y,YARD.z2+.55]});
+  for(let x=27.4;x<32.7;x+=.22)kit.add(box(.04,1.45,.04,.6),iron,{pos:[x,Y+.85,YARD.z2+.55]});
   const link=kit.tex('chainlink-fence',{variant:'mesh',alpha:.4,side:THREE.DoubleSide});
   kit.add(new THREE.PlaneGeometry(YARD.z2-YARD.z1,1.9),link,{pos:[YARD.x2+.1,Y+.95,(YARD.z1+YARD.z2)/2],rot:[0,Math.PI/2,0],world:1});
   for(let z=YARD.z1+.3;z<=YARD.z2;z+=2.8)kit.beam([YARD.x2+.1,Y,z],[YARD.x2+.1,Y+2,z],.04,steel);
@@ -234,8 +188,9 @@ function buildings(kit,group){
   kit.add(box(.9,2.0,.04,.8,{swap:true}),walnut,{pos:[17.5,Y+1.0,g.z1-.02]});
   sign(group,[['守衛所',52]],[17.5,Y+2.35,g.z1-.05],Math.PI,[.8,.22],{width:300,height:84,border:false,bg:'#2a2620'});
 }
-function lantern(kit,x,z){
+export function lantern(kit,x,z,y0=Y){
   const st=kit.tex('lantern-stone');
+  const Y=y0;
   kit.add(cyl(.3,.25,.6,{seg:8}),st,{pos:[x,Y+.125,z]});
   kit.add(cyl(.12,.8,.6,{seg:10}),st,{pos:[x,Y+.65,z]});
   kit.add(box(.5,.12,.5,.6),st,{pos:[x,Y+1.1,z]});
@@ -359,13 +314,6 @@ function nature(kit,R){
     tree(kit,p.x,p.z,.9,R);
     kit.add(new THREE.PlaneGeometry(2.4,2.4),kit.tex('fallen-leaves'),{pos:[p.x,Y+.015,p.z],rot:[-Math.PI/2,0,R()*3]});
   }
-  for(let placed=0,i=0;placed<46&&i<400;i++){
-    const x=-12+R()*72,z=161+R()*54;
-    const dx=Math.max(YARD.x1-1.5-x,x-(YARD.x2+1.5),0),dz=Math.max(z-(YARD.z2+1.5),0);
-    if(Math.hypot(dx,dz)<1||Math.abs(x-STREAM.x)<2.8)continue;
-    if(x>37&&x<48&&z>194&&z<203)continue;
-    tree(kit,x,z,.8+R()*.5,R);placed++;
-  }
   // bamboo grove behind the shrine
   const bamboo=kit.tex('bamboo');
   for(let i=0;i<60;i++){
@@ -373,45 +321,6 @@ function nature(kit,R){
     kit.add(roundUV(new THREE.CylinderGeometry(r,r,h,7),.8,r),bamboo,{pos:[x,y+h/2,z],rot:[(R()-.5)*.1,0,(R()-.5)*.1]});
   }
   const leaf=kit.tex('bush-leaves');
-  for(const [x,z,s] of [[10.6,180.6,.8],[17.4,186.6,.7],[19.0,180.3,.6],[9.2,186.4,.9],[22.3,193.2,.6],[25.8,193.2,.6],[39.2,165.0,.7]])
+  for(const [x,z,s] of [[10.6,180.6,.8],[17.4,186.6,.7],[19.0,180.3,.6],[9.2,186.4,.9],[39.2,165.0,.7]])
     kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.25,2.5,x),.6),leaf,{pos:[x,Y+s*.5,z],scale:[s,s*.75,s]});
-  const grass=kit.tex('dry-grass');
-  for(let i=0;i<30;i++){
-    const x=STREAM.x+(R()<.5?-1:1)*(2.7+R()*3),z=162+R()*50,y=groundHeight(x,z);
-    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,10,6,0,Math.PI*2,0,Math.PI/2),.2,2,i),1),grass,{pos:[x,y-.05,z],scale:[.7+R()*.5,.6+R()*.4,.7+R()*.5]});
-  }
-  const granite=kit.tex('granite-outcrop');
-  for(let i=0;i<12;i++){
-    const x=R()<.5?-10+R()*12:43+R()*16,z=164+R()*48,y=groundHeight(x,z);
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,1.3,i+40),1.5),granite,{pos:[x,y,z],scale:[1+R()*1.5,.6+R()*.8,1+R()*1.2],rot:[0,R()*3,0]});
-  }
-}
-
-// ---------- sky dome and distant mountains (only drawn outdoors) ----------
-function sky(kit,group){
-  const skyTex=kit.textures.get('sky-clouds'),hills=kit.textures.get('mountain-range');
-  const map=skyTex?.map.clone();
-  if(map)map.repeat.set(5,2);
-  const dome=new THREE.Mesh(new THREE.SphereGeometry(35,32,12,0,Math.PI*2,0,Math.PI*.56),new THREE.MeshBasicMaterial({
-    map:map??null,color:map?0xffffff:0x9fc3e6,side:THREE.BackSide,fog:false,depthWrite:false,toneMapped:false}));
-  dome.name='Sky dome';dome.renderOrder=-2;dome.frustumCulled=false;dome.visible=false;
-  const ridgeMap=hills?.map.clone();
-  if(ridgeMap)ridgeMap.repeat.set(3,1);
-  const band=new THREE.Mesh(new THREE.CylinderGeometry(33,33,10,64,1,true),new THREE.MeshBasicMaterial({
-    map:ridgeMap??null,alphaMap:ridgeMap??null,alphaTest:.08,color:0xdfe7ee,side:THREE.BackSide,fog:false,depthWrite:false,toneMapped:false}));
-  band.name='Mountain band';band.renderOrder=-1;band.frustumCulled=false;band.visible=false;
-  group.add(dome,band);
-  let base=null;
-  return (player,camera,scene)=>{
-    if(!base)base={fog:scene.fog.color.clone(),density:scene.fog.density,bg:scene.background.clone()};
-    const outside=player.x>-20&&player.x<70?smoothstep(INCLINE.z2-2.5,INCLINE.z2+2,player.z):0;
-    dome.visible=band.visible=outside>0;
-    if(outside>0){
-      dome.position.set(camera.position.x,camera.position.y-3,camera.position.z);
-      band.position.set(camera.position.x,camera.position.y+.4,camera.position.z);
-    }
-    scene.fog.color.copy(base.fog).lerp(HAZE,outside);
-    scene.fog.density=base.density+(.0095-base.density)*outside;
-    scene.background.copy(base.bg).lerp(SKY,outside);
-  };
 }

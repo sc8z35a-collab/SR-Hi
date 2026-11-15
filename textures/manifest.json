@@ -599,6 +599,216 @@
         },
         "total_tokens": 1985
       }
+    },
+    "exterior-facility-a": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/exterior-facility-a.webp",
+      "textures": [
+        "facade-concrete",
+        "curtain-wall",
+        "metal-louver",
+        "granite-paving",
+        "white-composite",
+        "sedum-roof",
+        "helipad",
+        "parking-lines",
+        "fountain-water"
+      ],
+      "usage": {
+        "input_tokens": 553,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 553
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2036
+      }
+    },
+    "exterior-facility-b": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/exterior-facility-b.webp",
+      "textures": [
+        "radar-dome",
+        "dish-white",
+        "watertower-blue",
+        "solar-cells",
+        "transformer-fins",
+        "vent-louvre",
+        "palisade-fence",
+        "insulator-ceramic",
+        "flag-fabric"
+      ],
+      "usage": {
+        "input_tokens": 533,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 533
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2016
+      }
+    },
+    "outdoor-terrain": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/outdoor-terrain.webp",
+      "textures": [
+        "meadow-grass",
+        "rocky-cliff",
+        "river-water",
+        "river-sand",
+        "mountain-trail",
+        "rice-paddy",
+        "tea-rows",
+        "scree-slope",
+        "field-soil"
+      ],
+      "usage": {
+        "input_tokens": 509,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 509
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 1992
+      }
+    },
+    "outdoor-village": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/outdoor-village.webp",
+      "textures": [
+        "thatched-roof",
+        "earthen-wall",
+        "yakisugi",
+        "namako-wall",
+        "koshi-lattice",
+        "stone-steps",
+        "ishigaki",
+        "noren-indigo",
+        "kokera-shingle"
+      ],
+      "usage": {
+        "input_tokens": 551,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 551
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2034
+      }
+    },
+    "outdoor-infrastructure": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/outdoor-infrastructure.webp",
+      "textures": [
+        "truss-green",
+        "guardrail",
+        "bridge-deck",
+        "tactile-paving",
+        "curb-granite",
+        "gutter-grate",
+        "car-red",
+        "car-white",
+        "car-glass"
+      ],
+      "usage": {
+        "input_tokens": 491,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 491
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 1974
+      }
+    },
+    "outdoor-nature-b": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/outdoor-nature-b.webp",
+      "textures": [
+        "momiji",
+        "sakura",
+        "birch-bark",
+        "fern",
+        "waterfall",
+        "reeds",
+        "red-pine-bark",
+        "hydrangea",
+        "stepping-path"
+      ],
+      "usage": {
+        "input_tokens": 493,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 493
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 1976
+      }
+    },
+    "outdoor-culture": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "2880x2880",
+      "quality": "medium",
+      "preview": "sheets/outdoor-culture.webp",
+      "textures": [
+        "lookout-timber",
+        "tent-canvas",
+        "picnic-wood",
+        "campfire",
+        "jizo",
+        "temple-bronze",
+        "chochin-red",
+        "torii-granite",
+        "straw-hay"
+      ],
+      "usage": {
+        "input_tokens": 523,
+        "input_tokens_details": {
+          "image_tokens": 0,
+          "text_tokens": 523
+        },
+        "output_tokens": 1483,
+        "output_tokens_details": {
+          "image_tokens": 1483,
+          "text_tokens": 0
+        },
+        "total_tokens": 2006
+      }
     }
   },
   "textures": {
@@ -2479,6 +2689,641 @@
       "metalness": 0.1,
       "normal": "koi-pond-normal.webp",
       "meters": 2.0
+    },
+    "facade-concrete": {
+      "name": "プレキャストの外壁",
+      "sheet": "exterior-facility-a",
+      "cell": 0,
+      "albedo": "facade-concrete.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "facade-concrete-normal.webp",
+      "meters": 3.0
+    },
+    "curtain-wall": {
+      "name": "ガラスのカーテンウォール",
+      "sheet": "exterior-facility-a",
+      "cell": 1,
+      "albedo": "curtain-wall.webp",
+      "roughness": 0.08,
+      "metalness": 0.4,
+      "normal": "curtain-wall-normal.webp",
+      "meters": 3.0,
+      "emissive": 0.15
+    },
+    "metal-louver": {
+      "name": "アルミのルーバー",
+      "sheet": "exterior-facility-a",
+      "cell": 2,
+      "albedo": "metal-louver.webp",
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normal": "metal-louver-normal.webp",
+      "meters": 1.0
+    },
+    "granite-paving": {
+      "name": "御影石の舗装",
+      "sheet": "exterior-facility-a",
+      "cell": 3,
+      "albedo": "granite-paving.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "granite-paving-normal.webp",
+      "meters": 2.0
+    },
+    "white-composite": {
+      "name": "白い複合パネル",
+      "sheet": "exterior-facility-a",
+      "cell": 4,
+      "albedo": "white-composite.webp",
+      "roughness": 0.35,
+      "metalness": 0.3,
+      "normal": "white-composite-normal.webp",
+      "meters": 2.0
+    },
+    "sedum-roof": {
+      "name": "屋上緑化",
+      "sheet": "exterior-facility-a",
+      "cell": 5,
+      "albedo": "sedum-roof.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "sedum-roof-normal.webp",
+      "meters": 2.0
+    },
+    "helipad": {
+      "name": "ヘリポート",
+      "sheet": "exterior-facility-a",
+      "cell": 6,
+      "albedo": "helipad.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "helipad-normal.webp",
+      "meters": 14.0
+    },
+    "parking-lines": {
+      "name": "駐車場のアスファルト",
+      "sheet": "exterior-facility-a",
+      "cell": 7,
+      "albedo": "parking-lines.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "parking-lines-normal.webp",
+      "meters": 5.0
+    },
+    "fountain-water": {
+      "name": "噴水の水面",
+      "sheet": "exterior-facility-a",
+      "cell": 8,
+      "albedo": "fountain-water.webp",
+      "roughness": 0.05,
+      "metalness": 0.1,
+      "normal": "fountain-water-normal.webp",
+      "meters": 1.5
+    },
+    "radar-dome": {
+      "name": "レーダードーム",
+      "sheet": "exterior-facility-b",
+      "cell": 0,
+      "albedo": "radar-dome.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "radar-dome-normal.webp",
+      "meters": 3.0
+    },
+    "dish-white": {
+      "name": "パラボラの白塗装",
+      "sheet": "exterior-facility-b",
+      "cell": 1,
+      "albedo": "dish-white.webp",
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normal": "dish-white-normal.webp",
+      "meters": 1.0
+    },
+    "watertower-blue": {
+      "name": "給水塔の青い鋼板",
+      "sheet": "exterior-facility-b",
+      "cell": 2,
+      "albedo": "watertower-blue.webp",
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normal": "watertower-blue-normal.webp",
+      "meters": 1.5
+    },
+    "solar-cells": {
+      "name": "太陽光パネル",
+      "sheet": "exterior-facility-b",
+      "cell": 3,
+      "albedo": "solar-cells.webp",
+      "roughness": 0.15,
+      "metalness": 0.5,
+      "normal": "solar-cells-normal.webp",
+      "meters": 1.6
+    },
+    "transformer-fins": {
+      "name": "変圧器の放熱フィン",
+      "sheet": "exterior-facility-b",
+      "cell": 4,
+      "albedo": "transformer-fins.webp",
+      "roughness": 0.5,
+      "metalness": 0.5,
+      "normal": "transformer-fins-normal.webp",
+      "meters": 1.0
+    },
+    "vent-louvre": {
+      "name": "排気塔のガラリ",
+      "sheet": "exterior-facility-b",
+      "cell": 5,
+      "albedo": "vent-louvre.webp",
+      "roughness": 0.5,
+      "metalness": 0.8,
+      "normal": "vent-louvre-normal.webp",
+      "meters": 1.0
+    },
+    "palisade-fence": {
+      "name": "パリセードフェンス",
+      "sheet": "exterior-facility-b",
+      "cell": 6,
+      "albedo": "palisade-fence.webp",
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normal": "palisade-fence-normal.webp",
+      "meters": 1.5
+    },
+    "insulator-ceramic": {
+      "name": "がいし",
+      "sheet": "exterior-facility-b",
+      "cell": 7,
+      "albedo": "insulator-ceramic.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "insulator-ceramic-normal.webp",
+      "meters": 0.4
+    },
+    "flag-fabric": {
+      "name": "研究所の旗",
+      "sheet": "exterior-facility-b",
+      "cell": 8,
+      "albedo": "flag-fabric.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "flag-fabric-normal.webp",
+      "meters": 1.5
+    },
+    "meadow-grass": {
+      "name": "草原",
+      "sheet": "outdoor-terrain",
+      "cell": 0,
+      "albedo": "meadow-grass.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "meadow-grass-normal.webp",
+      "meters": 2.0
+    },
+    "rocky-cliff": {
+      "name": "岩壁",
+      "sheet": "outdoor-terrain",
+      "cell": 1,
+      "albedo": "rocky-cliff.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "rocky-cliff-normal.webp",
+      "meters": 4.0
+    },
+    "river-water": {
+      "name": "川の水",
+      "sheet": "outdoor-terrain",
+      "cell": 2,
+      "albedo": "river-water.webp",
+      "roughness": 0.06,
+      "metalness": 0.1,
+      "normal": "river-water-normal.webp",
+      "meters": 3.0
+    },
+    "river-sand": {
+      "name": "川原の砂",
+      "sheet": "outdoor-terrain",
+      "cell": 3,
+      "albedo": "river-sand.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "river-sand-normal.webp",
+      "meters": 2.0
+    },
+    "mountain-trail": {
+      "name": "山道",
+      "sheet": "outdoor-terrain",
+      "cell": 4,
+      "albedo": "mountain-trail.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "mountain-trail-normal.webp",
+      "meters": 1.5
+    },
+    "rice-paddy": {
+      "name": "水田",
+      "sheet": "outdoor-terrain",
+      "cell": 5,
+      "albedo": "rice-paddy.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "rice-paddy-normal.webp",
+      "meters": 3.0
+    },
+    "tea-rows": {
+      "name": "茶畑",
+      "sheet": "outdoor-terrain",
+      "cell": 6,
+      "albedo": "tea-rows.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "tea-rows-normal.webp",
+      "meters": 2.0
+    },
+    "scree-slope": {
+      "name": "ガレ場",
+      "sheet": "outdoor-terrain",
+      "cell": 7,
+      "albedo": "scree-slope.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "scree-slope-normal.webp",
+      "meters": 2.0
+    },
+    "field-soil": {
+      "name": "耕した畑",
+      "sheet": "outdoor-terrain",
+      "cell": 8,
+      "albedo": "field-soil.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "field-soil-normal.webp",
+      "meters": 2.0
+    },
+    "thatched-roof": {
+      "name": "茅葺き屋根",
+      "sheet": "outdoor-village",
+      "cell": 0,
+      "albedo": "thatched-roof.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "thatched-roof-normal.webp",
+      "meters": 2.0
+    },
+    "earthen-wall": {
+      "name": "土壁",
+      "sheet": "outdoor-village",
+      "cell": 1,
+      "albedo": "earthen-wall.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "earthen-wall-normal.webp",
+      "meters": 1.5
+    },
+    "yakisugi": {
+      "name": "焼杉板",
+      "sheet": "outdoor-village",
+      "cell": 2,
+      "albedo": "yakisugi.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "yakisugi-normal.webp",
+      "meters": 1.2
+    },
+    "namako-wall": {
+      "name": "なまこ壁",
+      "sheet": "outdoor-village",
+      "cell": 3,
+      "albedo": "namako-wall.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "namako-wall-normal.webp",
+      "meters": 1.2
+    },
+    "koshi-lattice": {
+      "name": "格子戸",
+      "sheet": "outdoor-village",
+      "cell": 4,
+      "albedo": "koshi-lattice.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "koshi-lattice-normal.webp",
+      "meters": 1.0,
+      "emissive": 0.2
+    },
+    "stone-steps": {
+      "name": "石段",
+      "sheet": "outdoor-village",
+      "cell": 5,
+      "albedo": "stone-steps.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "stone-steps-normal.webp",
+      "meters": 1.5
+    },
+    "ishigaki": {
+      "name": "石垣",
+      "sheet": "outdoor-village",
+      "cell": 6,
+      "albedo": "ishigaki.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "ishigaki-normal.webp",
+      "meters": 2.0
+    },
+    "noren-indigo": {
+      "name": "藍染めの暖簾",
+      "sheet": "outdoor-village",
+      "cell": 7,
+      "albedo": "noren-indigo.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "noren-indigo-normal.webp",
+      "meters": 1.0
+    },
+    "kokera-shingle": {
+      "name": "こけら葺き",
+      "sheet": "outdoor-village",
+      "cell": 8,
+      "albedo": "kokera-shingle.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "kokera-shingle-normal.webp",
+      "meters": 1.2
+    },
+    "truss-green": {
+      "name": "鉄橋のトラス",
+      "sheet": "outdoor-infrastructure",
+      "cell": 0,
+      "albedo": "truss-green.webp",
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normal": "truss-green-normal.webp",
+      "meters": 1.0
+    },
+    "guardrail": {
+      "name": "ガードレール",
+      "sheet": "outdoor-infrastructure",
+      "cell": 1,
+      "albedo": "guardrail.webp",
+      "roughness": 0.45,
+      "metalness": 0.6,
+      "normal": "guardrail-normal.webp",
+      "meters": 2.0
+    },
+    "bridge-deck": {
+      "name": "橋の床版",
+      "sheet": "outdoor-infrastructure",
+      "cell": 2,
+      "albedo": "bridge-deck.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "bridge-deck-normal.webp",
+      "meters": 2.0
+    },
+    "tactile-paving": {
+      "name": "点字ブロック",
+      "sheet": "outdoor-infrastructure",
+      "cell": 3,
+      "albedo": "tactile-paving.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "tactile-paving-normal.webp",
+      "meters": 0.6
+    },
+    "curb-granite": {
+      "name": "縁石",
+      "sheet": "outdoor-infrastructure",
+      "cell": 4,
+      "albedo": "curb-granite.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "curb-granite-normal.webp",
+      "meters": 1.0
+    },
+    "gutter-grate": {
+      "name": "側溝の蓋",
+      "sheet": "outdoor-infrastructure",
+      "cell": 5,
+      "albedo": "gutter-grate.webp",
+      "roughness": 0.6,
+      "metalness": 0.6,
+      "normal": "gutter-grate-normal.webp",
+      "meters": 0.6
+    },
+    "car-red": {
+      "name": "赤い車の塗装",
+      "sheet": "outdoor-infrastructure",
+      "cell": 6,
+      "albedo": "car-red.webp",
+      "roughness": 0.15,
+      "metalness": 0.6,
+      "normal": "car-red-normal.webp",
+      "meters": 1.0
+    },
+    "car-white": {
+      "name": "白い車の塗装",
+      "sheet": "outdoor-infrastructure",
+      "cell": 7,
+      "albedo": "car-white.webp",
+      "roughness": 0.15,
+      "metalness": 0.4,
+      "normal": "car-white-normal.webp",
+      "meters": 1.0
+    },
+    "car-glass": {
+      "name": "車の窓ガラス",
+      "sheet": "outdoor-infrastructure",
+      "cell": 8,
+      "albedo": "car-glass.webp",
+      "roughness": 0.05,
+      "metalness": 0.5,
+      "normal": "car-glass-normal.webp",
+      "meters": 1.0
+    },
+    "momiji": {
+      "name": "紅葉",
+      "sheet": "outdoor-nature-b",
+      "cell": 0,
+      "albedo": "momiji.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "momiji-normal.webp",
+      "meters": 1.0
+    },
+    "sakura": {
+      "name": "桜",
+      "sheet": "outdoor-nature-b",
+      "cell": 1,
+      "albedo": "sakura.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "sakura-normal.webp",
+      "meters": 1.0
+    },
+    "birch-bark": {
+      "name": "白樺の樹皮",
+      "sheet": "outdoor-nature-b",
+      "cell": 2,
+      "albedo": "birch-bark.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "birch-bark-normal.webp",
+      "meters": 0.6
+    },
+    "fern": {
+      "name": "シダ",
+      "sheet": "outdoor-nature-b",
+      "cell": 3,
+      "albedo": "fern.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "fern-normal.webp",
+      "meters": 1.0
+    },
+    "waterfall": {
+      "name": "滝",
+      "sheet": "outdoor-nature-b",
+      "cell": 4,
+      "albedo": "waterfall.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "waterfall-normal.webp",
+      "meters": 3.0,
+      "emissive": 0.25
+    },
+    "reeds": {
+      "name": "川辺の葦",
+      "sheet": "outdoor-nature-b",
+      "cell": 5,
+      "albedo": "reeds.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "reeds-normal.webp",
+      "meters": 1.0
+    },
+    "red-pine-bark": {
+      "name": "赤松の樹皮",
+      "sheet": "outdoor-nature-b",
+      "cell": 6,
+      "albedo": "red-pine-bark.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "red-pine-bark-normal.webp",
+      "meters": 0.8
+    },
+    "hydrangea": {
+      "name": "紫陽花",
+      "sheet": "outdoor-nature-b",
+      "cell": 7,
+      "albedo": "hydrangea.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "hydrangea-normal.webp",
+      "meters": 1.0
+    },
+    "stepping-path": {
+      "name": "飛び石の小径",
+      "sheet": "outdoor-nature-b",
+      "cell": 8,
+      "albedo": "stepping-path.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "stepping-path-normal.webp",
+      "meters": 1.5
+    },
+    "lookout-timber": {
+      "name": "展望台の木材",
+      "sheet": "outdoor-culture",
+      "cell": 0,
+      "albedo": "lookout-timber.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "lookout-timber-normal.webp",
+      "meters": 1.0
+    },
+    "tent-canvas": {
+      "name": "テントの生地",
+      "sheet": "outdoor-culture",
+      "cell": 1,
+      "albedo": "tent-canvas.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "tent-canvas-normal.webp",
+      "meters": 1.0
+    },
+    "picnic-wood": {
+      "name": "ピクニックテーブル材",
+      "sheet": "outdoor-culture",
+      "cell": 2,
+      "albedo": "picnic-wood.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "picnic-wood-normal.webp",
+      "meters": 1.0
+    },
+    "campfire": {
+      "name": "焚き火",
+      "sheet": "outdoor-culture",
+      "cell": 3,
+      "albedo": "campfire.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "campfire-normal.webp",
+      "meters": 1.0,
+      "emissive": 1.2
+    },
+    "jizo": {
+      "name": "お地蔵さま",
+      "sheet": "outdoor-culture",
+      "cell": 4,
+      "albedo": "jizo.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "jizo-normal.webp",
+      "meters": 1.0
+    },
+    "temple-bronze": {
+      "name": "梵鐘の青銅",
+      "sheet": "outdoor-culture",
+      "cell": 5,
+      "albedo": "temple-bronze.webp",
+      "roughness": 0.5,
+      "metalness": 0.8,
+      "normal": "temple-bronze-normal.webp",
+      "meters": 1.0
+    },
+    "chochin-red": {
+      "name": "赤い提灯",
+      "sheet": "outdoor-culture",
+      "cell": 6,
+      "albedo": "chochin-red.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "chochin-red-normal.webp",
+      "meters": 0.6,
+      "emissive": 1.0
+    },
+    "torii-granite": {
+      "name": "石の鳥居",
+      "sheet": "outdoor-culture",
+      "cell": 7,
+      "albedo": "torii-granite.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "torii-granite-normal.webp",
+      "meters": 1.0
+    },
+    "straw-hay": {
+      "name": "稲架掛け",
+      "sheet": "outdoor-culture",
+      "cell": 8,
+      "albedo": "straw-hay.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "straw-hay-normal.webp",
+      "meters": 1.0
     }
   }
 }

@@ -1,0 +1,89 @@
+{
+  "id": "exterior-facility-b",
+  "title": "施設の外観 B：設備",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "technical equipment around a remote mountain research institute: radar, dishes, power and ventilation, realistic photographic materials",
+  "cells": [
+    {
+      "id": "radar-dome",
+      "name": "レーダードーム",
+      "meters": 3.0,
+      "roughness": 0.5,
+      "normalStrength": 1.0,
+      "prompt": "white fibreglass radome made of irregular triangular geodesic panels with thin grey seams and light weathering, about 3 m across"
+    },
+    {
+      "id": "dish-white",
+      "name": "パラボラの白塗装",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.5,
+      "prompt": "white painted aluminium satellite dish surface with fine radial panel seams and slight dirt, about 1 m across"
+    },
+    {
+      "id": "watertower-blue",
+      "name": "給水塔の青い鋼板",
+      "meters": 1.5,
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normalStrength": 1.2,
+      "prompt": "faded sky-blue painted riveted steel plates of a water tower with rust streaks below the rivets, about 1.5 m across"
+    },
+    {
+      "id": "solar-cells",
+      "name": "太陽光パネル",
+      "meters": 1.6,
+      "roughness": 0.15,
+      "metalness": 0.5,
+      "normalStrength": 0.4,
+      "prompt": "photovoltaic solar panel surface of dark blue silicon cells in a precise grid with thin silver busbars and an aluminium frame, seen straight on, about 1.6 m across"
+    },
+    {
+      "id": "transformer-fins",
+      "name": "変圧器の放熱フィン",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.5,
+      "normalStrength": 2.0,
+      "prompt": "grey painted electrical transformer radiator with deep vertical cooling fins in a tight row, fins running top to bottom, about 1 m across"
+    },
+    {
+      "id": "vent-louvre",
+      "name": "排気塔のガラリ",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.8,
+      "normalStrength": 1.8,
+      "prompt": "galvanized steel ventilation louvre with angled horizontal blades and dark interior behind them, blades running left to right, about 1 m across"
+    },
+    {
+      "id": "palisade-fence",
+      "name": "パリセードフェンス",
+      "meters": 1.5,
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normalStrength": 1.2,
+      "prompt": "dark green steel palisade security fence of vertical pointed pales against a plain black background, pales running top to bottom, about 1.5 m across"
+    },
+    {
+      "id": "insulator-ceramic",
+      "name": "がいし",
+      "meters": 0.4,
+      "roughness": 0.2,
+      "normalStrength": 1.6,
+      "prompt": "close-up of a stacked brown glazed porcelain electrical insulator with ridged discs, filling the frame, about 0.4 m across"
+    },
+    {
+      "id": "flag-fabric",
+      "name": "研究所の旗",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "seamless": false,
+      "prompt": "a teal flag fabric with a simple abstract white geometric emblem of stacked strata lines in the centre, gentle wind ripples, no text, no letters, filling the whole square"
+    }
+  ]
+}
