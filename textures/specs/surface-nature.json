@@ -1,0 +1,83 @@
+{
+  "id": "surface-nature",
+  "title": "地上の自然",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "plants and natural ground around a mountain mine yard in Japan, realistic photographic materials",
+  "cells": [
+    {
+      "id": "tree-bark",
+      "name": "樹皮",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 2.0,
+      "prompt": "Japanese cedar tree bark with long fibrous reddish-brown vertical strips, bark running top to bottom, about 1 m across"
+    },
+    {
+      "id": "pine-needles",
+      "name": "松の葉",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "dense dark green conifer branches with layered needles filling the frame, about 1 m across"
+    },
+    {
+      "id": "bush-leaves",
+      "name": "低木の葉",
+      "meters": 0.6,
+      "roughness": 0.7,
+      "normalStrength": 1.2,
+      "prompt": "dense glossy green shrub leaves like boxwood filling the frame, about 0.6 m across"
+    },
+    {
+      "id": "dry-grass",
+      "name": "枯れ草",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 1.2,
+      "prompt": "tall dry golden pampas and silver grass tufts seen from the side, dense, about 1 m across"
+    },
+    {
+      "id": "wildflowers",
+      "name": "野の花",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.0,
+      "prompt": "meadow of small wildflowers in white, yellow and purple among green grass, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "stream-water",
+      "name": "小川の水",
+      "meters": 1.5,
+      "roughness": 0.1,
+      "metalness": 0.1,
+      "normalStrength": 0.8,
+      "prompt": "clear shallow stream water flowing over rounded pebbles with small ripples and light glints, seen from above, about 1.5 m across"
+    },
+    {
+      "id": "river-pebbles",
+      "name": "川原の石",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.8,
+      "prompt": "dry riverbank of rounded grey and white pebbles, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "fallen-leaves",
+      "name": "落ち葉",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "ground covered with fallen autumn leaves in red, orange and brown, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "moss-ground",
+      "name": "苔の地面",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 1.4,
+      "prompt": "lush green moss carpet on the ground with a few small stones, seen from directly above, about 1 m across"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "lake-dock",
+  "title": "追加要素：地底湖と桟橋",
+  "quality": "medium",
+  "theme": "an underground lake shore with a small research pier inside a dark cave, realistic",
+  "cells": [
+    {
+      "id": "lake-water",
+      "name": "地底湖の水面",
+      "meters": 3.0,
+      "roughness": 0.08,
+      "metalness": 0.1,
+      "normalStrength": 0.8,
+      "prompt": "still dark teal underground lake water surface seen from above with soft ripples and faint reflections, about 3 m across"
+    },
+    {
+      "id": "pier-planks",
+      "name": "桟橋の床板",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 1.6,
+      "prompt": "weathered grey wooden pier deck planks running left to right with small gaps, nail heads and damp patches, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "wet-sand",
+      "name": "湿った砂",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "dark wet sand shoreline with small pebbles and faint ripple marks, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "mossy-rock",
+      "name": "苔むした岩",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 1.8,
+      "prompt": "dark wet cave rock partly covered with soft green moss patches, about 2 m across"
+    },
+    {
+      "id": "nylon-rope",
+      "name": "ナイロンロープ",
+      "meters": 0.3,
+      "roughness": 0.8,
+      "normalStrength": 1.6,
+      "prompt": "close-up of thick braided blue and white nylon rope strands running left to right, filling the frame, about 0.3 m across"
+    },
+    {
+      "id": "inflatable-pvc",
+      "name": "ゴムボートの生地",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 0.6,
+      "prompt": "orange PVC inflatable boat fabric with a subtle woven texture, light scuffs and water spots, about 1 m across"
+    },
+    {
+      "id": "buoy-plastic",
+      "name": "赤いブイの樹脂",
+      "meters": 0.6,
+      "roughness": 0.5,
+      "normalStrength": 0.4,
+      "prompt": "weathered glossy red plastic marine buoy surface with fine scratches and faint algae stains, about 0.6 m across"
+    },
+    {
+      "id": "glow-fungus",
+      "name": "発光キノコの菌糸",
+      "meters": 0.5,
+      "roughness": 0.7,
+      "normalStrength": 1.2,
+      "emissive": 1.4,
+      "prompt": "bioluminescent fungus mycelium mat with tiny glowing lime-green mushroom caps densely packed on dark damp wood, about 0.5 m across"
+    },
+    {
+      "id": "chainlink-fence",
+      "name": "金網フェンス",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "galvanized chain-link fence wire mesh in a diamond pattern in front of a plain black background, about 1 m across"
+    }
+  ],
+  "tileSize": 512,
+  "normalSize": 512
+}

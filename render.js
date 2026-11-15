@@ -5,6 +5,9 @@ import {MeshoptDecoder} from './vendor/meshopt_decoder.module.js';
 import {doorProgress} from './layout.js';
 import {THROAT,WING_SPINE,distanceToBounds} from './expansion.js';
 import {applyIndoorLighting,createFixtureController,createLightingData} from './lighting.js';
+import {applyRetexture,loadRetexture} from './textures.js';
+import {buildExtension} from './cavern.js';
+import {CAVERN_FIXTURES,floorHeight} from './cavern-layout.js';
 
 export const QUALITY = {
   high: {height:920,width:2100, lights:8, reflection:1, refresh:1, shadows:true, far:63},
@@ -225,8 +228,11 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     const importModel=(source,progress)=>loader.loadAsync(source,event=>{
       if(event.lengthComputable&&event.total)progress?.(event.loaded/event.total);
     });
+    const retexturing=loadRetexture().catch(()=>new Map());
     const imported=await importModel('./assets/facility-retrofitted.glb',onProgress);
     const model=imported.scene;
+    const retexture=await retexturing;
+    applyRetexture(model,retexture);
     const scene=new THREE.Scene();
     scene.background=new THREE.Color(0x11191b);
     scene.fog=new THREE.FogExp2(0x1d282b,.024);
@@ -309,7 +315,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     const shadows=contactShadows(scene,actors);
     const fans=[byName(model,'Ventilation rotor 1'),byName(model,'Ventilation rotor 2')];
     const sectorVisuals=new Map();
-    let expansion=null, expansionRequest=null, wingSectors=[], destroyed=false;
+    let expansion=null, expansionRequest=null, wingSectors=[], destroyed=false, extensionFrame=null;
     for(const mesh of model.children){
       const key=mesh.name.match(/^room[_\s](\d\d)/i)?.[1];
       if(!key)continue;
@@ -320,11 +326,16 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     function loadExpansion(progress){
       if(expansion)return Promise.resolve();
       if(expansionRequest)return expansionRequest;
-      expansionRequest=importModel('./assets/expansion-equipped.glb',progress).then(extra=>{
+      expansionRequest=Promise.all([importModel('./assets/expansion-equipped.glb',progress),buildExtension()]).then(([extra,extension])=>{
         const root=extra.scene;
-        if(destroyed){disposeMeshes(root);throw new Error('3D renderer was closed during load');}
+        if(destroyed){disposeMeshes(root);disposeMeshes(extension);throw new Error('3D renderer was closed during load');}
+        // the wing's own materials hide the doorway in room 11's back wall (see lighting.js)
+        root.traverse(object=>{if(object.isMesh&&!Array.isArray(object.material))object.material.userData.facilityCut=true;});
+        applyRetexture(root,retexture);
+        root.add(extension);
+        extensionFrame=extension.userData.frame??null;
         const nextDoors=bindDoorMeshes(root,doors.filter(door=>door.room.entry));
-        const nextLight=createLightingData([...fixtures,...root.userData.fixtures]);
+        const nextLight=createLightingData([...fixtures,...root.userData.fixtures,...CAVERN_FIXTURES]);
         configureModel(root);
         root.updateMatrixWorld(true);
         wingSectors=root.children.map(object=>{
@@ -417,7 +428,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
         mirrorFrame=-1;
         restored=false;
       }
-      camera.position.set(player.x,1.64+player.bob,player.z);
+      camera.position.set(player.x,1.64+player.bob+floorHeight(player.x,player.z),player.z);
       camera.rotation.set(player.pitch,player.yaw,player.roll,'YXZ');
       reflectedPose.set(player.x,player.z,player.yaw,player.pitch);
       frame++;
@@ -433,6 +444,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
         for(const object of objects)object.visible=distance<level.far*.82;
       }
       for(const bounds of wingSectors)bounds.object.visible=distanceToBounds(bounds,player.x,player.z)<level.far*.85;
+      extensionFrame?.(player,camera,scene);
       lightFrame(time);
       renderer.render(scene,camera);
     }

@@ -1,0 +1,86 @@
+{
+  "id": "upper-control-room",
+  "title": "観測棟2階 管制室：内装",
+  "quality": "medium",
+  "theme": "interior of a compact 1980s-style geological monitoring control room on the upper floor of a prefab hut inside a cave, realistic",
+  "cells": [
+    {
+      "id": "vinyl-floor",
+      "name": "斑点入りビニル床",
+      "meters": 1.2,
+      "roughness": 0.55,
+      "normalStrength": 0.4,
+      "prompt": "speckled blue-grey vinyl floor tiles 30 cm square with faint scuff marks, seen from directly above, about 1.2 m across"
+    },
+    {
+      "id": "acoustic-panel",
+      "name": "吸音パネル",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "pale grey perforated acoustic wall panel with an even grid of small round holes, about 1.2 m across"
+    },
+    {
+      "id": "ceiling-tile",
+      "name": "天井ボード",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 0.9,
+      "prompt": "white mineral fibre suspended ceiling tiles 60 cm square in a thin aluminium grid, fissured surface texture, seen from directly below, about 1.2 m across"
+    },
+    {
+      "id": "desk-laminate",
+      "name": "制御卓の天板",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 0.3,
+      "prompt": "dark charcoal anti-static laminate desk top with a fine speckled pattern and light wear, about 1 m across"
+    },
+    {
+      "id": "rack-mesh-door",
+      "name": "ラックのメッシュ扉",
+      "meters": 0.6,
+      "roughness": 0.5,
+      "metalness": 0.6,
+      "normalStrength": 1.4,
+      "prompt": "black perforated steel equipment rack door mesh with hexagonal holes and dim green indicator light glowing behind it, about 0.6 m across"
+    },
+    {
+      "id": "survey-map",
+      "name": "岩盤調査図",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "printed geological cross-section survey drawing of rock strata in muted earth colours with thin contour lines and coloured layers, no text, no numbers, no letters, filling the whole square"
+    },
+    {
+      "id": "cork-board",
+      "name": "コルク掲示板",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "prompt": "brown cork pinboard surface with a few small blank white and yellow papers pinned on it, no writing, about 1 m across"
+    },
+    {
+      "id": "tread-plate",
+      "name": "縞鋼板",
+      "meters": 0.8,
+      "roughness": 0.4,
+      "metalness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "aluminium diamond tread plate with raised diagonal lozenge pattern, scuffed silver metal, seen from directly above, about 0.8 m across"
+    },
+    {
+      "id": "safety-yellow-steel",
+      "name": "黄色の粉体塗装鋼",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.5,
+      "prompt": "safety yellow powder-coated steel handrail paint with small chips and scuffs showing dark metal, about 1 m across"
+    }
+  ],
+  "tileSize": 512,
+  "normalSize": 512
+}

@@ -1,0 +1,84 @@
+{
+  "id": "cavern-equipment",
+  "title": "地底空洞ステーション：設備と資材",
+  "theme": "equipment, supplies and natural formations inside an underground cavern research outpost, gritty realistic industrial style",
+  "cells": [
+    {
+      "id": "tank-green",
+      "name": "緑の塗装タンク",
+      "meters": 1.5,
+      "roughness": 0.55,
+      "metalness": 0.5,
+      "normalStrength": 1.2,
+      "prompt": "industrial steel tank surface painted dark green, rows of round rivets and a horizontal weld seam, chipped paint showing grey primer, about 1.5 m across"
+    },
+    {
+      "id": "plywood-crate",
+      "name": "合板の木箱",
+      "meters": 1,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "prompt": "pale birch plywood panel of a shipping crate, fine wood grain running left to right, slight scuffs and pencil-free clean surface, about 1 m across"
+    },
+    {
+      "id": "canvas-tarp",
+      "name": "帆布シート",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 1.6,
+      "prompt": "heavy faded orange canvas tarpaulin fabric, coarse woven texture with soft wrinkles and dust, about 1.5 m across"
+    },
+    {
+      "id": "timber-beam",
+      "name": "坑木",
+      "meters": 1,
+      "roughness": 0.9,
+      "normalStrength": 2.0,
+      "prompt": "old dark brown creosote-soaked timber beam surface, deep long wood grain running left to right, cracks and splinters, about 1 m across"
+    },
+    {
+      "id": "glow-crystal",
+      "name": "発光鉱物",
+      "meters": 0.5,
+      "roughness": 0.25,
+      "normalStrength": 1.5,
+      "emissive": 1.6,
+      "prompt": "glowing cyan-blue mineral crystal surface, translucent faceted quartz-like crystals with bright luminous turquoise light inside and darker blue edges, about 0.5 m across"
+    },
+    {
+      "id": "patina-copper",
+      "name": "緑青の銅",
+      "meters": 1,
+      "roughness": 0.6,
+      "metalness": 0.55,
+      "normalStrength": 0.9,
+      "prompt": "aged copper metal with blotchy blue-green verdigris patina over warm brown copper, about 1 m across"
+    },
+    {
+      "id": "vented-aluminum",
+      "name": "通気口付きアルミ筐体",
+      "meters": 1,
+      "roughness": 0.45,
+      "metalness": 0.85,
+      "normalStrength": 1.6,
+      "prompt": "brushed aluminum machine housing panel with a regular grid of horizontal ventilation slots and countersunk screws, light grey metal, about 1 m across"
+    },
+    {
+      "id": "ribbed-rubber",
+      "name": "ゴム製コンベアベルト",
+      "meters": 1,
+      "roughness": 0.9,
+      "normalStrength": 2.0,
+      "prompt": "black ribbed rubber conveyor belt surface seen from above, raised chevron ribs repeating top to bottom, light grey rock dust in the grooves, about 1 m across"
+    },
+    {
+      "id": "iron-flowstone",
+      "name": "酸化鉄の流れ石",
+      "meters": 1.5,
+      "roughness": 0.7,
+      "normalStrength": 2.2,
+      "prompt": "wet cave flowstone mineral deposit, smooth rippled calcite layers stained orange and rust red by iron oxide with cream highlights, about 1.5 m across"
+    }
+  ],
+  "quality": "xhigh"
+}

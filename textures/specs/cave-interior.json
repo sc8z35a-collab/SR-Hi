@@ -1,0 +1,84 @@
+{
+  "id": "cave-interior",
+  "title": "洞窟の中",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "natural limestone and basalt cave interiors, realistic photographic materials",
+  "cells": [
+    {
+      "id": "limestone-wall",
+      "name": "石灰岩の壁",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 1.6,
+      "prompt": "pale cream limestone cave wall with smooth dissolution scallops and soft grey streaks, about 2 m across"
+    },
+    {
+      "id": "cave-mud",
+      "name": "洞窟の泥",
+      "meters": 1.5,
+      "roughness": 0.6,
+      "normalStrength": 1.2,
+      "prompt": "wet brown-grey cave mud floor with small puddles, drip pits and scattered pebbles, seen from directly above, about 1.5 m across"
+    },
+    {
+      "id": "calcite-drip",
+      "name": "方解石の鍾乳石",
+      "meters": 0.8,
+      "roughness": 0.3,
+      "normalStrength": 1.4,
+      "prompt": "white translucent calcite dripstone surface with wet glistening ripples and thin honey-coloured bands, about 0.8 m across"
+    },
+    {
+      "id": "rimstone",
+      "name": "リムストーン",
+      "meters": 2.0,
+      "roughness": 0.25,
+      "normalStrength": 1.4,
+      "prompt": "cave rimstone pools (gours) seen from above, terraced cream calcite dams holding shallow clear turquoise water, about 2 m across"
+    },
+    {
+      "id": "cave-popcorn",
+      "name": "ケイブポップコーン",
+      "meters": 0.6,
+      "roughness": 0.8,
+      "normalStrength": 2.2,
+      "prompt": "cave popcorn speleothem crust, dense knobbly white and beige coralloid nodules on rock, about 0.6 m across"
+    },
+    {
+      "id": "quartz-vein",
+      "name": "石英脈の岩",
+      "meters": 1.0,
+      "roughness": 0.75,
+      "normalStrength": 1.6,
+      "prompt": "dark grey schist rock cut by bright white quartz veins, rough fractured surface, about 1 m across"
+    },
+    {
+      "id": "wet-black-rock",
+      "name": "濡れた黒い岩",
+      "meters": 1.0,
+      "roughness": 0.2,
+      "normalStrength": 1.4,
+      "prompt": "glossy wet black volcanic rock with a thin film of running water and tiny mineral sparkles, about 1 m across"
+    },
+    {
+      "id": "cave-ice",
+      "name": "洞窟の氷",
+      "meters": 1.0,
+      "roughness": 0.1,
+      "normalStrength": 1.0,
+      "emissive": 0.25,
+      "prompt": "clear blue cave ice with trapped bubbles and layered cracks, glowing faintly, about 1 m across"
+    },
+    {
+      "id": "cave-painting",
+      "name": "洞窟壁画",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "prehistoric cave painting on rough beige rock: red ochre handprints, simple deer and bison figures in charcoal and ochre, no text, filling the whole square"
+    }
+  ]
+}

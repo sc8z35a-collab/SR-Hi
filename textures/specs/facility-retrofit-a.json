@@ -1,0 +1,120 @@
+{
+  "id": "facility-retrofit-a",
+  "title": "既存設備の作り直し A：金属・樹脂",
+  "quality": "medium",
+  "theme": "surfaces of equipment, cabinets, pipes and fittings in a clean modern underground research laboratory, realistic",
+  "cells": [
+    {
+      "id": "painted-metal-slate",
+      "name": "灰青の塗装鋼板",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "metalness": 0.35,
+      "normalStrength": 0.8,
+      "targets": [
+        "Graphite steel and rubber | base-painted-metal"
+      ],
+      "prompt": "grey-blue painted sheet metal with a fine orange-peel paint texture, light scuffs and slightly worn edges, about 1 m across"
+    },
+    {
+      "id": "cabinet-enamel",
+      "name": "白いエナメル筐体",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "metalness": 0.1,
+      "normalStrength": 0.5,
+      "targets": [
+        "Grey-green cabinet enamel | base-enamel",
+        "Satin enamel panel | base-enamel"
+      ],
+      "prompt": "off-white baked enamel steel cabinet surface, subtle orange-peel finish, faint fingerprints and tiny scuffs, about 1 m across"
+    },
+    {
+      "id": "galvanized-spangle",
+      "name": "亜鉛めっき鋼（スパングル）",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "metalness": 0.85,
+      "normalStrength": 0.4,
+      "targets": [
+        "Galvanized steel | base-steel"
+      ],
+      "prompt": "galvanized steel sheet with a crystalline zinc spangle pattern, light grey metallic, about 0.6 m across"
+    },
+    {
+      "id": "brushed-stainless",
+      "name": "ヘアライン仕上げのステンレス",
+      "meters": 0.6,
+      "roughness": 0.35,
+      "metalness": 0.9,
+      "normalStrength": 0.4,
+      "targets": [
+        "Brushed stainless steel | base-steel",
+        "Brushed stainless steel | lab-bench-steel"
+      ],
+      "prompt": "brushed stainless steel with fine straight horizontal grain lines and faint smudges, about 0.6 m across"
+    },
+    {
+      "id": "molded-plastic",
+      "name": "黒いシボ加工樹脂",
+      "meters": 0.3,
+      "roughness": 0.7,
+      "normalStrength": 0.9,
+      "targets": [
+        "Black molded plastic | base-polymer",
+        "Black molded plastic | control-abs-backs"
+      ],
+      "prompt": "black textured molded ABS plastic with a fine stippled grain finish, very slight dust, about 0.3 m across"
+    },
+    {
+      "id": "vulcanized-rubber",
+      "name": "加硫ゴム",
+      "meters": 0.4,
+      "roughness": 0.9,
+      "normalStrength": 0.7,
+      "targets": [
+        "Vulcanized rubber | base-polymer",
+        "Vulcanized rubber | lab-latex-seals"
+      ],
+      "prompt": "dark charcoal vulcanized rubber with a fine matte texture and faint mould-release marks, about 0.4 m across"
+    },
+    {
+      "id": "panel-coat-ivory",
+      "name": "アイボリーの壁パネル",
+      "meters": 2.0,
+      "roughness": 0.6,
+      "normalStrength": 0.5,
+      "targets": [
+        "Satin enamel panel | corridor-panel-coat"
+      ],
+      "prompt": "ivory powder-coated wall cladding sheet with a subtle stippled texture and very faint grime, plain with no seams, about 2 m across"
+    },
+    {
+      "id": "cable-tray-steel",
+      "name": "パンチング鋼の配線トレイ",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.8,
+      "normalStrength": 1.2,
+      "targets": [
+        "Graphite steel and rubber | corridor-cable-tray"
+      ],
+      "prompt": "perforated galvanized steel sheet with neat rows of small rectangular slots, used for cable trays, mid grey, about 1 m across"
+    },
+    {
+      "id": "galvanized-weathered",
+      "name": "白錆の出た亜鉛めっき鋼",
+      "meters": 1.0,
+      "roughness": 0.65,
+      "metalness": 0.7,
+      "normalStrength": 0.5,
+      "targets": [
+        "Galvanized steel | corridor-galvanized",
+        "Galvanized steel | geo-galvanized-damp"
+      ],
+      "prompt": "weathered matte galvanized steel with patches of white zinc oxide bloom and faint water streaks, about 1 m across"
+    }
+  ],
+  "tileSize": 512,
+  "normalSize": 512
+}

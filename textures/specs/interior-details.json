@@ -1,0 +1,86 @@
+{
+  "id": "interior-details",
+  "title": "和室・洋室・会議室の小物",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "small decorative details for Japanese, Western and meeting rooms, realistic photographic materials",
+  "cells": [
+    {
+      "id": "kakejiku",
+      "name": "掛軸",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "a Japanese hanging scroll painting of misty mountains and pine trees in sumi ink on silk, mounted with a muted brocade border, no text, no calligraphy, no seal, filling the whole square"
+    },
+    {
+      "id": "zabuton-indigo",
+      "name": "座布団の生地",
+      "meters": 0.5,
+      "roughness": 0.9,
+      "normalStrength": 0.8,
+      "prompt": "indigo dyed cotton fabric with a small white kasuri ikat pattern, about 0.5 m across"
+    },
+    {
+      "id": "urushi-lacquer",
+      "name": "漆塗り",
+      "meters": 0.6,
+      "roughness": 0.15,
+      "normalStrength": 0.2,
+      "prompt": "deep black urushi lacquer with a glossy finish and a faint red layer showing at worn spots, about 0.6 m across"
+    },
+    {
+      "id": "brass-antique",
+      "name": "アンティーク真鍮",
+      "meters": 0.4,
+      "roughness": 0.35,
+      "metalness": 0.9,
+      "normalStrength": 0.3,
+      "prompt": "antique brushed brass with warm golden tone and darker tarnish in places, about 0.4 m across"
+    },
+    {
+      "id": "fireplace-brick",
+      "name": "暖炉のレンガ",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "soot-darkened red firebrick wall laid in running bond, about 1 m across"
+    },
+    {
+      "id": "book-spines",
+      "name": "本の背表紙",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "a full bookshelf row of old cloth-bound book spines in muted red, green, brown and navy, with gilt bands but no readable text, no letters, filling the whole square"
+    },
+    {
+      "id": "presentation-screen",
+      "name": "プレゼン画面",
+      "meters": 1.0,
+      "roughness": 0.3,
+      "normalStrength": 0.1,
+      "seamless": false,
+      "emissive": 1.0,
+      "prompt": "a glowing presentation slide on a large screen showing a clean bar chart and line graph in blue and teal on white, no text, no numbers, no letters, filling the whole square"
+    },
+    {
+      "id": "terrazzo",
+      "name": "テラゾー床",
+      "meters": 1.0,
+      "roughness": 0.3,
+      "normalStrength": 0.4,
+      "prompt": "polished grey terrazzo floor with scattered white, black and rust coloured stone chips, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "foliage",
+      "name": "観葉植物の葉",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 1.2,
+      "prompt": "dense green tropical houseplant leaves overlapping, glossy monstera and pothos leaves filling the frame, about 0.6 m across"
+    }
+  ]
+}

@@ -1,4 +1,7 @@
 import {ACCESS,EXPANSION_ROOMS,WING_FLOORS,WING_HALL,wingWalls,within} from './expansion.js';
+import {floorHeight} from './cavern-layout.js';
+
+export {floorHeight};
 
 export const ORIGINAL_ROOMS = [
   {code:'01',name:'分析ラボ',view:'refit-lab',short:'ラボ',side:1,wall:2.75,edge:13.40,north:-14.70,south:-3.10,door:-5.55,terminal:[4.81,-7.13],
@@ -66,7 +69,10 @@ add(-3.091,13.42,.16,.49);
 add(3.091,29.01,.16,.49);
 
 export function zoneAt(x,z) {
-  if(z>=ACCESS.z)return EXPANSION_ROOMS.find(room=>within(room,x,z))??WING_HALL;
+  if(z>=ACCESS.z){
+    const inside=room=>x>=room.x1&&x<=room.x2&&z>=room.z1&&z<=room.z2;
+    return EXPANSION_ROOMS.find(room=>room.nested&&inside(room))??EXPANSION_ROOMS.find(inside)??WING_HALL;
+  }
   return ORIGINAL_ROOMS.find(r=>r.side
     ? x*r.side>2.85 && z>r.north && z<r.south && x*r.side<r.edge*r.side
     : z<-34.77 && z>r.north && Math.abs(x)<r.edge)??HALL;
@@ -74,7 +80,7 @@ export function zoneAt(x,z) {
 export function makeDoors(){
   function make(room,{axis,x,z,width},existing=false){
     return {
-      kind:'door',room,axis,x,z,width,open:false,travel:0,
+      kind:'door',room,axis,x,z,width,y:room.entry?.y??0,open:false,travel:0,
       leafOffset:existing ? .433 : width/4,leafTravel:existing ? .865 : width/2,
       blocker:axis==='x'?centered(x,z,.30,width):centered(x,z,width,.30),
     };
@@ -82,7 +88,7 @@ export function makeDoors(){
   return [
     ...ORIGINAL_ROOMS.map(room=>make(room,{x:room.wall,z:room.door,axis:room.side?'x':'z',width:1.74},true)),
     make(ACCESS,ACCESS),
-    ...EXPANSION_ROOMS.map(room=>make(room,room.entry)),
+    ...EXPANSION_ROOMS.filter(room=>room.entry.door!==false).map(room=>make(room,room.entry)),
   ];
 }
 export function doorProgress(door){
@@ -113,12 +119,14 @@ export function advanceDoors(doors,dt,x,z) {
     door.blocker.disabled=doorProgress(door)>.86;
   }
 }
-const terminals=ROOMS.map(room=>({kind:'terminal',room,x:room.terminal[0],z:room.terminal[1]}));
+const terminals=ROOMS.map(room=>({kind:'terminal',room,x:room.terminal[0],z:room.terminal[1],y:room.terminalY??0}));
 export function nearbyTarget(player,doors) {
   const directionX=-Math.sin(player.yaw),directionZ=-Math.cos(player.yaw);
   const room=zoneAt(player.x,player.z);
+  const level=floorHeight(player.x,player.z);
   let next=null, score=Infinity;
   function consider(action,limit,minAlignment){
+    if(Math.abs(action.y-level)>1.2)return;
     const x=action.x-player.x,z=action.z-player.z,length=Math.hypot(x,z);
     if(length>limit)return;
     const alignment=(directionX*x+directionZ*z)/Math.max(.001,length);

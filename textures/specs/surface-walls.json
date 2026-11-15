@@ -1,0 +1,83 @@
+{
+  "id": "surface-walls",
+  "title": "地上の壁",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "walls and fences of buildings around a mountain mine yard, realistic photographic materials",
+  "cells": [
+    {
+      "id": "retaining-concrete",
+      "name": "擁壁コンクリート",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "prompt": "weathered concrete retaining wall with formwork panel lines, small round drainage holes and dark rain streaks, about 2 m across"
+    },
+    {
+      "id": "stone-masonry",
+      "name": "石積み",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 2.0,
+      "prompt": "rough grey stone masonry wall of irregular fitted rocks with recessed mortar joints, about 1.5 m across"
+    },
+    {
+      "id": "red-brick",
+      "name": "赤レンガ",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "prompt": "clean red clay brick wall in running bond with light grey mortar, about 1.2 m across"
+    },
+    {
+      "id": "cinder-block",
+      "name": "コンクリートブロック",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "grey concrete masonry block wall in running bond with slightly rough faces, about 1.2 m across"
+    },
+    {
+      "id": "gabion",
+      "name": "蛇籠",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 2.0,
+      "prompt": "gabion basket wall: galvanized wire mesh cage tightly filled with rounded grey river stones, about 1 m across"
+    },
+    {
+      "id": "rusty-corrugated",
+      "name": "錆びた波板",
+      "meters": 1.5,
+      "roughness": 0.8,
+      "metalness": 0.4,
+      "normalStrength": 1.8,
+      "prompt": "old corrugated steel wall panels with heavy orange rust and peeling grey paint, corrugations running top to bottom, about 1.5 m across"
+    },
+    {
+      "id": "stucco-white",
+      "name": "白い漆喰",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 0.9,
+      "prompt": "white exterior stucco plaster wall with a rough trowelled texture and faint dirt streaks, about 1.5 m across"
+    },
+    {
+      "id": "board-siding",
+      "name": "下見板張り",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 1.6,
+      "prompt": "Japanese style dark brown weathered horizontal overlapping wooden board siding (shitamiita), boards running left to right, about 1.2 m across"
+    },
+    {
+      "id": "wooden-fence",
+      "name": "木の柵",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 1.4,
+      "prompt": "weathered grey wooden fence of vertical planks with small gaps and rusty nails, planks running top to bottom, about 1.5 m across"
+    }
+  ]
+}

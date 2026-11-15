@@ -1,0 +1,83 @@
+{
+  "id": "surface-sky-land",
+  "title": "空と土地",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "the surface landscape around a remote mountain mine entrance on a calm overcast-bright day, realistic photographic materials",
+  "cells": [
+    {
+      "id": "sky-clouds",
+      "name": "雲のある空",
+      "meters": 30,
+      "roughness": 1.0,
+      "normalStrength": 0,
+      "prompt": "looking up at a bright blue sky with soft scattered white cumulus clouds, no sun, no horizon, no trees"
+    },
+    {
+      "id": "mountain-range",
+      "name": "遠くの山並み",
+      "meters": 60,
+      "roughness": 1.0,
+      "normalStrength": 0,
+      "seamless": "x",
+      "prompt": "panoramic band of pale blue-grey hazy distant forested mountain ridges filling the lower two thirds, against a pure black background above, no sky, no clouds"
+    },
+    {
+      "id": "grass-field",
+      "name": "芝地",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 1.0,
+      "prompt": "short green field grass with a few clover leaves and small bare patches, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "dirt-track",
+      "name": "未舗装路",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "packed brown dirt road with faint tyre ruts, small stones and dried puddle marks, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "asphalt-road",
+      "name": "アスファルト",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 0.8,
+      "prompt": "weathered dark grey asphalt road surface with fine aggregate and a few sealed cracks, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "gravel-yard",
+      "name": "砂利敷き",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 1.6,
+      "prompt": "light grey crushed gravel yard surface, angular stones 2-3 cm, seen from directly above, about 1.5 m across"
+    },
+    {
+      "id": "granite-outcrop",
+      "name": "花崗岩",
+      "meters": 2.0,
+      "roughness": 0.8,
+      "normalStrength": 1.6,
+      "prompt": "weathered speckled grey and pink granite outcrop with lichen spots and cracks, about 2 m across"
+    },
+    {
+      "id": "forest-floor",
+      "name": "林床",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 1.4,
+      "prompt": "forest floor of brown pine needles, small cones, twigs and dark soil, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "hillside-soil",
+      "name": "切土の斜面",
+      "meters": 2.0,
+      "roughness": 0.95,
+      "normalStrength": 1.6,
+      "prompt": "eroded hillside cut of orange-brown clay soil with embedded stones, fine roots and sparse grass tufts, about 2 m across"
+    }
+  ]
+}
