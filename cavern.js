@@ -9,6 +9,7 @@ import {buildQuarters} from './quarters.js';
 import {buildSurface,buildIncline,extinguisher} from './surface.js';
 import {buildOutside} from './outside.js';
 import {buildOutdoorProps,buildUndergroundProps} from './props.js';
+import {buildUndergroundDetails,buildOutdoorDetails,serverFront} from './details.js';
 import {floorHeight} from './cavern-layout.js';
 
 /**
@@ -31,10 +32,12 @@ export async function buildExtension(){
   lake(under,underground);
   buildQuarters(under,underground);
   buildUndergroundProps(under,underground);
+  buildUndergroundDetails(under);
   buildIncline(shaft,group);
   buildSurface(open,outdoor);
   const updateSky=buildOutside(open,outdoor);
   buildOutdoorProps(open,outdoor);
+  buildOutdoorDetails(open);
   group.userData.frame=(player,camera,scene)=>{
     updateSky(player,camera,scene,loaded);
     const level=floorHeight(player.x,player.z);
@@ -165,7 +168,7 @@ function cave(kit,group){
   kit.add(shell(CAVE,{holes,seed:3}),kit.tex('cave-basalt',{variant:'shell',side:THREE.DoubleSide}));
   kit.add(new THREE.PlaneGeometry(40,33.5),kit.tex('cave-gravel'),{pos:[0,0,101.75],rot:[-Math.PI/2,0,0],world:2});
 
-  const flow=kit.tex('iron-flowstone'),crystal=kit.tex('glow-crystal'),steel=kit.plain('steel-dark');
+  const flow=kit.tex('iron-flowstone'),crystal=kit.tex('glow-crystal'),steel=kit.tex('dark-steel');
   const lamp=kit.plain('lamp-warm');
   // stalactites (kept clear of the hut roof)
   for(let i=0,placed=0;placed<16&&i<80;i++){
@@ -197,7 +200,7 @@ function cave(kit,group){
     kit.add(box(.6,.04,.36,1),lamp,{pos:[p.x,5.8,p.z]});
   }
   // mine rails, cart and buffer stop
-  const rail=kit.plain('rail-steel',{color:0x55595c,roughness:.4,metalness:.85});
+  const rail=kit.tex('rail-steel');
   for(const s of [-.3,.3])kit.add(box(.07,.12,16.2,1),rail,{pos:[-1.1+s,.14,90]});
   for(let z=82.1;z<98;z+=.6)kit.add(box(1.0,.08,.18,1),kit.tex('timber-beam'),{pos:[-1.1,.04,z]});
   for(const p of props(CAVERN,'cart')){
@@ -254,7 +257,7 @@ function cluster(kit,material,x,z,scale,R){
 }
 
 function drillRig(kit,R){
-  const p=props(CAVERN,'rig')[0],steel=kit.plain('steel-dark');
+  const p=props(CAVERN,'rig')[0],steel=kit.tex('dark-steel');
   kit.add(box(4,.1,4,1),kit.tex('bar-grating'),{pos:[p.x,.5,p.z]});
   for(const [dx,dz,w,d] of [[0,-2,4,.05],[0,2,4,.05],[-2,0,.05,4],[2,0,.05,4]])
     kit.add(box(w,.15,d,1),kit.tex('hazard-stripe'),{pos:[p.x+dx,.63,p.z+dz]});
@@ -272,7 +275,7 @@ function drillRig(kit,R){
     kit.beam(lo,hi,.03,steel);
   }
   kit.add(box(1,1.1,1,1),kit.tex('vented-aluminum'),{pos:[p.x,3.6,p.z]});
-  kit.beam([p.x,.55,p.z],[p.x,7.0,p.z],.07,kit.plain('rail-steel'));
+  kit.beam([p.x,.55,p.z],[p.x,7.0,p.z],.07,kit.tex('rail-steel'));
   kit.add(cyl(.32,.18,.5),kit.tex('patina-copper'),{pos:[p.x,top+.1,p.z],rot:[Math.PI/2,0,0]});
   kit.beam([p.x+.5,3.4,p.z+.3],[p.x+1.6,.6,p.z+1.4],.05,kit.tex('patina-copper'));
   // conveyor from the rig to the spoil heap
@@ -300,7 +303,7 @@ function drillRig(kit,R){
 }
 
 function tanksAndPipes(kit){
-  const green=kit.tex('tank-green'),copper=kit.tex('patina-copper'),steel=kit.plain('steel-dark');
+  const green=kit.tex('tank-green'),copper=kit.tex('patina-copper'),steel=kit.tex('dark-steel');
   for(const p of props(CAVERN,'tank')){
     kit.add(cyl(1.35,.3,2),kit.tex('form-concrete'),{pos:[p.x,.15,p.z]});
     kit.add(cyl(1.1,3.4,1.5,{seg:28}),green,{pos:[p.x,2.0,p.z]});
@@ -342,7 +345,7 @@ function caveDetails(kit,R){
 
 function hut(kit,group){
   const siding=kit.tex('corrugated-siding'),corten=kit.tex('corten-plate'),roof=kit.tex('standing-seam-roof');
-  const steel=kit.plain('steel-dark'),yellow=kit.tex('safety-yellow-steel'),grey=kit.tex('rack-powder');
+  const steel=kit.tex('dark-steel'),yellow=kit.tex('safety-yellow-steel'),grey=kit.tex('rack-powder');
   const {x1,x2,z1,z2,upper,ceiling}=HUT,cx=(x1+x2)/2,cz=(z1+z2)/2,top=6.3;
   kit.add(box(x2-x1+.3,.25,z2-z1+.15,2),kit.tex('form-concrete'),{pos:[cx,.125,cz+.07],world:2});
   const h=top-.25,wy=.25+h/2;
@@ -435,7 +438,9 @@ function hut(kit,group){
   const racks=props(CONTROL_ROOM,'racks')[0];
   for(const z of [104.6,105.25,105.9,106.55]){
     kit.add(box(.64,2.0,.6,1),grey,{pos:[racks.x+.02,u+1.0,z]});
-    kit.add(box(.02,1.9,.54,.6),kit.tex('rack-mesh-door'),{pos:[racks.x-.31,u+1.0,z]});
+    // the two middle racks stand open and show their servers
+    if(z===105.25||z===105.9)serverFront(kit,racks.x-.302,u+1.0,z);
+    else kit.add(box(.02,1.9,.54,.6),kit.tex('rack-mesh-door'),{pos:[racks.x-.31,u+1.0,z]});
   }
   const lockers=props(CONTROL_ROOM,'lockers')[0];
   kit.add(box(1.2,1.9,.48,1),grey,{pos:[lockers.x,u+.95,lockers.z-.02]});
@@ -474,7 +479,7 @@ function lake(kit,group){
   g.computeVertexNormals();
   kit.add(g,kit.tex('wet-sand'),{world:2});
   kit.add(new THREE.PlaneGeometry(32,19),kit.tex('lake-water'),{pos:[0,-.3,134.5],rot:[-Math.PI/2,0,0],world:3});
-  const flow=kit.tex('iron-flowstone'),steel=kit.plain('steel-dark'),lamp=kit.plain('lamp-warm');
+  const flow=kit.tex('iron-flowstone'),steel=kit.tex('dark-steel'),lamp=kit.plain('lamp-warm');
   for(let i=0;i<7;i++){
     const a=R()*Math.PI*2,r=Math.sqrt(R())*.7;
     const x=Math.sin(a)*LAKE.rx*r,z=LAKE.cz+Math.cos(a)*LAKE.rz*r;

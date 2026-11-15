@@ -1,0 +1,90 @@
+{
+  "id": "detail-underground",
+  "title": "作り込み A：地底空洞と地底湖",
+  "quality": "medium",
+  "tileSize": 1024,
+  "normalSize": 512,
+  "theme": "equipment and natural details in an underground cavern research station with a lake, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "dark-steel",
+      "name": "黒い鋼材",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "metalness": 0.7,
+      "normalStrength": 0.8,
+      "prompt": "dark grey structural steel with mill scale, light rust bloom and scratches, straight-on, about 1 m across"
+    },
+    {
+      "id": "rail-steel",
+      "name": "レール鋼",
+      "meters": 0.5,
+      "roughness": 0.45,
+      "metalness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "worn rail steel with a polished running surface fading into brown rust on the sides, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "vent-duct",
+      "name": "黄色い風管",
+      "meters": 1.0,
+      "roughness": 0.75,
+      "normalStrength": 1.2,
+      "seamless": "x",
+      "prompt": "yellow flexible PVC coated mine ventilation duct fabric with evenly spaced vertical ridges from the spiral reinforcing wire, dusty, straight-on, about 1 m across"
+    },
+    {
+      "id": "gas-cylinder",
+      "name": "ガスボンベの塗装",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.4,
+      "prompt": "dull teal green painted steel gas cylinder surface with small chips and scratches, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "scaffold-board",
+      "name": "足場板",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "prompt": "weathered wooden scaffold boards side by side with paint splashes, dirt and worn edges, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "tool-pegboard",
+      "name": "工具の掛かった有孔ボード",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "metalness": 0.2,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "front view of a light grey pegboard wall with hand tools hanging on hooks: spanners, hammers, pliers, screwdrivers, a hand saw and coils of cable, no text, filling the whole square"
+    },
+    {
+      "id": "hardhat-shelf",
+      "name": "ヘルメット棚",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "metalness": 0.1,
+      "normalStrength": 0.6,
+      "seamless": false,
+      "prompt": "front view of a steel shelf holding rows of white and yellow hard hats with cap lamps and hanging orange safety vests, no text, no letters, filling the whole square"
+    },
+    {
+      "id": "lampenflora",
+      "name": "照明の周りの苔",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "wet pale limestone covered with patches of bright green moss and algae growing near a lamp, straight-on, about 1 m across"
+    },
+    {
+      "id": "shore-pebbles",
+      "name": "湖岸の小石",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 1.8,
+      "prompt": "wet rounded grey and dark brown pebbles on a lake shore with a little sand between them, seen from directly above, about 1 m across"
+    }
+  ]
+}

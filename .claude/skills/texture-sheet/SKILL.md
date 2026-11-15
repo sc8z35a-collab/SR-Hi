@@ -1,15 +1,16 @@
 ---
 name: texture-sheet
-description: Generate textures for the STRATA B4 game with OpenAI GPT Image 2.5 Sunburst. One 1:1 image at the largest size (2880x2880) holds a 3x3 grid of 9 materials; the script slices it into 9 seamless tiles with normal maps and registers them in textures/manifest.json so the game can use them. Use when asked to generate, add or redo game textures ("テクスチャを生成", "画像生成して追加").
+description: Generate textures for the STRATA B4 game with OpenAI GPT Image 2.5 Sunburst. One 1:1 image at the largest size (2880x2880), quality medium, holds a 3x3 grid of 9 materials; the script slices it into 9 seamless tiles with normal maps and registers them in textures/manifest.json so the game can use them. Use when asked to generate, add or redo game textures ("テクスチャを生成", "画像生成して追加").
 ---
 
 # texture-sheet: 3x3 テクスチャシート生成スキル
 
-GPT Image 2.5 Sunburst（`gpt-image-2.5-sunburst`）で 1:1・最大サイズ 2880×2880 の画像を1枚生成し、
+GPT Image 2.5 Sunburst（`gpt-image-2.5-sunburst`）で 1:1・最大サイズ 2880×2880・品質 medium の画像を1枚生成し、
 3×3 のマスに描かせた9種類の素材を切り出してゲーム用テクスチャにします。
 
-- 1枚 = 9種類。18種類なら2枚、36種類なら4枚。
-- 既定の品質は `xhigh`。仕様ファイルの `"quality"` で `low` / `medium` / `high` / `xhigh` / `max` に変えられる。
+- 1枚 = 9種類。18種類なら2枚、36種類なら4枚、72種類なら8枚。
+- 既定の品質は `medium`（最大解像度のミディアム）。仕様ファイルの `"quality"` で `low` / `medium` / `high` / `xhigh` / `max` に変えられる。
+- 切り出したテクスチャの既定サイズは 1024px（`tileSize`）、ノーマルマップは 512px（`normalSize`）。
 - 2880×2880 は gpt-image-2.5 の上限（総画素数 8,294,400、16の倍数）で、3で割ると1マス 960px。
 
 ## API キー
@@ -28,10 +29,13 @@ export OPENAI_API_KEY_FILE=/path/to/key # キーだけを書いたファイル�
 
    ```bash
    python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all textures/specs/<sheet-id>.json
+   # 複数シートを一度に（生成は最大8枚まで並列、切り出しは順番に）
+   python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all textures/specs/facility-*.json textures/specs/detail-*.json
    ```
 
    - `generate` だけ、`slice` だけ、`prompt`（送るプロンプトを表示するだけ）も使える。
-   - 複数シートは並列に `generate` してよい（混雑時は自動で再試行する）。
+   - 混雑（429/5xx）は自動で再試行する。`insufficient_quota`（クレジット切れ）は再試行せずすぐ止まるので、
+     OpenAI の Billing でクレジットを追加してから同じコマンドをもう一度実行する。
 3. `textures/sheets/<sheet-id>.webp`（縮小プレビュー）を見て、3×3 が崩れていないか、文字が入っていないかを確認する。
 4. 2×2 に並べて継ぎ目が出ていないか確認する。規則的な模様（縞・格子）は、周期に合わせて切り出し位置を自動調整している。
 5. ゲームに組み込む（下記）。
@@ -74,6 +78,8 @@ export OPENAI_API_KEY_FILE=/path/to/key # キーだけを書いたファイル�
 
 - `textures/<id>.webp`（色）、`textures/<id>-normal.webp`（ノーマル）、`textures/manifest.json`（一覧）。
 - 既存素材の差し替え: マスに `targets` を書くだけ。`textures.js` の `applyRetexture` が読み込み時に自動で適用する。
-- 新しい物に使う: `kit.js` の `kit.tex('<id>')` でマテリアルを取り出し、`cavern.js` / `quarters.js` / `surface.js` で形を作る。
+- 新しい物に使う: `kit.js` の `kit.tex('<id>')` でマテリアルを取り出し、`cavern.js` / `quarters.js` / `surface.js` / `details.js` で形を作る。
+- 単色だった素材をテクスチャに置き換えるときは、`kit.js` の `PLAIN` に「テクスチャ id → 元の単色」を書く。テクスチャがまだ無い間は元の見た目のまま動く。
+- `details.js` の作り込み用の物は、テクスチャが無い間は `FALLBACK` の色で表示される。
 - 配置・当たり判定・床の高さは `cavern-layout.js` にまとめてある。
 - 確認はローカルサーバー（`python3 -m http.server`）でゲームを開いて行う。

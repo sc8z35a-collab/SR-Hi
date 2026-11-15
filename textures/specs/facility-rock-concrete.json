@@ -1,0 +1,109 @@
+{
+  "id": "facility-rock-concrete",
+  "title": "未テクスチャ素材の作り直し B：岩・吹付け・舗装",
+  "quality": "medium",
+  "tileSize": 1024,
+  "normalSize": 512,
+  "theme": "rock, sprayed concrete and paving in a damp underground research wing, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "wing-shotcrete",
+      "name": "増築棟の吹付けコンクリート",
+      "meters": 3.0,
+      "roughness": 0.95,
+      "normalStrength": 2.0,
+      "targets": [
+        "B4 coarse-shotcrete"
+      ],
+      "prompt": "coarse grey sprayed shotcrete tunnel lining with lumpy texture and a few damp darker patches, straight-on, about 3 m across"
+    },
+    {
+      "id": "wing-wet-asphalt",
+      "name": "湿ったアスファルト",
+      "meters": 3.0,
+      "roughness": 0.7,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 wet-asphalt"
+      ],
+      "prompt": "dark damp asphalt surface with fine aggregate, small shallow puddle sheen and smooth tyre-worn patches, seen from directly above, about 3 m across"
+    },
+    {
+      "id": "salt-stained-concrete",
+      "name": "白華の出たコンクリート",
+      "meters": 3.0,
+      "roughness": 0.9,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 salt-concrete"
+      ],
+      "prompt": "grey cast concrete wall with white efflorescence salt stains and mineral streaks running down, straight-on, about 3 m across"
+    },
+    {
+      "id": "wet-basalt-gravel",
+      "name": "濡れた玄武岩の砕石",
+      "meters": 1.5,
+      "roughness": 0.6,
+      "normalStrength": 1.8,
+      "targets": [
+        "B4 wet-gravel"
+      ],
+      "prompt": "wet dark crushed basalt gravel and small chippings, seen from directly above, about 1.5 m across"
+    },
+    {
+      "id": "fissured-basalt-wall",
+      "name": "亀裂の入った玄武岩",
+      "meters": 3.0,
+      "roughness": 0.75,
+      "normalStrength": 2.4,
+      "targets": [
+        "B4 fissured-basalt"
+      ],
+      "prompt": "dark fractured basalt rock face with deep fissures, angular facets and a faint wet sheen, straight-on, about 3 m across"
+    },
+    {
+      "id": "layered-slate-wall",
+      "name": "層状の粘板岩",
+      "meters": 3.0,
+      "roughness": 0.85,
+      "normalStrength": 2.2,
+      "targets": [
+        "Fractured slate | geo-rough-slate"
+      ],
+      "prompt": "layered grey-brown slate rock face with fractured cleavage planes and thin rust streaks, straight-on, about 3 m across"
+    },
+    {
+      "id": "damp-greenstone",
+      "name": "湿った緑色岩",
+      "meters": 2.0,
+      "roughness": 0.6,
+      "normalStrength": 1.6,
+      "targets": [
+        "Damp slate | geo-wet-basalt"
+      ],
+      "prompt": "damp dark green-grey rock with pale mineral veins and a thin film of water, straight-on, about 2 m across"
+    },
+    {
+      "id": "stud-rubber-floor",
+      "name": "丸鋲のゴム床",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.4,
+      "targets": [
+        "B4 stipple-rubber"
+      ],
+      "prompt": "black rubber floor sheet with raised round studs in a regular grid, slightly dusty and scuffed, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "amber-resin-floor",
+      "name": "琥珀色の樹脂床",
+      "meters": 2.0,
+      "roughness": 0.5,
+      "normalStrength": 0.4,
+      "targets": [
+        "B4 amber-resin"
+      ],
+      "prompt": "ochre amber resin floor coating, satin finish with fine scratches and scuff marks, seen from directly above, about 2 m across"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "detail-yard",
+  "title": "作り込み C：坑口ヤードと本館広場",
+  "quality": "medium",
+  "tileSize": 1024,
+  "normalSize": 512,
+  "theme": "working details in a mine yard and the front plaza of a research campus in Japan, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "container-blue",
+      "name": "青いコンテナ",
+      "meters": 2.4,
+      "roughness": 0.6,
+      "metalness": 0.4,
+      "normalStrength": 1.2,
+      "seamless": "x",
+      "prompt": "side of a blue steel shipping container with vertical corrugations, faded paint, rust spots and grime, no text, no numbers, straight-on, about 2.4 m across"
+    },
+    {
+      "id": "container-rust",
+      "name": "錆びた赤いコンテナ",
+      "meters": 2.4,
+      "roughness": 0.75,
+      "metalness": 0.35,
+      "normalStrength": 1.3,
+      "seamless": "x",
+      "prompt": "side of an old oxide red steel shipping container with vertical corrugations and heavy rust streaks, no text, no numbers, straight-on, about 2.4 m across"
+    },
+    {
+      "id": "cement-bags",
+      "name": "セメント袋の山",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "front view of grey paper cement sacks stacked on a wooden pallet, dusty, no printing, no text, filling the whole square"
+    },
+    {
+      "id": "portable-toilet",
+      "name": "仮設トイレの樹脂",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 0.5,
+      "prompt": "light blue molded plastic panel of a portable site toilet with shallow vertical ribs and a little dirt, no text, straight-on, about 1 m across"
+    },
+    {
+      "id": "ore-heap",
+      "name": "鉱石の山",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 2.2,
+      "prompt": "pile of dark grey ore and coal lumps with rusty brown pieces and fine dust, seen from above, about 2 m across"
+    },
+    {
+      "id": "barrier-plastic",
+      "name": "樹脂製のバリケード",
+      "meters": 1.0,
+      "roughness": 0.55,
+      "normalStrength": 0.4,
+      "seamless": "x",
+      "prompt": "weathered white and red striped molded plastic road barrier surface, scuffed, straight-on, about 1 m across"
+    },
+    {
+      "id": "food-truck",
+      "name": "キッチンカーの側面",
+      "meters": 2.0,
+      "roughness": 0.45,
+      "metalness": 0.2,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "prompt": "side of a cream and sage green painted food truck with a serving hatch, small awning and a menu board with pictures only, no text, no letters, straight-on, filling the whole square"
+    },
+    {
+      "id": "cedar-planter",
+      "name": "杉の植木箱",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.8,
+      "prompt": "horizontal weathered cedar boards of a planter box with grey patina and dark screw heads, straight-on, about 1 m across"
+    },
+    {
+      "id": "wrapped-pallet",
+      "name": "ラップ巻きの荷",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "normalStrength": 0.5,
+      "seamless": false,
+      "prompt": "front view of cardboard boxes stacked on a pallet wrapped in clear glossy stretch film with wrinkles, no text, filling the whole square"
+    }
+  ]
+}

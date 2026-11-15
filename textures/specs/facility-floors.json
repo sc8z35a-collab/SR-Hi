@@ -1,0 +1,111 @@
+{
+  "id": "facility-floors",
+  "title": "未テクスチャ素材の作り直し A：床とタイル",
+  "quality": "medium",
+  "tileSize": 1024,
+  "normalSize": 512,
+  "theme": "floors of a clean modern underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "corridor-epoxy-floor",
+      "name": "通路のエポキシ床",
+      "meters": 2.0,
+      "roughness": 0.4,
+      "metalness": 0.05,
+      "normalStrength": 0.35,
+      "targets": [
+        "Polished aggregate floor | corridor-epoxy"
+      ],
+      "prompt": "polished blue-grey epoxy aggregate floor with fine light speckles, faint trowel swirls and soft wear, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "lab-resin-floor",
+      "name": "実験室の樹脂床",
+      "meters": 2.0,
+      "roughness": 0.4,
+      "normalStrength": 0.25,
+      "targets": [
+        "Polished aggregate floor | lab-clean-resin"
+      ],
+      "prompt": "pale grey seamless cleanroom resin floor with tiny flecks and a soft satin sheen, very even and clean, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "archive-epoxy-floor",
+      "name": "保管庫の珪砂エポキシ床",
+      "meters": 2.0,
+      "roughness": 0.55,
+      "normalStrength": 0.5,
+      "targets": [
+        "Polished aggregate floor | archive-silica-epoxy"
+      ],
+      "prompt": "cool grey silica sand epoxy floor with fine quartz grit and a few darker scuff marks, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "control-esd-floor",
+      "name": "制御室の導電床タイル",
+      "meters": 1.2,
+      "roughness": 0.5,
+      "normalStrength": 0.4,
+      "targets": [
+        "Polished aggregate floor | control-conductive-floor"
+      ],
+      "prompt": "blue-grey conductive vinyl floor tiles 60 cm square in a 2 by 2 grid with soft marbled veining and thin dark joints, seen from directly above, about 1.2 m across"
+    },
+    {
+      "id": "geo-epoxy-floor",
+      "name": "地質室の砕石エポキシ床",
+      "meters": 2.0,
+      "roughness": 0.55,
+      "normalStrength": 0.6,
+      "targets": [
+        "Polished aggregate floor | geo-epoxy"
+      ],
+      "prompt": "greenish grey epoxy floor with embedded crushed stone chips, gently worn, a few faint dried mud smears, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "plant-grit-plate",
+      "name": "機械室の滑り止め鋼板床",
+      "meters": 1.5,
+      "roughness": 0.85,
+      "metalness": 0.3,
+      "normalStrength": 1.2,
+      "targets": [
+        "Dark textured access floor | plant-grit-floor"
+      ],
+      "prompt": "dark grey anti-slip grit coated steel floor plates with a bolt head at each corner and thin seams, seen from directly above, about 1.5 m across"
+    },
+    {
+      "id": "graphite-epoxy-floor",
+      "name": "黒鉛色のエポキシ床",
+      "meters": 2.0,
+      "roughness": 0.5,
+      "normalStrength": 0.45,
+      "targets": [
+        "B4 graphite-epoxy"
+      ],
+      "prompt": "dark graphite grey epoxy floor with fine aggregate, light scuff marks and a few hairline cracks, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "sage-terrazzo-floor",
+      "name": "セージ色の研ぎ出し床",
+      "meters": 2.0,
+      "roughness": 0.35,
+      "normalStrength": 0.3,
+      "targets": [
+        "B4 sage-epoxy"
+      ],
+      "prompt": "pale sage green terrazzo floor with small white, grey and dark green stone chips, polished, seen from directly above, about 2 m across"
+    },
+    {
+      "id": "porcelain-grid-tile",
+      "name": "白い磁器タイル",
+      "meters": 1.2,
+      "roughness": 0.25,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 porcelain-tile"
+      ],
+      "prompt": "white glazed porcelain wall tiles 30 cm square in a regular 4 by 4 grid with thin light grey grout lines, very slight colour variation between tiles, about 1.2 m across"
+    }
+  ]
+}

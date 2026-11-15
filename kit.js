@@ -90,6 +90,13 @@ export function lumpy(geo,amount,frequency,seed=0){
 }
 
 const KEEP=['position','normal','uv'];
+// Generated textures that replace materials which used to be plain colours. Until the texture
+// exists in the manifest, the old plain material is used, so the scene looks the same as before.
+const PLAIN={
+  'dark-steel':['steel-dark',{}],
+  'rail-steel':['rail-steel',{color:0x55595c,roughness:.4,metalness:.85}],
+  'vending-red':['vending-body',{color:0xa8222c,roughness:.35,metalness:.3}],
+};
 export class Kit{
   constructor(textures){
     this.textures=textures;
@@ -102,6 +109,7 @@ export class Kit{
     const key=id+(opts.variant?':'+opts.variant:'');
     if(this.materials.has(key))return this.materials.get(key);
     const t=this.textures.get(id);
+    if(!t&&PLAIN[id])return this.plain(...PLAIN[id]);
     const m=new THREE.MeshStandardMaterial({
       name:'Generated '+key,
       color:t?0xffffff:(opts.fallback??0x8a8f92),

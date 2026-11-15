@@ -84,6 +84,9 @@ export const CAVERN = {
     prop('crystal', -14.6, 100.5, 2.2, 2.2), prop('painting', -15.1, 95.6, 1.0, 2.6), prop('crystal', 6.6, 89.6, 1.6, 1.6), prop('crystal', 12.3, 111.4, 2.0, 2.0),
     prop('stalagmite', -15.2, 95.5, 1.2, 1.2), prop('stalagmite', 8.0, 114.6, 1.0, 1.0),
     prop('stalagmite', -9.5, 114.2, 1.0, 1.0), prop('stalagmite', 15.0, 104.0, 1.2, 1.2), prop('stalagmite', -14.8, 108.0, 1.2, 1.2),
+    // details (details.js): ventilation fan and duct post, gas cylinders, scaffold, tool board, hard-hat shelf
+    prop('vent-fan', -2.6, 92.0, 1.0, .8), prop('duct-post', -4.9, 94.3, .3, .3), prop('gas-rack', 7.6, 95.6, 1.4, .6),
+    prop('scaffold', 13.0, 98.0, 2.0, 1.2), prop('pegboard', -4.9, 100.45, 1.6, .2), prop('hardhats', -3.0, 89.9, 1.2, .4),
   ],
 };
 
@@ -141,7 +144,8 @@ export const WASHITSU = {
   entry:suiteDoor('16'), terminal:[26.75, 85.0],
   data:[['畳','16 枚'],['床の間','掛軸 1 幅'],['室温','22.0 °C'],['湿度','52 %']],
   floors:suiteFloors('16'),
-  props:[prop('tansu', 26.42, 89.8, .55, 1.5), prop('tokonoma', 30.1, 91.4, 3.0, 1.0), prop('shelves', 27.35, 91.4, 2.5, 1.0), prop('chabudai', 28.8, 87.8, 1.15, 1.15), prop('andon', 31.1, 84.6, .45, .45)],
+  props:[prop('tansu', 26.42, 89.8, .55, 1.5), prop('tokonoma', 30.1, 91.4, 3.0, 1.0), prop('shelves', 27.35, 91.4, 2.5, 1.0), prop('chabudai', 28.8, 87.8, 1.15, 1.15), prop('andon', 31.1, 84.6, .45, .45),
+    prop('byobu', 28.8, 84.5, 2.9, .45), prop('futon', 26.55, 86.4, .65, .9)],
 };
 export const YOSHITSU = {
   code:'17', name:'洋室', view:'yoshitsu', short:'洋室', side:0,
@@ -151,7 +155,7 @@ export const YOSHITSU = {
   floors:suiteFloors('17'),
   props:[prop('fireplace', 29.0, 99.55, 2.3, .75), prop('sofa', 29.0, 97.0, 2.5, 1.0), prop('armchair', 27.2, 98.3, .95, .95),
     prop('armchair', 30.85, 98.3, .95, .95), prop('coffee-table', 29.0, 98.45, 1.0, .55), prop('bookshelf', 31.35, 94.2, .45, 1.9), prop('floor-lamp', 26.6, 99.3, .4, .4),
-    prop('piano', 30.85, 92.5, 1.4, .65), prop('globe', 31.1, 96.1, .6, .6)],
+    prop('piano', 30.85, 92.5, 1.4, .65), prop('globe', 31.1, 96.1, .6, .6), prop('wine-rack', 26.3, 97.6, .4, 1.0)],
 };
 export const MEETING = {
   code:'18', name:'会議室', view:'meeting', short:'会議', side:0,
@@ -190,6 +194,9 @@ export const SURFACE = {
     prop('lantern', 36.4, 190.3, .55, .55), prop('lantern', 39.2, 190.3, .55, .55),
     prop('hokora', 37.8, 192.6, 1.7, 1.5), prop('ema', 39.45, 191.4, .3, 1.3),
     prop('tree', 10.2, 165.4, .7, .7), prop('tree', 10.4, 173.0, .7, .7), prop('tree', 38.6, 182.4, .7, .7),
+    // details (details.js): stacked containers, cement, wrapped pallet, portable toilet, ore heap, barriers
+    prop('containers', 35.5, 163.3, 6.1, 2.44), prop('cement', 29.0, 171.3, 1.2, 1.0), prop('wrapped-pallet', 26.6, 176.6, 1.1, 1.1),
+    prop('toilet', 10.2, 190.0, 1.2, 1.2), prop('ore-heap', 28.6, 187.4, 3.0, 2.4), prop('barriers', 28.0, 190.5, .5, 2.4),
   ],
 };
 

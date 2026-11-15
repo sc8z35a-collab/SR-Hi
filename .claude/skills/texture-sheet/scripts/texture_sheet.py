@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Generate a 3x3 texture sheet with GPT Image 2.5 Sunburst and slice it into 9 game textures.
 
-Usage (from the repository root):
-  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py generate textures/specs/<sheet>.json
-  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py slice    textures/specs/<sheet>.json
-  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all      textures/specs/<sheet>.json
+Usage (from the repository root; several spec files may be given and are generated in parallel):
+  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py generate textures/specs/<sheet>.json [...]
+  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py slice    textures/specs/<sheet>.json [...]
+  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all      textures/specs/<sheet>.json [...]
+  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py prompt   textures/specs/<sheet>.json
 
 The API key is read from the OPENAI_API_KEY environment variable, or from the file named by
 OPENAI_API_KEY_FILE. It is never written anywhere.
@@ -18,6 +19,7 @@ import sys
 import time
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import numpy as np
@@ -30,7 +32,8 @@ DEFAULTS = {
     # 1:1 at the largest size the model accepts: 2880*2880 = 8,294,400 px (the documented cap),
     # a multiple of 16, and divisible by 3 -> 960 px per cell.
     "size": "2880x2880",
-    "quality": "xhigh",
+    # medium at the largest size: the quality this project uses for every sheet.
+    "quality": "medium",
     "tileSize": 1024,      # albedo output size (px)
     "normalSize": 512,     # normal map output size (px)
     "inset": 16,           # px trimmed from every cell edge (removes bleed from neighbours)
@@ -116,6 +119,10 @@ def generate(spec_path: Path) -> Path:
             break
         except urllib.error.HTTPError as e:
             detail = e.read().decode(errors="replace")[:2000]
+            if "insufficient_quota" in detail:
+                # a billing problem, not congestion: retrying cannot help
+                sys.exit(f"[{spec['id']}] no API credits left (insufficient_quota). "
+                         "Add credits at platform.openai.com > Settings > Billing, then run again.")
             if e.code in (429, 500, 502, 503, 504) and attempt < 4:
                 wait = 20 * (attempt + 1)
                 print(f"[{spec['id']}] API {e.code}, retrying in {wait}s: {detail[:200]}", flush=True)
@@ -262,16 +269,32 @@ def slice_sheet(spec_path: Path) -> None:
 
 
 def main() -> None:
-    if len(sys.argv) != 3 or sys.argv[1] not in {"generate", "slice", "all", "prompt"}:
+    if len(sys.argv) < 3 or sys.argv[1] not in {"generate", "slice", "all", "prompt"}:
         sys.exit(__doc__)
-    cmd, spec_path = sys.argv[1], Path(sys.argv[2])
+    cmd, spec_paths = sys.argv[1], [Path(p) for p in sys.argv[2:]]
+    for p in spec_paths:
+        load_spec(p)  # validate every spec before spending anything
     if cmd == "prompt":
-        print(build_prompt(load_spec(spec_path)))
+        for p in spec_paths:
+            print(build_prompt(load_spec(p)))
         return
     if cmd in {"generate", "all"}:
-        generate(spec_path)
+        api_key()
+        failed = []
+        def run(p: Path) -> None:
+            try:
+                generate(p)
+            except SystemExit as e:  # keep the other sheets going
+                print(e, file=sys.stderr, flush=True)
+                failed.append(p)
+        with ThreadPoolExecutor(max_workers=min(8, len(spec_paths))) as pool:
+            list(pool.map(run, spec_paths))
+        if failed:
+            sys.exit("failed: " + " ".join(str(p) for p in failed))
     if cmd in {"slice", "all"}:
-        slice_sheet(spec_path)
+        # slicing updates one shared manifest, so it runs one sheet at a time
+        for p in spec_paths:
+            slice_sheet(p)
 
 
 if __name__ == "__main__":

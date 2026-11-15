@@ -81,7 +81,7 @@ function shellAndHall(kit,group){
   plant(kit,props(LIVING,'plant')[0],R);
   // vending machine, extinguishers and a first-aid cabinet
   const vend=props(LIVING,'vending')[0];
-  kit.add(box(.75,1.85,1.0,1),kit.plain('vending-body',{color:0xa8222c,roughness:.35,metalness:.3}),{pos:[vend.x,.925,vend.z]});
+  kit.add(box(.75,1.85,1.0,1),kit.tex('vending-red'),{pos:[vend.x,.925,vend.z]});
   kit.add(new THREE.PlaneGeometry(1.0,1.85),kit.tex('vending-front'),{pos:[vend.x+.38,.925,vend.z],rot:[0,Math.PI/2,0]});
   extinguisher(kit,h.x2-.1,0,90.6,-Math.PI/2);
   extinguisher(kit,h.x1+.1,0,106.6,Math.PI/2);
