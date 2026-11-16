@@ -2,7 +2,7 @@
   "id": "facility-metal-finishes",
   "title": "未テクスチャ素材の作り直し C：金属と塗装",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "metal finishes and paints on doors, ducts and equipment of an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -16,6 +16,7 @@
       "targets": [
         "B4 black-steel"
       ],
+      "flatten": true,
       "prompt": "dark blackened steel plate with mill scale, faint scratches and a few soft handprint smudges, straight-on, about 2 m across"
     },
     {
@@ -28,7 +29,10 @@
       "targets": [
         "B4 duct-rib"
       ],
-      "seamless": "x",
+      "flatten": {
+        "strength": 1,
+        "radius": 0.07
+      },
       "prompt": "galvanized steel ventilation duct with evenly spaced horizontal raised ribs and light zinc spangle, straight-on, about 1 m across"
     },
     {
@@ -53,6 +57,10 @@
       "targets": [
         "B4 frost-stainless"
       ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
       "prompt": "stainless steel surface covered with white frost and fine ice crystals, cold storage, straight-on, about 1 m across"
     },
     {
@@ -65,6 +73,10 @@
       "targets": [
         "B4 brush-steel"
       ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.06
+      },
       "prompt": "brushed stainless steel with fine straight horizontal grain and a few faint fingerprints, straight-on, about 1 m across"
     },
     {
@@ -77,6 +89,7 @@
       "targets": [
         "B4 blue-firedoor"
       ],
+      "flatten": true,
       "prompt": "muted steel blue painted steel fire door surface, satin paint with small chips and scuffs near the bottom, straight-on, about 1.5 m across"
     },
     {
@@ -89,6 +102,7 @@
       "targets": [
         "B4 cobalt-enamel"
       ],
+      "flatten": true,
       "prompt": "deep cobalt blue enamel paint on steel, slightly glossy with light scratches, straight-on, about 1 m across"
     },
     {
@@ -101,6 +115,7 @@
       "targets": [
         "B4 petrol-powder"
       ],
+      "flatten": true,
       "prompt": "petrol blue powder coated metal with fine orange-peel texture and soft wear on edges, straight-on, about 1 m across"
     },
     {

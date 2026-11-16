@@ -29,13 +29,22 @@ export OPENAI_API_KEY_FILE=/path/to/key # キーだけを書いたファイル�
 
    ```bash
    python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all textures/specs/<sheet-id>.json
-   # 複数シートを一度に（生成は最大8枚まで並列、切り出しは順番に）
-   python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all textures/specs/facility-*.json textures/specs/detail-*.json
+   # 複数シートを一度に（生成は最大8枚まで並列、切り出しは順番に）。
+   # ワイルドカードは既存のシートまで拾って作り直してしまうので、ファイル名を並べて指定する
+   python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all textures/specs/detail-rooms.json textures/specs/detail-yard.json
    ```
 
    - `generate` だけ、`slice` だけ、`prompt`（送るプロンプトを表示するだけ）も使える。
    - 混雑（429/5xx）は自動で再試行する。`insufficient_quota`（クレジット切れ）は再試行せずすぐ止まるので、
      OpenAI の Billing でクレジットを追加してから同じコマンドをもう一度実行する。
+   - 別の場所（ChatGPT など）で作った 3×3 の画像を使うときは、`generate` の代わりに `import` で取り込んでから `slice` する:
+
+     ```bash
+     python3 .claude/skills/texture-sheet/scripts/texture_sheet.py import ~/Downloads/sheet.png textures/specs/<sheet-id>.json
+     python3 .claude/skills/texture-sheet/scripts/texture_sheet.py slice textures/specs/<sheet-id>.json
+     ```
+
+     画像の大きさは問わない（余白と継ぎ目の幅は画像の大きさに合わせて自動で調整する）。1254px 程度なら `"tileSize": 512` にする。
 3. `textures/sheets/<sheet-id>.webp`（縮小プレビュー）を見て、3×3 が崩れていないか、文字が入っていないかを確認する。
 4. 2×2 に並べて継ぎ目が出ていないか確認する。規則的な模様（縞・格子）は、周期に合わせて切り出し位置を自動調整している。
 5. ゲームに組み込む（下記）。
@@ -69,6 +78,9 @@ export OPENAI_API_KEY_FILE=/path/to/key # キーだけを書いたファイル�
 | `emissive` | 発光の強さ（光る結晶、障子、画面など） |
 | `targets` | 既存の glTF マテリアル名の配列。指定すると、その素材の模様を自動で差し替える |
 | `normalStrength` | 明るさから作るノーマルマップの強さ。`0` で作らない |
+| `crop` | マスの一部だけを使う `[左, 上, 右, 下]`（0〜1）。物の写真になったマスから素材の部分だけを取り出す（例: 巣箱の写真から板の部分） |
+| `flatten` | 写り込んだ照明（光沢の反射、筒の陰影）を消して均一に繰り返せるようにする。`true`、強さの数値、または `{"strength":1,"radius":0.04}`（radius を小さくすると細い反射の筋も消える） |
+| `knockout` | 白っぽい背景を色に置き換える（例: 金網の白背景を暗くする）`{"min":0.78,"color":"#2b2e31"}` |
 | `tone` | 色の仕上げ（既定 `{"saturation":0.86,"contrast":0.9,"lift":0.035}`）。濃すぎ・暗すぎを防ぐ。`false` で無効。シート全体にも書ける |
 
 プロンプトのコツ: 「真上から／正面から」「about N m across」を書く。色は濃くしすぎず「soft muted natural colours, moderate contrast」を添える。文字が出やすい物（看板、本、画面）には

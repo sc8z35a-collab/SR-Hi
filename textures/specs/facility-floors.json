@@ -2,7 +2,7 @@
   "id": "facility-floors",
   "title": "未テクスチャ素材の作り直し A：床とタイル",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "floors of a clean modern underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -16,6 +16,10 @@
       "targets": [
         "Polished aggregate floor | corridor-epoxy"
       ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
       "prompt": "polished blue-grey epoxy aggregate floor with fine light speckles, faint trowel swirls and soft wear, seen from directly above, about 2 m across"
     },
     {
@@ -27,6 +31,10 @@
       "targets": [
         "Polished aggregate floor | lab-clean-resin"
       ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
       "prompt": "pale grey seamless cleanroom resin floor with tiny flecks and a soft satin sheen, very even and clean, seen from directly above, about 2 m across"
     },
     {
@@ -38,12 +46,13 @@
       "targets": [
         "Polished aggregate floor | archive-silica-epoxy"
       ],
+      "flatten": true,
       "prompt": "cool grey silica sand epoxy floor with fine quartz grit and a few darker scuff marks, seen from directly above, about 2 m across"
     },
     {
       "id": "control-esd-floor",
       "name": "制御室の導電床タイル",
-      "meters": 1.2,
+      "meters": 0.6,
       "roughness": 0.5,
       "normalStrength": 0.4,
       "targets": [
@@ -65,7 +74,7 @@
     {
       "id": "plant-grit-plate",
       "name": "機械室の滑り止め鋼板床",
-      "meters": 1.5,
+      "meters": 1.0,
       "roughness": 0.85,
       "metalness": 0.3,
       "normalStrength": 1.2,
@@ -83,6 +92,10 @@
       "targets": [
         "B4 graphite-epoxy"
       ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
       "prompt": "dark graphite grey epoxy floor with fine aggregate, light scuff marks and a few hairline cracks, seen from directly above, about 2 m across"
     },
     {
@@ -99,7 +112,7 @@
     {
       "id": "porcelain-grid-tile",
       "name": "白い磁器タイル",
-      "meters": 1.2,
+      "meters": 0.35,
       "roughness": 0.25,
       "normalStrength": 0.5,
       "targets": [

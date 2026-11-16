@@ -2,7 +2,7 @@
   "id": "detail-countryside",
   "title": "作り込み D：里山・渓谷・台地",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "everyday rural details of a Japanese mountain village, river valley and grassy plateau, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -29,6 +29,7 @@
       "meters": 1.0,
       "roughness": 0.9,
       "normalStrength": 1.8,
+      "seamless": false,
       "prompt": "rough grey granite blocks of an old village well, mossy joints and lichen, straight-on, about 1 m across"
     },
     {
@@ -46,6 +47,13 @@
       "meters": 1.5,
       "roughness": 0.9,
       "normalStrength": 1.2,
+      "crop": [
+        0.45,
+        0.17,
+        0.63,
+        0.33
+      ],
+      "flatten": true,
       "prompt": "weathered grey concrete with small air holes, water stains and green algae near the bottom, straight-on, about 1.5 m across"
     },
     {
@@ -54,7 +62,13 @@
       "meters": 1.5,
       "roughness": 0.4,
       "normalStrength": 0.8,
-      "seamless": "x",
+      "crop": [
+        0.08,
+        0.1,
+        0.46,
+        0.4
+      ],
+      "flatten": true,
       "prompt": "white plastic stretch film wrapped around a round hay bale, overlapping glossy layers with creases and dirt, straight-on, about 1.5 m across"
     },
     {
@@ -72,6 +86,13 @@
       "meters": 1.0,
       "roughness": 0.95,
       "normalStrength": 0.4,
+      "crop": [
+        0.04,
+        0.1,
+        0.96,
+        0.93
+      ],
+      "seamless": false,
       "prompt": "Japanese futon cover with a cheerful pattern of small flowers and stripes in soft pink, cream and blue cotton, straight-on, about 1 m across"
     },
     {
@@ -81,6 +102,12 @@
       "roughness": 0.85,
       "normalStrength": 1.0,
       "seamless": false,
+      "crop": [
+        0.2,
+        0.16,
+        0.8,
+        0.82
+      ],
       "prompt": "weathered wooden beehive boxes stacked, grey cedar with dark joints and a small entrance slot, straight-on, about 0.6 m across"
     }
   ]

@@ -81,7 +81,7 @@ function gasRack(kit){
   for(const y of [.75,1.15])kit.add(box(p.w,.04,.04,.5),steel,{pos:[p.x,y,p.z-.25]});
   for(let i=0;i<5;i++){
     const x=p.x-.5+i*.25,z=p.z+(i%2?.04:-.02);
-    kit.add(cyl(.115,1.3,.6,{seg:18}),gas,{pos:[x,.7,z]});
+    kit.add(new THREE.CylinderGeometry(.115,.115,1.3,18),gas,{pos:[x,.7,z],rot:[0,i*1.3,0]});
     kit.add(new THREE.SphereGeometry(.115,18,8,0,Math.PI*2,0,Math.PI/2),gas,{pos:[x,1.35,z]});
     kit.add(cyl(.035,.14,.3,{seg:8}),kit.tex('brass-antique'),{pos:[x,1.52,z]});
   }
@@ -171,7 +171,7 @@ function quarters(kit){
   }
   const f=P(WASHITSU,'futon')[0];
   kit.add(new THREE.BoxGeometry(f.w,.62,f.d),T(kit,'futon-stack'),{pos:[f.x,.31,f.z]});
-  kit.add(box(f.w+.02,.07,f.d+.02,.8),T(kit,'airing-futon'),{pos:[f.x,.655,f.z]});
+  kit.add(new THREE.BoxGeometry(f.w+.02,.07,f.d+.02),T(kit,'airing-futon'),{pos:[f.x,.655,f.z],rot:[0,Math.PI/2,0]});
   kit.add(box(.4,.1,.25,.4),kit.tex('washi-paper'),{pos:[f.x,.74,f.z-.2]});
   // 洋室: wine rack beside the door
   const w=P(YOSHITSU,'wine-rack')[0],wx=SUITE_X.x1+.17;
@@ -180,12 +180,12 @@ function quarters(kit){
   const bottle=kit.plain('bottle-glass',{color:0x23392b,roughness:.15,metalness:.1});
   for(const dz of [-.3,-.18,.25])kit.add(cyl(.036,.3,.3,{seg:10}),bottle,{pos:[wx,1.35,w.z+dz]});
   // living corridor: kilim runner, notice board, coat hooks
-  const runner=scaleUV(new THREE.PlaneGeometry(1.0,(h.z2-h.z1)-2.4),1,(h.z2-h.z1)-2.4);
+  const len=(h.z2-h.z1)-2.4,runner=new THREE.PlaneGeometry(1.0,len),ruv=runner.attributes.uv;
+  for(let i=0;i<ruv.count;i++)ruv.setXY(i,ruv.getY(i)*len,1-ruv.getX(i));
   kit.add(runner,T(kit,'kilim-runner'),{pos:[(h.x1+h.x2)/2,.008,(h.z1+h.z2)/2],rot:[-Math.PI/2,0,0]});
   kit.add(box(.03,.98,1.28,1),walnut,{pos:[h.x1+.025,1.55,92.3]});
   kit.add(new THREE.PlaneGeometry(1.2,.9),T(kit,'notice-board'),{pos:[h.x1+.042,1.55,92.3],rot:[0,Math.PI/2,0]});
-  kit.add(new THREE.PlaneGeometry(1.2,1.2),T(kit,'coat-hooks'),{pos:[h.x2-.035,1.4,92.8],rot:[0,-Math.PI/2,0]});
-  kit.add(box(.04,.08,1.26,.6),kit.tex('hinoki'),{pos:[h.x2-.04,2.04,92.8]});
+  kit.add(cropped(1.2,.4,0,1,.44,.77),T(kit,'coat-hooks'),{pos:[h.x2-.035,1.75,92.8],rot:[0,-Math.PI/2,0]});
   kit.add(box(.36,.05,1.1,.6),kit.tex('rubber-tread'),{pos:[h.x2-.2,.025,92.8]});
   // 会議室: a framed woodblock print on the felt wall
   const m=SUITES['18'];
@@ -214,23 +214,21 @@ function yard(kit,R){
   const c=P(SURFACE,'containers')[0],L=6.06,H=2.59,W=2.44;
   for(const [id,y,dx,rot] of [['container-blue',0,0,0],['container-rust',H,.35,.03]]){
     const {at,q}=turn(c.x+dx,Y+y,c.z,rot);
-    kit.add(box(L,H,W,2.4),T(kit,id),{pos:at(0,H/2,0),quat:q});
+    kit.add(planarUV(new THREE.BoxGeometry(L,H,W).translate(0,H/2,0),H),T(kit,id),{pos:at(0,0,0),quat:q});
     for(const sx of [-1,1])for(const sy of [0,1])for(const sz of [-1,1])
       kit.add(box(.18,.12,.18,.3),steel,{pos:at(sx*(L/2-.08),sy*(H-.12)+.06,sz*(W/2-.08)),quat:q});
     for(const dz of [-.75,-.3,.3,.75])kit.add(cyl(.025,H-.2,.5,{seg:6}),steel,{pos:at(L/2+.03,H/2,dz),quat:q});
   }
   // cement on a pallet, a stretch-wrapped pallet of boxes
   const ce=P(SURFACE,'cement')[0];
-  kit.add(box(ce.w,.14,ce.d,1),kit.tex('pallet-wood'),{pos:[ce.x,Y+.07,ce.z]});
-  kit.add(new THREE.BoxGeometry(ce.w-.1,.8,ce.d-.1),T(kit,'cement-bags'),{pos:[ce.x,Y+.54,ce.z]});
+  kit.add(new THREE.BoxGeometry(ce.w,.95,ce.d),T(kit,'cement-bags'),{pos:[ce.x,Y+.475,ce.z]});
+  kit.add(cropped(ce.w,ce.d,.05,.47,.78,.94),T(kit,'cement-bags'),{pos:[ce.x,Y+.952,ce.z],rot:[-Math.PI/2,0,0]});
   const wp=P(SURFACE,'wrapped-pallet')[0];
-  kit.add(box(wp.w,.14,wp.d,1),kit.tex('pallet-wood'),{pos:[wp.x,Y+.07,wp.z]});
-  kit.add(new THREE.BoxGeometry(wp.w-.05,1.0,wp.d-.05),T(kit,'wrapped-pallet'),{pos:[wp.x,Y+.64,wp.z]});
+  kit.add(new THREE.BoxGeometry(wp.w,1.15,wp.d),T(kit,'wrapped-pallet'),{pos:[wp.x,Y+.575,wp.z]});
   // portable toilet beside the guardhouse
   const tt=P(SURFACE,'toilet')[0],plastic=T(kit,'portable-toilet');
-  kit.add(box(1.1,2.2,1.1,1),plastic,{pos:[tt.x,Y+1.1,tt.z]});
+  kit.add(new THREE.BoxGeometry(1.1,2.2,1.1),plastic,{pos:[tt.x,Y+1.1,tt.z]});
   kit.add(box(1.2,.08,1.2,1),kit.tex('white-composite'),{pos:[tt.x,Y+2.24,tt.z]});
-  kit.add(box(.02,1.9,.8,1),T(kit,'portable-toilet',{variant:'door',color:0xdfe9ef}),{pos:[tt.x+.56,Y+1.05,tt.z]});
   kit.add(box(.04,.12,.04,.3),steel,{pos:[tt.x+.58,Y+1.1,tt.z+.3]});
   kit.beam([tt.x-.45,Y+2.2,tt.z-.45],[tt.x-.45,Y+2.6,tt.z-.45],.045,kit.tex('molded-plastic'));
   // ore heap by the headframe
@@ -243,10 +241,7 @@ function yard(kit,R){
   }
   // water-filled plastic barriers along the gate road
   const br=P(SURFACE,'barriers')[0],barrier=T(kit,'barrier-plastic');
-  for(const dz of [-.6,.6]){
-    kit.add(box(.48,.55,1.16,1),barrier,{pos:[br.x,Y+.275,br.z+dz]});
-    kit.add(box(.28,.3,1.16,1),barrier,{pos:[br.x,Y+.7,br.z+dz]});
-  }
+  for(const dz of [-.6,.6])kit.add(new THREE.BoxGeometry(.42,.9,1.16),barrier,{pos:[br.x,Y+.45,br.z+dz]});
 }
 
 function plaza(kit,R){
@@ -254,14 +249,13 @@ function plaza(kit,R){
   const t=P(HQ_ZONE,'food-truck')[0],y=G(t.x,t.z),body=kit.tex('white-composite');
   const bz=t.z-.7,cz=t.z+1.8;
   kit.add(box(2.2,2.3,3.6,1),body,{pos:[t.x,y+1.65,bz]});
-  kit.add(cropped(3.5,2.1,0,1,.14,.86),T(kit,'food-truck'),{pos:[t.x-1.106,y+1.62,bz],rot:[0,-Math.PI/2,0]});
+  kit.add(cropped(3.5,2.1,0,1,.27,1),T(kit,'food-truck'),{pos:[t.x-1.106,y+1.62,bz],rot:[0,-Math.PI/2,0]});
   kit.add(box(2.1,1.5,1.4,1),kit.tex('car-white'),{pos:[t.x,y+1.25,cz]});
   kit.add(new THREE.PlaneGeometry(1.9,.7),kit.tex('car-glass'),{pos:[t.x,y+1.6,cz+.705]});
   for(const s of [-1,1])kit.add(new THREE.PlaneGeometry(.9,.55),kit.tex('car-glass'),{pos:[t.x+s*1.056,y+1.62,cz+.2],rot:[0,s*Math.PI/2,0]});
   for(const dz of [-1.6,1.6])for(const s of [-1,1])kit.add(cyl(.36,.26,.6,{seg:16}),kit.tex('tire-rubber'),{pos:[t.x+s*.98,y+.36,t.z+dz],rot:[0,0,Math.PI/2]});
   kit.add(box(2.0,.3,4.9,1),kit.tex('dark-steel'),{pos:[t.x,y+.5,t.z]});
-  kit.add(box(.9,.03,2.8,1),kit.tex('parasol-canvas'),{pos:[t.x-1.5,y+2.55,bz],rot:[0,0,-.25]});
-  kit.add(box(.4,.04,2.6,.6),kit.tex('cafe-table'),{pos:[t.x-1.3,y+1.1,bz]});
+  kit.add(box(.3,.04,1.5,.6),kit.tex('cafe-table'),{pos:[t.x-1.25,y+1.62,bz+.55]});
   // cedar planters flanking the walk from the road
   for(const p of P(HQ_ZONE,'planter-box')){
     const py=G(p.x,p.z);
@@ -292,8 +286,10 @@ function village(kit,R){
   kit.beam([bf.x-bf.w/2,by+1.45,bf.z+.05],[bf.x+bf.w/2,by+1.45,bf.z+.05],.03,bamboo,.6,8);
   // stone well with a wooden lid and a little roof
   const w=P(VILLAGE,'well')[0],wy=G(w.x,w.z),stone=T(kit,'well-stone'),wood=kit.tex('timber-beam');
-  kit.add(cyl(.62,.75,1,{seg:22}),stone,{pos:[w.x,wy+.375,w.z]});
-  for(const dz of [-.17,.17])kit.add(box(1.3,.05,.32,.6),kit.tex('pier-planks'),{pos:[w.x,wy+.78,w.z+dz]});
+  const ring=new THREE.CylinderGeometry(.62,.62,.75,24),ruv=ring.attributes.uv,rn=ring.attributes.normal;
+  for(let i=0;i<ruv.count;i++)if(Math.abs(rn.getY(i))<.5)ruv.setXY(i,.1+ruv.getX(i)*.8,.05+ruv.getY(i)*.38);
+  kit.add(ring,stone,{pos:[w.x,wy+.375,w.z]});
+  kit.add(box(1.3,.05,.32,.6),kit.tex('pier-planks'),{pos:[w.x,wy+.78,w.z+.2]});
   for(const dx of [-.66,.66])kit.add(box(.1,2.2,.1,.6,{swap:true}),wood,{pos:[w.x+dx,wy+1.1,w.z]});
   kit.add(box(1.5,.08,.1,.6),wood,{pos:[w.x,wy+2.0,w.z]});
   for(const s of [-1,1])kit.add(box(1.7,.05,.6,1),kit.tex('kokera-shingle'),{pos:[w.x,wy+2.32,w.z+s*.26],rot:[s*.55,0,0]});
@@ -321,7 +317,7 @@ function village(kit,R){
   }
   kit.beam([fp.x-1.6,fy+1.7,fp.z],[fp.x+1.6,fy+1.7,fp.z],.025,bamboo,.6,8);
   const futon=T(kit,'airing-futon',{variant:'hung',side:THREE.DoubleSide});
-  for(const dx of [-.65,.65])for(const s of [-1,1])kit.add(box(1.0,.95,.04,1),futon,{pos:[fp.x+dx+R()*.1,fy+1.22,fp.z+s*.06],rot:[s*.07,0,0]});
+  for(const dx of [-.65,.65])for(const s of [-1,1])kit.add(new THREE.BoxGeometry(1.0,.95,.04),futon,{pos:[fp.x+dx+R()*.1,fy+1.22,fp.z+s*.06],rot:[s*.07,0,0]});
   // Japanese honeybee hives at the edge of the fields
   const hv=P(VILLAGE,'hives')[0];
   for(let i=0;i<3;i++){
@@ -335,20 +331,20 @@ function village(kit,R){
 
 function riverbank(kit,R){
   // concrete tetrapods at the outer bend below the iron bridge, half sunk at the waterline
-  const concrete=T(kit,'tetrapod-concrete'),up=new THREE.Vector3(0,1,0);
+  const concrete=T(kit,'tetrapod-concrete',{color:0xc4c4bc}),up=new THREE.Vector3(0,1,0);
   const legs=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]].map(d=>new THREE.Vector3(...d).normalize());
   const leg=new THREE.CylinderGeometry(.17,.32,1.0,9);
   const place=(x,z)=>{
     const turn=new THREE.Quaternion().setFromEuler(new THREE.Euler(R()*3,R()*3,R()*3));
-    const c=new THREE.Vector3(x,G(x,z)-.15,z);
+    const c=new THREE.Vector3(x,Math.max(G(x,z),RIVER.water)+.3,z);
     kit.add(new THREE.SphereGeometry(.34,12,8),concrete,{pos:c.toArray(),world:1.5});
     for(const d of legs){
       const dir=d.clone().applyQuaternion(turn);
       kit.add(leg,concrete,{pos:c.clone().addScaledVector(dir,.55).toArray(),quat:new THREE.Quaternion().setFromUnitVectors(up,dir),world:1.5});
     }
   };
-  for(let x=50.5;x<=59.5;x+=1.5)place(x+(R()-.5)*.4,RIVER.z(x)-5.7+(R()-.5)*.5);
-  for(let x=51.5;x<=56;x+=1.5)place(x+(R()-.5)*.4,RIVER.z(x)+5.6+(R()-.5)*.5);
+  for(let x=50.5;x<=59.5;x+=1.5)place(x+(R()-.5)*.4,RIVER.z(x)-6.2+(R()-.5)*.5);
+  for(let x=51.5;x<=56;x+=1.5)place(x+(R()-.5)*.4,RIVER.z(x)+6.0+(R()-.5)*.5);
 }
 
 function plateau(kit,R){

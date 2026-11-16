@@ -2,7 +2,7 @@
   "id": "detail-yard",
   "title": "作り込み C：坑口ヤードと本館広場",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "working details in a mine yard and the front plaza of a research campus in Japan, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -14,6 +14,7 @@
       "metalness": 0.4,
       "normalStrength": 1.2,
       "seamless": "x",
+      "flatten": 0.6,
       "prompt": "side of a blue steel shipping container with vertical corrugations, faded paint, rust spots and grime, no text, no numbers, straight-on, about 2.4 m across"
     },
     {
@@ -24,6 +25,7 @@
       "metalness": 0.35,
       "normalStrength": 1.3,
       "seamless": "x",
+      "flatten": 0.6,
       "prompt": "side of an old oxide red steel shipping container with vertical corrugations and heavy rust streaks, no text, no numbers, straight-on, about 2.4 m across"
     },
     {
@@ -41,6 +43,7 @@
       "meters": 1.0,
       "roughness": 0.5,
       "normalStrength": 0.5,
+      "seamless": false,
       "prompt": "light blue molded plastic panel of a portable site toilet with shallow vertical ribs and a little dirt, no text, straight-on, about 1 m across"
     },
     {
@@ -57,7 +60,7 @@
       "meters": 1.0,
       "roughness": 0.55,
       "normalStrength": 0.4,
-      "seamless": "x",
+      "seamless": false,
       "prompt": "weathered white and red striped molded plastic road barrier surface, scuffed, straight-on, about 1 m across"
     },
     {
@@ -76,6 +79,12 @@
       "meters": 1.0,
       "roughness": 0.85,
       "normalStrength": 0.8,
+      "crop": [
+        0,
+        0.24,
+        1,
+        0.97
+      ],
       "prompt": "horizontal weathered cedar boards of a planter box with grey patina and dark screw heads, straight-on, about 1 m across"
     },
     {

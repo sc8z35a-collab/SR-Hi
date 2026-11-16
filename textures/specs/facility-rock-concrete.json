@@ -2,7 +2,7 @@
   "id": "facility-rock-concrete",
   "title": "未テクスチャ素材の作り直し B：岩・吹付け・舗装",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "rock, sprayed concrete and paving in a damp underground research wing, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -26,6 +26,7 @@
       "targets": [
         "B4 wet-asphalt"
       ],
+      "flatten": 0.7,
       "prompt": "dark damp asphalt surface with fine aggregate, small shallow puddle sheen and smooth tyre-worn patches, seen from directly above, about 3 m across"
     },
     {
@@ -103,6 +104,7 @@
       "targets": [
         "B4 amber-resin"
       ],
+      "flatten": true,
       "prompt": "ochre amber resin floor coating, satin finish with fine scratches and scuff marks, seen from directly above, about 2 m across"
     }
   ]

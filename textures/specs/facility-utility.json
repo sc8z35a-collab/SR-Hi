@@ -2,7 +2,7 @@
   "id": "facility-utility",
   "title": "未テクスチャ素材の作り直し D：網・ゴム・合板・断熱材",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "utility materials in the equipment wing of an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -16,6 +16,10 @@
       "targets": [
         "B4 wire-mesh"
       ],
+      "knockout": {
+        "min": 0.78,
+        "color": "#2b2e31"
+      },
       "prompt": "dark steel welded wire mesh with 5 cm square openings over a plain dark grey background, straight-on, about 1 m across"
     },
     {
@@ -27,6 +31,7 @@
       "targets": [
         "B4 nitrile-gasket"
       ],
+      "flatten": true,
       "prompt": "black nitrile rubber sheet with fine evenly spaced parallel ribs, matte, straight-on, about 0.5 m across"
     },
     {
@@ -38,6 +43,7 @@
       "targets": [
         "B4 birch-ply"
       ],
+      "flatten": true,
       "prompt": "pale birch plywood sheet with gentle wavy grain and a few small knots, straight-on, about 1.2 m across"
     },
     {
@@ -72,6 +78,7 @@
       "targets": [
         "B4 corrugated-card"
       ],
+      "flatten": true,
       "prompt": "brown corrugated cardboard box surface with a strip of clear packing tape and light scuffs, no text, no printing, straight-on, about 0.8 m across"
     },
     {
@@ -96,6 +103,10 @@
       "targets": [
         "B4 appliance-enamel"
       ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
       "prompt": "off-white appliance enamel steel with soft sheen and very light wear, straight-on, about 1 m across"
     },
     {

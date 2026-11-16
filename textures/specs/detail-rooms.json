@@ -2,7 +2,7 @@
   "id": "detail-rooms",
   "title": "作り込み B：居住区画と管制室",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "furnishings and details in the living quarters and control room of a Japanese underground research station, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -13,6 +13,12 @@
       "roughness": 0.35,
       "metalness": 0.3,
       "normalStrength": 0.3,
+      "crop": [
+        0.3,
+        0.33,
+        0.62,
+        0.6
+      ],
       "prompt": "red painted steel vending machine side panel, smooth satin paint with faint scuffs, straight-on, about 1 m across"
     },
     {
@@ -49,7 +55,7 @@
       "meters": 1.0,
       "roughness": 0.95,
       "normalStrength": 0.7,
-      "seamless": "y",
+      "seamless": "x",
       "prompt": "hand woven kilim rug with a geometric diamond pattern in faded terracotta, cream and indigo, seen from directly above, about 1 m across"
     },
     {

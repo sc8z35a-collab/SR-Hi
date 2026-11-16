@@ -2,7 +2,7 @@
   "id": "detail-underground",
   "title": "作り込み A：地底空洞と地底湖",
   "quality": "medium",
-  "tileSize": 1024,
+  "tileSize": 512,
   "normalSize": 512,
   "theme": "equipment and natural details in an underground cavern research station with a lake, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
   "cells": [
@@ -13,6 +13,13 @@
       "roughness": 0.55,
       "metalness": 0.7,
       "normalStrength": 0.8,
+      "crop": [
+        0.22,
+        0.03,
+        0.78,
+        0.36
+      ],
+      "flatten": true,
       "prompt": "dark grey structural steel with mill scale, light rust bloom and scratches, straight-on, about 1 m across"
     },
     {
@@ -22,6 +29,14 @@
       "roughness": 0.45,
       "metalness": 0.8,
       "normalStrength": 0.8,
+      "crop": [
+        0.16,
+        0.22,
+        0.2,
+        0.36
+      ],
+      "seamless": "y",
+      "flatten": true,
       "prompt": "worn rail steel with a polished running surface fading into brown rust on the sides, straight-on, about 0.5 m across"
     },
     {
@@ -31,6 +46,13 @@
       "roughness": 0.75,
       "normalStrength": 1.2,
       "seamless": "x",
+      "crop": [
+        0,
+        0,
+        1,
+        0.5
+      ],
+      "flatten": true,
       "prompt": "yellow flexible PVC coated mine ventilation duct fabric with evenly spaced vertical ridges from the spiral reinforcing wire, dusty, straight-on, about 1 m across"
     },
     {
@@ -40,6 +62,7 @@
       "roughness": 0.45,
       "metalness": 0.3,
       "normalStrength": 0.4,
+      "seamless": false,
       "prompt": "dull teal green painted steel gas cylinder surface with small chips and scratches, straight-on, about 0.6 m across"
     },
     {
@@ -76,6 +99,12 @@
       "meters": 1.0,
       "roughness": 0.8,
       "normalStrength": 1.4,
+      "crop": [
+        0,
+        0.06,
+        0.3,
+        0.5
+      ],
       "prompt": "wet pale limestone covered with patches of bright green moss and algae growing near a lamp, straight-on, about 1 m across"
     },
     {

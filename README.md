@@ -47,13 +47,8 @@ python3 -m http.server 8000
 
 `textures/` の画像はすべて GPT Image 2.5 Sunburst で生成したものです（1:1 の 2880×2880 を1枚生成し、3×3 に切り分けて9種類）。
 
-- 一覧: `textures/manifest.json`（32シート・288種類）
-- 追加の8シート・72種類（`textures/specs/facility-*.json` の4枚＝まだ生成テクスチャにしていなかった施設の素材36種類、`detail-*.json` の4枚＝作り込み用36種類）は仕様とゲーム側の組み込みまで済んでいます。生成は次のコマンドで行い、`manifest.json` に入った時点でゲームに反映されます（それまでは元の見た目／仮の色で表示）。
-
-  ```bash
-  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all textures/specs/facility-*.json textures/specs/detail-*.json
-  ```
-- 色は濃くなりすぎないよう、切り出し時に彩度とコントラストを少し下げ、暗部を少し持ち上げています（`SKILL.md` の `tone`）
+- 一覧: `textures/manifest.json`（40シート・360種類）
+- 追加の8シート・72種類: `facility-floors` / `facility-rock-concrete` / `facility-metal-finishes` / `facility-utility` の4枚は、まだ生成テクスチャにしていなかった施設の素材36種類の差し替え。`detail-underground` / `detail-rooms` / `detail-yard` / `detail-countryside` の4枚は、作り込み用の36種類。この8枚は別の場所で生成した 1254px の画像をスキルの `import` で取り込み、切り出しています- 色は濃くなりすぎないよう、切り出し時に彩度とコントラストを少し下げ、暗部を少し持ち上げています（`SKILL.md` の `tone`）
 - 各シートの仕様（プロンプト）: `textures/specs/`
 - シート全体の縮小版: `textures/sheets/`
 - 生成スキル: `.claude/skills/texture-sheet/`（使い方は `SKILL.md`）

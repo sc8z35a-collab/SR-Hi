@@ -6,6 +6,8 @@ Usage (from the repository root; several spec files may be given and are generat
   python3 .claude/skills/texture-sheet/scripts/texture_sheet.py slice    textures/specs/<sheet>.json [...]
   python3 .claude/skills/texture-sheet/scripts/texture_sheet.py all      textures/specs/<sheet>.json [...]
   python3 .claude/skills/texture-sheet/scripts/texture_sheet.py prompt   textures/specs/<sheet>.json
+  python3 .claude/skills/texture-sheet/scripts/texture_sheet.py import   <image.png|webp|jpg> textures/specs/<sheet>.json
+    (use a sheet generated elsewhere, e.g. in ChatGPT, in place of `generate`; then run `slice`)
 
 The API key is read from the OPENAI_API_KEY environment variable, or from the file named by
 OPENAI_API_KEY_FILE. It is never written anywhere.
@@ -36,6 +38,7 @@ DEFAULTS = {
     "quality": "medium",
     "tileSize": 1024,      # albedo output size (px)
     "normalSize": 512,     # normal map output size (px)
+    # inset/blend are in px of a 2880 px sheet and scale with the real sheet size
     "inset": 16,           # px trimmed from every cell edge (removes bleed from neighbours)
     "blend": 80,           # px cross-faded to make each cell tile seamlessly
     # Gentle finishing so textures are not too dark or too intense in the game:
@@ -209,6 +212,51 @@ def soften(tile: np.ndarray, tone: dict | None) -> np.ndarray:
     return (c.clip(0, 1) * 255.0).astype(np.float32)
 
 
+def import_sheet(image_path: Path, spec_path: Path) -> Path:
+    """Use an image made outside this script as the raw sheet (it must hold the same 3x3 layout)."""
+    spec = load_spec(spec_path)
+    raw_dir = repo_root() / "textures" / "_raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    img = Image.open(image_path).convert("RGB")
+    w, h = img.size
+    if abs(w - h) > 2:
+        sys.exit(f"{image_path}: the sheet must be square, got {w}x{h}")
+    out = raw_dir / f"{spec['id']}.png"
+    img.save(out)
+    meta = {"model": spec["model"], "requestSize": spec["size"], "requestQuality": spec["quality"],
+            "imported": image_path.name, "size": f"{w}x{h}", "prompt": build_prompt(spec)}
+    (raw_dir / f"{spec['id']}.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[{spec['id']}] imported {image_path} ({w}x{h}) -> {out}")
+    return out
+
+
+def knockout(tile: np.ndarray, opts: dict) -> np.ndarray:
+    """Replace a bright, nearly grey background (e.g. white behind a wire mesh) with a colour."""
+    c = tile / 255.0
+    lum = (c * np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)).sum(axis=2, keepdims=True)
+    sat = c.max(axis=2, keepdims=True) - c.min(axis=2, keepdims=True)
+    lo = opts.get("min", 0.8)
+    t = np.clip((lum - lo) / max(1e-3, 1 - lo) * 4, 0, 1) * (sat < 0.12)
+    colour = np.array(bytes.fromhex(opts.get("color", "#2a2d30").lstrip("#")), dtype=np.float32) / 255.0
+    return ((c * (1 - t) + colour * t) * 255.0).astype(np.float32)
+
+
+def flatten(tile: np.ndarray, strength: float, radius: float = 1 / 7) -> np.ndarray:
+    """Remove baked-in lighting (glossy reflections, vignettes, cylinder shading) so a tile repeats evenly.
+
+    Each pixel is divided by a heavily blurred copy of the image, keeping the fine detail and the
+    average colour. strength 1 removes the large-scale variation fully, 0.5 halves it. radius is the
+    blur size as a fraction of the tile: smaller values also remove narrow reflection streaks.
+    """
+    h, w = tile.shape[:2]
+    lum = (tile * np.array([0.2126, 0.7152, 0.0722], dtype=np.float32)).sum(axis=2)
+    blurred = np.asarray(Image.fromarray(lum.clip(0, 255).astype(np.uint8)).filter(
+        ImageFilter.GaussianBlur(max(h, w) * radius)), dtype=np.float32)
+    gain = (lum.mean() + 1) / (blurred + 1)
+    gain = 1 + (gain - 1) * strength
+    return (tile * gain[..., None]).clip(0, 255)
+
+
 def slice_sheet(spec_path: Path) -> None:
     spec = load_spec(spec_path)
     root = repo_root()
@@ -235,15 +283,30 @@ def slice_sheet(spec_path: Path) -> None:
         **({"usage": meta["usage"]} if meta.get("usage") else {}),
     }
 
+    scale = w / 2880
+    inset = max(3, round(spec["inset"] * scale))
+    blend = max(8, round(spec["blend"] * scale))
     for i, cell in enumerate(spec["cells"]):
         r, c = divmod(i, 3)
         x0, x1 = round(c * w / 3), round((c + 1) * w / 3)
         y0, y1 = round(r * h / 3), round((r + 1) * h / 3)
-        inset = spec["inset"]
-        crop = np.asarray(sheet.crop((x0 + inset, y0 + inset, x1 - inset, y1 - inset)), dtype=np.float32)
+        box = (x0 + inset, y0 + inset, x1 - inset, y1 - inset)
+        part = sheet.crop(box)
+        if cell.get("crop"):
+            # use only part of the cell: [left, top, right, bottom] as fractions, stretched back to a square
+            cl, ct, cr, cb = cell["crop"]
+            cw, ch = part.size
+            part = part.crop((round(cl * cw), round(ct * ch), round(cr * cw), round(cb * ch))).resize((cw, ch), Image.LANCZOS)
+        crop = np.asarray(part, dtype=np.float32)
+        if cell.get("knockout"):
+            crop = knockout(crop, cell["knockout"])
+        if cell.get("flatten"):
+            f = cell["flatten"]
+            f = {"strength": 1.0} if f is True else f if isinstance(f, dict) else {"strength": float(f)}
+            crop = flatten(crop, f.get("strength", 1.0), f.get("radius", 1 / 7))
         seamless = cell.get("seamless", True)
         axes = seamless if isinstance(seamless, str) else "xy"
-        tile = make_seamless(crop, spec["blend"], axes) if seamless else crop
+        tile = make_seamless(crop, blend, axes) if seamless else crop
         tone = cell.get("tone", spec["tone"])
         tile = soften(tile, tone)
         img = Image.fromarray(tile.clip(0, 255).round().astype(np.uint8), "RGB")
@@ -269,8 +332,13 @@ def slice_sheet(spec_path: Path) -> None:
 
 
 def main() -> None:
-    if len(sys.argv) < 3 or sys.argv[1] not in {"generate", "slice", "all", "prompt"}:
+    if len(sys.argv) < 3 or sys.argv[1] not in {"generate", "slice", "all", "prompt", "import"}:
         sys.exit(__doc__)
+    if sys.argv[1] == "import":
+        if len(sys.argv) != 4:
+            sys.exit(__doc__)
+        import_sheet(Path(sys.argv[2]), Path(sys.argv[3]))
+        return
     cmd, spec_paths = sys.argv[1], [Path(p) for p in sys.argv[2:]]
     for p in spec_paths:
         load_spec(p)  # validate every spec before spending anything
