@@ -1095,6 +1095,57 @@
         "airing-futon",
         "beehive-wood"
       ]
+    },
+    "facility-equipment": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-equipment.webp",
+      "textures": [
+        "yellow-cast-paint",
+        "phenolic-benchtop",
+        "copper-braid",
+        "orange-tool-paint",
+        "wet-biofilm",
+        "culture-polymer-white",
+        "caution-stripe-worn",
+        "zinc-plated",
+        "hdpe-bottle"
+      ]
+    },
+    "facility-doors-paint": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-doors-paint.webp",
+      "textures": [
+        "bronze-mesh-screen",
+        "zinc-checker-plate",
+        "urethane-joint-ribbed",
+        "greygreen-cabinet-enamel",
+        "service-green-enamel",
+        "green-steel-door",
+        "fiberglass-jacket",
+        "frosted-ceramic",
+        "floor-traffic-yellow"
+      ]
+    },
+    "facility-metal-rubber-rock": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-metal-rubber-rock.webp",
+      "textures": [
+        "black-phosphate-steel",
+        "rust-streak-concrete",
+        "ivory-housing-matte",
+        "drain-grating",
+        "dot-rubber-floor",
+        "epdm-rubber",
+        "ivory-glazed-ceramic",
+        "cleanroom-weave-white",
+        "wet-dark-rock"
+      ]
     }
   },
   "textures": {
@@ -4911,6 +4962,358 @@
       "metalness": 0.0,
       "normal": "beehive-wood-normal.webp",
       "meters": 0.6
+    },
+    "yellow-cast-paint": {
+      "name": "黄色い塗装の鋳物",
+      "sheet": "facility-equipment",
+      "cell": 0,
+      "albedo": "yellow-cast-paint.webp",
+      "roughness": 0.6,
+      "metalness": 0.2,
+      "normal": "yellow-cast-paint-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 yellow-cast"
+      ]
+    },
+    "phenolic-benchtop": {
+      "name": "緑のフェノール樹脂天板",
+      "sheet": "facility-equipment",
+      "cell": 1,
+      "albedo": "phenolic-benchtop.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "phenolic-benchtop-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 lab-phenolic"
+      ]
+    },
+    "copper-braid": {
+      "name": "銅の編組線",
+      "sheet": "facility-equipment",
+      "cell": 2,
+      "albedo": "copper-braid.webp",
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normal": "copper-braid-normal.webp",
+      "meters": 0.15,
+      "targets": [
+        "B4 braided-line"
+      ]
+    },
+    "orange-tool-paint": {
+      "name": "オレンジの工具塗装",
+      "sheet": "facility-equipment",
+      "cell": 3,
+      "albedo": "orange-tool-paint.webp",
+      "roughness": 0.45,
+      "metalness": 0.15,
+      "normal": "orange-tool-paint-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 orange-tool"
+      ]
+    },
+    "wet-biofilm": {
+      "name": "湿ったバイオフィルム",
+      "sheet": "facility-equipment",
+      "cell": 4,
+      "albedo": "wet-biofilm.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "wet-biofilm-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 biofilm"
+      ]
+    },
+    "culture-polymer-white": {
+      "name": "白い培養容器の樹脂",
+      "sheet": "facility-equipment",
+      "cell": 5,
+      "albedo": "culture-polymer-white.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "culture-polymer-white-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 culture-polymer"
+      ]
+    },
+    "caution-stripe-worn": {
+      "name": "すり減った注意喚起ストライプ",
+      "sheet": "facility-equipment",
+      "cell": 6,
+      "albedo": "caution-stripe-worn.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "caution-stripe-worn-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 caution-stripe"
+      ]
+    },
+    "zinc-plated": {
+      "name": "亜鉛めっき",
+      "sheet": "facility-equipment",
+      "cell": 7,
+      "albedo": "zinc-plated.webp",
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normal": "zinc-plated-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 clamp-zinc"
+      ]
+    },
+    "hdpe-bottle": {
+      "name": "半透明の白いポリ樹脂",
+      "sheet": "facility-equipment",
+      "cell": 8,
+      "albedo": "hdpe-bottle.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "hdpe-bottle-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 bottle-polymer"
+      ]
+    },
+    "bronze-mesh-screen": {
+      "name": "ブロンズの金網",
+      "sheet": "facility-doors-paint",
+      "cell": 0,
+      "albedo": "bronze-mesh-screen.webp",
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normal": "bronze-mesh-screen-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 bronze-screen"
+      ]
+    },
+    "zinc-checker-plate": {
+      "name": "亜鉛めっきの縞鋼板",
+      "sheet": "facility-doors-paint",
+      "cell": 1,
+      "albedo": "zinc-checker-plate.webp",
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normal": "zinc-checker-plate-normal.webp",
+      "meters": 0.6,
+      "targets": [
+        "B4 zinc-checker"
+      ]
+    },
+    "urethane-joint-ribbed": {
+      "name": "ウレタン目地材",
+      "sheet": "facility-doors-paint",
+      "cell": 2,
+      "albedo": "urethane-joint-ribbed.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "urethane-joint-ribbed-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 urethane-joint"
+      ]
+    },
+    "greygreen-cabinet-enamel": {
+      "name": "灰緑色のキャビネット塗装",
+      "sheet": "facility-doors-paint",
+      "cell": 3,
+      "albedo": "greygreen-cabinet-enamel.webp",
+      "roughness": 0.5,
+      "metalness": 0.15,
+      "normal": "greygreen-cabinet-enamel-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Grey-green cabinet enamel | archive-cryogenic-seal"
+      ]
+    },
+    "service-green-enamel": {
+      "name": "機械室の緑のエナメル",
+      "sheet": "facility-doors-paint",
+      "cell": 4,
+      "albedo": "service-green-enamel.webp",
+      "roughness": 0.3,
+      "metalness": 0.15,
+      "normal": "service-green-enamel-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Grey-green cabinet enamel | plant-service-green"
+      ]
+    },
+    "green-steel-door": {
+      "name": "緑の鋼製扉",
+      "sheet": "facility-doors-paint",
+      "cell": 5,
+      "albedo": "green-steel-door.webp",
+      "roughness": 0.5,
+      "metalness": 0.2,
+      "normal": "green-steel-door-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 green-door"
+      ]
+    },
+    "fiberglass-jacket": {
+      "name": "ガラス繊維の保温カバー",
+      "sheet": "facility-doors-paint",
+      "cell": 6,
+      "albedo": "fiberglass-jacket.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "fiberglass-jacket-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 jacket-fiberglass"
+      ]
+    },
+    "frosted-ceramic": {
+      "name": "霜の付いたセラミック",
+      "sheet": "facility-doors-paint",
+      "cell": 7,
+      "albedo": "frosted-ceramic.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "frosted-ceramic-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 chilled-ceramic"
+      ]
+    },
+    "floor-traffic-yellow": {
+      "name": "床の黄色い標示ペイント",
+      "sheet": "facility-doors-paint",
+      "cell": 8,
+      "albedo": "floor-traffic-yellow.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "floor-traffic-yellow-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Traffic paint | base-enamel"
+      ]
+    },
+    "black-phosphate-steel": {
+      "name": "黒いリン酸塩処理の鋼",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 0,
+      "albedo": "black-phosphate-steel.webp",
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normal": "black-phosphate-steel-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 flange-phosphate"
+      ]
+    },
+    "rust-streak-concrete": {
+      "name": "錆の流れ跡のコンクリート",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 1,
+      "albedo": "rust-streak-concrete.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "rust-streak-concrete-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "B4 rust-scour"
+      ]
+    },
+    "ivory-housing-matte": {
+      "name": "アイボリーの機器外装",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 2,
+      "albedo": "ivory-housing-matte.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "ivory-housing-matte-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Ceramic equipment shell | lab-ceramic-housing",
+        "Ceramic equipment shell | base-ceramic"
+      ]
+    },
+    "drain-grating": {
+      "name": "排水グレーチング",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 3,
+      "albedo": "drain-grating.webp",
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normal": "drain-grating-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 drain-grid"
+      ]
+    },
+    "dot-rubber-floor": {
+      "name": "防振ゴムの床材",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 4,
+      "albedo": "dot-rubber-floor.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "dot-rubber-floor-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "Dark textured access floor | control-absorbing-rubber"
+      ]
+    },
+    "epdm-rubber": {
+      "name": "EPDMゴム",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 5,
+      "albedo": "epdm-rubber.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "epdm-rubber-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 gasket-epdm"
+      ]
+    },
+    "ivory-glazed-ceramic": {
+      "name": "アイボリーの施釉セラミック",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 6,
+      "albedo": "ivory-glazed-ceramic.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "ivory-glazed-ceramic-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 ivory-ceramic"
+      ]
+    },
+    "cleanroom-weave-white": {
+      "name": "クリーンルームの白い織布",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 7,
+      "albedo": "cleanroom-weave-white.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "cleanroom-weave-white-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 cleanroom-weave"
+      ]
+    },
+    "wet-dark-rock": {
+      "name": "湿った黒い岩肌",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 8,
+      "albedo": "wet-dark-rock.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "wet-dark-rock-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Damp slate | base-rock"
+      ]
     }
   }
 }

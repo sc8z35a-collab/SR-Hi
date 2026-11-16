@@ -1,0 +1,115 @@
+{
+  "id": "facility-equipment",
+  "title": "未テクスチャ素材の作り直し E：増築棟の設備まわり",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "equipment materials in the wing of an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "yellow-cast-paint",
+      "name": "黄色い塗装の鋳物",
+      "meters": 0.5,
+      "roughness": 0.6,
+      "metalness": 0.2,
+      "normalStrength": 1.2,
+      "targets": [
+        "B4 yellow-cast"
+      ],
+      "prompt": "rough cast metal painted safety yellow with chipped flakes showing grey metal, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "phenolic-benchtop",
+      "name": "緑のフェノール樹脂天板",
+      "meters": 1.5,
+      "roughness": 0.5,
+      "normalStrength": 0.3,
+      "targets": [
+        "B4 lab-phenolic"
+      ],
+      "flatten": true,
+      "prompt": "dark green matte phenolic laboratory benchtop with faint fine scratches, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "copper-braid",
+      "name": "銅の編組線",
+      "meters": 0.15,
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 braided-line"
+      ],
+      "prompt": "tightly woven copper wire braid in a herringbone pattern, straight-on, about 15 cm across"
+    },
+    {
+      "id": "orange-tool-paint",
+      "name": "オレンジの工具塗装",
+      "meters": 0.5,
+      "roughness": 0.45,
+      "metalness": 0.15,
+      "normalStrength": 0.4,
+      "targets": [
+        "B4 orange-tool"
+      ],
+      "prompt": "bright orange enamel paint on steel with small chips and scratches, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "wet-biofilm",
+      "name": "湿ったバイオフィルム",
+      "meters": 1.0,
+      "roughness": 0.35,
+      "normalStrength": 0.8,
+      "targets": [
+        "B4 biofilm"
+      ],
+      "prompt": "wet green slimy biofilm and algae on grey concrete, glistening, straight-on, about 1 m across"
+    },
+    {
+      "id": "culture-polymer-white",
+      "name": "白い培養容器の樹脂",
+      "meters": 0.3,
+      "roughness": 0.5,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 culture-polymer"
+      ],
+      "prompt": "white polymer with a fine pebbled grain, matte, straight-on, about 30 cm across"
+    },
+    {
+      "id": "caution-stripe-worn",
+      "name": "すり減った注意喚起ストライプ",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 caution-stripe"
+      ],
+      "prompt": "worn yellow and black diagonal caution stripes painted on concrete, scuffed and chipped, straight-on, about 1 m across"
+    },
+    {
+      "id": "zinc-plated",
+      "name": "亜鉛めっき",
+      "meters": 0.3,
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normalStrength": 0.4,
+      "targets": [
+        "B4 clamp-zinc"
+      ],
+      "prompt": "dull silver zinc plated steel with a mottled spangle pattern, straight-on, about 30 cm across"
+    },
+    {
+      "id": "hdpe-bottle",
+      "name": "半透明の白いポリ樹脂",
+      "meters": 0.3,
+      "roughness": 0.35,
+      "normalStrength": 0.2,
+      "targets": [
+        "B4 bottle-polymer"
+      ],
+      "flatten": true,
+      "prompt": "pale translucent white HDPE plastic, smooth with faint moulding marks, straight-on, about 30 cm across"
+    }
+  ]
+}

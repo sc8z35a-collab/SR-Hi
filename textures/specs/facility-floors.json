@@ -81,6 +81,7 @@
       "targets": [
         "Dark textured access floor | plant-grit-floor"
       ],
+      "flatten": true,
       "prompt": "dark grey anti-slip grit coated steel floor plates with a bolt head at each corner and thin seams, seen from directly above, about 1.5 m across"
     },
     {

@@ -47,8 +47,9 @@ python3 -m http.server 8000
 
 `textures/` の画像はすべて GPT Image 2.5 Sunburst で生成したものです（1:1 の 2880×2880 を1枚生成し、3×3 に切り分けて9種類）。
 
-- 一覧: `textures/manifest.json`（40シート・360種類）
-- 追加の8シート・72種類: `facility-floors` / `facility-rock-concrete` / `facility-metal-finishes` / `facility-utility` の4枚は、まだ生成テクスチャにしていなかった施設の素材36種類の差し替え。`detail-underground` / `detail-rooms` / `detail-yard` / `detail-countryside` の4枚は、作り込み用の36種類。この8枚は別の場所で生成した 1254px の画像をスキルの `import` で取り込み、切り出しています- 色は濃くなりすぎないよう、切り出し時に彩度とコントラストを少し下げ、暗部を少し持ち上げています（`SKILL.md` の `tone`）
+- 一覧: `textures/manifest.json`（43シート・387種類）
+- 追加の8シート・72種類: `facility-floors` / `facility-rock-concrete` / `facility-metal-finishes` / `facility-utility` の4枚は、まだ生成テクスチャにしていなかった施設の素材36種類の差し替え。`detail-underground` / `detail-rooms` / `detail-yard` / `detail-countryside` の4枚は、作り込み用の36種類。この8枚は別の場所で生成した 1254px の画像をスキルの `import` で取り込み、切り出しています
+- さらに3シート・27種類（`facility-equipment` / `facility-doors-paint` / `facility-metal-rubber-rock`）で、残っていた施設の素材（黄色い鋳物、実験台の天板、注意喚起ストライプ、縞鋼板、緑の扉、床の標示ペイント、排水グレーチング、防振ゴムなど）を差し替えています- 色は濃くなりすぎないよう、切り出し時に彩度とコントラストを少し下げ、暗部を少し持ち上げています（`SKILL.md` の `tone`）
 - 各シートの仕様（プロンプト）: `textures/specs/`
 - シート全体の縮小版: `textures/sheets/`
 - 生成スキル: `.claude/skills/texture-sheet/`（使い方は `SKILL.md`）
