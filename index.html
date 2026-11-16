@@ -18,6 +18,7 @@
     <symbol id="expand" viewBox="0 0 24 24"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5m-6 0H4v-5"/></symbol>
     <symbol id="rotate" viewBox="0 0 50 50"><rect x="16" y="8" width="17" height="29" rx="3" transform="rotate(-31 24 23)"/><path d="M19 10a17 17 0 0 1 23 14m-7-4 7 4 2-8M31 41A17 17 0 0 1 8 27m7 4-7-4-2 8"/></symbol>
     <symbol id="settings-icon" viewBox="0 0 24 24"><path d="M4 7h8m4 0h4M4 17h3m4 0h9"/><circle cx="14" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="run" viewBox="0 0 24 24"><path d="M14 4.5a1.6 1.6 0 1 0 0 .1M9 21l3-6 3 2 1 4M7 12l3-4h4l2 3 3 1M12 8l-2 5 3 2"/></symbol>
     <symbol id="torch" viewBox="0 0 24 24"><path d="M7 4h10v4l-3 4v7a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-7L7 8zm0 4h10m-5 7v2"/></symbol>
     <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
     <symbol id="door" viewBox="0 0 24 24"><path d="M5 20h14M7 20V4h10v16m-4-7h1"/></symbol>
@@ -44,6 +45,7 @@
     <section id="hud" aria-label="探索の操作" hidden>
       <div class="location"><b>B4</b><div><small id="room-code">HALL</small><strong id="room-name">連絡通路</strong></div></div>
       <div class="tools">
+        <button type="button" class="icon" id="dash" aria-label="ダッシュ" aria-pressed="false"><svg><use href="#run"/></svg></button>
         <button type="button" class="icon" id="light" aria-label="ライトを点灯" aria-pressed="false"><svg><use href="#torch"/></svg></button>
         <button type="button" class="icon" id="full" aria-label="全画面に切り替える"><svg><use href="#expand"/></svg></button>
         <button type="button" class="icon" id="settings" aria-label="設定"><svg><use href="#settings-icon"/></svg></button>
@@ -74,6 +76,11 @@
         <header><h2 id="settings-title">環境設定</h2><button type="button" class="icon" id="settings-close" aria-label="設定を閉じる"><svg><use href="#close"/></svg></button></header>
         <div class="setting-row"><span>描画品質</span><div class="choices" role="group" aria-label="描画品質"><button type="button" data-quality="high">高画質</button><button type="button" data-quality="balanced">標準</button><button type="button" data-quality="light">軽量</button></div></div>
         <p id="quality-note" class="note"></p>
+        <div class="setting-row"><span>解像度</span><div class="choices" role="group" aria-label="解像度"><button type="button" data-resolution="fhd">FHD</button><button type="button" data-resolution="2k">2K</button></div></div>
+        <div class="setting-row"><span>フレームレート</span><div class="choices" role="group" aria-label="フレームレート"><button type="button" data-fps="30">30</button><button type="button" data-fps="60">60</button><button type="button" data-fps="120">120</button></div></div>
+        <div class="setting-row"><span>床の反射</span><div class="choices" role="group" aria-label="床の反射"><button type="button" data-reflection="off">なし</button><button type="button" data-reflection="on">あり</button></div></div>
+        <div class="setting-row"><label for="distance">描画距離</label><div class="slider"><input type="range" id="distance" min="15" max="160" step="5"><output id="distance-value" for="distance"></output></div></div>
+        <p class="note">描画距離を短くすると、遠くの区画を描かずに軽くなります。</p>
         <div class="setting-row"><span>環境音と足音</span><button type="button" id="sound" aria-pressed="true">オン</button></div>
         <footer><button type="button" id="reset">入口に戻る</button><button type="button" id="resume">探索を続ける <svg><use href="#arrow"/></svg></button></footer>
       </div>

@@ -1,5 +1,3 @@
-export const FRAME_RATES = {high:60, balanced:45, light:30};
-
 export function createFrameClock(){
   let previous=null, deadline=null, period=0;
   return {

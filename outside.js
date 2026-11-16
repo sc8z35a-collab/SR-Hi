@@ -576,7 +576,7 @@ function sky(group){
   let base=null;
   const update=(player,camera,scene,textures)=>{
     if(!base){
-      base={fog:scene.fog.color.clone(),density:scene.fog.density,bg:scene.background.clone()};
+      base={fog:scene.fog.color.clone(),bg:scene.background.clone()};
       const sk=textures.get('sky-clouds')?.map,mt=textures.get('mountain-range')?.map;
       if(sk){const m=sk.clone();m.repeat.set(5,2);dome.material.map=m;dome.material.color.set(0xffffff);dome.material.needsUpdate=true;}
       if(mt){const m=mt.clone();m.repeat.set(3,1);band.material.map=m;band.material.alphaMap=m;band.material.needsUpdate=true;}
@@ -591,7 +591,9 @@ function sky(group){
     }
     sun.intensity=1.5*outside;
     scene.fog.color.copy(base.fog).lerp(HAZE,outside);
-    scene.fog.density=base.density+(.0082-base.density)*outside;
+    // the draw-distance setting scales the haze (render.js setDrawDistance)
+    const scale=scene.userData.fogScale??1,inside=.024*scale;
+    scene.fog.density=inside+(.0082*scale-inside)*outside;
     scene.background.copy(base.bg).lerp(SKY,outside);
     return outside;
   };

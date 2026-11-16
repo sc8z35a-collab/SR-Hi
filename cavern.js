@@ -62,18 +62,7 @@ export async function buildExtension({slice=async()=>{},progress=()=>{},onStep=n
     outdoor.visible=level>1||player.z>158;
     underground.visible=player.z<168;
   };
-  const drift={'lake-water':[.006,.004],'stream-water':[0,-.05],'koi-pond':[.004,.002],'river-water':[-.035,.004],'waterfall':[0,.3],'fountain-water':[.01,.008],'nigori-water:pool':[.004,.003],'clear-onsen-water':[.005,-.003]};
-  const animate=mesh=>{
-    const id=Object.keys(drift).find(key=>mesh.material.name.endsWith(key));
-    if(!id)return;
-    const {map,normalMap}=mesh.material,[u,v]=drift[id];
-    mesh.onBeforeRender=()=>{
-      const t=performance.now()/1000;
-      map?.offset.set(t*u,t*v);
-      normalMap?.offset.set(-t*u*1.4,t*v*1.2);
-    };
-  };
-  for(const k of [under,shaft,open])k.after.push(animate);
+  // water and other scenery stay still: only people move (lighter and steadier frames)
   for(const [name,k,parent,prefix] of [['merge underground',under,underground,'Cavern'],['merge shaft',shaft,group,'Shaft'],['merge outdoor',open,outdoor,'Outdoor']]){
     const t=performance.now();
     await k.buildAsync(parent,prefix,slice);

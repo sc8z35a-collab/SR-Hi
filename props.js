@@ -97,7 +97,6 @@ function village(kit,group,R){
     const paddle=new THREE.Mesh(box(.08,.55,.8,1),wmat);paddle.position.set(Math.cos(a)*1.95,Math.sin(a)*1.95,0);paddle.rotation.z=a;wheel.add(paddle);
     if(k%2===0){const spoke=new THREE.Mesh(box(1.9,.07,.07,1),wmat);spoke.position.set(Math.cos(a)*.95,Math.sin(a)*.95,0);spoke.rotation.z=a;wheel.add(spoke);}
   }
-  wheel.children[0].onBeforeRender=()=>{wheel.rotation.z=-performance.now()/1000*.35;};
   group.add(wheel);
   const roofY=my+2.7;
   kit.add(box(m.w+.8,.12,m.d*0.62,2,{swap:true}),kit.tex('thatched-roof'),{pos:[m.x,roofY+.55,m.z-.8],rot:[.45,0,0]});

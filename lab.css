@@ -77,6 +77,9 @@ h1 b { font: inherit; color: var(--accent); }
 h2 { margin: 0; font-size: clamp(16px,4.6vh,23px); }
 .setting-row { display: flex; justify-content: space-between; align-items: center; gap: 9px; margin: 6px 0; font-size: 13px; }
 .choices { display: flex; gap: 5px; }
+.slider { display: flex; align-items: center; gap: 8px; }
+.slider input { width: min(190px,34vw); accent-color: #cca55f; }
+.slider output { min-width: 44px; text-align: right; color: #ffd892; font-variant-numeric: tabular-nums; }
 .panel button:not(.icon) { border: 1px solid var(--line); border-radius: 3px; min-height: 40px; padding: 5px 10px; background: #273231; font-size: 12px; }
 .panel button[aria-pressed=true] { border-color: #cca55f; background: #453826; color: #ffd892; }
 .panel .note { margin: 0 0 8px; color: #b9c8c0; font-size: 11px; }

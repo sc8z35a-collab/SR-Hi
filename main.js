@@ -1,6 +1,6 @@
 import {HALL,ROOMS,START,VIEWPOINTS,advanceDoors,inDoorway,isBlocked,makeDoors,nearbyTarget,zoneAt} from './layout.js';
 import {ACCESS} from './expansion.js';
-import {FRAME_RATES,createFrameClock,createResolutionControl} from './pacing.js';
+import {createFrameClock,createResolutionControl} from './pacing.js';
 
 const el=id=>document.getElementById(id);
 const app=el('app'), canvas=el('canvas'), intro=el('intro'), gallery=el('gallery'), hud=el('hud');
@@ -8,9 +8,9 @@ const start=el('start'), lookArea=el('look'), moveArea=el('move'), joystick=el('
 const modalPanels={settings:el('settings-panel'),terminal:el('terminal-panel'),record:el('record-panel')};
 const orientation=matchMedia('(orientation: portrait)');
 const levelNotes={
-  high:'最大 920p。床の反射と影を細かく描画します。',
-  balanced:'最大 620p。負荷に合わせて解像度を自動調整します。',
-  light:'最大 400p。素材の凹凸と反射を簡略化します。'
+  high:'光源8灯と影を細かく描画します。',
+  balanced:'光源6灯と影。負荷に合わせて解像度を自動調整します。',
+  light:'光源4灯、影なし。素材の凹凸を簡略化します。'
 };
 
 function stored(key,fallback){
@@ -20,6 +20,13 @@ function store(key,value){
   try{localStorage.setItem('strata-b4.'+key,value);}catch{}
 }
 let quality=stored('quality','balanced');
+// player settings: resolution cap, frame rate, floor reflections and draw distance
+const RESOLUTIONS={fhd:{width:1920,height:1080},'2k':{width:2560,height:1440}};
+let resolutionName=Object.hasOwn(RESOLUTIONS,stored('resolution','fhd'))?stored('resolution','fhd'):'fhd';
+let fps=[30,60,120].includes(Number(stored('fps','60')))?Number(stored('fps','60')):60;
+let reflections=stored('reflection','on')!=='off';
+let drawDistance=Math.max(15,Math.min(160,Number(stored('distance','60'))||60));
+let dash=false;
 let sound=stored('sound','on')==='on';
 let mode='intro', modal=null, loading=false, walkRequested=false, viewportNeedsRefresh=true, resumeFocus=null;
 let engine=null, played=false, viewIndex=0, imageRequest=0, currentZone=HALL, activeAction=null, lastPrompt='';
@@ -127,6 +134,7 @@ async function requestGalleryView(index){
 function enterWalk(){
   if(!played)resetPlayer();
   engine.setQuality(quality);
+  applySettings();
   engine.setRenderScale(resolution.scale);
   engine.setLight(lamp);
   if(!orientation.matches)engine.draw(player,performance.now()*.001);
@@ -284,10 +292,37 @@ function setQuality(name,persist=true){
   });
   el('quality-note').textContent=levelNotes[quality];
   if(persist)store('quality',quality);
-  resolution=createResolutionControl(FRAME_RATES[quality],quality==='light'?.80:.65);
+  resolution=createResolutionControl(Math.min(fps,60),quality==='light'?.80:.65);
   engine?.setQuality(quality);
+  applySettings();
   engine?.setRenderScale(resolution.scale);
   invalidateFrame();
+}
+/** Push the player settings to the renderer and the settings panel. */
+function applySettings(){
+  document.querySelectorAll('[data-resolution]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.resolution===resolutionName)));
+  document.querySelectorAll('[data-fps]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.fps)===fps)));
+  document.querySelectorAll('[data-reflection]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.reflection==='on')===reflections)));
+  el('distance').value=String(drawDistance);
+  el('distance-value').textContent=drawDistance+' m';
+  engine?.setResolution(RESOLUTIONS[resolutionName]);
+  engine?.setReflection(reflections);
+  engine?.setDrawDistance(drawDistance);
+}
+function setSetting(key,value){
+  if(key==='resolution')resolutionName=value;
+  // automatic resolution scaling aims for at most 60 fps, so 120 on a 60 Hz screen does not lower the resolution
+  if(key==='fps'){fps=Number(value);resolution=createResolutionControl(Math.min(fps,60),quality==='light'?.80:.65);}
+  if(key==='reflection')reflections=value==='on';
+  if(key==='distance')drawDistance=Number(value);
+  store(key,String(value));
+  applySettings();
+  invalidateFrame();
+}
+function toggleDash(){
+  dash=!dash;
+  el('dash').setAttribute('aria-pressed',String(dash));
+  el('dash').setAttribute('aria-label',dash?'ダッシュを止める':'ダッシュ');
 }
 
 function setSound(enabled){
@@ -366,7 +401,7 @@ async function act(){
 }
 
 function movePlayer(dt){
-  const speed=2.55, side=move.x, forward=-move.y;
+  const speed=dash?6.8:3.6, side=move.x, forward=-move.y;
   const xSpeed=(side*Math.cos(player.yaw)-forward*Math.sin(player.yaw))*speed;
   const zSpeed=(-forward*Math.cos(player.yaw)-side*Math.sin(player.yaw))*speed;
   const ease=1-Math.exp(-dt*14);
@@ -406,7 +441,7 @@ function requestFrame(){
 function frame(now){
   animationToken=0;
   if(mode!=='walk'||!engine||orientation.matches||document.hidden)return;
-  const {dt,draw}=clock.tick(now,modal?12:FRAME_RATES[quality],viewportNeedsRefresh);
+  const {dt,draw}=clock.tick(now,modal?12:fps,viewportNeedsRefresh);
   if(!modal&&dt>0){
     const ease=1-Math.exp(-dt*32);
     let turn=view.yaw-player.yaw;
@@ -506,6 +541,11 @@ function bindControls(){
   el('gallery-full').addEventListener('click',()=>fullscreen(true));
   el('full').addEventListener('click',()=>fullscreen(true));
   el('light').addEventListener('click',toggleLight);
+  el('dash').addEventListener('click',toggleDash);
+  document.querySelectorAll('[data-resolution]').forEach(b=>b.addEventListener('click',()=>setSetting('resolution',b.dataset.resolution)));
+  document.querySelectorAll('[data-fps]').forEach(b=>b.addEventListener('click',()=>setSetting('fps',b.dataset.fps)));
+  document.querySelectorAll('[data-reflection]').forEach(b=>b.addEventListener('click',()=>setSetting('reflection',b.dataset.reflection)));
+  el('distance').addEventListener('input',()=>setSetting('distance',el('distance').value));
   el('settings').addEventListener('click',()=>{
     resumeFocus=el('settings');
     configureModal('settings');

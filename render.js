@@ -337,10 +337,10 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     const reflectedPose=new THREE.Vector4(), previousPose=new THREE.Vector4();
     const originalDraw=mirror.onBeforeRender;
     mirror.onBeforeRender=function(...args){
-      if(!level.refresh||mirrorFrame===frame)return;
+      if(!reflection()||mirrorFrame===frame)return;
       const turned=Math.abs(previousPose.z-reflectedPose.z)+Math.abs(previousPose.w-reflectedPose.w)>.065;
       const moved=Math.hypot(previousPose.x-reflectedPose.x,previousPose.y-reflectedPose.y)>.16;
-      if(mirrorFrame>=0&&!turned&&!moved&&frame-mirrorFrame<level.refresh)return;
+      if(mirrorFrame>=0&&!turned&&!moved&&frame-mirrorFrame<(level.refresh||3))return;
       mirrorFrame=frame;
       previousPose.copy(reflectedPose);
       originalDraw.apply(this,args);
@@ -349,7 +349,6 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     const doorMeshes=bindDoorMeshes(model,doors.filter(door=>!door.room.entry));
     const actors=readActors(model);
     const shadows=contactShadows(scene,actors);
-    const fans=[byName(model,'Ventilation rotor 1'),byName(model,'Ventilation rotor 2')];
     const sectorVisuals=new Map();
     let expansion=null, expansionRequest=null, wingSectors=[], destroyed=false, extensionFrame=null;
     for(const mesh of model.children){
@@ -427,7 +426,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     /** Do one upload for the nearest mesh within range of (x, z). Returns false when nothing is left in range. */
     function warmStep(x,z){
       if(!warmItems.length)return false;
-      const range=level.far+30;
+      const range=farDistance()+30;
       if(frame-warmAt.frame>45||Math.hypot(x-warmAt.x,z-warmAt.z)>4){
         warmAt={x,z,frame};
         warmOrder=warmItems.map(item=>[distanceToBounds(item.bounds,x,z),item]).filter(([d])=>d<range).sort((a,b)=>a[0]-b[0]).map(([,item])=>item);
@@ -516,25 +515,51 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     function resize(){
       const w=canvas.parentElement.clientWidth,h=canvas.parentElement.clientHeight;
       if(w<1||h<1)return;
-      const scale=Math.min(window.devicePixelRatio||1,level.height/h,level.width/w)*renderScale;
+      const cap=resolutionCap??level;
+      const scale=Math.min(window.devicePixelRatio||1,cap.height/h,cap.width/w)*renderScale;
       const width=Math.max(1,Math.floor(w*scale)),height=Math.max(1,Math.floor(h*scale));
       if(canvas.width!==width||canvas.height!==height)renderer.setSize(width,height,false);
       camera.aspect=w/h;
       camera.fov=w/h>2.4?52:58;
       camera.updateProjectionMatrix();
-      if(level.reflection){
-        const rw=Math.max(120,Math.round(width*level.reflection*.47)),rh=Math.max(60,Math.round(height*level.reflection*.47));
+      if(reflection()){
+        const rw=Math.max(120,Math.round(width*reflection()*.47)),rh=Math.max(60,Math.round(height*reflection()*.47));
         mirror.getRenderTarget().setSize(rw,rh);
         mirror.material.uniforms.texel.value.set(1/rw,1/rh);
       }
       mirrorFrame=-1;
     }
+    // player settings that override the quality preset (null = follow the preset)
+    let drawDistance=null, reflectionOn=null, resolutionCap=null;
+    const farDistance=()=>drawDistance??level.far;
+    const reflection=()=>reflectionOn===null?level.reflection:reflectionOn?(level.reflection||.6):0;
+    /** Draw distance in metres: the camera's far plane, which chunks are drawn and how far ahead the GPU is fed. */
+    function setDrawDistance(metres){
+      drawDistance=metres?Math.max(15,Math.min(160,metres)):null;
+      camera.far=farDistance();
+      camera.updateProjectionMatrix();
+      scene.userData.fogScale=Math.min(1.6,Math.max(.45,51/farDistance()));
+      scene.fog.density=.024*scene.userData.fogScale;
+      warmAt.frame=-1000;
+    }
+    /** Floor reflections on or off (null = as the preset). */
+    function setReflection(on){
+      reflectionOn=on===null?null:Boolean(on);
+      mirror.visible=Boolean(reflection());
+      mirrorFrame=-1;
+      resize();
+    }
+    /** Upper limit of the rendering resolution, e.g. {width:1920,height:1080} (null = as the preset). */
+    function setResolution(cap){
+      resolutionCap=cap;
+      resize();
+    }
     function setQuality(name){
       levelName=Object.hasOwn(QUALITY,name)?name:'balanced';
       level=QUALITY[levelName];
-      mirror.visible=Boolean(level.reflection);
+      mirror.visible=Boolean(reflection());
       mirror.material.uniforms.strength.value=levelName==='high'?1.38:1.13;
-      camera.far=level.far;
+      camera.far=farDistance();
       fixtureController.setCount(level.lights);
       island.visible=level.shadows;
       island.castShadow=level.shadows;
@@ -599,12 +624,11 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
         right.position.x=offset;
       }
       for(let i=0;i<actors.length;i++)characterFrame(actors[i],shadows[i],time,camera,levelName);
-      fans.forEach((fan,i)=>{if(fan)fan.rotation.z=time*(i===0?2.5:-1.8);});
       for(const [code,objects] of sectorVisuals){
         const distance=Math.abs(player.z-({'01':-8,'02':-9,'03':-24,'04':-24,'05':-39}[code]));
-        for(const object of objects)object.visible=distance<level.far*.82;
+        for(const object of objects)object.visible=distance<farDistance()*.82;
       }
-      for(const bounds of wingSectors)bounds.object.visible=distanceToBounds(bounds,player.x,player.z)<level.far*.85;
+      for(const bounds of wingSectors)bounds.object.visible=distanceToBounds(bounds,player.x,player.z)<farDistance()*.85;
       extensionFrame?.(player,camera,scene);
       lightFrame(time);
       if(expansion&&warmItems.length)warmFrame(player.x,player.z,2.5);
@@ -643,7 +667,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
       environment?.dispose();
       renderer.dispose();
     }
-    return {draw,resize,setQuality,setLight,setRenderScale,dispose,loadExpansion,hasExpansion:()=>Boolean(expansion),expansionProgress:()=>expansionFraction,available:()=>!gl.isContextLost()};
+    return {draw,resize,setQuality,setDrawDistance,setReflection,setResolution,farDistance:()=>farDistance(),setLight,setRenderScale,dispose,loadExpansion,hasExpansion:()=>Boolean(expansion),expansionProgress:()=>expansionFraction,available:()=>!gl.isContextLost()};
   } catch(error){
     renderer.dispose();
     throw error;
