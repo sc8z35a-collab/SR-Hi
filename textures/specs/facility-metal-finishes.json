@@ -1,0 +1,134 @@
+{
+  "id": "facility-metal-finishes",
+  "title": "未テクスチャ素材の作り直し C：金属と塗装",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "metal finishes and paints on doors, ducts and equipment of an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "blackened-steel",
+      "name": "黒皮の鋼板",
+      "meters": 2.0,
+      "roughness": 0.55,
+      "metalness": 0.6,
+      "normalStrength": 0.6,
+      "targets": [
+        "B4 black-steel"
+      ],
+      "flatten": true,
+      "prompt": "dark blackened steel plate with mill scale, faint scratches and a few soft handprint smudges, straight-on, about 2 m across"
+    },
+    {
+      "id": "spiral-duct-steel",
+      "name": "スパイラルダクト",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 duct-rib"
+      ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.07
+      },
+      "prompt": "galvanized steel ventilation duct with evenly spaced horizontal raised ribs and light zinc spangle, straight-on, about 1 m across"
+    },
+    {
+      "id": "welded-steel-plate",
+      "name": "溶接した鋼板",
+      "meters": 1.5,
+      "roughness": 0.55,
+      "metalness": 0.65,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 welded-steel"
+      ],
+      "prompt": "grey steel plates joined by weld seams with blue-brown heat tint and grinding marks, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "frosted-stainless",
+      "name": "霜の付いたステンレス",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normalStrength": 0.8,
+      "targets": [
+        "B4 frost-stainless"
+      ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
+      "prompt": "stainless steel surface covered with white frost and fine ice crystals, cold storage, straight-on, about 1 m across"
+    },
+    {
+      "id": "brushed-door-steel",
+      "name": "ヘアラインのステンレス",
+      "meters": 1.0,
+      "roughness": 0.35,
+      "metalness": 0.85,
+      "normalStrength": 0.3,
+      "targets": [
+        "B4 brush-steel"
+      ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.06
+      },
+      "prompt": "brushed stainless steel with fine straight horizontal grain and a few faint fingerprints, straight-on, about 1 m across"
+    },
+    {
+      "id": "blue-firedoor-paint",
+      "name": "青い防火扉の塗装",
+      "meters": 1.5,
+      "roughness": 0.45,
+      "metalness": 0.25,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 blue-firedoor"
+      ],
+      "flatten": true,
+      "prompt": "muted steel blue painted steel fire door surface, satin paint with small chips and scuffs near the bottom, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "cobalt-enamel-paint",
+      "name": "コバルトブルーの塗装",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "metalness": 0.2,
+      "normalStrength": 0.4,
+      "targets": [
+        "B4 cobalt-enamel"
+      ],
+      "flatten": true,
+      "prompt": "deep cobalt blue enamel paint on steel, slightly glossy with light scratches, straight-on, about 1 m across"
+    },
+    {
+      "id": "petrol-powder-coat",
+      "name": "ペトロールブルーの粉体塗装",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.15,
+      "normalStrength": 0.6,
+      "targets": [
+        "B4 petrol-powder"
+      ],
+      "flatten": true,
+      "prompt": "petrol blue powder coated metal with fine orange-peel texture and soft wear on edges, straight-on, about 1 m across"
+    },
+    {
+      "id": "aged-copper-sheet",
+      "name": "経年の銅",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.6,
+      "normalStrength": 0.6,
+      "targets": [
+        "B4 oxidized-copper"
+      ],
+      "prompt": "copper sheet with brown oxidation, darker tarnish and small green verdigris spots, straight-on, about 1 m across"
+    }
+  ]
+}

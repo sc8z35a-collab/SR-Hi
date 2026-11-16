@@ -1,0 +1,125 @@
+{
+  "id": "facility-metal-rubber-rock",
+  "title": "未テクスチャ素材の作り直し G：金属・ゴム・セラミック・岩",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "metal, rubber, ceramic and rock surfaces in an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "black-phosphate-steel",
+      "name": "黒いリン酸塩処理の鋼",
+      "meters": 0.5,
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normalStrength": 0.4,
+      "targets": [
+        "B4 flange-phosphate"
+      ],
+      "flatten": true,
+      "prompt": "dull black phosphate coated steel with faint mottling, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "rust-streak-concrete",
+      "name": "錆の流れ跡のコンクリート",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 rust-scour"
+      ],
+      "prompt": "grey concrete with orange rust streaks running down and small air holes, straight-on, about 2 m across"
+    },
+    {
+      "id": "ivory-housing-matte",
+      "name": "アイボリーの機器外装",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 0.2,
+      "targets": [
+        "Ceramic equipment shell | lab-ceramic-housing",
+        "Ceramic equipment shell | base-ceramic"
+      ],
+      "flatten": true,
+      "prompt": "matte ivory ceramic equipment housing with a very fine texture, straight-on, about 1 m across"
+    },
+    {
+      "id": "drain-grating",
+      "name": "排水グレーチング",
+      "meters": 0.5,
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normalStrength": 1.2,
+      "targets": [
+        "B4 drain-grid"
+      ],
+      "prompt": "stainless steel drain grating of parallel flat bars with cross rods over a dark channel, seen from directly above, about 0.5 m across"
+    },
+    {
+      "id": "dot-rubber-floor",
+      "name": "防振ゴムの床材",
+      "meters": 0.5,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "targets": [
+        "Dark textured access floor | control-absorbing-rubber"
+      ],
+      "prompt": "black anti-vibration rubber flooring with small raised dots, matte, seen from directly above, about 0.5 m across"
+    },
+    {
+      "id": "epdm-rubber",
+      "name": "EPDMゴム",
+      "meters": 0.5,
+      "roughness": 0.85,
+      "normalStrength": 0.3,
+      "targets": [
+        "B4 gasket-epdm"
+      ],
+      "flatten": true,
+      "prompt": "plain black EPDM rubber sheet, matte with a fine texture, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "ivory-glazed-ceramic",
+      "name": "アイボリーの施釉セラミック",
+      "meters": 0.5,
+      "roughness": 0.2,
+      "normalStrength": 0.2,
+      "targets": [
+        "B4 ivory-ceramic"
+      ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
+      "crop": [
+        0.45,
+        0.22,
+        0.95,
+        0.7
+      ],
+      "prompt": "glossy ivory glazed ceramic surface, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "cleanroom-weave-white",
+      "name": "クリーンルームの白い織布",
+      "meters": 0.3,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "targets": [
+        "B4 cleanroom-weave"
+      ],
+      "prompt": "white cleanroom fabric with a fine grid weave, straight-on, about 30 cm across"
+    },
+    {
+      "id": "wet-dark-rock",
+      "name": "湿った黒い岩肌",
+      "meters": 2.0,
+      "roughness": 0.7,
+      "normalStrength": 2.0,
+      "targets": [
+        "Damp slate | base-rock"
+      ],
+      "prompt": "wet dark grey rock face with angular facets and patches of dark moss, straight-on, about 2 m across"
+    }
+  ]
+}

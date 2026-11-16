@@ -30,6 +30,8 @@ const FILLS={
   '21':[1.2,1.22,1.18],
   '22':[1.25,1.23,1.16],
   '23':[1.25,1.24,1.18],
+  '24':[.9,.86,.8],
+  '25':[.92,.89,.82],
 };
 
 function roomBoundaryDistance(room,x,z){
@@ -39,12 +41,55 @@ function roomBoundaryDistance(room,x,z){
   return room.side ? Math.abs(x-room.wall) : Math.abs(z-room.door);
 }
 
-export function createLightingData(fixtures){
-  const sources=fixtures.map(fixture=>({
+function lightSources(fixtures){
+  return fixtures.map(fixture=>({
     ...fixture,
     room:zoneAt(fixture.x,fixture.z),
     tint:new THREE.Color(fixture.color).toArray()
   }));
+}
+function lightingTexture({rgba,width,height}){
+  const texture=new THREE.DataTexture(rgba,width,height);
+  texture.magFilter=texture.minFilter=THREE.LinearFilter;
+  texture.needsUpdate=true;
+  return texture;
+}
+export function createLightingData(fixtures){
+  const out={};
+  for(const _ of lightingRows(fixtures,out));
+  return {texture:lightingTexture(out),sources:out.sources};
+}
+/** The light map's pixels only (used by lighting-worker.js). */
+export function computeLightingPixels(fixtures){
+  const out={};
+  for(const _ of lightingRows(fixtures,out));
+  return {rgba:out.rgba,width:out.width,height:out.height};
+}
+/** Same as createLightingData, but awaits `slice` (kit.js createSlicer) between rows. */
+export async function createLightingDataAsync(fixtures,slice){
+  const out={};
+  for(const _ of lightingRows(fixtures,out))await slice();
+  return {texture:lightingTexture(out),sources:out.sources};
+}
+/**
+ * Compute the light map in a Web Worker so the main thread (and the frame rate) is not touched.
+ * Falls back to the time-sliced version where module workers are unavailable.
+ */
+export function createLightingDataInWorker(fixtures,slice=async()=>{}){
+  const fallback=()=>createLightingDataAsync(fixtures,slice);
+  if(typeof Worker!=='function')return fallback();
+  return new Promise(resolve=>{
+    let worker;
+    try{worker=new Worker(new URL('./lighting-worker.js',import.meta.url),{type:'module'});}
+    catch{resolve(fallback());return;}
+    const done=result=>{worker.terminate();resolve(result);};
+    worker.onmessage=({data})=>done(data.error?fallback():{texture:lightingTexture(data),sources:lightSources(fixtures)});
+    worker.onerror=event=>{event.preventDefault?.();done(fallback());};
+    worker.postMessage({fixtures});
+  });
+}
+function* lightingRows(fixtures,out){
+  const sources=lightSources(fixtures);
   const [left,back,spanX,spanZ]=BOUNDS;
   const width=618, height=1246;
   const rgba=new Uint8Array(width*height*4);
@@ -69,11 +114,9 @@ export function createLightingData(fixtures){
       for(let i=0;i<3;i++)rgba[output+i]=Math.round(255*Math.min(1,(color[i]-bounce)/1.37));
       rgba[output+3]=255;
     }
+    yield;
   }
-  const texture=new THREE.DataTexture(rgba,width,height);
-  texture.magFilter=texture.minFilter=THREE.LinearFilter;
-  texture.needsUpdate=true;
-  return {texture,sources};
+  Object.assign(out,{rgba,width,height,sources});
 }
 
 const cutMin=new THREE.Vector3(...CUT.min), cutMax=new THREE.Vector3(...CUT.max);

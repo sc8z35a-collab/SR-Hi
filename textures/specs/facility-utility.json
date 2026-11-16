@@ -1,0 +1,124 @@
+{
+  "id": "facility-utility",
+  "title": "未テクスチャ素材の作り直し D：網・ゴム・合板・断熱材",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "utility materials in the equipment wing of an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "steel-wire-mesh",
+      "name": "溶接金網",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.4,
+      "normalStrength": 1.2,
+      "targets": [
+        "B4 wire-mesh"
+      ],
+      "knockout": {
+        "min": 0.78,
+        "color": "#2b2e31"
+      },
+      "prompt": "dark steel welded wire mesh with 5 cm square openings over a plain dark grey background, straight-on, about 1 m across"
+    },
+    {
+      "id": "nitrile-ribbed",
+      "name": "リブ付きニトリルゴム",
+      "meters": 0.5,
+      "roughness": 0.8,
+      "normalStrength": 1.2,
+      "targets": [
+        "B4 nitrile-gasket"
+      ],
+      "flatten": true,
+      "prompt": "black nitrile rubber sheet with fine evenly spaced parallel ribs, matte, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "birch-plywood",
+      "name": "白樺合板",
+      "meters": 1.2,
+      "roughness": 0.7,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 birch-ply"
+      ],
+      "flatten": true,
+      "prompt": "pale birch plywood sheet with gentle wavy grain and a few small knots, straight-on, about 1.2 m across"
+    },
+    {
+      "id": "antislip-grit-tape",
+      "name": "滑り止めテープ",
+      "meters": 0.5,
+      "roughness": 0.95,
+      "normalStrength": 1.6,
+      "targets": [
+        "B4 grit-tape"
+      ],
+      "prompt": "black anti-slip tape surface with coarse mineral grit, slightly worn and dusty, seen from directly above, about 0.5 m across"
+    },
+    {
+      "id": "carbon-fibre-twill",
+      "name": "カーボン綾織",
+      "meters": 0.3,
+      "roughness": 0.3,
+      "metalness": 0.2,
+      "normalStrength": 0.6,
+      "targets": [
+        "B4 carbon-twill"
+      ],
+      "prompt": "carbon fibre 2 by 2 twill weave under clear glossy resin, straight-on, about 0.3 m across"
+    },
+    {
+      "id": "kraft-corrugated-box",
+      "name": "段ボール箱",
+      "meters": 0.8,
+      "roughness": 0.9,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 corrugated-card"
+      ],
+      "flatten": true,
+      "prompt": "brown corrugated cardboard box surface with a strip of clear packing tape and light scuffs, no text, no printing, straight-on, about 0.8 m across"
+    },
+    {
+      "id": "foil-insulation-wrap",
+      "name": "アルミ箔の断熱材",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normalStrength": 1.2,
+      "targets": [
+        "B4 foil-insulation"
+      ],
+      "prompt": "crinkled aluminium foil insulation wrap with overlapping taped seams, straight-on, about 1 m across"
+    },
+    {
+      "id": "appliance-white",
+      "name": "家電のホワイト塗装",
+      "meters": 1.0,
+      "roughness": 0.35,
+      "metalness": 0.15,
+      "normalStrength": 0.3,
+      "targets": [
+        "B4 appliance-enamel"
+      ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
+      "prompt": "off-white appliance enamel steel with soft sheen and very light wear, straight-on, about 1 m across"
+    },
+    {
+      "id": "acoustic-fabric-grey",
+      "name": "吸音クロスの壁",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 0.6,
+      "targets": [
+        "Satin enamel panel | control-sound-panel"
+      ],
+      "prompt": "light grey woven acoustic fabric wall panel with fine tweed texture, straight-on, about 1.5 m across"
+    }
+  ]
+}

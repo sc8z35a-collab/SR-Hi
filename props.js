@@ -200,7 +200,7 @@ export function buildUndergroundProps(kit,group){
 }
 
 function caveLab(kit,R){
-  const steel=kit.plain('steel-dark');
+  const steel=kit.tex('dark-steel');
   const tb=P(CAVERN,'toolboxes')[0];
   for(const [dx,s] of [[-.32,1],[.32,.85]]){kit.add(box(.55*s,.3*s,.28,.5),kit.tex('toolbox-red'),{pos:[tb.x+dx,.15*s,tb.z],rot:[0,(R()-.5)*.4,0]});}
   kit.add(box(.5,.24,.26,.5),kit.tex('toolbox-red'),{pos:[tb.x-.3,.42,tb.z]});

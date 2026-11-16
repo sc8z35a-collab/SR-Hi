@@ -1,0 +1,126 @@
+{
+  "id": "facility-doors-paint",
+  "title": "未テクスチャ素材の作り直し F：扉・パネル・塗装",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "doors, screens and painted panels in an underground research facility, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "bronze-mesh-screen",
+      "name": "ブロンズの金網",
+      "meters": 0.3,
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normalStrength": 0.8,
+      "targets": [
+        "B4 bronze-screen"
+      ],
+      "prompt": "fine woven bronze wire mesh screen, straight-on, about 30 cm across"
+    },
+    {
+      "id": "zinc-checker-plate",
+      "name": "亜鉛めっきの縞鋼板",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 zinc-checker"
+      ],
+      "prompt": "galvanized steel checker plate with raised diamond treads and zinc spangle, seen from directly above, about 0.6 m across"
+    },
+    {
+      "id": "urethane-joint-ribbed",
+      "name": "ウレタン目地材",
+      "meters": 0.5,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "targets": [
+        "B4 urethane-joint"
+      ],
+      "prompt": "grey rubbery urethane joint sealant strips with fine parallel ribs, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "greygreen-cabinet-enamel",
+      "name": "灰緑色のキャビネット塗装",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.15,
+      "normalStrength": 0.3,
+      "targets": [
+        "Grey-green cabinet enamel | archive-cryogenic-seal"
+      ],
+      "flatten": true,
+      "prompt": "pale grey-green cabinet enamel paint on steel, satin, with a few tiny chips, straight-on, about 1 m across"
+    },
+    {
+      "id": "service-green-enamel",
+      "name": "機械室の緑のエナメル",
+      "meters": 1.0,
+      "roughness": 0.3,
+      "metalness": 0.15,
+      "normalStrength": 0.3,
+      "targets": [
+        "Grey-green cabinet enamel | plant-service-green"
+      ],
+      "flatten": {
+        "strength": 1,
+        "radius": 0.04
+      },
+      "crop": [
+        0.05,
+        0.55,
+        0.95,
+        0.95
+      ],
+      "prompt": "glossy deep green machinery enamel paint on steel, straight-on, about 1 m across"
+    },
+    {
+      "id": "green-steel-door",
+      "name": "緑の鋼製扉",
+      "meters": 1.5,
+      "roughness": 0.5,
+      "metalness": 0.2,
+      "normalStrength": 0.5,
+      "targets": [
+        "B4 green-door"
+      ],
+      "flatten": true,
+      "prompt": "green painted steel door surface, semi-gloss, with scratches and small rust chips, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "fiberglass-jacket",
+      "name": "ガラス繊維の保温カバー",
+      "meters": 0.5,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "targets": [
+        "B4 jacket-fiberglass"
+      ],
+      "prompt": "off-white woven fiberglass pipe insulation jacket cloth with faint stains, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "frosted-ceramic",
+      "name": "霜の付いたセラミック",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.6,
+      "targets": [
+        "B4 chilled-ceramic"
+      ],
+      "prompt": "pale grey ceramic surface with a light coat of frost crystals, straight-on, about 1 m across"
+    },
+    {
+      "id": "floor-traffic-yellow",
+      "name": "床の黄色い標示ペイント",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 0.6,
+      "targets": [
+        "Traffic paint | base-enamel"
+      ],
+      "prompt": "worn yellow traffic paint on grey concrete floor with chips and scuffs, seen from directly above, about 1 m across"
+    }
+  ]
+}

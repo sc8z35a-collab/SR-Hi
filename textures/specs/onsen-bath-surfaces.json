@@ -1,0 +1,85 @@
+{
+  "id": "onsen-bath-surfaces",
+  "title": "大浴場 A：浴室の床・壁・天井",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "floors, walls and ceilings of a Japanese hot spring bathhouse, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "bath-floor-stone",
+      "name": "浴室の床タイル",
+      "meters": 0.9,
+      "roughness": 0.35,
+      "normalStrength": 0.8,
+      "flatten": 0.5,
+      "prompt": "wet grey stone-textured anti-slip floor tiles 30 cm square in a grid, seen from directly above, about 0.9 m across"
+    },
+    {
+      "id": "white-mosaic-tile",
+      "name": "白いモザイクタイル",
+      "meters": 0.3,
+      "roughness": 0.25,
+      "normalStrength": 0.6,
+      "prompt": "small white square mosaic tiles with light grey grout, straight-on, about 30 cm across"
+    },
+    {
+      "id": "teal-mosaic-tile",
+      "name": "青緑のモザイクタイル",
+      "meters": 0.3,
+      "roughness": 0.2,
+      "normalStrength": 0.6,
+      "prompt": "blue-green glazed square mosaic tiles with colour variation, straight-on, about 30 cm across"
+    },
+    {
+      "id": "basalt-flagstone",
+      "name": "黒い玄武岩の敷石",
+      "meters": 1.5,
+      "roughness": 0.3,
+      "normalStrength": 1.4,
+      "flatten": 0.5,
+      "prompt": "wet black basalt flagstones in an irregular crazy paving pattern, seen from directly above, about 1.5 m across"
+    },
+    {
+      "id": "green-tuff-wall",
+      "name": "緑がかった凝灰岩の石壁",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 1.4,
+      "prompt": "greenish porous tuff stone blocks laid in courses, straight-on, about 1.2 m across"
+    },
+    {
+      "id": "hinoki-paneling",
+      "name": "檜の羽目板",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.4,
+      "prompt": "pale hinoki cypress wall boards laid vertically, straight-on, about 1 m across"
+    },
+    {
+      "id": "hinoki-slatted",
+      "name": "檜のすのこ",
+      "meters": 0.8,
+      "roughness": 0.6,
+      "normalStrength": 1.0,
+      "prompt": "wet hinoki duckboard of horizontal slats with dark gaps, seen from directly above, about 0.8 m across"
+    },
+    {
+      "id": "steam-plaster",
+      "name": "湯気で湿った漆喰",
+      "meters": 1.5,
+      "roughness": 0.5,
+      "normalStrength": 0.4,
+      "flatten": true,
+      "prompt": "damp white lime plaster ceiling with faint drips, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "cedar-lattice-ceiling",
+      "name": "杉の格子天井",
+      "meters": 1.8,
+      "roughness": 0.7,
+      "normalStrength": 0.8,
+      "prompt": "Japanese cedar coffered lattice ceiling with slatted panels, seen from below, about 1.8 m across"
+    }
+  ]
+}

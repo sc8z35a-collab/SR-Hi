@@ -1,0 +1,96 @@
+{
+  "id": "canteen-kitchen",
+  "title": "社員食堂 B：厨房設備",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "equipment of a busy Japanese canteen kitchen, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "stainless-worktop",
+      "name": "ステンレスの調理台",
+      "meters": 1.0,
+      "roughness": 0.25,
+      "metalness": 0.85,
+      "normalStrength": 0.3,
+      "flatten": 0.6,
+      "prompt": "stainless steel worktop with fine scratches and water droplets, seen from above, about 1 m across"
+    },
+    {
+      "id": "burner-grate",
+      "name": "コンロの五徳",
+      "meters": 0.5,
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normalStrength": 1.4,
+      "seamless": false,
+      "prompt": "cast iron gas burner grate seen from directly above, blackened with use"
+    },
+    {
+      "id": "wok-iron",
+      "name": "使い込んだ中華鍋",
+      "meters": 0.5,
+      "roughness": 0.45,
+      "metalness": 0.6,
+      "normalStrength": 0.5,
+      "seamless": false,
+      "prompt": "inside of a well used black iron wok seen from directly above, with heat tint"
+    },
+    {
+      "id": "aluminum-stockpot",
+      "name": "アルミの寸胴鍋",
+      "meters": 0.9,
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normalStrength": 0.3,
+      "seamless": "x",
+      "flatten": 0.6,
+      "prompt": "side of a dented aluminium stock pot with water stains, straight-on, about 0.9 m across"
+    },
+    {
+      "id": "perforated-stainless",
+      "name": "パンチングメタル",
+      "meters": 0.4,
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "stainless perforated metal sheet with round holes in a grid, straight-on, about 0.4 m across"
+    },
+    {
+      "id": "white-cutting-board",
+      "name": "白い樹脂のまな板",
+      "meters": 0.5,
+      "roughness": 0.6,
+      "normalStrength": 0.3,
+      "prompt": "white plastic cutting board covered in knife scratches and faint stains, seen from above, about 0.5 m across"
+    },
+    {
+      "id": "fridge-white-paint",
+      "name": "業務用冷蔵庫の白い塗装",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "metalness": 0.2,
+      "normalStrength": 0.2,
+      "prompt": "white painted steel of a commercial refrigerator with small chips, straight-on, about 1 m across"
+    },
+    {
+      "id": "copper-pot",
+      "name": "使い込んだ銅の鍋",
+      "meters": 0.5,
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normalStrength": 0.4,
+      "prompt": "hammered copper pot surface with tarnish and fine scratches, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "grease-filter",
+      "name": "換気フードのグリスフィルター",
+      "meters": 0.5,
+      "roughness": 0.5,
+      "metalness": 0.7,
+      "normalStrength": 1.0,
+      "seamless": false,
+      "prompt": "stainless baffle grease filter panel of a kitchen hood, straight-on"
+    }
+  ]
+}

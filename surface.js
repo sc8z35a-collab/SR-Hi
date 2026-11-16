@@ -76,7 +76,7 @@ function yard(kit,group,R){
   kit.add(box(3.2,.02,7.6),kit.tex('dirt-track'),{pos:[29.6,Y+.008,180.2],world:2});
   kit.add(box(2.2,.02,9.6),kit.tex('dirt-track'),{pos:[36.4,Y+.009,183.4],world:2});
   // west timber fence, north brick wall with gate, east chain-link fence
-  const fence=kit.tex('wooden-fence'),steel=kit.plain('steel-dark');
+  const fence=kit.tex('wooden-fence'),steel=kit.tex('dark-steel');
   kit.add(box(.06,1.8,YARD.z2-YARD.z1),fence,{pos:[YARD.x1-.1,Y+.9,(YARD.z1+YARD.z2)/2],world:1.5});
   for(let z=YARD.z1+.5;z<YARD.z2;z+=2.4)kit.add(box(.12,1.95,.12,.6,{swap:true}),kit.tex('timber-beam'),{pos:[YARD.x1-.17,Y+.97,z]});
   const brick=kit.tex('red-brick');
@@ -162,7 +162,7 @@ function buildings(kit,group){
   const post=props('postbox')[0],red=kit.tex('post-red');
   kit.add(cyl(.22,1.25,.6,{seg:20}),red,{pos:[post.x,Y+.625,post.z]});
   kit.add(planarUV(new THREE.SphereGeometry(.22,20,8,0,Math.PI*2,0,Math.PI/2),.6),red,{pos:[post.x,Y+1.25,post.z]});
-  kit.add(box(.2,.03,.05,1),kit.plain('steel-dark'),{pos:[post.x,Y+1.05,post.z-.21]});
+  kit.add(box(.2,.03,.05,1),kit.tex('dark-steel'),{pos:[post.x,Y+1.05,post.z-.21]});
   // warehouse: rusty corrugated walls, green roof, roller shutter
   const w={x1:31,x2:39,z1:166,z2:176},rust=kit.tex('rusty-corrugated');
   kit.add(box(.2,4.5,10),rust,{pos:[w.x2-.1,Y+2.25,171],world:1.5});
@@ -205,13 +205,13 @@ export function extinguisher(kit,x,y,z,angle=0){
   const at=(dx,dy,dz)=>new THREE.Vector3(dx,dy,dz).applyQuaternion(q).add(new THREE.Vector3(x,y,z)).toArray();
   kit.add(cyl(.09,.5,.4,{seg:16}),red,{pos:at(0,.55,.0)});
   kit.add(planarUV(new THREE.SphereGeometry(.09,16,8,0,Math.PI*2,0,Math.PI/2),.4),red,{pos:at(0,.8,0)});
-  kit.add(box(.05,.08,.12,1),kit.plain('steel-dark'),{pos:at(0,.88,0),quat:q});
-  kit.add(box(.2,.04,.04,1),kit.plain('steel-dark'),{pos:at(0,.62,-.1),quat:q});
+  kit.add(box(.05,.08,.12,1),kit.tex('dark-steel'),{pos:at(0,.88,0),quat:q});
+  kit.add(box(.2,.04,.04,1),kit.tex('dark-steel'),{pos:at(0,.62,-.1),quat:q});
 }
 
 // ---------- machines ----------
 function machines(kit,R){
-  const iron=kit.tex('cast-iron'),loco=kit.tex('loco-paint'),steel=kit.plain('steel-dark');
+  const iron=kit.tex('cast-iron'),loco=kit.tex('loco-paint'),steel=kit.tex('dark-steel');
   // mine locomotive with a tub on a short track
   const lp=props('locomotive')[0];
   for(const s of [-.3,.3])kit.add(box(.07,.12,17,1),iron,{pos:[lp.x+s,Y+.14,170.5]});

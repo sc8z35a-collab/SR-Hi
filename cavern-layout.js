@@ -84,6 +84,9 @@ export const CAVERN = {
     prop('crystal', -14.6, 100.5, 2.2, 2.2), prop('painting', -15.1, 95.6, 1.0, 2.6), prop('crystal', 6.6, 89.6, 1.6, 1.6), prop('crystal', 12.3, 111.4, 2.0, 2.0),
     prop('stalagmite', -15.2, 95.5, 1.2, 1.2), prop('stalagmite', 8.0, 114.6, 1.0, 1.0),
     prop('stalagmite', -9.5, 114.2, 1.0, 1.0), prop('stalagmite', 15.0, 104.0, 1.2, 1.2), prop('stalagmite', -14.8, 108.0, 1.2, 1.2),
+    // details (details.js): ventilation fan and duct post, gas cylinders, scaffold, tool board, hard-hat shelf
+    prop('vent-fan', -2.6, 92.0, 1.0, .8), prop('duct-post', -4.9, 94.3, .3, .3), prop('gas-rack', 7.6, 95.6, 1.4, .6),
+    prop('scaffold', 13.0, 98.0, 2.0, 1.2), prop('pegboard', -4.9, 100.45, 1.6, .2), prop('hardhats', -3.0, 89.9, 1.2, .4),
   ],
 };
 
@@ -141,7 +144,8 @@ export const WASHITSU = {
   entry:suiteDoor('16'), terminal:[26.75, 85.0],
   data:[['畳','16 枚'],['床の間','掛軸 1 幅'],['室温','22.0 °C'],['湿度','52 %']],
   floors:suiteFloors('16'),
-  props:[prop('tansu', 26.42, 89.8, .55, 1.5), prop('tokonoma', 30.1, 91.4, 3.0, 1.0), prop('shelves', 27.35, 91.4, 2.5, 1.0), prop('chabudai', 28.8, 87.8, 1.15, 1.15), prop('andon', 31.1, 84.6, .45, .45)],
+  props:[prop('tansu', 26.42, 89.8, .55, 1.5), prop('tokonoma', 30.1, 91.4, 3.0, 1.0), prop('shelves', 27.35, 91.4, 2.5, 1.0), prop('chabudai', 28.8, 87.8, 1.15, 1.15), prop('andon', 31.1, 84.6, .45, .45),
+    prop('byobu', 28.8, 84.5, 2.9, .45), prop('futon', 26.55, 86.4, .65, .9)],
 };
 export const YOSHITSU = {
   code:'17', name:'洋室', view:'yoshitsu', short:'洋室', side:0,
@@ -151,7 +155,7 @@ export const YOSHITSU = {
   floors:suiteFloors('17'),
   props:[prop('fireplace', 29.0, 99.55, 2.3, .75), prop('sofa', 29.0, 97.0, 2.5, 1.0), prop('armchair', 27.2, 98.3, .95, .95),
     prop('armchair', 30.85, 98.3, .95, .95), prop('coffee-table', 29.0, 98.45, 1.0, .55), prop('bookshelf', 31.35, 94.2, .45, 1.9), prop('floor-lamp', 26.6, 99.3, .4, .4),
-    prop('piano', 30.85, 92.5, 1.4, .65), prop('globe', 31.1, 96.1, .6, .6)],
+    prop('piano', 30.85, 92.5, 1.4, .65), prop('globe', 31.1, 96.1, .6, .6), prop('wine-rack', 26.3, 97.6, .4, 1.0)],
 };
 export const MEETING = {
   code:'18', name:'会議室', view:'meeting', short:'会議', side:0,
@@ -161,6 +165,57 @@ export const MEETING = {
   floors:suiteFloors('18'),
   props:[prop('table', 29.0, 104.0, 1.6, 4.4), prop('plant', 31.15, 107.45, .7, .7),
     ...[102.4, 103.5, 104.6, 105.7].flatMap(z => [prop('chair', 27.75, z, .5, .5), prop('chair', 30.25, z, .5, .5)])],
+};
+
+// 24 大浴場: a hot-spring bathhouse south of the living corridor, entered through its south wall
+export const ONSEN = {x1:24.4, x2:38.4, z1:70.0, z2:84.0, height:3.0, partition:78.3, door:27.2, entry:25.0};
+export const ONSEN_ROOM = {
+  code:'24', name:'大浴場', view:'onsen', short:'大浴場', side:0,
+  x1:ONSEN.x1, x2:ONSEN.x2, z1:ONSEN.z1, z2:ONSEN.z2,
+  entry:{x:ONSEN.entry, z:ONSEN.z2, axis:'z', width:1.2, height:2.1, door:false}, terminal:[31.5, 79.35],
+  data:[['源泉温度','42.6 °C'],['泉質','硫黄泉'],['湯の入れ替え','毎朝 6:00'],['利用者','0 名']],
+  floors:[
+    rect(ONSEN.x1+.25, ONSEN.z1+.25, ONSEN.x2-.25, ONSEN.partition-.15),
+    rect(ONSEN.x1+.25, ONSEN.partition+.15, ONSEN.x2-.25, ONSEN.z2-.25),
+    rect(ONSEN.door-.6, ONSEN.partition-.4, ONSEN.door+.6, ONSEN.partition+.4),
+    rect(ONSEN.entry-.6, ONSEN.z2-.5, ONSEN.entry+.6, ONSEN.z2+.45),
+  ],
+  props:[
+    prop('wall', 25.5, ONSEN.partition, 2.2, .2), prop('wall', 33.1, ONSEN.partition, 10.6, .2),
+    // bath: wash stations, hinoki bath, cold bath, glass screen, rock bath, gravel garden
+    prop('wash', 24.95, 74.0, 1.1, 6.2), prop('inner-bath', 29.8, 72.8, 4.4, 3.6), prop('cold-bath', 31.5, 77.3, 1.8, 1.35),
+    prop('glass', 33.3, 72.4, .1, 4.8), prop('rock-bath', 35.9, 72.9, 4.4, 4.6), prop('garden', 36.3, 77.35, 4.0, 1.5),
+    // dressing room and rest area
+    prop('lockers', 24.63, 80.95, .5, 3.9), prop('basket-shelf', 29.4, 78.75, 2.8, .55), prop('washstand', 28.7, 83.72, 4.2, .6),
+    prop('massage-chair', 32.0, 83.3, .8, 1.0), prop('milk-vending', 33.4, 83.6, 1.0, .75), prop('bench', 33.5, 78.8, 3.0, .45),
+    prop('tatami-platform', 36.4, 82.1, 3.6, 3.6),
+  ],
+};
+
+// 25 社員食堂: a staff canteen with its kitchen, east of the bathhouse, entered from its rest area
+export const CANTEEN = {x1:38.6, x2:52.6, z1:70.0, z2:84.0, height:3.0, partition:76.4, entry:79.3, kitchenDoor:50.8};
+export const CANTEEN_ROOM = {
+  code:'25', name:'社員食堂', view:'canteen', short:'食堂', side:0,
+  x1:CANTEEN.x1, x2:CANTEEN.x2, z1:CANTEEN.z1, z2:CANTEEN.z2,
+  entry:{x:CANTEEN.x1-.1, z:CANTEEN.entry, axis:'x', width:1.2, height:2.1, door:false}, terminal:[39.3, 82.9],
+  data:[['本日の定食','とんかつ定食'],['営業時間','11:00〜20:00'],['炊飯器','保温中'],['席数','24 席']],
+  floors:[
+    rect(CANTEEN.x1+.25, CANTEEN.partition+.15, CANTEEN.x2-.25, CANTEEN.z2-.25),
+    rect(CANTEEN.x1+.25, CANTEEN.z1+.25, CANTEEN.x2-.25, CANTEEN.partition-.15),
+    rect(CANTEEN.kitchenDoor-.6, CANTEEN.partition-.4, CANTEEN.kitchenDoor+.6, CANTEEN.partition+.4),
+    rect(ONSEN.x2-.4, CANTEEN.entry-.6, CANTEEN.x1+.4, CANTEEN.entry+.6),
+  ],
+  props:[
+    // serving counter wall between the dining room and the kitchen (open above the counter)
+    prop('wall', 44.4, CANTEEN.partition, 11.6, .2), prop('wall', 52.0, CANTEEN.partition, 1.2, .2),
+    // dining room: four long tables with chairs, tea dispenser
+    prop('table', 42.5, 79.4, 2.6, 2.1), prop('table', 47.0, 79.4, 2.6, 2.1),
+    prop('table', 42.5, 82.2, 2.6, 2.1), prop('table', 47.0, 82.2, 2.6, 2.1),
+    prop('tea', 38.95, 77.3, .7, .8),
+    // kitchen: range under the hood, worktops, fridge, prep island, sink, rice sacks
+    prop('range', 42.2, 70.45, 2.6, .9), prop('worktop', 46.1, 70.4, 5.0, .8), prop('fridge', 49.6, 70.45, 1.3, .85),
+    prop('island', 44.0, 74.0, 3.6, .8), prop('sink', 39.0, 72.5, .8, 3.0), prop('rice-sacks', 51.8, 74.8, .8, .9),
+  ],
 };
 
 export const SURFACE = {
@@ -190,10 +245,13 @@ export const SURFACE = {
     prop('lantern', 36.4, 190.3, .55, .55), prop('lantern', 39.2, 190.3, .55, .55),
     prop('hokora', 37.8, 192.6, 1.7, 1.5), prop('ema', 39.45, 191.4, .3, 1.3),
     prop('tree', 10.2, 165.4, .7, .7), prop('tree', 10.4, 173.0, .7, .7), prop('tree', 38.6, 182.4, .7, .7),
+    // details (details.js): stacked containers, cement, wrapped pallet, portable toilet, ore heap, barriers
+    prop('containers', 35.5, 163.3, 6.1, 2.44), prop('cement', 29.0, 171.3, 1.2, 1.0), prop('wrapped-pallet', 26.6, 176.6, 1.1, 1.1),
+    prop('toilet', 10.2, 190.0, 1.2, 1.2), prop('ore-heap', 28.6, 187.4, 3.0, 2.4), prop('barriers', 28.0, 190.5, .5, 2.4),
   ],
 };
 
-export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, SURFACE, ...OUTDOOR_ROOMS];
+export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, ONSEN_ROOM, CANTEEN_ROOM, SURFACE, ...OUTDOOR_ROOMS];
 
 // Light sources for the shared lighting texture and the dynamic point-light pool.
 export const CAVERN_FIXTURES = [
@@ -225,6 +283,15 @@ export const CAVERN_FIXTURES = [
   {x:29.0, y:0.6, z:99.2, color:0xff8a3c, intensity:14, range:5},
   {x:29.0, y:2.75, z:102.6, color:0xeef4ff, intensity:20, range:7},
   {x:29.0, y:2.75, z:105.6, color:0xeef4ff, intensity:20, range:7},
+  {x:28.5, y:2.85, z:73.5, color:0xffe2b8, intensity:24, range:8},
+  {x:31.5, y:2.85, z:76.8, color:0xffe2b8, intensity:14, range:6},
+  {x:36.0, y:2.7, z:73.0, color:0xffd29a, intensity:20, range:7},
+  {x:27.6, y:2.85, z:81.2, color:0xfff0d8, intensity:22, range:8},
+  {x:35.0, y:2.85, z:81.2, color:0xffe8c8, intensity:22, range:8},
+  {x:42.5, y:2.85, z:80.8, color:0xfff0d8, intensity:22, range:8},
+  {x:47.0, y:2.85, z:80.8, color:0xfff0d8, intensity:22, range:8},
+  {x:42.5, y:2.85, z:73.2, color:0xf4f6f8, intensity:22, range:8},
+  {x:48.0, y:2.85, z:73.2, color:0xf4f6f8, intensity:20, range:8},
   {x:24, y:2.9, z:112, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.25, z:121, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.5, z:134, color:0xffd9a0, intensity:20, range:8},

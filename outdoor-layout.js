@@ -183,6 +183,7 @@ export const HQ_ZONE = {
     ...[0, 1, 2, 3].flatMap(i => [prop('car', 53.2, 218.5 + i * 3.1, 4.6, 2.0), prop('car', 60.8, 230.5 + i * 3.1, 4.6, 2.0)]),
     ...[-6, 10, 40, 58, 80, 100, 118].map(x => prop('streetlight', x, 212.4, .3, .3)),
     ...[222, 240, 258, 280, 300, 320].map(z => prop('streetlight', 48.6, z, .3, .3)),
+    prop('food-truck', 33.2, 224.5, 2.3, 5.0), prop('planter-box', 17.8, 216.0, 1.6, .6), prop('planter-box', 22.2, 216.0, 1.6, .6),
   ],
 };
 export const RIVER_ZONE = {
@@ -208,6 +209,8 @@ export const VILLAGE = {
     prop('lantern', -43.2, 323, .55, .55), prop('lantern', -38.8, 323, .55, .55),
     prop('mill', 27.6, 294.2, 4.4, 3.6), prop('jars', 54.5, 310.1, 2.0, .9), prop('firewood', 65, 315.3, 4.6, .9),
     prop('scarecrow', 37.4, 300.6, .6, .6), prop('boat', -6, RIVER.z(-6) + 7.4, 3.6, 1.4), prop('net', -1, RIVER.z(-1) + 8.6, 3.2, .4),
+    prop('tarp-pile', 57.6, 322.6, 2.4, 1.6), prop('bamboo-fence', 59.2, 312.2, 6.4, .2), prop('well', 61.5, 298.6, 1.4, 1.4),
+    prop('veg-stall', 48.8, 306.5, .8, 1.6), prop('futon-pole', 57.0, 300.4, 3.0, .6), prop('hives', 37.5, 312, 3.2, .7),
   ],
 };
 export const PLATEAU = {
@@ -228,6 +231,7 @@ export const PLATEAU = {
     prop('cooler', 93.9, 183.0, .7, .5), prop('telescope', 104.6, 181.8, .7, .7), prop('trail-sign', 92.6, 201.4, .4, .4),
     prop('trail-sign', 100.4, 187.6, .4, .4), prop('logs', 88.4, 183.2, 2.0, .9), prop('weather', 88.6, 246.2, 2.6, 1.2),
     prop('utility-car', 77, 233.4, 3.6, 1.8), prop('reels', 70.4, 232.6, 2.4, 1.2),
+    prop('silage', 80, 196, 1.6, 1.4), prop('silage', 82.5, 197.5, 1.6, 1.4), prop('silage', 81, 199.5, 1.6, 1.4),
   ],
 };
 for (const t of TREES) HQ_ZONE.props.push(prop('tree', t.x, t.z, .55 * t.s, .55 * t.s));

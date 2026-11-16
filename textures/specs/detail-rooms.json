@@ -1,0 +1,100 @@
+{
+  "id": "detail-rooms",
+  "title": "作り込み B：居住区画と管制室",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "furnishings and details in the living quarters and control room of a Japanese underground research station, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "vending-red",
+      "name": "自販機の赤い塗装",
+      "meters": 1.0,
+      "roughness": 0.35,
+      "metalness": 0.3,
+      "normalStrength": 0.3,
+      "crop": [
+        0.3,
+        0.33,
+        0.62,
+        0.6
+      ],
+      "prompt": "red painted steel vending machine side panel, smooth satin paint with faint scuffs, straight-on, about 1 m across"
+    },
+    {
+      "id": "byobu-gold",
+      "name": "金屏風",
+      "meters": 2.0,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.3,
+      "seamless": false,
+      "prompt": "Japanese folding screen painting on soft gold leaf squares: an old pine tree and two cranes, gentle traditional style, faint grid of gold leaf joints, no text, no seals, filling the whole square"
+    },
+    {
+      "id": "futon-stack",
+      "name": "畳んだ布団",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "side view of a neat stack of folded Japanese futons and quilts with indigo, white and soft red patterned covers, no text, filling the whole square"
+    },
+    {
+      "id": "wine-rack",
+      "name": "ワインラック",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "front view of a dark wooden wine rack with square cubbies holding the round ends of wine bottles in green and brown glass, no labels, no text, filling the whole square"
+    },
+    {
+      "id": "kilim-runner",
+      "name": "廊下のキリム敷物",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 0.7,
+      "seamless": "x",
+      "prompt": "hand woven kilim rug with a geometric diamond pattern in faded terracotta, cream and indigo, seen from directly above, about 1 m across"
+    },
+    {
+      "id": "notice-board",
+      "name": "掲示板",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.5,
+      "seamless": false,
+      "prompt": "front view of a cork notice board with pinned blank papers, photos of mountains and caves, a calendar grid without numbers and coloured pins, no readable text, no letters, filling the whole square"
+    },
+    {
+      "id": "server-front",
+      "name": "サーバーの前面",
+      "meters": 1.0,
+      "roughness": 0.45,
+      "metalness": 0.5,
+      "normalStrength": 0.6,
+      "seamless": false,
+      "emissive": 0.35,
+      "prompt": "front view of a black server rack full of stacked rack-mounted servers with small green and blue status lights and ventilation grilles, no text, no logos, filling the whole square"
+    },
+    {
+      "id": "coat-hooks",
+      "name": "上着掛け",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "seamless": false,
+      "prompt": "front view of a wall coat rack with hanging jackets, an orange high visibility vest, a hard hat and a canvas bag on wooden hooks against a plain wall, no text, filling the whole square"
+    },
+    {
+      "id": "woodblock-landscape",
+      "name": "木版画の風景",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "Japanese style woodblock print of misty mountains, a river and a small boat, soft blue and green tones on cream paper, no text, no seals, no signature, filling the whole square"
+    }
+  ]
+}

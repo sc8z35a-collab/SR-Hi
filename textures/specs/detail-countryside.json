@@ -1,0 +1,114 @@
+{
+  "id": "detail-countryside",
+  "title": "作り込み D：里山・渓谷・台地",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "everyday rural details of a Japanese mountain village, river valley and grassy plateau, realistic photographic PBR materials, soft even daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "blue-tarp",
+      "name": "ブルーシート",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 1.0,
+      "prompt": "crumpled blue polyethylene tarp with woven texture and creases, dusty, straight-on, about 1 m across"
+    },
+    {
+      "id": "bamboo-fence",
+      "name": "竹垣",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 1.0,
+      "seamless": "x",
+      "prompt": "Japanese bamboo fence of vertical split bamboo poles tied with black palm rope to horizontal bamboo rails, straight-on, about 1 m across"
+    },
+    {
+      "id": "well-stone",
+      "name": "井戸の石組み",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.8,
+      "seamless": false,
+      "prompt": "rough grey granite blocks of an old village well, mossy joints and lichen, straight-on, about 1 m across"
+    },
+    {
+      "id": "veg-stall",
+      "name": "無人販売所の野菜",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "front view of a wooden roadside stall shelf with baskets of tomatoes, cucumbers, eggplants, sweet potatoes and green onions, no text, no price tags, filling the whole square"
+    },
+    {
+      "id": "tetrapod-concrete",
+      "name": "消波ブロックのコンクリート",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "crop": [
+        0.45,
+        0.17,
+        0.63,
+        0.33
+      ],
+      "flatten": true,
+      "prompt": "weathered grey concrete with small air holes, water stains and green algae near the bottom, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "silage-wrap",
+      "name": "ラップサイレージ",
+      "meters": 1.5,
+      "roughness": 0.4,
+      "normalStrength": 0.8,
+      "crop": [
+        0.08,
+        0.1,
+        0.46,
+        0.4
+      ],
+      "flatten": true,
+      "prompt": "white plastic stretch film wrapped around a round hay bale, overlapping glossy layers with creases and dirt, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "daikon-drying",
+      "name": "干し大根",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "front view of rows of long white daikon radishes hanging to dry from bamboo poles under farmhouse eaves, leaves on top, no text, filling the whole square"
+    },
+    {
+      "id": "airing-futon",
+      "name": "干した布団",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 0.4,
+      "crop": [
+        0.04,
+        0.1,
+        0.96,
+        0.93
+      ],
+      "seamless": false,
+      "prompt": "Japanese futon cover with a cheerful pattern of small flowers and stripes in soft pink, cream and blue cotton, straight-on, about 1 m across"
+    },
+    {
+      "id": "beehive-wood",
+      "name": "巣箱の板",
+      "meters": 0.6,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "seamless": false,
+      "crop": [
+        0.2,
+        0.16,
+        0.8,
+        0.82
+      ],
+      "prompt": "weathered wooden beehive boxes stacked, grey cedar with dark joints and a small entrance slot, straight-on, about 0.6 m across"
+    }
+  ]
+}

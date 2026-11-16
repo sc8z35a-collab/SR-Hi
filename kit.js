@@ -4,6 +4,24 @@ import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 // Small toolkit for building procedural scenery out of the generated textures.
 // Static parts are collected per material and merged, so each material costs one draw call.
 
+/**
+ * Cooperative scheduling for long loads: call `await slice()` often; it only yields (to the next
+ * frame, after it has been drawn) once `budget.ms` of work has run since the last yield, so the
+ * game keeps drawing smoothly while scenery is built in the background.
+ */
+export function createSlicer(budget={ms:6}){
+  let started=performance.now();
+  const yieldFrame=()=>new Promise(resolve=>{
+    if(typeof requestAnimationFrame==='function'&&document.visibilityState!=='hidden')requestAnimationFrame(()=>setTimeout(resolve,0));
+    else setTimeout(resolve,0);
+  });
+  return async function slice(force=false){
+    if(!force&&performance.now()-started<budget.ms)return;
+    await yieldFrame();
+    started=performance.now();
+  };
+}
+
 export const rng=(seed)=>()=>{
   seed|=0;seed=seed+0x6D2B79F5|0;
   let t=Math.imul(seed^seed>>>15,1|seed);
@@ -90,6 +108,13 @@ export function lumpy(geo,amount,frequency,seed=0){
 }
 
 const KEEP=['position','normal','uv'];
+// Generated textures that replace materials which used to be plain colours. Until the texture
+// exists in the manifest, the old plain material is used, so the scene looks the same as before.
+const PLAIN={
+  'dark-steel':['steel-dark',{}],
+  'rail-steel':['rail-steel',{color:0x55595c,roughness:.4,metalness:.85}],
+  'vending-red':['vending-body',{color:0xa8222c,roughness:.35,metalness:.3}],
+};
 export class Kit{
   constructor(textures){
     this.textures=textures;
@@ -102,6 +127,7 @@ export class Kit{
     const key=id+(opts.variant?':'+opts.variant:'');
     if(this.materials.has(key))return this.materials.get(key);
     const t=this.textures.get(id);
+    if(!t&&PLAIN[id])return this.plain(...PLAIN[id]);
     const m=new THREE.MeshStandardMaterial({
       name:'Generated '+key,
       color:t?0xffffff:(opts.fallback??0x8a8f92),
@@ -152,6 +178,22 @@ export class Kit{
   beam(p1,p2,r,material,meters=1,seg=8){
     const {pos,quat,length}=between(p1,p2);
     return this.add(roundUV(new THREE.CylinderGeometry(r,r,length,seg),meters,r),material,{pos,quat});
+  }
+  /** Like build(), but yields between materials so a large merge does not stall a frame. */
+  async buildAsync(group,prefix='Generated',slice=async()=>{}){
+    for(const [material,geos] of [...this.parts]){
+      this.parts.delete(material);
+      const merged=mergeGeometries(geos,false);
+      if(merged){
+        merged.computeBoundingSphere();
+        merged.computeBoundingBox();
+        const mesh=new THREE.Mesh(merged,material);
+        mesh.name=prefix+'_'+material.name.replace(/^Generated /,'').replace(/[^\w-]+/g,'_');
+        group.add(mesh);
+        for(const fn of this.after)fn(mesh);
+      }
+      await slice();
+    }
   }
   /** Merge everything queued into `group`, one mesh per material. */
   build(group,prefix='Generated'){

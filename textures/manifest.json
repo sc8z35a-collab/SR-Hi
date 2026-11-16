@@ -959,6 +959,329 @@
         },
         "total_tokens": 2008
       }
+    },
+    "facility-floors": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-floors.webp",
+      "textures": [
+        "corridor-epoxy-floor",
+        "lab-resin-floor",
+        "archive-epoxy-floor",
+        "control-esd-floor",
+        "geo-epoxy-floor",
+        "plant-grit-plate",
+        "graphite-epoxy-floor",
+        "sage-terrazzo-floor",
+        "porcelain-grid-tile"
+      ]
+    },
+    "facility-rock-concrete": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-rock-concrete.webp",
+      "textures": [
+        "wing-shotcrete",
+        "wing-wet-asphalt",
+        "salt-stained-concrete",
+        "wet-basalt-gravel",
+        "fissured-basalt-wall",
+        "layered-slate-wall",
+        "damp-greenstone",
+        "stud-rubber-floor",
+        "amber-resin-floor"
+      ]
+    },
+    "facility-metal-finishes": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-metal-finishes.webp",
+      "textures": [
+        "blackened-steel",
+        "spiral-duct-steel",
+        "welded-steel-plate",
+        "frosted-stainless",
+        "brushed-door-steel",
+        "blue-firedoor-paint",
+        "cobalt-enamel-paint",
+        "petrol-powder-coat",
+        "aged-copper-sheet"
+      ]
+    },
+    "facility-utility": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-utility.webp",
+      "textures": [
+        "steel-wire-mesh",
+        "nitrile-ribbed",
+        "birch-plywood",
+        "antislip-grit-tape",
+        "carbon-fibre-twill",
+        "kraft-corrugated-box",
+        "foil-insulation-wrap",
+        "appliance-white",
+        "acoustic-fabric-grey"
+      ]
+    },
+    "detail-underground": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/detail-underground.webp",
+      "textures": [
+        "dark-steel",
+        "rail-steel",
+        "vent-duct",
+        "gas-cylinder",
+        "scaffold-board",
+        "tool-pegboard",
+        "hardhat-shelf",
+        "lampenflora",
+        "shore-pebbles"
+      ]
+    },
+    "detail-rooms": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/detail-rooms.webp",
+      "textures": [
+        "vending-red",
+        "byobu-gold",
+        "futon-stack",
+        "wine-rack",
+        "kilim-runner",
+        "notice-board",
+        "server-front",
+        "coat-hooks",
+        "woodblock-landscape"
+      ]
+    },
+    "detail-yard": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/detail-yard.webp",
+      "textures": [
+        "container-blue",
+        "container-rust",
+        "cement-bags",
+        "portable-toilet",
+        "ore-heap",
+        "barrier-plastic",
+        "food-truck",
+        "cedar-planter",
+        "wrapped-pallet"
+      ]
+    },
+    "detail-countryside": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/detail-countryside.webp",
+      "textures": [
+        "blue-tarp",
+        "bamboo-fence",
+        "well-stone",
+        "veg-stall",
+        "tetrapod-concrete",
+        "silage-wrap",
+        "daikon-drying",
+        "airing-futon",
+        "beehive-wood"
+      ]
+    },
+    "facility-equipment": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-equipment.webp",
+      "textures": [
+        "yellow-cast-paint",
+        "phenolic-benchtop",
+        "copper-braid",
+        "orange-tool-paint",
+        "wet-biofilm",
+        "culture-polymer-white",
+        "caution-stripe-worn",
+        "zinc-plated",
+        "hdpe-bottle"
+      ]
+    },
+    "facility-doors-paint": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-doors-paint.webp",
+      "textures": [
+        "bronze-mesh-screen",
+        "zinc-checker-plate",
+        "urethane-joint-ribbed",
+        "greygreen-cabinet-enamel",
+        "service-green-enamel",
+        "green-steel-door",
+        "fiberglass-jacket",
+        "frosted-ceramic",
+        "floor-traffic-yellow"
+      ]
+    },
+    "facility-metal-rubber-rock": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/facility-metal-rubber-rock.webp",
+      "textures": [
+        "black-phosphate-steel",
+        "rust-streak-concrete",
+        "ivory-housing-matte",
+        "drain-grating",
+        "dot-rubber-floor",
+        "epdm-rubber",
+        "ivory-glazed-ceramic",
+        "cleanroom-weave-white",
+        "wet-dark-rock"
+      ]
+    },
+    "onsen-bath-surfaces": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-bath-surfaces.webp",
+      "textures": [
+        "bath-floor-stone",
+        "white-mosaic-tile",
+        "teal-mosaic-tile",
+        "basalt-flagstone",
+        "green-tuff-wall",
+        "hinoki-paneling",
+        "hinoki-slatted",
+        "steam-plaster",
+        "cedar-lattice-ceiling"
+      ]
+    },
+    "onsen-baths": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-baths.webp",
+      "textures": [
+        "hinoki-tub-wet",
+        "bath-rock-wet",
+        "yunohana",
+        "nigori-water",
+        "clear-onsen-water",
+        "white-tamajari",
+        "moss-garden-stone",
+        "fogged-glass",
+        "iron-spring-deposit"
+      ]
+    },
+    "onsen-dressing": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-dressing.webp",
+      "textures": [
+        "rattan-mat",
+        "rattan-weave",
+        "kiri-locker",
+        "towel-pile",
+        "yukata-navy",
+        "noren-vermilion",
+        "sudare-blind",
+        "artificial-marble",
+        "black-leatherette"
+      ]
+    },
+    "onsen-lounge": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-lounge.webp",
+      "textures": [
+        "ryukyu-tatami",
+        "chestnut-board",
+        "verdigris-copper",
+        "black-granite-polished",
+        "yellow-resin",
+        "sawara-board",
+        "bath-wall-paint",
+        "sulfur-iron",
+        "rubber-coin-mat"
+      ]
+    },
+    "canteen-surfaces": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-surfaces.webp",
+      "textures": [
+        "canteen-sheet-floor",
+        "quarry-tile-red",
+        "subway-tile-white",
+        "oak-wainscot",
+        "cream-plaster",
+        "acoustic-ceiling-tile",
+        "stainless-wall-panel",
+        "cast-drain-grate",
+        "menu-chalkboard"
+      ]
+    },
+    "canteen-kitchen": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-kitchen.webp",
+      "textures": [
+        "stainless-worktop",
+        "burner-grate",
+        "wok-iron",
+        "aluminum-stockpot",
+        "perforated-stainless",
+        "white-cutting-board",
+        "fridge-white-paint",
+        "copper-pot",
+        "grease-filter"
+      ]
+    },
+    "canteen-tableware": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-tableware.webp",
+      "textures": [
+        "melamine-woodgrain",
+        "burgundy-vinyl",
+        "chrome-tube",
+        "white-porcelain",
+        "lacquer-bowl",
+        "brown-tray",
+        "bamboo-chopstick-holder",
+        "gingham-cloth",
+        "tea-dispenser"
+      ]
+    },
+    "canteen-food": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-food.webp",
+      "textures": [
+        "steamed-rice",
+        "miso-paste",
+        "nori-sheet",
+        "panko-crust",
+        "takuan-slices",
+        "asanoha-noren",
+        "kraft-rice-bag",
+        "vinyl-strip-curtain",
+        "worn-counter-wood"
+      ]
     }
   },
   "textures": {
@@ -3945,6 +4268,1907 @@
       "roughness": 0.8,
       "metalness": 0.0,
       "normal": "fishing-net-normal.webp",
+      "meters": 1.0
+    },
+    "corridor-epoxy-floor": {
+      "name": "通路のエポキシ床",
+      "sheet": "facility-floors",
+      "cell": 0,
+      "albedo": "corridor-epoxy-floor.webp",
+      "roughness": 0.4,
+      "metalness": 0.05,
+      "normal": "corridor-epoxy-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Polished aggregate floor | corridor-epoxy"
+      ]
+    },
+    "lab-resin-floor": {
+      "name": "実験室の樹脂床",
+      "sheet": "facility-floors",
+      "cell": 1,
+      "albedo": "lab-resin-floor.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "lab-resin-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Polished aggregate floor | lab-clean-resin"
+      ]
+    },
+    "archive-epoxy-floor": {
+      "name": "保管庫の珪砂エポキシ床",
+      "sheet": "facility-floors",
+      "cell": 2,
+      "albedo": "archive-epoxy-floor.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "archive-epoxy-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Polished aggregate floor | archive-silica-epoxy"
+      ]
+    },
+    "control-esd-floor": {
+      "name": "制御室の導電床タイル",
+      "sheet": "facility-floors",
+      "cell": 3,
+      "albedo": "control-esd-floor.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "control-esd-floor-normal.webp",
+      "meters": 0.6,
+      "targets": [
+        "Polished aggregate floor | control-conductive-floor"
+      ]
+    },
+    "geo-epoxy-floor": {
+      "name": "地質室の砕石エポキシ床",
+      "sheet": "facility-floors",
+      "cell": 4,
+      "albedo": "geo-epoxy-floor.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "geo-epoxy-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Polished aggregate floor | geo-epoxy"
+      ]
+    },
+    "plant-grit-plate": {
+      "name": "機械室の滑り止め鋼板床",
+      "sheet": "facility-floors",
+      "cell": 5,
+      "albedo": "plant-grit-plate.webp",
+      "roughness": 0.85,
+      "metalness": 0.3,
+      "normal": "plant-grit-plate-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Dark textured access floor | plant-grit-floor"
+      ]
+    },
+    "graphite-epoxy-floor": {
+      "name": "黒鉛色のエポキシ床",
+      "sheet": "facility-floors",
+      "cell": 6,
+      "albedo": "graphite-epoxy-floor.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "graphite-epoxy-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "B4 graphite-epoxy"
+      ]
+    },
+    "sage-terrazzo-floor": {
+      "name": "セージ色の研ぎ出し床",
+      "sheet": "facility-floors",
+      "cell": 7,
+      "albedo": "sage-terrazzo-floor.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "sage-terrazzo-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "B4 sage-epoxy"
+      ]
+    },
+    "porcelain-grid-tile": {
+      "name": "白い磁器タイル",
+      "sheet": "facility-floors",
+      "cell": 8,
+      "albedo": "porcelain-grid-tile.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "porcelain-grid-tile-normal.webp",
+      "meters": 0.35,
+      "targets": [
+        "B4 porcelain-tile"
+      ]
+    },
+    "wing-shotcrete": {
+      "name": "増築棟の吹付けコンクリート",
+      "sheet": "facility-rock-concrete",
+      "cell": 0,
+      "albedo": "wing-shotcrete.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "wing-shotcrete-normal.webp",
+      "meters": 3.0,
+      "targets": [
+        "B4 coarse-shotcrete"
+      ]
+    },
+    "wing-wet-asphalt": {
+      "name": "湿ったアスファルト",
+      "sheet": "facility-rock-concrete",
+      "cell": 1,
+      "albedo": "wing-wet-asphalt.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "wing-wet-asphalt-normal.webp",
+      "meters": 3.0,
+      "targets": [
+        "B4 wet-asphalt"
+      ]
+    },
+    "salt-stained-concrete": {
+      "name": "白華の出たコンクリート",
+      "sheet": "facility-rock-concrete",
+      "cell": 2,
+      "albedo": "salt-stained-concrete.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "salt-stained-concrete-normal.webp",
+      "meters": 3.0,
+      "targets": [
+        "B4 salt-concrete"
+      ]
+    },
+    "wet-basalt-gravel": {
+      "name": "濡れた玄武岩の砕石",
+      "sheet": "facility-rock-concrete",
+      "cell": 3,
+      "albedo": "wet-basalt-gravel.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "wet-basalt-gravel-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 wet-gravel"
+      ]
+    },
+    "fissured-basalt-wall": {
+      "name": "亀裂の入った玄武岩",
+      "sheet": "facility-rock-concrete",
+      "cell": 4,
+      "albedo": "fissured-basalt-wall.webp",
+      "roughness": 0.75,
+      "metalness": 0.0,
+      "normal": "fissured-basalt-wall-normal.webp",
+      "meters": 3.0,
+      "targets": [
+        "B4 fissured-basalt"
+      ]
+    },
+    "layered-slate-wall": {
+      "name": "層状の粘板岩",
+      "sheet": "facility-rock-concrete",
+      "cell": 5,
+      "albedo": "layered-slate-wall.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "layered-slate-wall-normal.webp",
+      "meters": 3.0,
+      "targets": [
+        "Fractured slate | geo-rough-slate"
+      ]
+    },
+    "damp-greenstone": {
+      "name": "湿った緑色岩",
+      "sheet": "facility-rock-concrete",
+      "cell": 6,
+      "albedo": "damp-greenstone.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "damp-greenstone-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Damp slate | geo-wet-basalt"
+      ]
+    },
+    "stud-rubber-floor": {
+      "name": "丸鋲のゴム床",
+      "sheet": "facility-rock-concrete",
+      "cell": 7,
+      "albedo": "stud-rubber-floor.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "stud-rubber-floor-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 stipple-rubber"
+      ]
+    },
+    "amber-resin-floor": {
+      "name": "琥珀色の樹脂床",
+      "sheet": "facility-rock-concrete",
+      "cell": 8,
+      "albedo": "amber-resin-floor.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "amber-resin-floor-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "B4 amber-resin"
+      ]
+    },
+    "blackened-steel": {
+      "name": "黒皮の鋼板",
+      "sheet": "facility-metal-finishes",
+      "cell": 0,
+      "albedo": "blackened-steel.webp",
+      "roughness": 0.55,
+      "metalness": 0.6,
+      "normal": "blackened-steel-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "B4 black-steel"
+      ]
+    },
+    "spiral-duct-steel": {
+      "name": "スパイラルダクト",
+      "sheet": "facility-metal-finishes",
+      "cell": 1,
+      "albedo": "spiral-duct-steel.webp",
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normal": "spiral-duct-steel-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 duct-rib"
+      ]
+    },
+    "welded-steel-plate": {
+      "name": "溶接した鋼板",
+      "sheet": "facility-metal-finishes",
+      "cell": 2,
+      "albedo": "welded-steel-plate.webp",
+      "roughness": 0.55,
+      "metalness": 0.65,
+      "normal": "welded-steel-plate-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 welded-steel"
+      ]
+    },
+    "frosted-stainless": {
+      "name": "霜の付いたステンレス",
+      "sheet": "facility-metal-finishes",
+      "cell": 3,
+      "albedo": "frosted-stainless.webp",
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normal": "frosted-stainless-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 frost-stainless"
+      ]
+    },
+    "brushed-door-steel": {
+      "name": "ヘアラインのステンレス",
+      "sheet": "facility-metal-finishes",
+      "cell": 4,
+      "albedo": "brushed-door-steel.webp",
+      "roughness": 0.35,
+      "metalness": 0.85,
+      "normal": "brushed-door-steel-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 brush-steel"
+      ]
+    },
+    "blue-firedoor-paint": {
+      "name": "青い防火扉の塗装",
+      "sheet": "facility-metal-finishes",
+      "cell": 5,
+      "albedo": "blue-firedoor-paint.webp",
+      "roughness": 0.45,
+      "metalness": 0.25,
+      "normal": "blue-firedoor-paint-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 blue-firedoor"
+      ]
+    },
+    "cobalt-enamel-paint": {
+      "name": "コバルトブルーの塗装",
+      "sheet": "facility-metal-finishes",
+      "cell": 6,
+      "albedo": "cobalt-enamel-paint.webp",
+      "roughness": 0.4,
+      "metalness": 0.2,
+      "normal": "cobalt-enamel-paint-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 cobalt-enamel"
+      ]
+    },
+    "petrol-powder-coat": {
+      "name": "ペトロールブルーの粉体塗装",
+      "sheet": "facility-metal-finishes",
+      "cell": 7,
+      "albedo": "petrol-powder-coat.webp",
+      "roughness": 0.5,
+      "metalness": 0.15,
+      "normal": "petrol-powder-coat-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 petrol-powder"
+      ]
+    },
+    "aged-copper-sheet": {
+      "name": "経年の銅",
+      "sheet": "facility-metal-finishes",
+      "cell": 8,
+      "albedo": "aged-copper-sheet.webp",
+      "roughness": 0.5,
+      "metalness": 0.6,
+      "normal": "aged-copper-sheet-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 oxidized-copper"
+      ]
+    },
+    "steel-wire-mesh": {
+      "name": "溶接金網",
+      "sheet": "facility-utility",
+      "cell": 0,
+      "albedo": "steel-wire-mesh.webp",
+      "roughness": 0.5,
+      "metalness": 0.4,
+      "normal": "steel-wire-mesh-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 wire-mesh"
+      ]
+    },
+    "nitrile-ribbed": {
+      "name": "リブ付きニトリルゴム",
+      "sheet": "facility-utility",
+      "cell": 1,
+      "albedo": "nitrile-ribbed.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "nitrile-ribbed-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 nitrile-gasket"
+      ]
+    },
+    "birch-plywood": {
+      "name": "白樺合板",
+      "sheet": "facility-utility",
+      "cell": 2,
+      "albedo": "birch-plywood.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "birch-plywood-normal.webp",
+      "meters": 1.2,
+      "targets": [
+        "B4 birch-ply"
+      ]
+    },
+    "antislip-grit-tape": {
+      "name": "滑り止めテープ",
+      "sheet": "facility-utility",
+      "cell": 3,
+      "albedo": "antislip-grit-tape.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "antislip-grit-tape-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 grit-tape"
+      ]
+    },
+    "carbon-fibre-twill": {
+      "name": "カーボン綾織",
+      "sheet": "facility-utility",
+      "cell": 4,
+      "albedo": "carbon-fibre-twill.webp",
+      "roughness": 0.3,
+      "metalness": 0.2,
+      "normal": "carbon-fibre-twill-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 carbon-twill"
+      ]
+    },
+    "kraft-corrugated-box": {
+      "name": "段ボール箱",
+      "sheet": "facility-utility",
+      "cell": 5,
+      "albedo": "kraft-corrugated-box.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "kraft-corrugated-box-normal.webp",
+      "meters": 0.8,
+      "targets": [
+        "B4 corrugated-card"
+      ]
+    },
+    "foil-insulation-wrap": {
+      "name": "アルミ箔の断熱材",
+      "sheet": "facility-utility",
+      "cell": 6,
+      "albedo": "foil-insulation-wrap.webp",
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normal": "foil-insulation-wrap-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 foil-insulation"
+      ]
+    },
+    "appliance-white": {
+      "name": "家電のホワイト塗装",
+      "sheet": "facility-utility",
+      "cell": 7,
+      "albedo": "appliance-white.webp",
+      "roughness": 0.35,
+      "metalness": 0.15,
+      "normal": "appliance-white-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 appliance-enamel"
+      ]
+    },
+    "acoustic-fabric-grey": {
+      "name": "吸音クロスの壁",
+      "sheet": "facility-utility",
+      "cell": 8,
+      "albedo": "acoustic-fabric-grey.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "acoustic-fabric-grey-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "Satin enamel panel | control-sound-panel"
+      ]
+    },
+    "dark-steel": {
+      "name": "黒い鋼材",
+      "sheet": "detail-underground",
+      "cell": 0,
+      "albedo": "dark-steel.webp",
+      "roughness": 0.55,
+      "metalness": 0.7,
+      "normal": "dark-steel-normal.webp",
+      "meters": 1.0
+    },
+    "rail-steel": {
+      "name": "レール鋼",
+      "sheet": "detail-underground",
+      "cell": 1,
+      "albedo": "rail-steel.webp",
+      "roughness": 0.45,
+      "metalness": 0.8,
+      "normal": "rail-steel-normal.webp",
+      "meters": 0.5
+    },
+    "vent-duct": {
+      "name": "黄色い風管",
+      "sheet": "detail-underground",
+      "cell": 2,
+      "albedo": "vent-duct.webp",
+      "roughness": 0.75,
+      "metalness": 0.0,
+      "normal": "vent-duct-normal.webp",
+      "meters": 1.0
+    },
+    "gas-cylinder": {
+      "name": "ガスボンベの塗装",
+      "sheet": "detail-underground",
+      "cell": 3,
+      "albedo": "gas-cylinder.webp",
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normal": "gas-cylinder-normal.webp",
+      "meters": 0.6
+    },
+    "scaffold-board": {
+      "name": "足場板",
+      "sheet": "detail-underground",
+      "cell": 4,
+      "albedo": "scaffold-board.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "scaffold-board-normal.webp",
+      "meters": 1.0
+    },
+    "tool-pegboard": {
+      "name": "工具の掛かった有孔ボード",
+      "sheet": "detail-underground",
+      "cell": 5,
+      "albedo": "tool-pegboard.webp",
+      "roughness": 0.6,
+      "metalness": 0.2,
+      "normal": "tool-pegboard-normal.webp",
+      "meters": 1.0
+    },
+    "hardhat-shelf": {
+      "name": "ヘルメット棚",
+      "sheet": "detail-underground",
+      "cell": 6,
+      "albedo": "hardhat-shelf.webp",
+      "roughness": 0.6,
+      "metalness": 0.1,
+      "normal": "hardhat-shelf-normal.webp",
+      "meters": 1.0
+    },
+    "lampenflora": {
+      "name": "照明の周りの苔",
+      "sheet": "detail-underground",
+      "cell": 7,
+      "albedo": "lampenflora.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "lampenflora-normal.webp",
+      "meters": 1.0
+    },
+    "shore-pebbles": {
+      "name": "湖岸の小石",
+      "sheet": "detail-underground",
+      "cell": 8,
+      "albedo": "shore-pebbles.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "shore-pebbles-normal.webp",
+      "meters": 1.0
+    },
+    "vending-red": {
+      "name": "自販機の赤い塗装",
+      "sheet": "detail-rooms",
+      "cell": 0,
+      "albedo": "vending-red.webp",
+      "roughness": 0.35,
+      "metalness": 0.3,
+      "normal": "vending-red-normal.webp",
+      "meters": 1.0
+    },
+    "byobu-gold": {
+      "name": "金屏風",
+      "sheet": "detail-rooms",
+      "cell": 1,
+      "albedo": "byobu-gold.webp",
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normal": "byobu-gold-normal.webp",
+      "meters": 2.0
+    },
+    "futon-stack": {
+      "name": "畳んだ布団",
+      "sheet": "detail-rooms",
+      "cell": 2,
+      "albedo": "futon-stack.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "futon-stack-normal.webp",
+      "meters": 1.0
+    },
+    "wine-rack": {
+      "name": "ワインラック",
+      "sheet": "detail-rooms",
+      "cell": 3,
+      "albedo": "wine-rack.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "wine-rack-normal.webp",
+      "meters": 1.0
+    },
+    "kilim-runner": {
+      "name": "廊下のキリム敷物",
+      "sheet": "detail-rooms",
+      "cell": 4,
+      "albedo": "kilim-runner.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "kilim-runner-normal.webp",
+      "meters": 1.0
+    },
+    "notice-board": {
+      "name": "掲示板",
+      "sheet": "detail-rooms",
+      "cell": 5,
+      "albedo": "notice-board.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "notice-board-normal.webp",
+      "meters": 1.0
+    },
+    "server-front": {
+      "name": "サーバーの前面",
+      "sheet": "detail-rooms",
+      "cell": 6,
+      "albedo": "server-front.webp",
+      "roughness": 0.45,
+      "metalness": 0.5,
+      "normal": "server-front-normal.webp",
+      "meters": 1.0,
+      "emissive": 0.35
+    },
+    "coat-hooks": {
+      "name": "上着掛け",
+      "sheet": "detail-rooms",
+      "cell": 7,
+      "albedo": "coat-hooks.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "coat-hooks-normal.webp",
+      "meters": 1.0
+    },
+    "woodblock-landscape": {
+      "name": "木版画の風景",
+      "sheet": "detail-rooms",
+      "cell": 8,
+      "albedo": "woodblock-landscape.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "woodblock-landscape-normal.webp",
+      "meters": 1.0
+    },
+    "container-blue": {
+      "name": "青いコンテナ",
+      "sheet": "detail-yard",
+      "cell": 0,
+      "albedo": "container-blue.webp",
+      "roughness": 0.6,
+      "metalness": 0.4,
+      "normal": "container-blue-normal.webp",
+      "meters": 2.4
+    },
+    "container-rust": {
+      "name": "錆びた赤いコンテナ",
+      "sheet": "detail-yard",
+      "cell": 1,
+      "albedo": "container-rust.webp",
+      "roughness": 0.75,
+      "metalness": 0.35,
+      "normal": "container-rust-normal.webp",
+      "meters": 2.4
+    },
+    "cement-bags": {
+      "name": "セメント袋の山",
+      "sheet": "detail-yard",
+      "cell": 2,
+      "albedo": "cement-bags.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "cement-bags-normal.webp",
+      "meters": 1.0
+    },
+    "portable-toilet": {
+      "name": "仮設トイレの樹脂",
+      "sheet": "detail-yard",
+      "cell": 3,
+      "albedo": "portable-toilet.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "portable-toilet-normal.webp",
+      "meters": 1.0
+    },
+    "ore-heap": {
+      "name": "鉱石の山",
+      "sheet": "detail-yard",
+      "cell": 4,
+      "albedo": "ore-heap.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "ore-heap-normal.webp",
+      "meters": 2.0
+    },
+    "barrier-plastic": {
+      "name": "樹脂製のバリケード",
+      "sheet": "detail-yard",
+      "cell": 5,
+      "albedo": "barrier-plastic.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "barrier-plastic-normal.webp",
+      "meters": 1.0
+    },
+    "food-truck": {
+      "name": "キッチンカーの側面",
+      "sheet": "detail-yard",
+      "cell": 6,
+      "albedo": "food-truck.webp",
+      "roughness": 0.45,
+      "metalness": 0.2,
+      "normal": "food-truck-normal.webp",
+      "meters": 2.0
+    },
+    "cedar-planter": {
+      "name": "杉の植木箱",
+      "sheet": "detail-yard",
+      "cell": 7,
+      "albedo": "cedar-planter.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "cedar-planter-normal.webp",
+      "meters": 1.0
+    },
+    "wrapped-pallet": {
+      "name": "ラップ巻きの荷",
+      "sheet": "detail-yard",
+      "cell": 8,
+      "albedo": "wrapped-pallet.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "wrapped-pallet-normal.webp",
+      "meters": 1.0
+    },
+    "blue-tarp": {
+      "name": "ブルーシート",
+      "sheet": "detail-countryside",
+      "cell": 0,
+      "albedo": "blue-tarp.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "blue-tarp-normal.webp",
+      "meters": 1.0
+    },
+    "bamboo-fence": {
+      "name": "竹垣",
+      "sheet": "detail-countryside",
+      "cell": 1,
+      "albedo": "bamboo-fence.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "bamboo-fence-normal.webp",
+      "meters": 1.0
+    },
+    "well-stone": {
+      "name": "井戸の石組み",
+      "sheet": "detail-countryside",
+      "cell": 2,
+      "albedo": "well-stone.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "well-stone-normal.webp",
+      "meters": 1.0
+    },
+    "veg-stall": {
+      "name": "無人販売所の野菜",
+      "sheet": "detail-countryside",
+      "cell": 3,
+      "albedo": "veg-stall.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "veg-stall-normal.webp",
+      "meters": 1.0
+    },
+    "tetrapod-concrete": {
+      "name": "消波ブロックのコンクリート",
+      "sheet": "detail-countryside",
+      "cell": 4,
+      "albedo": "tetrapod-concrete.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "tetrapod-concrete-normal.webp",
+      "meters": 1.5
+    },
+    "silage-wrap": {
+      "name": "ラップサイレージ",
+      "sheet": "detail-countryside",
+      "cell": 5,
+      "albedo": "silage-wrap.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "silage-wrap-normal.webp",
+      "meters": 1.5
+    },
+    "daikon-drying": {
+      "name": "干し大根",
+      "sheet": "detail-countryside",
+      "cell": 6,
+      "albedo": "daikon-drying.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "daikon-drying-normal.webp",
+      "meters": 1.0
+    },
+    "airing-futon": {
+      "name": "干した布団",
+      "sheet": "detail-countryside",
+      "cell": 7,
+      "albedo": "airing-futon.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "airing-futon-normal.webp",
+      "meters": 1.0
+    },
+    "beehive-wood": {
+      "name": "巣箱の板",
+      "sheet": "detail-countryside",
+      "cell": 8,
+      "albedo": "beehive-wood.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "beehive-wood-normal.webp",
+      "meters": 0.6
+    },
+    "yellow-cast-paint": {
+      "name": "黄色い塗装の鋳物",
+      "sheet": "facility-equipment",
+      "cell": 0,
+      "albedo": "yellow-cast-paint.webp",
+      "roughness": 0.6,
+      "metalness": 0.2,
+      "normal": "yellow-cast-paint-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 yellow-cast"
+      ]
+    },
+    "phenolic-benchtop": {
+      "name": "緑のフェノール樹脂天板",
+      "sheet": "facility-equipment",
+      "cell": 1,
+      "albedo": "phenolic-benchtop.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "phenolic-benchtop-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 lab-phenolic"
+      ]
+    },
+    "copper-braid": {
+      "name": "銅の編組線",
+      "sheet": "facility-equipment",
+      "cell": 2,
+      "albedo": "copper-braid.webp",
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normal": "copper-braid-normal.webp",
+      "meters": 0.15,
+      "targets": [
+        "B4 braided-line"
+      ]
+    },
+    "orange-tool-paint": {
+      "name": "オレンジの工具塗装",
+      "sheet": "facility-equipment",
+      "cell": 3,
+      "albedo": "orange-tool-paint.webp",
+      "roughness": 0.45,
+      "metalness": 0.15,
+      "normal": "orange-tool-paint-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 orange-tool"
+      ]
+    },
+    "wet-biofilm": {
+      "name": "湿ったバイオフィルム",
+      "sheet": "facility-equipment",
+      "cell": 4,
+      "albedo": "wet-biofilm.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "wet-biofilm-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 biofilm"
+      ]
+    },
+    "culture-polymer-white": {
+      "name": "白い培養容器の樹脂",
+      "sheet": "facility-equipment",
+      "cell": 5,
+      "albedo": "culture-polymer-white.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "culture-polymer-white-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 culture-polymer"
+      ]
+    },
+    "caution-stripe-worn": {
+      "name": "すり減った注意喚起ストライプ",
+      "sheet": "facility-equipment",
+      "cell": 6,
+      "albedo": "caution-stripe-worn.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "caution-stripe-worn-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 caution-stripe"
+      ]
+    },
+    "zinc-plated": {
+      "name": "亜鉛めっき",
+      "sheet": "facility-equipment",
+      "cell": 7,
+      "albedo": "zinc-plated.webp",
+      "roughness": 0.4,
+      "metalness": 0.8,
+      "normal": "zinc-plated-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 clamp-zinc"
+      ]
+    },
+    "hdpe-bottle": {
+      "name": "半透明の白いポリ樹脂",
+      "sheet": "facility-equipment",
+      "cell": 8,
+      "albedo": "hdpe-bottle.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "hdpe-bottle-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 bottle-polymer"
+      ]
+    },
+    "bronze-mesh-screen": {
+      "name": "ブロンズの金網",
+      "sheet": "facility-doors-paint",
+      "cell": 0,
+      "albedo": "bronze-mesh-screen.webp",
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normal": "bronze-mesh-screen-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 bronze-screen"
+      ]
+    },
+    "zinc-checker-plate": {
+      "name": "亜鉛めっきの縞鋼板",
+      "sheet": "facility-doors-paint",
+      "cell": 1,
+      "albedo": "zinc-checker-plate.webp",
+      "roughness": 0.45,
+      "metalness": 0.7,
+      "normal": "zinc-checker-plate-normal.webp",
+      "meters": 0.6,
+      "targets": [
+        "B4 zinc-checker"
+      ]
+    },
+    "urethane-joint-ribbed": {
+      "name": "ウレタン目地材",
+      "sheet": "facility-doors-paint",
+      "cell": 2,
+      "albedo": "urethane-joint-ribbed.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "urethane-joint-ribbed-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 urethane-joint"
+      ]
+    },
+    "greygreen-cabinet-enamel": {
+      "name": "灰緑色のキャビネット塗装",
+      "sheet": "facility-doors-paint",
+      "cell": 3,
+      "albedo": "greygreen-cabinet-enamel.webp",
+      "roughness": 0.5,
+      "metalness": 0.15,
+      "normal": "greygreen-cabinet-enamel-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Grey-green cabinet enamel | archive-cryogenic-seal"
+      ]
+    },
+    "service-green-enamel": {
+      "name": "機械室の緑のエナメル",
+      "sheet": "facility-doors-paint",
+      "cell": 4,
+      "albedo": "service-green-enamel.webp",
+      "roughness": 0.3,
+      "metalness": 0.15,
+      "normal": "service-green-enamel-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Grey-green cabinet enamel | plant-service-green"
+      ]
+    },
+    "green-steel-door": {
+      "name": "緑の鋼製扉",
+      "sheet": "facility-doors-paint",
+      "cell": 5,
+      "albedo": "green-steel-door.webp",
+      "roughness": 0.5,
+      "metalness": 0.2,
+      "normal": "green-steel-door-normal.webp",
+      "meters": 1.5,
+      "targets": [
+        "B4 green-door"
+      ]
+    },
+    "fiberglass-jacket": {
+      "name": "ガラス繊維の保温カバー",
+      "sheet": "facility-doors-paint",
+      "cell": 6,
+      "albedo": "fiberglass-jacket.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "fiberglass-jacket-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 jacket-fiberglass"
+      ]
+    },
+    "frosted-ceramic": {
+      "name": "霜の付いたセラミック",
+      "sheet": "facility-doors-paint",
+      "cell": 7,
+      "albedo": "frosted-ceramic.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "frosted-ceramic-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "B4 chilled-ceramic"
+      ]
+    },
+    "floor-traffic-yellow": {
+      "name": "床の黄色い標示ペイント",
+      "sheet": "facility-doors-paint",
+      "cell": 8,
+      "albedo": "floor-traffic-yellow.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "floor-traffic-yellow-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Traffic paint | base-enamel"
+      ]
+    },
+    "black-phosphate-steel": {
+      "name": "黒いリン酸塩処理の鋼",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 0,
+      "albedo": "black-phosphate-steel.webp",
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normal": "black-phosphate-steel-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 flange-phosphate"
+      ]
+    },
+    "rust-streak-concrete": {
+      "name": "錆の流れ跡のコンクリート",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 1,
+      "albedo": "rust-streak-concrete.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "rust-streak-concrete-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "B4 rust-scour"
+      ]
+    },
+    "ivory-housing-matte": {
+      "name": "アイボリーの機器外装",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 2,
+      "albedo": "ivory-housing-matte.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "ivory-housing-matte-normal.webp",
+      "meters": 1.0,
+      "targets": [
+        "Ceramic equipment shell | lab-ceramic-housing",
+        "Ceramic equipment shell | base-ceramic"
+      ]
+    },
+    "drain-grating": {
+      "name": "排水グレーチング",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 3,
+      "albedo": "drain-grating.webp",
+      "roughness": 0.4,
+      "metalness": 0.7,
+      "normal": "drain-grating-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 drain-grid"
+      ]
+    },
+    "dot-rubber-floor": {
+      "name": "防振ゴムの床材",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 4,
+      "albedo": "dot-rubber-floor.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "dot-rubber-floor-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "Dark textured access floor | control-absorbing-rubber"
+      ]
+    },
+    "epdm-rubber": {
+      "name": "EPDMゴム",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 5,
+      "albedo": "epdm-rubber.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "epdm-rubber-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 gasket-epdm"
+      ]
+    },
+    "ivory-glazed-ceramic": {
+      "name": "アイボリーの施釉セラミック",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 6,
+      "albedo": "ivory-glazed-ceramic.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "ivory-glazed-ceramic-normal.webp",
+      "meters": 0.5,
+      "targets": [
+        "B4 ivory-ceramic"
+      ]
+    },
+    "cleanroom-weave-white": {
+      "name": "クリーンルームの白い織布",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 7,
+      "albedo": "cleanroom-weave-white.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "cleanroom-weave-white-normal.webp",
+      "meters": 0.3,
+      "targets": [
+        "B4 cleanroom-weave"
+      ]
+    },
+    "wet-dark-rock": {
+      "name": "湿った黒い岩肌",
+      "sheet": "facility-metal-rubber-rock",
+      "cell": 8,
+      "albedo": "wet-dark-rock.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "wet-dark-rock-normal.webp",
+      "meters": 2.0,
+      "targets": [
+        "Damp slate | base-rock"
+      ]
+    },
+    "bath-floor-stone": {
+      "name": "浴室の床タイル",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 0,
+      "albedo": "bath-floor-stone.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "bath-floor-stone-normal.webp",
+      "meters": 0.9
+    },
+    "white-mosaic-tile": {
+      "name": "白いモザイクタイル",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 1,
+      "albedo": "white-mosaic-tile.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "white-mosaic-tile-normal.webp",
+      "meters": 0.3
+    },
+    "teal-mosaic-tile": {
+      "name": "青緑のモザイクタイル",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 2,
+      "albedo": "teal-mosaic-tile.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "teal-mosaic-tile-normal.webp",
+      "meters": 0.3
+    },
+    "basalt-flagstone": {
+      "name": "黒い玄武岩の敷石",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 3,
+      "albedo": "basalt-flagstone.webp",
+      "roughness": 0.3,
+      "metalness": 0.0,
+      "normal": "basalt-flagstone-normal.webp",
+      "meters": 1.5
+    },
+    "green-tuff-wall": {
+      "name": "緑がかった凝灰岩の石壁",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 4,
+      "albedo": "green-tuff-wall.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "green-tuff-wall-normal.webp",
+      "meters": 1.2
+    },
+    "hinoki-paneling": {
+      "name": "檜の羽目板",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 5,
+      "albedo": "hinoki-paneling.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "hinoki-paneling-normal.webp",
+      "meters": 1.0
+    },
+    "hinoki-slatted": {
+      "name": "檜のすのこ",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 6,
+      "albedo": "hinoki-slatted.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "hinoki-slatted-normal.webp",
+      "meters": 0.8
+    },
+    "steam-plaster": {
+      "name": "湯気で湿った漆喰",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 7,
+      "albedo": "steam-plaster.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "steam-plaster-normal.webp",
+      "meters": 1.5
+    },
+    "cedar-lattice-ceiling": {
+      "name": "杉の格子天井",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 8,
+      "albedo": "cedar-lattice-ceiling.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "cedar-lattice-ceiling-normal.webp",
+      "meters": 1.8
+    },
+    "hinoki-tub-wet": {
+      "name": "檜の浴槽の板",
+      "sheet": "onsen-baths",
+      "cell": 0,
+      "albedo": "hinoki-tub-wet.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "hinoki-tub-wet-normal.webp",
+      "meters": 0.9
+    },
+    "bath-rock-wet": {
+      "name": "岩風呂の黒い岩",
+      "sheet": "onsen-baths",
+      "cell": 1,
+      "albedo": "bath-rock-wet.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "bath-rock-wet-normal.webp",
+      "meters": 1.5
+    },
+    "yunohana": {
+      "name": "湯の花の沈着",
+      "sheet": "onsen-baths",
+      "cell": 2,
+      "albedo": "yunohana.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "yunohana-normal.webp",
+      "meters": 0.8
+    },
+    "nigori-water": {
+      "name": "乳白色のにごり湯",
+      "sheet": "onsen-baths",
+      "cell": 3,
+      "albedo": "nigori-water.webp",
+      "roughness": 0.08,
+      "metalness": 0.0,
+      "normal": "nigori-water-normal.webp",
+      "meters": 2.0
+    },
+    "clear-onsen-water": {
+      "name": "淡い緑の透明な湯",
+      "sheet": "onsen-baths",
+      "cell": 4,
+      "albedo": "clear-onsen-water.webp",
+      "roughness": 0.05,
+      "metalness": 0.0,
+      "normal": "clear-onsen-water-normal.webp",
+      "meters": 1.5
+    },
+    "white-tamajari": {
+      "name": "白い玉砂利",
+      "sheet": "onsen-baths",
+      "cell": 5,
+      "albedo": "white-tamajari.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "white-tamajari-normal.webp",
+      "meters": 0.6
+    },
+    "moss-garden-stone": {
+      "name": "苔むした庭石",
+      "sheet": "onsen-baths",
+      "cell": 6,
+      "albedo": "moss-garden-stone.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "moss-garden-stone-normal.webp",
+      "meters": 1.2
+    },
+    "fogged-glass": {
+      "name": "湯気で曇ったガラス",
+      "sheet": "onsen-baths",
+      "cell": 7,
+      "albedo": "fogged-glass.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "fogged-glass-normal.webp",
+      "meters": 1.0
+    },
+    "iron-spring-deposit": {
+      "name": "鉄泉の沈着",
+      "sheet": "onsen-baths",
+      "cell": 8,
+      "albedo": "iron-spring-deposit.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "iron-spring-deposit-normal.webp",
+      "meters": 1.0
+    },
+    "rattan-mat": {
+      "name": "籐むしろの床",
+      "sheet": "onsen-dressing",
+      "cell": 0,
+      "albedo": "rattan-mat.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "rattan-mat-normal.webp",
+      "meters": 0.6
+    },
+    "rattan-weave": {
+      "name": "籐かごの編み目",
+      "sheet": "onsen-dressing",
+      "cell": 1,
+      "albedo": "rattan-weave.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "rattan-weave-normal.webp",
+      "meters": 0.3
+    },
+    "kiri-locker": {
+      "name": "桐の板",
+      "sheet": "onsen-dressing",
+      "cell": 2,
+      "albedo": "kiri-locker.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "kiri-locker-normal.webp",
+      "meters": 1.0
+    },
+    "towel-pile": {
+      "name": "白いタオル地",
+      "sheet": "onsen-dressing",
+      "cell": 3,
+      "albedo": "towel-pile.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "towel-pile-normal.webp",
+      "meters": 0.3
+    },
+    "yukata-navy": {
+      "name": "紺の浴衣の生地",
+      "sheet": "onsen-dressing",
+      "cell": 4,
+      "albedo": "yukata-navy.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "yukata-navy-normal.webp",
+      "meters": 0.4
+    },
+    "noren-vermilion": {
+      "name": "朱色ののれん生地",
+      "sheet": "onsen-dressing",
+      "cell": 5,
+      "albedo": "noren-vermilion.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "noren-vermilion-normal.webp",
+      "meters": 0.6
+    },
+    "sudare-blind": {
+      "name": "竹の簾",
+      "sheet": "onsen-dressing",
+      "cell": 6,
+      "albedo": "sudare-blind.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "sudare-blind-normal.webp",
+      "meters": 0.6
+    },
+    "artificial-marble": {
+      "name": "白い人造大理石",
+      "sheet": "onsen-dressing",
+      "cell": 7,
+      "albedo": "artificial-marble.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "artificial-marble-normal.webp",
+      "meters": 0.8
+    },
+    "black-leatherette": {
+      "name": "黒い合皮",
+      "sheet": "onsen-dressing",
+      "cell": 8,
+      "albedo": "black-leatherette.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "black-leatherette-normal.webp",
+      "meters": 0.5
+    },
+    "ryukyu-tatami": {
+      "name": "縁なしの琉球畳",
+      "sheet": "onsen-lounge",
+      "cell": 0,
+      "albedo": "ryukyu-tatami.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "ryukyu-tatami-normal.webp",
+      "meters": 0.88
+    },
+    "chestnut-board": {
+      "name": "栗の板",
+      "sheet": "onsen-lounge",
+      "cell": 1,
+      "albedo": "chestnut-board.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "chestnut-board-normal.webp",
+      "meters": 1.0
+    },
+    "verdigris-copper": {
+      "name": "緑青の銅",
+      "sheet": "onsen-lounge",
+      "cell": 2,
+      "albedo": "verdigris-copper.webp",
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normal": "verdigris-copper-normal.webp",
+      "meters": 0.6
+    },
+    "black-granite-polished": {
+      "name": "磨いた黒御影石",
+      "sheet": "onsen-lounge",
+      "cell": 3,
+      "albedo": "black-granite-polished.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "black-granite-polished-normal.webp",
+      "meters": 0.6
+    },
+    "yellow-resin": {
+      "name": "黄色い樹脂",
+      "sheet": "onsen-lounge",
+      "cell": 4,
+      "albedo": "yellow-resin.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "yellow-resin-normal.webp",
+      "meters": 0.4
+    },
+    "sawara-board": {
+      "name": "さわら材の板",
+      "sheet": "onsen-lounge",
+      "cell": 5,
+      "albedo": "sawara-board.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "sawara-board-normal.webp",
+      "meters": 0.6
+    },
+    "bath-wall-paint": {
+      "name": "防カビ塗装の白い壁",
+      "sheet": "onsen-lounge",
+      "cell": 6,
+      "albedo": "bath-wall-paint.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "bath-wall-paint-normal.webp",
+      "meters": 1.5
+    },
+    "sulfur-iron": {
+      "name": "硫黄で黒ずんだ鉄",
+      "sheet": "onsen-lounge",
+      "cell": 7,
+      "albedo": "sulfur-iron.webp",
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normal": "sulfur-iron-normal.webp",
+      "meters": 0.6
+    },
+    "rubber-coin-mat": {
+      "name": "黒い防水ゴムマット",
+      "sheet": "onsen-lounge",
+      "cell": 8,
+      "albedo": "rubber-coin-mat.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "rubber-coin-mat-normal.webp",
+      "meters": 0.6
+    },
+    "canteen-sheet-floor": {
+      "name": "食堂の長尺シート床",
+      "sheet": "canteen-surfaces",
+      "cell": 0,
+      "albedo": "canteen-sheet-floor.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "canteen-sheet-floor-normal.webp",
+      "meters": 1.2
+    },
+    "quarry-tile-red": {
+      "name": "厨房の赤茶色の防滑タイル",
+      "sheet": "canteen-surfaces",
+      "cell": 1,
+      "albedo": "quarry-tile-red.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "quarry-tile-red-normal.webp",
+      "meters": 0.8
+    },
+    "subway-tile-white": {
+      "name": "白いサブウェイタイル",
+      "sheet": "canteen-surfaces",
+      "cell": 2,
+      "albedo": "subway-tile-white.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "subway-tile-white-normal.webp",
+      "meters": 0.6
+    },
+    "oak-wainscot": {
+      "name": "ナラの腰壁",
+      "sheet": "canteen-surfaces",
+      "cell": 3,
+      "albedo": "oak-wainscot.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "oak-wainscot-normal.webp",
+      "meters": 1.0
+    },
+    "cream-plaster": {
+      "name": "クリーム色の塗り壁",
+      "sheet": "canteen-surfaces",
+      "cell": 4,
+      "albedo": "cream-plaster.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "cream-plaster-normal.webp",
+      "meters": 1.5
+    },
+    "acoustic-ceiling-tile": {
+      "name": "岩綿吸音板の天井",
+      "sheet": "canteen-surfaces",
+      "cell": 5,
+      "albedo": "acoustic-ceiling-tile.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "acoustic-ceiling-tile-normal.webp",
+      "meters": 0.6
+    },
+    "stainless-wall-panel": {
+      "name": "厨房のステンレス壁",
+      "sheet": "canteen-surfaces",
+      "cell": 6,
+      "albedo": "stainless-wall-panel.webp",
+      "roughness": 0.3,
+      "metalness": 0.8,
+      "normal": "stainless-wall-panel-normal.webp",
+      "meters": 1.2
+    },
+    "cast-drain-grate": {
+      "name": "鋳鉄の排水溝グレーチング",
+      "sheet": "canteen-surfaces",
+      "cell": 7,
+      "albedo": "cast-drain-grate.webp",
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normal": "cast-drain-grate-normal.webp",
+      "meters": 0.5
+    },
+    "menu-chalkboard": {
+      "name": "黒板塗装の壁",
+      "sheet": "canteen-surfaces",
+      "cell": 8,
+      "albedo": "menu-chalkboard.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "menu-chalkboard-normal.webp",
+      "meters": 1.2
+    },
+    "stainless-worktop": {
+      "name": "ステンレスの調理台",
+      "sheet": "canteen-kitchen",
+      "cell": 0,
+      "albedo": "stainless-worktop.webp",
+      "roughness": 0.25,
+      "metalness": 0.85,
+      "normal": "stainless-worktop-normal.webp",
+      "meters": 1.0
+    },
+    "burner-grate": {
+      "name": "コンロの五徳",
+      "sheet": "canteen-kitchen",
+      "cell": 1,
+      "albedo": "burner-grate.webp",
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normal": "burner-grate-normal.webp",
+      "meters": 0.5
+    },
+    "wok-iron": {
+      "name": "使い込んだ中華鍋",
+      "sheet": "canteen-kitchen",
+      "cell": 2,
+      "albedo": "wok-iron.webp",
+      "roughness": 0.45,
+      "metalness": 0.6,
+      "normal": "wok-iron-normal.webp",
+      "meters": 0.5
+    },
+    "aluminum-stockpot": {
+      "name": "アルミの寸胴鍋",
+      "sheet": "canteen-kitchen",
+      "cell": 3,
+      "albedo": "aluminum-stockpot.webp",
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normal": "aluminum-stockpot-normal.webp",
+      "meters": 0.9
+    },
+    "perforated-stainless": {
+      "name": "パンチングメタル",
+      "sheet": "canteen-kitchen",
+      "cell": 4,
+      "albedo": "perforated-stainless.webp",
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normal": "perforated-stainless-normal.webp",
+      "meters": 0.4
+    },
+    "white-cutting-board": {
+      "name": "白い樹脂のまな板",
+      "sheet": "canteen-kitchen",
+      "cell": 5,
+      "albedo": "white-cutting-board.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "white-cutting-board-normal.webp",
+      "meters": 0.5
+    },
+    "fridge-white-paint": {
+      "name": "業務用冷蔵庫の白い塗装",
+      "sheet": "canteen-kitchen",
+      "cell": 6,
+      "albedo": "fridge-white-paint.webp",
+      "roughness": 0.4,
+      "metalness": 0.2,
+      "normal": "fridge-white-paint-normal.webp",
+      "meters": 1.0
+    },
+    "copper-pot": {
+      "name": "使い込んだ銅の鍋",
+      "sheet": "canteen-kitchen",
+      "cell": 7,
+      "albedo": "copper-pot.webp",
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normal": "copper-pot-normal.webp",
+      "meters": 0.5
+    },
+    "grease-filter": {
+      "name": "換気フードのグリスフィルター",
+      "sheet": "canteen-kitchen",
+      "cell": 8,
+      "albedo": "grease-filter.webp",
+      "roughness": 0.5,
+      "metalness": 0.7,
+      "normal": "grease-filter-normal.webp",
+      "meters": 0.5
+    },
+    "melamine-woodgrain": {
+      "name": "木目のメラミン天板",
+      "sheet": "canteen-tableware",
+      "cell": 0,
+      "albedo": "melamine-woodgrain.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "melamine-woodgrain-normal.webp",
+      "meters": 1.0
+    },
+    "burgundy-vinyl": {
+      "name": "臙脂のビニールレザー",
+      "sheet": "canteen-tableware",
+      "cell": 1,
+      "albedo": "burgundy-vinyl.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "burgundy-vinyl-normal.webp",
+      "meters": 0.5
+    },
+    "chrome-tube": {
+      "name": "クロムめっきのパイプ",
+      "sheet": "canteen-tableware",
+      "cell": 2,
+      "albedo": "chrome-tube.webp",
+      "roughness": 0.1,
+      "metalness": 1,
+      "normal": "chrome-tube-normal.webp",
+      "meters": 0.4
+    },
+    "white-porcelain": {
+      "name": "白い陶器",
+      "sheet": "canteen-tableware",
+      "cell": 3,
+      "albedo": "white-porcelain.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "white-porcelain-normal.webp",
+      "meters": 0.3
+    },
+    "lacquer-bowl": {
+      "name": "朱と黒の漆塗りの椀",
+      "sheet": "canteen-tableware",
+      "cell": 4,
+      "albedo": "lacquer-bowl.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "lacquer-bowl-normal.webp",
+      "meters": 0.3
+    },
+    "brown-tray": {
+      "name": "茶色い樹脂のトレー",
+      "sheet": "canteen-tableware",
+      "cell": 5,
+      "albedo": "brown-tray.webp",
+      "roughness": 0.45,
+      "metalness": 0.0,
+      "normal": "brown-tray-normal.webp",
+      "meters": 0.5
+    },
+    "bamboo-chopstick-holder": {
+      "name": "竹の箸立て",
+      "sheet": "canteen-tableware",
+      "cell": 6,
+      "albedo": "bamboo-chopstick-holder.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "bamboo-chopstick-holder-normal.webp",
+      "meters": 0.3
+    },
+    "gingham-cloth": {
+      "name": "赤いギンガムチェック",
+      "sheet": "canteen-tableware",
+      "cell": 7,
+      "albedo": "gingham-cloth.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "gingham-cloth-normal.webp",
+      "meters": 0.4
+    },
+    "tea-dispenser": {
+      "name": "給茶機",
+      "sheet": "canteen-tableware",
+      "cell": 8,
+      "albedo": "tea-dispenser.webp",
+      "roughness": 0.3,
+      "metalness": 0.7,
+      "normal": "tea-dispenser-normal.webp",
+      "meters": 0.6
+    },
+    "steamed-rice": {
+      "name": "炊きたての白米",
+      "sheet": "canteen-food",
+      "cell": 0,
+      "albedo": "steamed-rice.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "steamed-rice-normal.webp",
+      "meters": 0.3
+    },
+    "miso-paste": {
+      "name": "味噌",
+      "sheet": "canteen-food",
+      "cell": 1,
+      "albedo": "miso-paste.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "miso-paste-normal.webp",
+      "meters": 0.3
+    },
+    "nori-sheet": {
+      "name": "焼き海苔",
+      "sheet": "canteen-food",
+      "cell": 2,
+      "albedo": "nori-sheet.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "nori-sheet-normal.webp",
+      "meters": 0.3
+    },
+    "panko-crust": {
+      "name": "揚げ物の衣",
+      "sheet": "canteen-food",
+      "cell": 3,
+      "albedo": "panko-crust.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "panko-crust-normal.webp",
+      "meters": 0.2
+    },
+    "takuan-slices": {
+      "name": "たくあん",
+      "sheet": "canteen-food",
+      "cell": 4,
+      "albedo": "takuan-slices.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "takuan-slices-normal.webp",
+      "meters": 0.2
+    },
+    "asanoha-noren": {
+      "name": "紺の暖簾（麻の葉）",
+      "sheet": "canteen-food",
+      "cell": 5,
+      "albedo": "asanoha-noren.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "asanoha-noren-normal.webp",
+      "meters": 1.0
+    },
+    "kraft-rice-bag": {
+      "name": "米袋のクラフト紙",
+      "sheet": "canteen-food",
+      "cell": 6,
+      "albedo": "kraft-rice-bag.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "kraft-rice-bag-normal.webp",
+      "meters": 0.6
+    },
+    "vinyl-strip-curtain": {
+      "name": "透明なビニールのれん",
+      "sheet": "canteen-food",
+      "cell": 7,
+      "albedo": "vinyl-strip-curtain.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "vinyl-strip-curtain-normal.webp",
+      "meters": 1.0
+    },
+    "worn-counter-wood": {
+      "name": "使い込んだ木の配膳カウンター",
+      "sheet": "canteen-food",
+      "cell": 8,
+      "albedo": "worn-counter-wood.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "worn-counter-wood-normal.webp",
       "meters": 1.0
     }
   }
