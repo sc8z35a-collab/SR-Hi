@@ -192,6 +192,32 @@ export const ONSEN_ROOM = {
   ],
 };
 
+// 25 社員食堂: a staff canteen with its kitchen, east of the bathhouse, entered from its rest area
+export const CANTEEN = {x1:38.6, x2:52.6, z1:70.0, z2:84.0, height:3.0, partition:76.4, entry:79.3, kitchenDoor:50.8};
+export const CANTEEN_ROOM = {
+  code:'25', name:'社員食堂', view:'canteen', short:'食堂', side:0,
+  x1:CANTEEN.x1, x2:CANTEEN.x2, z1:CANTEEN.z1, z2:CANTEEN.z2,
+  entry:{x:CANTEEN.x1-.1, z:CANTEEN.entry, axis:'x', width:1.2, height:2.1, door:false}, terminal:[39.3, 82.9],
+  data:[['本日の定食','とんかつ定食'],['営業時間','11:00〜20:00'],['炊飯器','保温中'],['席数','24 席']],
+  floors:[
+    rect(CANTEEN.x1+.25, CANTEEN.partition+.15, CANTEEN.x2-.25, CANTEEN.z2-.25),
+    rect(CANTEEN.x1+.25, CANTEEN.z1+.25, CANTEEN.x2-.25, CANTEEN.partition-.15),
+    rect(CANTEEN.kitchenDoor-.6, CANTEEN.partition-.4, CANTEEN.kitchenDoor+.6, CANTEEN.partition+.4),
+    rect(ONSEN.x2-.4, CANTEEN.entry-.6, CANTEEN.x1+.4, CANTEEN.entry+.6),
+  ],
+  props:[
+    // serving counter wall between the dining room and the kitchen (open above the counter)
+    prop('wall', 44.4, CANTEEN.partition, 11.6, .2), prop('wall', 52.0, CANTEEN.partition, 1.2, .2),
+    // dining room: four long tables with chairs, tea dispenser
+    prop('table', 42.5, 79.4, 2.6, 2.1), prop('table', 47.0, 79.4, 2.6, 2.1),
+    prop('table', 42.5, 82.2, 2.6, 2.1), prop('table', 47.0, 82.2, 2.6, 2.1),
+    prop('tea', 38.95, 77.3, .7, .8),
+    // kitchen: range under the hood, worktops, fridge, prep island, sink, rice sacks
+    prop('range', 42.2, 70.45, 2.6, .9), prop('worktop', 46.1, 70.4, 5.0, .8), prop('fridge', 49.6, 70.45, 1.3, .85),
+    prop('island', 44.0, 74.0, 3.6, .8), prop('sink', 39.0, 72.5, .8, 3.0), prop('rice-sacks', 51.8, 74.8, .8, .9),
+  ],
+};
+
 export const SURFACE = {
   code:'19', name:'地上 坑口ヤード', view:'surface', short:'地上', side:0,
   x1:-62, x2:60, z1:108.1, z2:196,
@@ -225,7 +251,7 @@ export const SURFACE = {
   ],
 };
 
-export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, ONSEN_ROOM, SURFACE, ...OUTDOOR_ROOMS];
+export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, ONSEN_ROOM, CANTEEN_ROOM, SURFACE, ...OUTDOOR_ROOMS];
 
 // Light sources for the shared lighting texture and the dynamic point-light pool.
 export const CAVERN_FIXTURES = [
@@ -262,6 +288,10 @@ export const CAVERN_FIXTURES = [
   {x:36.0, y:2.7, z:73.0, color:0xffd29a, intensity:20, range:7},
   {x:27.6, y:2.85, z:81.2, color:0xfff0d8, intensity:22, range:8},
   {x:35.0, y:2.85, z:81.2, color:0xffe8c8, intensity:22, range:8},
+  {x:42.5, y:2.85, z:80.8, color:0xfff0d8, intensity:22, range:8},
+  {x:47.0, y:2.85, z:80.8, color:0xfff0d8, intensity:22, range:8},
+  {x:42.5, y:2.85, z:73.2, color:0xf4f6f8, intensity:22, range:8},
+  {x:48.0, y:2.85, z:73.2, color:0xf4f6f8, intensity:20, range:8},
   {x:24, y:2.9, z:112, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.25, z:121, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.5, z:134, color:0xffd9a0, intensity:20, range:8},

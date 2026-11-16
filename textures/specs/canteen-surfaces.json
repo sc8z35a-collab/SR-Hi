@@ -1,0 +1,88 @@
+{
+  "id": "canteen-surfaces",
+  "title": "社員食堂 A：床・壁・天井",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "floors, walls and ceilings of a Japanese staff canteen and its kitchen, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "canteen-sheet-floor",
+      "name": "食堂の長尺シート床",
+      "meters": 1.2,
+      "roughness": 0.6,
+      "normalStrength": 0.3,
+      "prompt": "beige vinyl sheet floor with small speckles, seen from directly above, about 1.2 m across"
+    },
+    {
+      "id": "quarry-tile-red",
+      "name": "厨房の赤茶色の防滑タイル",
+      "meters": 0.8,
+      "roughness": 0.7,
+      "normalStrength": 0.8,
+      "prompt": "red-brown anti-slip quarry tiles 20 cm square with grey grout, seen from directly above, about 0.8 m across"
+    },
+    {
+      "id": "subway-tile-white",
+      "name": "白いサブウェイタイル",
+      "meters": 0.6,
+      "roughness": 0.25,
+      "normalStrength": 0.6,
+      "prompt": "white glazed subway tiles in a running bond with grey grout, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "oak-wainscot",
+      "name": "ナラの腰壁",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.5,
+      "seamless": "x",
+      "prompt": "oak wainscot of vertical boards with a top rail and a skirting board, straight-on, about 1 m across"
+    },
+    {
+      "id": "cream-plaster",
+      "name": "クリーム色の塗り壁",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 0.4,
+      "prompt": "cream painted plaster wall with a soft trowel texture, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "acoustic-ceiling-tile",
+      "name": "岩綿吸音板の天井",
+      "meters": 0.6,
+      "roughness": 0.95,
+      "normalStrength": 0.6,
+      "prompt": "white mineral fibre acoustic ceiling tile with a fissured pattern, seen from below, about 0.6 m across"
+    },
+    {
+      "id": "stainless-wall-panel",
+      "name": "厨房のステンレス壁",
+      "meters": 1.2,
+      "roughness": 0.3,
+      "metalness": 0.8,
+      "normalStrength": 0.2,
+      "flatten": true,
+      "prompt": "brushed stainless steel wall panel with faint smudges, straight-on, about 1.2 m across"
+    },
+    {
+      "id": "cast-drain-grate",
+      "name": "鋳鉄の排水溝グレーチング",
+      "meters": 0.5,
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "rusty cast iron drain grating with slots, seen from directly above, about 0.5 m across"
+    },
+    {
+      "id": "menu-chalkboard",
+      "name": "黒板塗装の壁",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 0.2,
+      "flatten": true,
+      "prompt": "black chalkboard paint with faint chalk smudges, no writing, straight-on, about 1.2 m across"
+    }
+  ]
+}

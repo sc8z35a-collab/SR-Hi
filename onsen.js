@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three.module.js';
 import {box,cyl,planarUV,roundUV,lumpy,rng,kiosk,sign} from './kit.js';
-import {ONSEN,ONSEN_ROOM} from './cavern-layout.js';
+import {ONSEN,ONSEN_ROOM,CANTEEN} from './cavern-layout.js';
 import {wall} from './quarters.js';
 import {lantern} from './surface.js';
 
@@ -29,7 +29,8 @@ function shell(kit,group){
   const hinoki=kit.tex('hinoki-paneling'),rockWall=kit.tex('bath-rock-wet',{variant:'wall'});
   // structural walls (the corridor's south wall closes x < 31.8 at z2)
   wall(kit,paint,{axis:'x',at:x1-.1,from:z1-.2,to:z2,y2:H+.2,world:1.5});
-  wall(kit,paint,{axis:'x',at:x2+.1,from:z1-.2,to:z2+.1,y2:H+.2,world:1.5});
+  // east wall: doorway into the canteen (25) from the rest area
+  wall(kit,paint,{axis:'x',at:x2+.1,from:z1-.2,to:z2+.1,y2:H+.2,gaps:[{center:CANTEEN.entry,width:1.2,top:2.1}],world:1.5});
   wall(kit,paint,{axis:'z',at:z1-.1,from:x1-.2,to:x2+.2,y2:H+.2,world:1.5});
   wall(kit,paint,{axis:'z',at:z2,from:31.8,to:x2+.2,y2:H+.2,world:1.5});
   // partition between the bath and the dressing room: doorway and a fogged window
@@ -54,7 +55,7 @@ function shell(kit,group){
   wall(kit,chestnut,{axis:'z',at:PZ+.085,from:x1,to:x2,y2:.9,thick:.02,gaps:[{center:DX,width:1.2,top:.9}],world:1});
   wall(kit,chestnut,{axis:'z',at:z2-.11,from:x1,to:x2,y2:.9,thick:.02,gaps:[{center:EX,width:1.2,top:.9}],world:1});
   wall(kit,paint,{axis:'z',at:z2-.11,from:x1,to:x2,y1:.9,y2:H,thick:.02,gaps:[{center:EX,width:1.2,top:2.1}],world:1.5});
-  wall(kit,chestnut,{axis:'x',at:x2-.01,from:PZ,to:z2,y2:.9,thick:.02,world:1});
+  wall(kit,chestnut,{axis:'x',at:x2-.01,from:PZ,to:z2,y2:.9,thick:.02,gaps:[{center:CANTEEN.entry,width:1.2,top:.9}],world:1});
   wall(kit,chestnut,{axis:'x',at:x1+.01,from:PZ,to:z2,y2:.9,thick:.02,world:1});
   // vermilion noren and a sign on the corridor side, indigo noren at the bath doorway
   const vermilion=kit.tex('noren-vermilion',{side:THREE.DoubleSide});

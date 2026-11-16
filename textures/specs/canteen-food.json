@@ -1,0 +1,110 @@
+{
+  "id": "canteen-food",
+  "title": "社員食堂 D：食材と仕上げ",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "food and finishes of a Japanese staff canteen, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "steamed-rice",
+      "name": "炊きたての白米",
+      "meters": 0.3,
+      "roughness": 0.5,
+      "normalStrength": 1.0,
+      "crop": [
+        0.02,
+        0.35,
+        0.98,
+        0.98
+      ],
+      "prompt": "freshly cooked white rice grains"
+    },
+    {
+      "id": "miso-paste",
+      "name": "味噌",
+      "meters": 0.3,
+      "roughness": 0.5,
+      "normalStrength": 0.8,
+      "crop": [
+        0.08,
+        0.15,
+        0.92,
+        0.92
+      ],
+      "prompt": "grainy miso paste"
+    },
+    {
+      "id": "nori-sheet",
+      "name": "焼き海苔",
+      "meters": 0.3,
+      "roughness": 0.6,
+      "normalStrength": 0.5,
+      "prompt": "sheet of roasted nori seaweed, straight-on, about 0.3 m across"
+    },
+    {
+      "id": "panko-crust",
+      "name": "揚げ物の衣",
+      "meters": 0.2,
+      "roughness": 0.8,
+      "normalStrength": 1.2,
+      "prompt": "golden fried panko crumb crust of a tonkatsu, about 20 cm across"
+    },
+    {
+      "id": "takuan-slices",
+      "name": "たくあん",
+      "meters": 0.2,
+      "roughness": 0.4,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "prompt": "slices of yellow pickled daikon (takuan)"
+    },
+    {
+      "id": "asanoha-noren",
+      "name": "紺の暖簾（麻の葉）",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 0.3,
+      "seamless": false,
+      "prompt": "navy noren curtain with a white asanoha pattern hanging from a wooden rod, no text"
+    },
+    {
+      "id": "kraft-rice-bag",
+      "name": "米袋のクラフト紙",
+      "meters": 0.6,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "crop": [
+        0.05,
+        0.35,
+        0.95,
+        0.98
+      ],
+      "prompt": "crumpled brown kraft paper of a rice sack"
+    },
+    {
+      "id": "vinyl-strip-curtain",
+      "name": "透明なビニールのれん",
+      "meters": 1.0,
+      "roughness": 0.15,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "clear PVC strip curtain at a walk-in cold room doorway"
+    },
+    {
+      "id": "worn-counter-wood",
+      "name": "使い込んだ木の配膳カウンター",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 0.5,
+      "crop": [
+        0,
+        0.05,
+        1,
+        0.45
+      ],
+      "seamless": "x",
+      "prompt": "worn dark wooden serving counter top with scratches"
+    }
+  ]
+}

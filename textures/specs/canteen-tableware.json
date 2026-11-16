@@ -1,0 +1,114 @@
+{
+  "id": "canteen-tableware",
+  "title": "社員食堂 C：食卓と食器",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "tables, chairs and tableware of a Japanese staff canteen, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "melamine-woodgrain",
+      "name": "木目のメラミン天板",
+      "meters": 1.0,
+      "roughness": 0.35,
+      "normalStrength": 0.2,
+      "prompt": "wood grain melamine table top, glossy, seen from above, about 1 m across"
+    },
+    {
+      "id": "burgundy-vinyl",
+      "name": "臙脂のビニールレザー",
+      "meters": 0.5,
+      "roughness": 0.4,
+      "normalStrength": 0.5,
+      "flatten": true,
+      "prompt": "burgundy vinyl leather chair seat with a fine grain, straight-on, about 0.5 m across"
+    },
+    {
+      "id": "chrome-tube",
+      "name": "クロムめっきのパイプ",
+      "meters": 0.4,
+      "roughness": 0.1,
+      "metalness": 1,
+      "normalStrength": 0.1,
+      "crop": [
+        0.24,
+        0.4,
+        0.5,
+        1.0
+      ],
+      "seamless": "y",
+      "prompt": "chrome plated steel tube reflecting the room"
+    },
+    {
+      "id": "white-porcelain",
+      "name": "白い陶器",
+      "meters": 0.3,
+      "roughness": 0.15,
+      "normalStrength": 0.1,
+      "crop": [
+        0.25,
+        0.25,
+        0.8,
+        0.55
+      ],
+      "flatten": true,
+      "prompt": "glossy white porcelain glaze"
+    },
+    {
+      "id": "lacquer-bowl",
+      "name": "朱と黒の漆塗りの椀",
+      "meters": 0.3,
+      "roughness": 0.2,
+      "normalStrength": 0.2,
+      "seamless": false,
+      "prompt": "Japanese lacquered soup bowl, red inside and black outside"
+    },
+    {
+      "id": "brown-tray",
+      "name": "茶色い樹脂のトレー",
+      "meters": 0.5,
+      "roughness": 0.45,
+      "normalStrength": 0.3,
+      "crop": [
+        0.06,
+        0.12,
+        0.82,
+        0.92
+      ],
+      "prompt": "brown plastic canteen tray with a fine texture, seen from above"
+    },
+    {
+      "id": "bamboo-chopstick-holder",
+      "name": "竹の箸立て",
+      "meters": 0.3,
+      "roughness": 0.5,
+      "normalStrength": 0.6,
+      "crop": [
+        0.24,
+        0.36,
+        0.76,
+        0.98
+      ],
+      "seamless": "x",
+      "prompt": "bamboo chopstick holder surface"
+    },
+    {
+      "id": "gingham-cloth",
+      "name": "赤いギンガムチェック",
+      "meters": 0.4,
+      "roughness": 0.9,
+      "normalStrength": 0.3,
+      "prompt": "red and white gingham tablecloth with visible weave, seen from above, about 0.4 m across"
+    },
+    {
+      "id": "tea-dispenser",
+      "name": "給茶機",
+      "meters": 0.6,
+      "roughness": 0.3,
+      "metalness": 0.7,
+      "normalStrength": 0.3,
+      "seamless": false,
+      "prompt": "front of a stainless steel tea dispenser with buttons and a drip tray, no text"
+    }
+  ]
+}

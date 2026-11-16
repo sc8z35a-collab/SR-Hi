@@ -1214,6 +1214,74 @@
         "sulfur-iron",
         "rubber-coin-mat"
       ]
+    },
+    "canteen-surfaces": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-surfaces.webp",
+      "textures": [
+        "canteen-sheet-floor",
+        "quarry-tile-red",
+        "subway-tile-white",
+        "oak-wainscot",
+        "cream-plaster",
+        "acoustic-ceiling-tile",
+        "stainless-wall-panel",
+        "cast-drain-grate",
+        "menu-chalkboard"
+      ]
+    },
+    "canteen-kitchen": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-kitchen.webp",
+      "textures": [
+        "stainless-worktop",
+        "burner-grate",
+        "wok-iron",
+        "aluminum-stockpot",
+        "perforated-stainless",
+        "white-cutting-board",
+        "fridge-white-paint",
+        "copper-pot",
+        "grease-filter"
+      ]
+    },
+    "canteen-tableware": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-tableware.webp",
+      "textures": [
+        "melamine-woodgrain",
+        "burgundy-vinyl",
+        "chrome-tube",
+        "white-porcelain",
+        "lacquer-bowl",
+        "brown-tray",
+        "bamboo-chopstick-holder",
+        "gingham-cloth",
+        "tea-dispenser"
+      ]
+    },
+    "canteen-food": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/canteen-food.webp",
+      "textures": [
+        "steamed-rice",
+        "miso-paste",
+        "nori-sheet",
+        "panko-crust",
+        "takuan-slices",
+        "asanoha-noren",
+        "kraft-rice-bag",
+        "vinyl-strip-curtain",
+        "worn-counter-wood"
+      ]
     }
   },
   "textures": {
@@ -5742,6 +5810,366 @@
       "metalness": 0.0,
       "normal": "rubber-coin-mat-normal.webp",
       "meters": 0.6
+    },
+    "canteen-sheet-floor": {
+      "name": "食堂の長尺シート床",
+      "sheet": "canteen-surfaces",
+      "cell": 0,
+      "albedo": "canteen-sheet-floor.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "canteen-sheet-floor-normal.webp",
+      "meters": 1.2
+    },
+    "quarry-tile-red": {
+      "name": "厨房の赤茶色の防滑タイル",
+      "sheet": "canteen-surfaces",
+      "cell": 1,
+      "albedo": "quarry-tile-red.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "quarry-tile-red-normal.webp",
+      "meters": 0.8
+    },
+    "subway-tile-white": {
+      "name": "白いサブウェイタイル",
+      "sheet": "canteen-surfaces",
+      "cell": 2,
+      "albedo": "subway-tile-white.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "subway-tile-white-normal.webp",
+      "meters": 0.6
+    },
+    "oak-wainscot": {
+      "name": "ナラの腰壁",
+      "sheet": "canteen-surfaces",
+      "cell": 3,
+      "albedo": "oak-wainscot.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "oak-wainscot-normal.webp",
+      "meters": 1.0
+    },
+    "cream-plaster": {
+      "name": "クリーム色の塗り壁",
+      "sheet": "canteen-surfaces",
+      "cell": 4,
+      "albedo": "cream-plaster.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "cream-plaster-normal.webp",
+      "meters": 1.5
+    },
+    "acoustic-ceiling-tile": {
+      "name": "岩綿吸音板の天井",
+      "sheet": "canteen-surfaces",
+      "cell": 5,
+      "albedo": "acoustic-ceiling-tile.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "acoustic-ceiling-tile-normal.webp",
+      "meters": 0.6
+    },
+    "stainless-wall-panel": {
+      "name": "厨房のステンレス壁",
+      "sheet": "canteen-surfaces",
+      "cell": 6,
+      "albedo": "stainless-wall-panel.webp",
+      "roughness": 0.3,
+      "metalness": 0.8,
+      "normal": "stainless-wall-panel-normal.webp",
+      "meters": 1.2
+    },
+    "cast-drain-grate": {
+      "name": "鋳鉄の排水溝グレーチング",
+      "sheet": "canteen-surfaces",
+      "cell": 7,
+      "albedo": "cast-drain-grate.webp",
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normal": "cast-drain-grate-normal.webp",
+      "meters": 0.5
+    },
+    "menu-chalkboard": {
+      "name": "黒板塗装の壁",
+      "sheet": "canteen-surfaces",
+      "cell": 8,
+      "albedo": "menu-chalkboard.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "menu-chalkboard-normal.webp",
+      "meters": 1.2
+    },
+    "stainless-worktop": {
+      "name": "ステンレスの調理台",
+      "sheet": "canteen-kitchen",
+      "cell": 0,
+      "albedo": "stainless-worktop.webp",
+      "roughness": 0.25,
+      "metalness": 0.85,
+      "normal": "stainless-worktop-normal.webp",
+      "meters": 1.0
+    },
+    "burner-grate": {
+      "name": "コンロの五徳",
+      "sheet": "canteen-kitchen",
+      "cell": 1,
+      "albedo": "burner-grate.webp",
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normal": "burner-grate-normal.webp",
+      "meters": 0.5
+    },
+    "wok-iron": {
+      "name": "使い込んだ中華鍋",
+      "sheet": "canteen-kitchen",
+      "cell": 2,
+      "albedo": "wok-iron.webp",
+      "roughness": 0.45,
+      "metalness": 0.6,
+      "normal": "wok-iron-normal.webp",
+      "meters": 0.5
+    },
+    "aluminum-stockpot": {
+      "name": "アルミの寸胴鍋",
+      "sheet": "canteen-kitchen",
+      "cell": 3,
+      "albedo": "aluminum-stockpot.webp",
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normal": "aluminum-stockpot-normal.webp",
+      "meters": 0.9
+    },
+    "perforated-stainless": {
+      "name": "パンチングメタル",
+      "sheet": "canteen-kitchen",
+      "cell": 4,
+      "albedo": "perforated-stainless.webp",
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normal": "perforated-stainless-normal.webp",
+      "meters": 0.4
+    },
+    "white-cutting-board": {
+      "name": "白い樹脂のまな板",
+      "sheet": "canteen-kitchen",
+      "cell": 5,
+      "albedo": "white-cutting-board.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "white-cutting-board-normal.webp",
+      "meters": 0.5
+    },
+    "fridge-white-paint": {
+      "name": "業務用冷蔵庫の白い塗装",
+      "sheet": "canteen-kitchen",
+      "cell": 6,
+      "albedo": "fridge-white-paint.webp",
+      "roughness": 0.4,
+      "metalness": 0.2,
+      "normal": "fridge-white-paint-normal.webp",
+      "meters": 1.0
+    },
+    "copper-pot": {
+      "name": "使い込んだ銅の鍋",
+      "sheet": "canteen-kitchen",
+      "cell": 7,
+      "albedo": "copper-pot.webp",
+      "roughness": 0.35,
+      "metalness": 0.8,
+      "normal": "copper-pot-normal.webp",
+      "meters": 0.5
+    },
+    "grease-filter": {
+      "name": "換気フードのグリスフィルター",
+      "sheet": "canteen-kitchen",
+      "cell": 8,
+      "albedo": "grease-filter.webp",
+      "roughness": 0.5,
+      "metalness": 0.7,
+      "normal": "grease-filter-normal.webp",
+      "meters": 0.5
+    },
+    "melamine-woodgrain": {
+      "name": "木目のメラミン天板",
+      "sheet": "canteen-tableware",
+      "cell": 0,
+      "albedo": "melamine-woodgrain.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "melamine-woodgrain-normal.webp",
+      "meters": 1.0
+    },
+    "burgundy-vinyl": {
+      "name": "臙脂のビニールレザー",
+      "sheet": "canteen-tableware",
+      "cell": 1,
+      "albedo": "burgundy-vinyl.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "burgundy-vinyl-normal.webp",
+      "meters": 0.5
+    },
+    "chrome-tube": {
+      "name": "クロムめっきのパイプ",
+      "sheet": "canteen-tableware",
+      "cell": 2,
+      "albedo": "chrome-tube.webp",
+      "roughness": 0.1,
+      "metalness": 1,
+      "normal": "chrome-tube-normal.webp",
+      "meters": 0.4
+    },
+    "white-porcelain": {
+      "name": "白い陶器",
+      "sheet": "canteen-tableware",
+      "cell": 3,
+      "albedo": "white-porcelain.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "white-porcelain-normal.webp",
+      "meters": 0.3
+    },
+    "lacquer-bowl": {
+      "name": "朱と黒の漆塗りの椀",
+      "sheet": "canteen-tableware",
+      "cell": 4,
+      "albedo": "lacquer-bowl.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "lacquer-bowl-normal.webp",
+      "meters": 0.3
+    },
+    "brown-tray": {
+      "name": "茶色い樹脂のトレー",
+      "sheet": "canteen-tableware",
+      "cell": 5,
+      "albedo": "brown-tray.webp",
+      "roughness": 0.45,
+      "metalness": 0.0,
+      "normal": "brown-tray-normal.webp",
+      "meters": 0.5
+    },
+    "bamboo-chopstick-holder": {
+      "name": "竹の箸立て",
+      "sheet": "canteen-tableware",
+      "cell": 6,
+      "albedo": "bamboo-chopstick-holder.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "bamboo-chopstick-holder-normal.webp",
+      "meters": 0.3
+    },
+    "gingham-cloth": {
+      "name": "赤いギンガムチェック",
+      "sheet": "canteen-tableware",
+      "cell": 7,
+      "albedo": "gingham-cloth.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "gingham-cloth-normal.webp",
+      "meters": 0.4
+    },
+    "tea-dispenser": {
+      "name": "給茶機",
+      "sheet": "canteen-tableware",
+      "cell": 8,
+      "albedo": "tea-dispenser.webp",
+      "roughness": 0.3,
+      "metalness": 0.7,
+      "normal": "tea-dispenser-normal.webp",
+      "meters": 0.6
+    },
+    "steamed-rice": {
+      "name": "炊きたての白米",
+      "sheet": "canteen-food",
+      "cell": 0,
+      "albedo": "steamed-rice.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "steamed-rice-normal.webp",
+      "meters": 0.3
+    },
+    "miso-paste": {
+      "name": "味噌",
+      "sheet": "canteen-food",
+      "cell": 1,
+      "albedo": "miso-paste.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "miso-paste-normal.webp",
+      "meters": 0.3
+    },
+    "nori-sheet": {
+      "name": "焼き海苔",
+      "sheet": "canteen-food",
+      "cell": 2,
+      "albedo": "nori-sheet.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "nori-sheet-normal.webp",
+      "meters": 0.3
+    },
+    "panko-crust": {
+      "name": "揚げ物の衣",
+      "sheet": "canteen-food",
+      "cell": 3,
+      "albedo": "panko-crust.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "panko-crust-normal.webp",
+      "meters": 0.2
+    },
+    "takuan-slices": {
+      "name": "たくあん",
+      "sheet": "canteen-food",
+      "cell": 4,
+      "albedo": "takuan-slices.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "takuan-slices-normal.webp",
+      "meters": 0.2
+    },
+    "asanoha-noren": {
+      "name": "紺の暖簾（麻の葉）",
+      "sheet": "canteen-food",
+      "cell": 5,
+      "albedo": "asanoha-noren.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "asanoha-noren-normal.webp",
+      "meters": 1.0
+    },
+    "kraft-rice-bag": {
+      "name": "米袋のクラフト紙",
+      "sheet": "canteen-food",
+      "cell": 6,
+      "albedo": "kraft-rice-bag.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "kraft-rice-bag-normal.webp",
+      "meters": 0.6
+    },
+    "vinyl-strip-curtain": {
+      "name": "透明なビニールのれん",
+      "sheet": "canteen-food",
+      "cell": 7,
+      "albedo": "vinyl-strip-curtain.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "vinyl-strip-curtain-normal.webp",
+      "meters": 1.0
+    },
+    "worn-counter-wood": {
+      "name": "使い込んだ木の配膳カウンター",
+      "sheet": "canteen-food",
+      "cell": 8,
+      "albedo": "worn-counter-wood.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "worn-counter-wood-normal.webp",
+      "meters": 1.0
     }
   }
 }

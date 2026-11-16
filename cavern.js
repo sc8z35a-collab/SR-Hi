@@ -7,6 +7,7 @@ import {
 } from './cavern-layout.js';
 import {buildQuarters} from './quarters.js';
 import {buildOnsen} from './onsen.js';
+import {buildCanteen} from './canteen.js';
 import {buildSurface,buildIncline,extinguisher} from './surface.js';
 import {buildOutside} from './outside.js';
 import {buildOutdoorProps,buildUndergroundProps} from './props.js';
@@ -39,6 +40,7 @@ export async function buildExtension({slice=async()=>{},progress=()=>{},onStep=n
     ['lake',()=>lake(under,underground,slice)],
     ['quarters',()=>buildQuarters(under,underground)],
     ['onsen',()=>buildOnsen(under,underground)],
+    ['canteen',()=>buildCanteen(under,underground)],
     ['underground props',()=>buildUndergroundProps(under,underground)],
     ['underground details',()=>buildUndergroundDetails(under)],
     ['incline',()=>buildIncline(shaft,group)],
