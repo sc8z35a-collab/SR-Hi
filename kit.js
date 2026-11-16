@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
+import {mergeGeometries,mergeVertices} from './vendor/BufferGeometryUtils.js';
 
 // Small toolkit for building procedural scenery out of the generated textures.
 // Static parts are collected per material and merged, so each material costs one draw call.
@@ -80,7 +80,47 @@ export function scaleUV(geo,su,sv){
   return geo;
 }
 
-export const box=(w,h,d,meters=1,opts)=>planarUV(new THREE.BoxGeometry(w,h,d),meters,opts);
+/**
+ * A box with chamfered edges and corners (44 triangles). Each bevel's normals blend between the two
+ * faces it joins, so edges catch the light like rounded ones instead of looking razor sharp.
+ */
+export function chamferBoxGeometry(w,h,d,r){
+  const e=[w/2,h/2,d/2],inner=e.map(v=>v-r),pos=[],nrm=[];
+  const unit=(k,s)=>{const n=[0,0,0];n[k]=s;return n;};
+  const at=(k,s,j,sj,l,sl)=>{const p=[0,0,0];p[k]=s*e[k];p[j]=sj*inner[j];p[l]=sl*inner[l];return p;};
+  const tri=(p,n)=>{
+    const u=p[1].map((v,i)=>v-p[0][i]),v=p[2].map((x,i)=>x-p[0][i]);
+    const c=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+    const out=[0,1,2].map(i=>n[0][i]+n[1][i]+n[2][i]);
+    const order=c[0]*out[0]+c[1]*out[1]+c[2]*out[2]<0?[0,2,1]:[0,1,2];
+    for(const k of order){pos.push(...p[k]);nrm.push(...n[k]);}
+  };
+  const quad=(p,n)=>{tri([p[0],p[1],p[2]],[n[0],n[1],n[2]]);tri([p[0],p[2],p[3]],[n[0],n[2],n[3]]);};
+  for(let k=0;k<3;k++)for(const s of [-1,1]){
+    const j=(k+1)%3,l=(k+2)%3,n=unit(k,s);
+    quad([at(k,s,j,-1,l,-1),at(k,s,j,1,l,-1),at(k,s,j,1,l,1),at(k,s,j,-1,l,1)],[n,n,n,n]);
+  }
+  for(let k1=0;k1<3;k1++)for(let k2=k1+1;k2<3;k2++){
+    const m=3-k1-k2;
+    for(const s1 of [-1,1])for(const s2 of [-1,1]){
+      const a=t=>at(k1,s1,k2,s2,m,t),b=t=>at(k2,s2,k1,s1,m,t),n1=unit(k1,s1),n2=unit(k2,s2);
+      quad([a(-1),a(1),b(1),b(-1)],[n1,n1,n2,n2]);
+    }
+  }
+  for(const s0 of [-1,1])for(const s1 of [-1,1])for(const s2 of [-1,1])
+    tri([at(0,s0,1,s1,2,s2),at(1,s1,0,s0,2,s2),at(2,s2,0,s0,1,s1)],[unit(0,s0),unit(1,s1),unit(2,s2)]);
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+  g.setAttribute('normal',new THREE.Float32BufferAttribute(nrm,3));
+  g.setAttribute('uv',new THREE.Float32BufferAttribute(new Float32Array(pos.length/3*2),2));
+  return g;
+}
+/** Bevel for a box: furniture, posts, walls and buildings get one; thin boards and linings stay square. */
+const bevel=(w,h,d)=>{const m=Math.min(w,h,d);return m>=.06&&Math.max(w,h,d)>=.25?Math.min(.035,m*.18):0;};
+export const box=(w,h,d,meters=1,opts)=>{
+  const r=bevel(w,h,d);
+  return planarUV(r?chamferBoxGeometry(w,h,d,r):new THREE.BoxGeometry(w,h,d),meters,opts);
+};
 export const cyl=(r,h,meters,{top=r,seg=16}={})=>roundUV(new THREE.CylinderGeometry(top,r,h,seg),meters,r);
 export const plane=(w,h)=>new THREE.PlaneGeometry(w,h);
 
@@ -93,6 +133,15 @@ export function between(p1,p2){
   return {pos:a.add(b).multiplyScalar(.5).toArray(),quat:new THREE.Quaternion().setFromUnitVectors(up,dir.normalize()),length};
 }
 
+/**
+ * A welded unit sphere for organic blobs (foliage, rocks, moss). Smoothly shaded with about a
+ * third of the triangles of the faceted icosahedra used before; the textures carry the detail.
+ */
+export function blobGeometry(widthSegments=9,heightSegments=6){
+  const g=new THREE.SphereGeometry(1,widthSegments,heightSegments);
+  g.deleteAttribute('uv');g.deleteAttribute('normal');
+  return mergeVertices(g);
+}
 /** Deform a geometry's vertices with noise along their normal-ish direction from `center`. */
 export function lumpy(geo,amount,frequency,seed=0){
   const p=geo.attributes.position,v=new THREE.Vector3();
@@ -121,6 +170,9 @@ export class Kit{
     this.materials=new Map();
     this.parts=new Map();
     this.after=[];
+    // static parts are merged per material within square chunks, so whole chunks beyond the
+    // camera's far plane (the draw-distance setting) or out of view are skipped by culling
+    this.chunk=24;
   }
   /** Material from a generated texture id; `variant` makes a separate instance with overrides. */
   tex(id,opts={}){
@@ -170,42 +222,43 @@ export class Kit{
     m.compose(new THREE.Vector3(...(t.pos??[0,0,0])),q,new THREE.Vector3(...s));
     g.applyMatrix4(m);
     if(t.world)planarUV(g,t.world,{swap:t.swap});
-    if(!this.parts.has(material))this.parts.set(material,[]);
-    this.parts.get(material).push(g);
+    g.computeBoundingBox();
+    const c=g.boundingBox.getCenter(new THREE.Vector3());
+    const key=Math.floor(c.x/this.chunk)+','+Math.floor(c.z/this.chunk);
+    if(!this.parts.has(material))this.parts.set(material,new Map());
+    const chunks=this.parts.get(material);
+    if(!chunks.has(key))chunks.set(key,[]);
+    chunks.get(key).push(g);
     return g;
   }
   /** A straight round member (pipe, post, rail) between two points. */
-  beam(p1,p2,r,material,meters=1,seg=8){
+  beam(p1,p2,r,material,meters=1,seg=8,open=false){
     const {pos,quat,length}=between(p1,p2);
-    return this.add(roundUV(new THREE.CylinderGeometry(r,r,length,seg),meters,r),material,{pos,quat});
+    return this.add(roundUV(new THREE.CylinderGeometry(r,r,length,seg,1,open),meters,r),material,{pos,quat});
   }
   /** Like build(), but yields between materials so a large merge does not stall a frame. */
   async buildAsync(group,prefix='Generated',slice=async()=>{}){
-    for(const [material,geos] of [...this.parts]){
+    for(const [material,chunks] of [...this.parts]){
       this.parts.delete(material);
-      const merged=mergeGeometries(geos,false);
-      if(merged){
-        merged.computeBoundingSphere();
-        merged.computeBoundingBox();
-        const mesh=new THREE.Mesh(merged,material);
-        mesh.name=prefix+'_'+material.name.replace(/^Generated /,'').replace(/[^\w-]+/g,'_');
-        group.add(mesh);
-        for(const fn of this.after)fn(mesh);
+      for(const [key,geos] of chunks){
+        this.mergeChunk(group,prefix,material,key,geos);
+        await slice();
       }
-      await slice();
     }
   }
-  /** Merge everything queued into `group`, one mesh per material. */
+  mergeChunk(group,prefix,material,key,geos){
+    const merged=mergeGeometries(geos,false);
+    if(!merged)return;
+    merged.computeBoundingSphere();
+    merged.computeBoundingBox();
+    const mesh=new THREE.Mesh(merged,material);
+    mesh.name=prefix+'_'+material.name.replace(/^Generated /,'').replace(/[^\w-]+/g,'_')+'@'+key;
+    group.add(mesh);
+    for(const fn of this.after)fn(mesh);
+  }
+  /** Merge everything queued into `group`, one mesh per material and chunk. */
   build(group,prefix='Generated'){
-    for(const [material,geos] of this.parts){
-      const merged=mergeGeometries(geos,false);
-      if(!merged)continue;
-      merged.computeBoundingSphere();
-      const mesh=new THREE.Mesh(merged,material);
-      mesh.name=prefix+'_'+material.name.replace(/^Generated /,'').replace(/[^\w-]+/g,'_');
-      group.add(mesh);
-      for(const fn of this.after)fn(mesh);
-    }
+    for(const [material,chunks] of this.parts)for(const [key,geos] of chunks)this.mergeChunk(group,prefix,material,key,geos);
     this.parts.clear();
   }
 }

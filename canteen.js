@@ -32,8 +32,9 @@ function bowlGeometry(r,h,foot=.35){
   const outer=[],inner=[];
   for(let k=0;k<=8;k++){const t=k/8;outer.push(new THREE.Vector2(r*(foot+(1-foot)*Math.sin(t*Math.PI/2)),h*t));}
   for(let k=8;k>=0;k--){const t=k/8;inner.push(new THREE.Vector2(r*.92*(foot*.6+(1-foot*.6)*Math.sin(t*Math.PI/2)),h*.12+h*.86*t));}
-  const g=new THREE.LatheGeometry([...outer,...inner],18);
+  const g=new THREE.LatheGeometry([...outer,...inner],12);
   g.userData.split=outer.length;
+  g.userData.rows=outer.length+inner.length;
   return g;
 }
 
@@ -86,7 +87,7 @@ function dining(kit){
   // rice bowl and soup bowl: porcelain and lacquer on a lathe; the soup bowl maps the photo's
   // black outside and red inside onto its two walls
   const riceBowl=bowlGeometry(.065,.06);
-  const soupBowl=bowlGeometry(.06,.065,.4),uv=soupBowl.attributes.uv,split=soupBowl.userData.split,rows=uv.count/19;
+  const soupBowl=bowlGeometry(.06,.065,.4),uv=soupBowl.attributes.uv,split=soupBowl.userData.split,rows=soupBowl.userData.rows;
   for(let i=0;i<uv.count;i++){
     const row=i%rows,u=.32+uv.getX(i)*.36;
     uv.setXY(i,u,row<split?.08+row/(split-1)*.34:.52+(1-(row-split)/(rows-split-1))*.32);

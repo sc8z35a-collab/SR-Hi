@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {Kit,box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,smoothstep,rng,kiosk,sign,slidingDoor,tube,collar,bulkhead} from './kit.js';
+import {Kit,box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,smoothstep,rng,kiosk,sign,slidingDoor,tube,collar,bulkhead,blobGeometry} from './kit.js';
 import {loadManifest,loadTextures} from './textures.js';
 import {
   CAVE,LAKE,TUNNEL,PASSAGE,DOOR12,HUT,STAIR,DOOR13,SHORE,PIER,EAST_TUNNEL,
@@ -78,7 +78,7 @@ const props=(room,type)=>room.props.filter(p=>p.type===type);
 
 /** Lat-long dome over an ellipse with noisy rock relief; `holes` cut openings for tunnels. */
 function shell(e,{holes,seed,amp=1.3,meters=3}){
-  const seg=120,rings=42,thetaMax=Math.PI*.56;
+  const seg=84,rings=30,thetaMax=Math.PI*.56;
   const tiles=Math.round(2*Math.PI*Math.sqrt((e.rx*e.rx+e.rz*e.rz)/2)/meters);
   const pos=[],uv=[];
   for(let i=0;i<=rings;i++){
@@ -192,7 +192,7 @@ async function cave(kit,group,slice=async()=>{}){
   }
   for(const p of props(CAVERN,'stalagmite'))kit.add(spire(R,p.w*.5,1.6+R()*1.6),flow,{pos:[p.x,0,p.z]});
   for(const [x,y,z,sx,sy,sz] of [[15.8,.6,100.6,2.4,2,1.4],[-16.3,.8,104.2,2.2,2.3,1.6],[9.3,.3,89.4,1.6,1.4,1.2]])
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,3),.25,1.6,x),.8),flow,{pos:[x,y,z],scale:[sx,sy,sz],rot:[0,R()*3,0]});
+    kit.add(planarUV(lumpy(blobGeometry(12,8),.25,1.6,x),.8),flow,{pos:[x,y,z],scale:[sx,sy,sz],rot:[0,R()*3,0]});
   for(const p of props(CAVERN,'crystal'))cluster(kit,crystal,p.x,p.z,p.w*.55,R);
   await slice();
   caveDetails(kit,R);
@@ -349,8 +349,8 @@ function caveDetails(kit,R){
     kit.add(g,kit.tex('rimstone'),{pos:[x,.015,z],rot:[-Math.PI/2,0,0],scale:r,world:2});
   }
   for(const [x,z,s] of [[-13.0,92.0,1.2],[12.5,114.0,1.4],[-4.5,116.6,.9]])
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,1.5,x),1),kit.tex('quartz-vein'),{pos:[x,s*.35,z],scale:[s*1.2,s*.8,s],rot:[0,R()*3,0]});
-  kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,3),.25,1.8,8),1),kit.tex('wet-black-rock'),{pos:[8.0,.4,116.4],scale:[1.6,1.1,1.0]});
+    kit.add(planarUV(lumpy(blobGeometry(),.3,1.5,x),1),kit.tex('quartz-vein'),{pos:[x,s*.35,z],scale:[s*1.2,s*.8,s],rot:[0,R()*3,0]});
+  kit.add(planarUV(lumpy(blobGeometry(12,8),.25,1.8,8),1),kit.tex('wet-black-rock'),{pos:[8.0,.4,116.4],scale:[1.6,1.1,1.0]});
   const slab=planarUV(lumpy(new THREE.BoxGeometry(1,1,1,4,6,6),.08,2,3),1.5);
   kit.add(slab,kit.tex('cave-basalt'),{pos:[-15.1,1.3,95.6],scale:[.8,2.6,2.6]});
   kit.add(new THREE.PlaneGeometry(2.0,1.5),kit.tex('cave-painting'),{pos:[-14.66,1.7,95.6],rot:[0,Math.PI/2,0]});
@@ -563,7 +563,7 @@ async function lake(kit,group,slice=async()=>{}){
   for(let row=0;row<3;row++)for(let i=0;i<10;i++)for(const dz of [-.18,.18]){
     const x=sb.x-sb.w/2+.3+i*.58+(row%2)*.29;
     if(x>sb.x+sb.w/2-.2)continue;
-    kit.add(planarUV(new THREE.SphereGeometry(1,10,6),.5),bag,{pos:[x,.1+row*.18,sb.z+dz],scale:[.3,.1,.17],rot:[0,(R()-.5)*.2,0]});
+    kit.add(planarUV(new THREE.SphereGeometry(1,8,5),.5),bag,{pos:[x,.1+row*.18,sb.z+dz],scale:[.3,.1,.17],rot:[0,(R()-.5)*.2,0]});
   }
   // log with glowing fungi
   const log=props(LAKE_ROOM,'log')[0],fungus=kit.tex('glow-fungus');
@@ -576,8 +576,8 @@ async function lake(kit,group,slice=async()=>{}){
   }
   kit.add(box(log.w*.8,.02,.3,.5),fungus,{pos:[log.x,.54,log.z]});
   for(const p of props(LAKE_ROOM,'boulder'))
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,1.4,p.x),1),kit.tex('mossy-rock'),{pos:[p.x,p.d*.22,p.z],scale:[p.w*.5,p.d*.42,p.d*.5],rot:[0,R()*3,0]});
-  kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,1.4,4.5),1),kit.tex('mossy-rock'),{pos:[4.6,-.1,129.6],scale:[1.4,.8,1.2]});
+    kit.add(planarUV(lumpy(blobGeometry(),.3,1.4,p.x),1),kit.tex('mossy-rock'),{pos:[p.x,p.d*.22,p.z],scale:[p.w*.5,p.d*.42,p.d*.5],rot:[0,R()*3,0]});
+  kit.add(planarUV(lumpy(blobGeometry(),.3,1.4,4.5),1),kit.tex('mossy-rock'),{pos:[4.6,-.1,129.6],scale:[1.4,.8,1.2]});
   for(const [x,z,s] of [[3.6,122.4,1],[-12.2,128.8,1.2],[11.6,127.4,.9]])
     kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,18,8,0,Math.PI*2,0,Math.PI/2),.15,2,x),1),kit.tex('salt-crust'),{pos:[x,0,z],scale:[s,.35*s,s*.85]});
   const ore=props(LAKE_ROOM,'ore')[0];
@@ -587,9 +587,9 @@ async function lake(kit,group,slice=async()=>{}){
   const amethyst=kit.tex('amethyst');
   for(const [x,z,s] of [[-12.2,129.6,1.3],[12.4,127.6,1.1],[7.5,140.3,1.5]])cluster(kit,amethyst,x,z,s,R);
   for(const [x,z,sx,sy,sz] of [[-9.5,136.8,1.4,.9,1.1],[10.0,133.5,1.2,.8,1.0]])
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,3),.25,1.8,x),1),kit.tex('wet-black-rock'),{pos:[x,-.2,z],scale:[sx,sy,sz]});
+    kit.add(planarUV(lumpy(blobGeometry(12,8),.25,1.8,x),1),kit.tex('wet-black-rock'),{pos:[x,-.2,z],scale:[sx,sy,sz]});
   for(const [x,z,s] of [[-11.8,133.5,1.1],[12.8,131.0,1.3]])
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.2,2,x),.6),kit.tex('cave-popcorn'),{pos:[x,s*.2,z],scale:[s,s*.7,s],rot:[0,R()*3,0]});
+    kit.add(planarUV(lumpy(blobGeometry(),.2,2,x),.6),kit.tex('cave-popcorn'),{pos:[x,s*.2,z],scale:[s,s*.7,s],rot:[0,R()*3,0]});
   const ice=kit.tex('cave-ice');
   for(let i=0;i<7;i++){const h=.8+R()*1.6,r=.12+R()*.2;kit.add(roundUV(new THREE.ConeGeometry(r,h,8),1,r),ice,{pos:[-8.5+(R()-.5)*2.4,-.3+h/2,139.3+(R()-.5)*1.6],rot:[(R()-.5)*.2,0,(R()-.5)*.2]});}
   for(let i=0;i<9;i++){const h=.8+R()*1.4,r=.06+R()*.12,x=-8.5+(R()-.5)*3,z=139.5+(R()-.5)*2;

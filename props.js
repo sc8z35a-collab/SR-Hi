@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {box,cyl,planarUV,roundUV,scaleUV,lumpy,rng,sign} from './kit.js';
+import {box,cyl,planarUV,roundUV,scaleUV,lumpy,rng,sign,blobGeometry} from './kit.js';
 import {Y,RIVER,HQ_ZONE,VILLAGE,PLATEAU,groundHeight as G} from './outdoor-layout.js';
 import {CAVERN,CONTROL_ROOM,WASHITSU,YOSHITSU,MEETING,SUITES,SUITE_X,HUT} from './cavern-layout.js';
 
@@ -11,7 +11,7 @@ const turn=(x,y,z,angle)=>{
   const q=new THREE.Quaternion().setFromEuler(new THREE.Euler(0,angle,0));
   return {q,at:(dx,dy,dz)=>new THREE.Vector3(dx,dy,dz).applyQuaternion(q).add(new THREE.Vector3(x,y,z)).toArray()};
 };
-const blob=(kit,id,pos,scale,seed,opts={})=>kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,2.4,seed),opts.meters??.6),kit.tex(id,{variant:opts.variant??'blob',side:THREE.DoubleSide}),{pos,scale});
+const blob=(kit,id,pos,scale,seed,opts={})=>kit.add(planarUV(lumpy(blobGeometry(),.3,2.4,seed),opts.meters??.6),kit.tex(id,{variant:opts.variant??'blob',side:THREE.DoubleSide}),{pos,scale});
 
 // ================= outdoors =================
 export function buildOutdoorProps(kit,group){
@@ -28,7 +28,7 @@ function plaza(kit,group,R){
   for(let i=0;i<4;i++){
     const z=b.z-1.7+i*1.15,{q,at}=turn(b.x,Y,z,0);
     kit.add(roundUV(new THREE.TorusGeometry(.38,.025,6,18,Math.PI),.5,.03),steel,{pos:at(-.15,0,0),quat:q.clone().multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(0,Math.PI/2,0)))});
-    for(const dx of [-.55,.55])kit.add(roundUV(new THREE.TorusGeometry(.32,.035,6,20),.6,.04),tire,{pos:at(dx,.34,.08),quat:q});
+    for(const dx of [-.55,.55])kit.add(roundUV(new THREE.TorusGeometry(.32,.035,5,16),.6,.04),tire,{pos:at(dx,.34,.08),quat:q});
     const p=(dx,dy)=>at(dx,dy,.08);
     for(const [a,c] of [[[-.55,.34],[0,.38]],[[0,.38],[.42,.8]],[[-.55,.34],[-.2,.82]],[[-.2,.82],[.42,.8]],[[0,.38],[-.2,.82]],[[.55,.34],[.42,.8]]])kit.beam(p(...a),p(...c),.022,frame,.5,6);
     kit.add(box(.22,.05,.1,.3),kit.tex('molded-plastic'),{pos:p(-.22,.88),quat:q});

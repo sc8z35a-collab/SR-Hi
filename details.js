@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,rng} from './kit.js';
+import {box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,rng,blobGeometry} from './kit.js';
 import {CAVERN,WASHITSU,YOSHITSU,SURFACE,HALL15,SUITES,SUITE_X,SHORE,LAKE} from './cavern-layout.js';
 import {Y,RIVER,HQ_ZONE,VILLAGE,PLATEAU,groundHeight as G} from './outdoor-layout.js';
 
@@ -31,7 +31,7 @@ function cropped(w,h,u0,u1,v0,v1){
   for(let i=0;i<uv.count;i++)uv.setXY(i,u0+(u1-u0)*uv.getX(i),v0+(v1-v0)*uv.getY(i));
   return g;
 }
-const blob=(kit,material,pos,scale,seed,meters=.8)=>kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,2.2,seed),meters),material,{pos,scale});
+const blob=(kit,material,pos,scale,seed,meters=.8)=>kit.add(planarUV(lumpy(blobGeometry(),.3,2.2,seed),meters),material,{pos,scale});
 
 // ================= underground =================
 export function buildUndergroundDetails(kit){

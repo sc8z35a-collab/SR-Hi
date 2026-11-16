@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,smoothstep,rng,kiosk,sign,tube,bulkhead,profile} from './kit.js';
+import {box,cyl,planarUV,roundUV,scaleUV,lumpy,fbm,smoothstep,rng,kiosk,sign,tube,bulkhead,profile,blobGeometry} from './kit.js';
 import {INCLINE,YARD,SURFACE,inclineFloor} from './cavern-layout.js';
 import {groundHeight} from './outdoor-layout.js';
 
@@ -322,5 +322,5 @@ function nature(kit,R){
   }
   const leaf=kit.tex('bush-leaves');
   for(const [x,z,s] of [[10.6,180.6,.8],[17.4,186.6,.7],[19.0,180.3,.6],[9.2,186.4,.9],[39.2,165.0,.7]])
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.25,2.5,x),.6),leaf,{pos:[x,Y+s*.5,z],scale:[s,s*.75,s]});
+    kit.add(planarUV(lumpy(blobGeometry(),.25,2.5,x),.6),leaf,{pos:[x,Y+s*.5,z],scale:[s,s*.75,s]});
 }

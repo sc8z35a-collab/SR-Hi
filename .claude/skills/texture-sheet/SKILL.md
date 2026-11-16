@@ -51,6 +51,18 @@ export OPENAI_API_KEY_FILE=/path/to/key # キーだけを書いたファイル�
 
 生画像（約15〜18MB）は `textures/_raw/` に保存され、`.gitignore` で除外される。
 
+## 容量を落とす（GPU の負荷を下げる）
+
+切り出したあと、使われている面積に合わせてテクスチャを縮小する。画素数は、合計 1.5m² 未満の小物は 1/6、6m² 未満は 1/5、それ以外は 1/3 になる。
+
+```bash
+python3 -m http.server 8000   # 別のターミナルで。開いたら .claude/skills/texture-sheet/scripts/usage.html
+#   表示された JSON を textures/usage.json に保存（新しいテクスチャを足したときだけ作り直す）
+python3 .claude/skills/texture-sheet/scripts/shrink_textures.py
+```
+
+元の大きさは manifest の `fullSize` に残るので、何度実行しても二重には縮まない。
+
 ## 仕様ファイルの形式
 
 ```json

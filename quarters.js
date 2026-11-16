@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {box,cyl,planarUV,roundUV,scaleUV,lumpy,kiosk,sign,slidingDoor,rng} from './kit.js';
+import {box,cyl,planarUV,roundUV,scaleUV,lumpy,kiosk,sign,slidingDoor,rng,blobGeometry} from './kit.js';
 import {HALL15,SUITE_X,SUITES,LIVING,WASHITSU,YOSHITSU,MEETING,INCLINE,ONSEN} from './cavern-layout.js';
 import {extinguisher} from './surface.js';
 
@@ -94,7 +94,7 @@ function shellAndHall(kit,group){
 function plant(kit,p,R){
   kit.add(cyl(.25,.45,1,{top:.3,seg:18}),kit.tex('terrazzo'),{pos:[p.x,.225,p.z]});
   for(let i=0;i<5;i++){
-    const g=planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.35,2.2,i+p.x),.6);
+    const g=planarUV(lumpy(blobGeometry(),.35,2.2,i+p.x),.6);
     kit.add(g,kit.tex('foliage',{variant:'leaf',side:THREE.DoubleSide}),{pos:[p.x+(R()-.5)*.3,.75+i*.17,p.z+(R()-.5)*.3],scale:[.32-i*.03,.26,.32-i*.03],rot:[0,R()*3,0]});
   }
 }
@@ -198,7 +198,7 @@ function yoshitsu(kit,group){
   kit.add(box(1.1,.75,.02,1),kit.tex('fireplace-brick'),{pos:[fp.x,.375,s.z2-.03]});
   for(const dx of [-.55,.55])kit.add(box(.02,.75,.32,1),kit.tex('fireplace-brick'),{pos:[fp.x+dx,.375,fz]});
   for(const dz of [-.06,.06])kit.add(cyl(.07,.7,.5),kit.tex('timber-beam'),{pos:[fp.x,.12,fz+dz],rot:[0,0,Math.PI/2+(R()-.5)*.2]});
-  kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.4,3,1),1),kit.plain('fire',{color:0xff7a2a,emissive:0xff6a1a,intensity:2.6,metalness:0}),{pos:[fp.x,.28,fz],scale:[.32,.18,.1]});
+  kit.add(planarUV(lumpy(blobGeometry(),.4,3,1),1),kit.plain('fire',{color:0xff7a2a,emissive:0xff6a1a,intensity:2.6,metalness:0}),{pos:[fp.x,.28,fz],scale:[.32,.18,.1]});
   // seating
   const velvet=kit.tex('velvet-green'),sofa=props(YOSHITSU,'sofa')[0];
   kit.add(box(2.4,.42,.9,.5),velvet,{pos:[sofa.x,.21,sofa.z]});

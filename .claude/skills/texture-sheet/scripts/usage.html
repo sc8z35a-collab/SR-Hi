@@ -1,0 +1,46 @@
+<!doctype html><meta charset=utf-8><title>texture usage</title>
+<base href="../../../../">
+<!-- Serve the repository root (python3 -m http.server) and open
+     /.claude/skills/texture-sheet/scripts/usage.html: measures how much surface (m²) each generated
+     texture covers in the built world, for shrink_textures.py. Result: window.usage (and the page). -->
+<pre id=out>measuring...</pre>
+<script type=module>
+import * as THREE from './vendor/three.module.js';
+import {GLTFLoader} from './vendor/GLTFLoader.js';
+import {MeshoptDecoder} from './vendor/meshopt_decoder.module.js';
+import {buildExtension} from './cavern.js';
+import {applyRetexture,loadRetexture,loadManifest} from './textures.js';
+const usage={};
+const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3();
+function area(mesh){
+  const p=mesh.geometry.attributes.position,index=mesh.geometry.index;
+  const count=index?index.count:p.count,at=i=>index?index.getX(i):i;
+  let sum=0;
+  for(let i=0;i+2<count;i+=3){
+    a.fromBufferAttribute(p,at(i)).applyMatrix4(mesh.matrixWorld);
+    b.fromBufferAttribute(p,at(i+1)).applyMatrix4(mesh.matrixWorld);
+    c.fromBufferAttribute(p,at(i+2)).applyMatrix4(mesh.matrixWorld);
+    sum+=b.sub(a).cross(c.sub(a)).length()/2;
+  }
+  return sum;
+}
+const {textures}=await loadManifest();
+const retexture=await loadRetexture();
+const byName=new Map([...retexture].map(([name,t])=>[name,t.id]));
+const add=(id,m2)=>{if(id&&textures[id])usage[id]=(usage[id]??0)+m2;};
+const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+for(const file of ['facility-retrofitted','expansion-equipped']){
+  const root=(await loader.loadAsync('./assets/'+file+'.glb')).scene;
+  applyRetexture(root,retexture);
+  root.updateMatrixWorld(true);
+  root.traverse(o=>{if(o.isMesh&&!Array.isArray(o.material))add(byName.get(o.material.name),area(o));});
+}
+const world=await buildExtension();
+world.updateMatrixWorld(true);
+world.traverse(o=>{if(o.isMesh&&!Array.isArray(o.material))add(o.material.name.replace(/^Generated /,'').split(':')[0],area(o));});
+// the sky dome and the mountain band take their textures at run time
+add('sky-clouds',5000);add('mountain-range',2000);
+for(const id of Object.keys(textures))usage[id]=Math.round((usage[id]??0)*100)/100;
+window.usage=usage;
+document.getElementById('out').textContent=JSON.stringify(usage,null,1);
+</script>

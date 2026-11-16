@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {box,cyl,planarUV,roundUV,scaleUV,lumpy,smoothstep,rng,kiosk,sign} from './kit.js';
+import {box,cyl,planarUV,roundUV,scaleUV,lumpy,smoothstep,rng,kiosk,sign,blobGeometry} from './kit.js';
 import {
   Y,INCLINE,YARD,STREAM,RIVER,BRIDGE,FOOTBRIDGE,ROADS,HQ,PLAZA,PARKING,HELIPAD,PADDIES,TEMPLE,TREES,
   HQ_ZONE,RIVER_ZONE,VILLAGE,PLATEAU,groundHeight as G,inclineFloor,fbm2,inRect,
@@ -86,7 +86,7 @@ function walls(kit,material,{x1,x2,z1,z2,y1,y2,t=.2,world=1.2}){
   kit.add(box(t,h,z2-z1-2*t),material,{pos:[x1+t/2,y,cz],world});
   kit.add(box(t,h,z2-z1-2*t),material,{pos:[x2-t/2,y,cz],world});
 }
-const leafy=(kit,id,[x,y,z],[sx,sy,sz],seed)=>kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,2.2,seed),1),kit.tex(id,{variant:'leaf',side:THREE.DoubleSide}),{pos:[x,y,z],scale:[sx,sy,sz]});
+const leafy=(kit,id,[x,y,z],[sx,sy,sz],seed)=>kit.add(planarUV(lumpy(blobGeometry(),.3,2.2,seed),1),kit.tex(id,{variant:'leaf',side:THREE.DoubleSide}),{pos:[x,y,z],scale:[sx,sy,sz]});
 
 // ---------- terrain ----------
 async function terrain(kit,slice=async()=>{}){
@@ -126,9 +126,12 @@ async function terrain(kit,slice=async()=>{}){
     else if(cz>318&&cx<-30)key='forest-floor';
     else key=fbm2(cx*.06,cz*.06)>.52?'forest-floor':'meadow-grass';
     const vert=([a,b])=>[x1+a*step,h(a,b),z1+b*step];
+    // one bucket per surface and 24 m chunk, so far terrain is culled with the rest of its chunk
+    key+='|'+Math.floor(cx/24)+','+Math.floor(cz/24);
     push(key,[q[0],q[3],q[1],q[1],q[3],q[2]].map(([a,b])=>({p:vert([a,b]),n:normal(a,b)})));
   }
-  for(const [id,vs] of Object.entries(buckets)){
+  for(const [bucket,vs] of Object.entries(buckets)){
+    const id=bucket.split('|')[0];
     const g=new THREE.BufferGeometry();
     g.setAttribute('position',new THREE.Float32BufferAttribute(vs.flatMap(v=>v.p),3));
     g.setAttribute('normal',new THREE.Float32BufferAttribute(vs.flatMap(v=>[v.n.x,v.n.y,v.n.z]),3));
@@ -157,7 +160,7 @@ function water(kit){
   const zc=RIVER.z(RIVER.x1),top=G(RIVER.x1-2.2,zc)+.2;
   for(const [dx,w] of [[-1.3,8],[-1.0,5.5]])
     kit.add(scaleUV(new THREE.PlaneGeometry(w,top-RIVER.water+.4),w/3,(top-RIVER.water)/3),kit.tex('waterfall',{side:THREE.DoubleSide}),{pos:[RIVER.x1+dx,(top+RIVER.water)/2-.2,zc],rot:[0,Math.PI/2,0]});
-  for(let i=0;i<6;i++)kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.35,2.5,i),1),kit.tex('waterfall',{variant:'foam',emissive:.4}),{pos:[RIVER.x1+.4+i*.5,RIVER.water+.15,zc-2.4+i*.9],scale:[.9,.35,.8]});
+  for(let i=0;i<6;i++)kit.add(planarUV(lumpy(blobGeometry(),.35,2.5,i),1),kit.tex('waterfall',{variant:'foam',emissive:.4}),{pos:[RIVER.x1+.4+i*.5,RIVER.water+.15,zc-2.4+i*.9],scale:[.9,.35,.8]});
   const stream=new THREE.PlaneGeometry(1.9,STREAM.z2-STREAM.z1);stream.rotateX(-Math.PI/2);
   kit.add(stream,kit.tex('stream-water'),{pos:[STREAM.x,STREAM.y,(STREAM.z1+STREAM.z2)/2],world:1.5});
   for(const p of PADDIES){
@@ -281,7 +284,7 @@ function plaza(kit,group,R){
   kit.add(cyl(2.85,.04,1.5,{seg:40}),kit.tex('fountain-water'),{pos:[f.x,Y+.52,f.z]});
   kit.add(cyl(.6,1.1,1,{seg:20}),stone,{pos:[f.x,Y+.55,f.z]});
   kit.add(cyl(.12,1.6,.5,{top:.05,seg:12}),kit.tex('fountain-water',{variant:'jet',emissive:.35}),{pos:[f.x,Y+1.9,f.z]});
-  kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,3,1),.5),kit.tex('fountain-water',{variant:'jet'}),{pos:[f.x,Y+2.75,f.z],scale:[.35,.25,.35]});
+  kit.add(planarUV(lumpy(blobGeometry(),.3,3,1),.5),kit.tex('fountain-water',{variant:'jet'}),{pos:[f.x,Y+2.75,f.z],scale:[.35,.25,.35]});
   for(const b of P(HQ_ZONE,'bench')){
     kit.add(box(1.8,.06,.45,1),kit.tex('picnic-wood'),{pos:[b.x,Y+.45,b.z]});
     for(const dx of [-.75,.75])kit.add(box(.06,.43,.4,1),kit.tex('brushed-stainless'),{pos:[b.x+dx,Y+.22,b.z]});
@@ -399,33 +402,33 @@ function plateau(kit,group,R){
   }
   const cf=P(PLATEAU,'campfire')[0],cy=G(cf.x,cf.z);
   kit.add(new THREE.CircleGeometry(.55,20),kit.tex('campfire'),{pos:[cf.x,cy+.06,cf.z],rot:[-Math.PI/2,0,0]});
-  for(let i=0;i<9;i++){const a=i/9*Math.PI*2;kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,1),.2,2,i),1),kit.tex('granite-outcrop'),{pos:[cf.x+Math.cos(a)*.65,cy+.08,cf.z+Math.sin(a)*.65],scale:.16});}
+  for(let i=0;i<9;i++){const a=i/9*Math.PI*2;kit.add(planarUV(lumpy(blobGeometry(7,5),.2,2,i),1),kit.tex('granite-outcrop'),{pos:[cf.x+Math.cos(a)*.65,cy+.08,cf.z+Math.sin(a)*.65],scale:.16});}
   for(const a of [0,1.1,2.3])kit.add(cyl(.09,.9,.6),kit.tex('timber-beam'),{pos:[cf.x,cy+.16,cf.z],rot:[0,a,Math.PI/2-.25]});
-  kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.4,3,3),.5),kit.plain('fire'),{pos:[cf.x,cy+.35,cf.z],scale:[.25,.35,.25]});
+  kit.add(planarUV(lumpy(blobGeometry(),.4,3,3),.5),kit.plain('fire'),{pos:[cf.x,cy+.35,cf.z],scale:[.25,.35,.25]});
   void group;void R;
 }
 
 // ---------- river banks ----------
 function river(kit,R){
-  for(const p of P(RIVER_ZONE,'boulder'))kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,1.4,p.x),1.5),kit.tex('granite-outcrop'),{pos:[p.x,G(p.x,p.z)+.2,p.z],scale:[p.w*.55,.9,p.d*.55]});
+  for(const p of P(RIVER_ZONE,'boulder'))kit.add(planarUV(lumpy(blobGeometry(),.3,1.4,p.x),1.5),kit.tex('granite-outcrop'),{pos:[p.x,G(p.x,p.z)+.2,p.z],scale:[p.w*.55,.9,p.d*.55]});
   for(let i=0;i<26;i++){
     const x=-46+R()*180,side=R()<.5?-1:1,z=RIVER.z(x)+side*(RIVER.half+.4+R()*1.2);
     if(Math.abs(x-44)<6||Math.abs(x+14)<3)continue;
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,1),.35,1.8,i),1),kit.tex(R()<.5?'wet-black-rock':'river-pebbles',{variant:'stone'}),{pos:[x,RIVER.water+.05,z],scale:[.5+R()*.6,.3+R()*.3,.5+R()*.5]});
+    kit.add(planarUV(lumpy(blobGeometry(7,5),.35,1.8,i),1),kit.tex(R()<.5?'wet-black-rock':'river-pebbles',{variant:'stone'}),{pos:[x,RIVER.water+.05,z],scale:[.5+R()*.6,.3+R()*.3,.5+R()*.5]});
   }
   for(let i=0;i<60;i++){
     const x=-46+R()*180,side=R()<.5?-1:1,z=RIVER.z(x)+side*(RIVER.half+1.8+R()*3);
     if(Math.abs(x-44)<5||Math.abs(x+14)<2.5||x<-36)continue;
     if(Math.abs(G(x+1,z)-G(x-1,z))>.9||Math.abs(G(x,z+1)-G(x,z-1))>.9)continue;
-    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,10,6,0,Math.PI*2,0,Math.PI/2),.2,2,i),1),kit.tex('reeds'),{pos:[x,G(x,z)-.05,z],scale:[.6+R()*.5,1.0+R()*.6,.6+R()*.5]});
+    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,7,4,0,Math.PI*2,0,Math.PI/2),.2,2,i),1),kit.tex('reeds'),{pos:[x,G(x,z)-.05,z],scale:[.6+R()*.5,1.0+R()*.6,.6+R()*.5]});
   }
   for(let i=0;i<40;i++){
     const t=TREES[Math.floor(R()*TREES.length)];
     if(t.kind==='sakura')continue;
     const a=R()*Math.PI*2,x=t.x+Math.cos(a)*1.6,z=t.z+Math.sin(a)*1.6;
-    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,10,6,0,Math.PI*2,0,Math.PI/2),.25,2,i+9),1),kit.tex('fern'),{pos:[x,G(x,z)-.05,z],scale:[.7,.45,.7]});
+    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,7,4,0,Math.PI*2,0,Math.PI/2),.25,2,i+9),1),kit.tex('fern'),{pos:[x,G(x,z)-.05,z],scale:[.7,.45,.7]});
   }
-  for(let i=0;i<5;i++)kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.35,1.3,i+70),3),kit.tex('rocky-cliff'),{pos:[RIVER.x1-2.5+R()*2,RIVER.water+1+R()*6,RIVER.z(RIVER.x1)+(R()<.5?-1:1)*(4+R()*2)],scale:[2+R()*1.5,1.6+R(),2+R()]});
+  for(let i=0;i<5;i++)kit.add(planarUV(lumpy(blobGeometry(),.35,1.3,i+70),3),kit.tex('rocky-cliff'),{pos:[RIVER.x1-2.5+R()*2,RIVER.water+1+R()*6,RIVER.z(RIVER.x1)+(R()<.5?-1:1)*(4+R()*2)],scale:[2+R()*1.5,1.6+R(),2+R()]});
 }
 
 // ---------- village ----------
@@ -525,12 +528,12 @@ async function trees(kit,R,slice=async()=>{}){
         kit.add(roundUV(new THREE.ConeGeometry(r*s*(.92+R()*.16),h*s,9),1,r*s),kit.tex('pine-needles'),{pos:[t.x+lean[1]*o*s,y+o*s,t.z+lean[0]*o*s],rot:[0,spin+o,0]});
     }else if(t.kind==='pine'){
       const h=7.5*s,top=[t.x+lean[0]*h*2,y+h,t.z+lean[1]*h*2];
-      kit.beam([t.x,y,t.z],[(t.x+top[0])/2+(R()-.5)*.6,y+h*.55,(t.z+top[2])/2+(R()-.5)*.6],.2*s,kit.tex('red-pine-bark'),.8,8);
-      kit.beam([(t.x+top[0])/2,y+h*.5,(t.z+top[2])/2],top,.15*s,kit.tex('red-pine-bark'),.8,8);
+      kit.beam([t.x,y,t.z],[(t.x+top[0])/2+(R()-.5)*.6,y+h*.55,(t.z+top[2])/2+(R()-.5)*.6],.2*s,kit.tex('red-pine-bark'),.8,8,true);
+      kit.beam([(t.x+top[0])/2,y+h*.5,(t.z+top[2])/2],top,.15*s,kit.tex('red-pine-bark'),.8,8,true);
       for(let k=0;k<4;k++){
         const a=spin+k*1.7,r=(1.0+R()*1.2)*s,cy=y+h*(.62+k*.12);
         const end=[top[0]+Math.cos(a)*r,cy,top[2]+Math.sin(a)*r];
-        kit.beam([top[0]-lean[0]*h*(1-.62-k*.12),cy-.4,top[2]-lean[1]*h*(1-.62-k*.12)],end,.06*s,kit.tex('red-pine-bark'),.8,5);
+        kit.beam([top[0]-lean[0]*h*(1-.62-k*.12),cy-.4,top[2]-lean[1]*h*(1-.62-k*.12)],end,.06*s,kit.tex('red-pine-bark'),.8,5,true);
         leafy(kit,'pine-needles',[end[0],end[1]+.2*s,end[2]],[(1.0+R()*.4)*s,(.7+R()*.15)*s,(.95+R()*.4)*s],t.x+k);
       }
     }else if(t.kind==='birch'){
@@ -538,11 +541,11 @@ async function trees(kit,R,slice=async()=>{}){
       for(let k=0;k<3;k++)leafy(kit,'bush-leaves',[t.x+(R()-.5)*.8*s+lean[1]*4,y+(4.4+k*1.0)*s,t.z+(R()-.5)*.8*s-lean[0]*4],[(1.25-k*.25)*s,(1.0-k*.12)*s,(1.2-k*.25)*s],t.z+k);
     }else{
       const id=t.kind==='sakura'?'sakura':'momiji',trunk=2.0*s,base=[t.x,y,t.z],fork=[t.x,y+trunk,t.z];
-      kit.beam(base,fork,.22*s,bark,1,8);
+      kit.beam(base,fork,.22*s,bark,1,8,true);
       const n=t.kind==='sakura'?3:2+Math.floor(R()*2);
       for(let k=0;k<n;k++){
         const a=spin+k*Math.PI*2/n,end=[t.x+Math.cos(a)*1.4*s,y+trunk+1.4*s+R()*.6*s,t.z+Math.sin(a)*1.4*s];
-        kit.beam(fork,end,.11*s,bark,1,6);
+        kit.beam(fork,end,.11*s,bark,1,6,true);
         leafy(kit,id,[end[0],end[1]+.35*s,end[2]],[(1.5+R()*.4)*s,(1.0+R()*.25)*s,(1.4+R()*.4)*s],t.x+k*3);
       }
       leafy(kit,id,[t.x,y+trunk+2.4*s,t.z],[1.6*s,1.1*s,1.6*s],t.z-t.x);
@@ -553,7 +556,7 @@ async function trees(kit,R,slice=async()=>{}){
     if(R()>.35||t.kind==='sakura')continue;
     const a=R()*Math.PI*2,d=1.4+R()*1.6,x=t.x+Math.cos(a)*d,z=t.z+Math.sin(a)*d,y=G(x,z);
     const id=R()<.6?'fern':'bush-leaves';
-    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,10,6,0,Math.PI*2,0,Math.PI/2),.25,2,x),1),kit.tex(id,{variant:'low',side:THREE.DoubleSide}),{pos:[x,y-.05,z],scale:[.55+R()*.4,.35+R()*.25,.55+R()*.4]});
+    kit.add(planarUV(lumpy(new THREE.SphereGeometry(1,7,4,0,Math.PI*2,0,Math.PI/2),.25,2,x),1),kit.tex(id,{variant:'low',side:THREE.DoubleSide}),{pos:[x,y-.05,z],scale:[.55+R()*.4,.35+R()*.25,.55+R()*.4]});
   }
   for(let i=0;i<140;i++){
     const x=-56+R()*178,z=200+R()*134;

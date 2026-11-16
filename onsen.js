@@ -1,5 +1,5 @@
 import * as THREE from './vendor/three.module.js';
-import {box,cyl,planarUV,roundUV,lumpy,rng,kiosk,sign} from './kit.js';
+import {box,cyl,planarUV,roundUV,lumpy,rng,kiosk,sign,blobGeometry} from './kit.js';
 import {ONSEN,ONSEN_ROOM,CANTEEN} from './cavern-layout.js';
 import {wall} from './quarters.js';
 import {lantern} from './surface.js';
@@ -9,7 +9,7 @@ import {lantern} from './surface.js';
 // a cold bath and a rock bath in a grotto with a gravel garden. Built from the onsen-* sheets.
 const P=type=>ONSEN_ROOM.props.filter(p=>p.type===type);
 const {x1,x2,z1,z2,height:H,partition:PZ,door:DX,entry:EX}=ONSEN;
-const rock=(kit,material,pos,scale,seed,rot=0)=>kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.28,1.8,seed),1.2),material,{pos,scale,rot:[0,rot,0]});
+const rock=(kit,material,pos,scale,seed,rot=0)=>kit.add(planarUV(lumpy(blobGeometry(),.28,1.8,seed),1.2),material,{pos,scale,rot:[0,rot,0]});
 /** A horizontal plane facing up. */
 const flat=(w,d)=>new THREE.PlaneGeometry(w,d).rotateX(-Math.PI/2);
 
@@ -236,5 +236,5 @@ function grotto(kit,R){
   lantern(kit,gd.x+1.35,gd.z+.2,0);
   kit.beam([gd.x+.1,0,gd.z+.35],[gd.x-.1,.9,gd.z+.25],.05,kit.tex('red-pine-bark'),.4,6);
   for(const [dx,dy,s] of [[-.25,.95,.35],[.05,1.15,.3],[-.1,.8,.25]])
-    kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.35,2.2,dy*9),.5),kit.tex('bonsai-foliage',{variant:'pine',side:THREE.DoubleSide}),{pos:[gd.x+dx,dy,gd.z+.25],scale:[s,s*.45,s*.8]});
+    kit.add(planarUV(lumpy(blobGeometry(),.35,2.2,dy*9),.5),kit.tex('bonsai-foliage',{variant:'pine',side:THREE.DoubleSide}),{pos:[gd.x+dx,dy,gd.z+.25],scale:[s,s*.45,s*.8]});
 }
