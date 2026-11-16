@@ -28,6 +28,7 @@ python3 -m http.server 8000
 | 21 | 渓谷と鉄橋 | 東西に流れる川、トラスの鉄橋、木の吊り橋、滝、岩壁、葦、白樺 |
 | 22 | 里山の集落 | 茅葺きの家、蔵、棚田、稲架掛け、茶畑、バス停、お地蔵さま、寺の鐘楼と本堂、提灯 |
 | 23 | 東の台地 | 変電所、太陽光発電、給水塔、レーダードーム、パラボラ、排気塔、丘の上の展望台とキャンプ場 |
+| 24 | 大浴場 | 居住区画の廊下の南から入る地熱温泉。脱衣所（桐のロッカー、籐かご、洗面台）、休憩処（琉球畳、マッサージチェア、牛乳の自販機）、洗い場、檜風呂、水風呂、岩に囲まれたにごり湯の岩風呂、玉砂利の庭 |
 
 屋外は約190m × 180mの起伏のある地形で、地面の高さに合わせて歩けます（鉄橋・木橋の上も歩けます）。
 
@@ -47,9 +48,10 @@ python3 -m http.server 8000
 
 `textures/` の画像はすべて GPT Image 2.5 Sunburst で生成したものです（1:1 の 2880×2880 を1枚生成し、3×3 に切り分けて9種類）。
 
-- 一覧: `textures/manifest.json`（43シート・387種類）
+- 一覧: `textures/manifest.json`（47シート・423種類）
 - 追加の8シート・72種類: `facility-floors` / `facility-rock-concrete` / `facility-metal-finishes` / `facility-utility` の4枚は、まだ生成テクスチャにしていなかった施設の素材36種類の差し替え。`detail-underground` / `detail-rooms` / `detail-yard` / `detail-countryside` の4枚は、作り込み用の36種類。この8枚は別の場所で生成した 1254px の画像をスキルの `import` で取り込み、切り出しています
-- さらに3シート・27種類（`facility-equipment` / `facility-doors-paint` / `facility-metal-rubber-rock`）で、残っていた施設の素材（黄色い鋳物、実験台の天板、注意喚起ストライプ、縞鋼板、緑の扉、床の標示ペイント、排水グレーチング、防振ゴムなど）を差し替えています- 色は濃くなりすぎないよう、切り出し時に彩度とコントラストを少し下げ、暗部を少し持ち上げています（`SKILL.md` の `tone`）
+- さらに3シート・27種類（`facility-equipment` / `facility-doors-paint` / `facility-metal-rubber-rock`）で、残っていた施設の素材（黄色い鋳物、実験台の天板、注意喚起ストライプ、縞鋼板、緑の扉、床の標示ペイント、排水グレーチング、防振ゴムなど）を差し替えています
+- 大浴場（24）用の4シート・36種類（`onsen-bath-surfaces` / `onsen-baths` / `onsen-dressing` / `onsen-lounge`）- 色は濃くなりすぎないよう、切り出し時に彩度とコントラストを少し下げ、暗部を少し持ち上げています（`SKILL.md` の `tone`）
 - 各シートの仕様（プロンプト）: `textures/specs/`
 - シート全体の縮小版: `textures/sheets/`
 - 生成スキル: `.claude/skills/texture-sheet/`（使い方は `SKILL.md`）
@@ -66,5 +68,6 @@ python3 -m http.server 8000
 | `outside.js` | 屋外の世界の 3D（地形、川と滝、道路と橋、本館、広場、台地、集落、木々、空と太陽） |
 | `kit.js` | 部品づくりの共通処理（UV、同じ素材の結合、端末・看板・引き戸） |
 | `props.js` | 各区画の小物（街・集落・キャンプ場・地下の研究設備・室内） |
+| `onsen.js` | 大浴場（24）の 3D（脱衣所、休憩処、洗い場、檜風呂、水風呂、岩風呂、庭） |
 | `details.js` | 作り込み用テクスチャを使った物（送風機と風管、足場、金屏風、コンテナ、キッチンカー、井戸、巣箱など） |
 | `textures.js` | テクスチャの読み込みと既存素材の差し替え |

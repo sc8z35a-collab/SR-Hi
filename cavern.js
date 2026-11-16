@@ -6,6 +6,7 @@ import {
   CAVERN,CONTROL_ROOM,LAKE_ROOM,
 } from './cavern-layout.js';
 import {buildQuarters} from './quarters.js';
+import {buildOnsen} from './onsen.js';
 import {buildSurface,buildIncline,extinguisher} from './surface.js';
 import {buildOutside} from './outside.js';
 import {buildOutdoorProps,buildUndergroundProps} from './props.js';
@@ -31,6 +32,7 @@ export async function buildExtension(){
   hut(under,underground);
   lake(under,underground);
   buildQuarters(under,underground);
+  buildOnsen(under,underground);
   buildUndergroundProps(under,underground);
   buildUndergroundDetails(under);
   buildIncline(shaft,group);
@@ -44,7 +46,7 @@ export async function buildExtension(){
     outdoor.visible=level>1||player.z>158;
     underground.visible=player.z<168;
   };
-  const drift={'lake-water':[.006,.004],'stream-water':[0,-.05],'koi-pond':[.004,.002],'river-water':[-.035,.004],'waterfall':[0,.3],'fountain-water':[.01,.008]};
+  const drift={'lake-water':[.006,.004],'stream-water':[0,-.05],'koi-pond':[.004,.002],'river-water':[-.035,.004],'waterfall':[0,.3],'fountain-water':[.01,.008],'nigori-water:pool':[.004,.003],'clear-onsen-water':[.005,-.003]};
   const animate=mesh=>{
     const id=Object.keys(drift).find(key=>mesh.material.name.endsWith(key));
     if(!id)return;

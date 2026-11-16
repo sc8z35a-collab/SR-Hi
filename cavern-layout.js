@@ -167,6 +167,31 @@ export const MEETING = {
     ...[102.4, 103.5, 104.6, 105.7].flatMap(z => [prop('chair', 27.75, z, .5, .5), prop('chair', 30.25, z, .5, .5)])],
 };
 
+// 24 大浴場: a hot-spring bathhouse south of the living corridor, entered through its south wall
+export const ONSEN = {x1:24.4, x2:38.4, z1:70.0, z2:84.0, height:3.0, partition:78.3, door:27.2, entry:25.0};
+export const ONSEN_ROOM = {
+  code:'24', name:'大浴場', view:'onsen', short:'大浴場', side:0,
+  x1:ONSEN.x1, x2:ONSEN.x2, z1:ONSEN.z1, z2:ONSEN.z2,
+  entry:{x:ONSEN.entry, z:ONSEN.z2, axis:'z', width:1.2, height:2.1, door:false}, terminal:[31.5, 79.35],
+  data:[['源泉温度','42.6 °C'],['泉質','硫黄泉'],['湯の入れ替え','毎朝 6:00'],['利用者','0 名']],
+  floors:[
+    rect(ONSEN.x1+.25, ONSEN.z1+.25, ONSEN.x2-.25, ONSEN.partition-.15),
+    rect(ONSEN.x1+.25, ONSEN.partition+.15, ONSEN.x2-.25, ONSEN.z2-.25),
+    rect(ONSEN.door-.6, ONSEN.partition-.4, ONSEN.door+.6, ONSEN.partition+.4),
+    rect(ONSEN.entry-.6, ONSEN.z2-.5, ONSEN.entry+.6, ONSEN.z2+.45),
+  ],
+  props:[
+    prop('wall', 25.5, ONSEN.partition, 2.2, .2), prop('wall', 33.1, ONSEN.partition, 10.6, .2),
+    // bath: wash stations, hinoki bath, cold bath, glass screen, rock bath, gravel garden
+    prop('wash', 24.95, 74.0, 1.1, 6.2), prop('inner-bath', 29.8, 72.8, 4.4, 3.6), prop('cold-bath', 31.5, 77.3, 1.8, 1.35),
+    prop('glass', 33.3, 72.4, .1, 4.8), prop('rock-bath', 35.9, 72.9, 4.4, 4.6), prop('garden', 36.3, 77.35, 4.0, 1.5),
+    // dressing room and rest area
+    prop('lockers', 24.63, 80.95, .5, 3.9), prop('basket-shelf', 29.4, 78.75, 2.8, .55), prop('washstand', 28.7, 83.72, 4.2, .6),
+    prop('massage-chair', 32.0, 83.3, .8, 1.0), prop('milk-vending', 33.4, 83.6, 1.0, .75), prop('bench', 33.5, 78.8, 3.0, .45),
+    prop('tatami-platform', 36.4, 82.1, 3.6, 3.6),
+  ],
+};
+
 export const SURFACE = {
   code:'19', name:'地上 坑口ヤード', view:'surface', short:'地上', side:0,
   x1:-62, x2:60, z1:108.1, z2:196,
@@ -200,7 +225,7 @@ export const SURFACE = {
   ],
 };
 
-export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, SURFACE, ...OUTDOOR_ROOMS];
+export const CAVERN_ROOMS = [CAVERN, CONTROL_ROOM, LAKE_ROOM, LIVING, WASHITSU, YOSHITSU, MEETING, ONSEN_ROOM, SURFACE, ...OUTDOOR_ROOMS];
 
 // Light sources for the shared lighting texture and the dynamic point-light pool.
 export const CAVERN_FIXTURES = [
@@ -232,6 +257,11 @@ export const CAVERN_FIXTURES = [
   {x:29.0, y:0.6, z:99.2, color:0xff8a3c, intensity:14, range:5},
   {x:29.0, y:2.75, z:102.6, color:0xeef4ff, intensity:20, range:7},
   {x:29.0, y:2.75, z:105.6, color:0xeef4ff, intensity:20, range:7},
+  {x:28.5, y:2.85, z:73.5, color:0xffe2b8, intensity:24, range:8},
+  {x:31.5, y:2.85, z:76.8, color:0xffe2b8, intensity:14, range:6},
+  {x:36.0, y:2.7, z:73.0, color:0xffd29a, intensity:20, range:7},
+  {x:27.6, y:2.85, z:81.2, color:0xfff0d8, intensity:22, range:8},
+  {x:35.0, y:2.85, z:81.2, color:0xffe8c8, intensity:22, range:8},
   {x:24, y:2.9, z:112, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.25, z:121, color:0xffd9a0, intensity:20, range:8},
   {x:24, y:2.9+INCLINE.rise*.5, z:134, color:0xffd9a0, intensity:20, range:8},

@@ -1,0 +1,86 @@
+{
+  "id": "onsen-lounge",
+  "title": "大浴場 D：休憩処・設備",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "rest area and fittings of a Japanese hot spring bathhouse, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "ryukyu-tatami",
+      "name": "縁なしの琉球畳",
+      "meters": 0.88,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "borderless Ryukyu tatami mat of fine green rush weave, seen from directly above, about 0.9 m across"
+    },
+    {
+      "id": "chestnut-board",
+      "name": "栗の板",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.5,
+      "prompt": "chestnut wood boards laid horizontally with knots, straight-on, about 1 m across"
+    },
+    {
+      "id": "verdigris-copper",
+      "name": "緑青の銅",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normalStrength": 0.8,
+      "prompt": "copper with heavy green verdigris patina, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "black-granite-polished",
+      "name": "磨いた黒御影石",
+      "meters": 0.6,
+      "roughness": 0.15,
+      "normalStrength": 0.3,
+      "prompt": "polished black granite with sparkling crystals, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "yellow-resin",
+      "name": "黄色い樹脂",
+      "meters": 0.4,
+      "roughness": 0.4,
+      "normalStrength": 0.2,
+      "flatten": true,
+      "prompt": "glossy yellow plastic with faint scratches, straight-on, about 40 cm across"
+    },
+    {
+      "id": "sawara-board",
+      "name": "さわら材の板",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 0.4,
+      "prompt": "pale sawara cypress wood board with straight grain, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "bath-wall-paint",
+      "name": "防カビ塗装の白い壁",
+      "meters": 1.5,
+      "roughness": 0.7,
+      "normalStrength": 0.3,
+      "flatten": true,
+      "prompt": "white mould-resistant painted wall with faint steam stains, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "sulfur-iron",
+      "name": "硫黄で黒ずんだ鉄",
+      "meters": 0.6,
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normalStrength": 0.6,
+      "prompt": "iron blackened and corroded by sulfur with yellow and rust patches, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "rubber-coin-mat",
+      "name": "黒い防水ゴムマット",
+      "meters": 0.6,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "prompt": "black waterproof rubber mat with small raised round studs, seen from directly above, about 0.6 m across"
+    }
+  ]
+}

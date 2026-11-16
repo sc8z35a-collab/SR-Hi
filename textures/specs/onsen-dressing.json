@@ -1,0 +1,83 @@
+{
+  "id": "onsen-dressing",
+  "title": "大浴場 C：脱衣所",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "dressing room of a Japanese public bath, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "rattan-mat",
+      "name": "籐むしろの床",
+      "meters": 0.6,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "woven rattan floor mat with fine straight strands, seen from directly above, about 0.6 m across"
+    },
+    {
+      "id": "rattan-weave",
+      "name": "籐かごの編み目",
+      "meters": 0.3,
+      "roughness": 0.7,
+      "normalStrength": 1.2,
+      "prompt": "woven rattan basket weave, straight-on, about 30 cm across"
+    },
+    {
+      "id": "kiri-locker",
+      "name": "桐の板",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 0.3,
+      "prompt": "pale paulownia wood board with straight fine grain, straight-on, about 1 m across"
+    },
+    {
+      "id": "towel-pile",
+      "name": "白いタオル地",
+      "meters": 0.3,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "prompt": "white cotton terry towel pile, straight-on, about 30 cm across"
+    },
+    {
+      "id": "yukata-navy",
+      "name": "紺の浴衣の生地",
+      "meters": 0.4,
+      "roughness": 0.9,
+      "normalStrength": 0.3,
+      "prompt": "navy cotton yukata fabric with a small white flower pattern, straight-on, about 40 cm across"
+    },
+    {
+      "id": "noren-vermilion",
+      "name": "朱色ののれん生地",
+      "meters": 0.6,
+      "roughness": 0.9,
+      "normalStrength": 0.3,
+      "prompt": "plain vermilion cotton noren cloth with visible weave, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "sudare-blind",
+      "name": "竹の簾",
+      "meters": 0.6,
+      "roughness": 0.7,
+      "normalStrength": 0.8,
+      "prompt": "bamboo sudare blind of thin horizontal reeds tied with dark cords, straight-on, about 0.6 m across"
+    },
+    {
+      "id": "artificial-marble",
+      "name": "白い人造大理石",
+      "meters": 0.8,
+      "roughness": 0.25,
+      "normalStrength": 0.1,
+      "prompt": "white artificial marble countertop with small grey flecks, straight-on, about 0.8 m across"
+    },
+    {
+      "id": "black-leatherette",
+      "name": "黒い合皮",
+      "meters": 0.5,
+      "roughness": 0.55,
+      "normalStrength": 0.5,
+      "flatten": true,
+      "prompt": "black faux leather with a pebbled grain, straight-on, about 0.5 m across"
+    }
+  ]
+}

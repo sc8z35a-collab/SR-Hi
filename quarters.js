@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three.module.js';
 import {box,cyl,planarUV,roundUV,scaleUV,lumpy,kiosk,sign,slidingDoor,rng} from './kit.js';
-import {HALL15,SUITE_X,SUITES,LIVING,WASHITSU,YOSHITSU,MEETING,INCLINE} from './cavern-layout.js';
+import {HALL15,SUITE_X,SUITES,LIVING,WASHITSU,YOSHITSU,MEETING,INCLINE,ONSEN} from './cavern-layout.js';
 import {extinguisher} from './surface.js';
 
 // Living quarters east of the cavern: 15 hall, 16 和室 (Japanese room), 17 洋室 (Western room), 18 会議室.
@@ -10,7 +10,7 @@ const props=(room,type)=>room.props.filter(p=>p.type===type);
  * A straight wall (or lining) with rectangular openings.
  * axis 'x': the wall lies in the plane x=at and runs along z; axis 'z': plane z=at, runs along x.
  */
-function wall(kit,material,{axis,at,from,to,y1=0,y2,thick=.2,gaps=[],world=1}){
+export function wall(kit,material,{axis,at,from,to,y1=0,y2,thick=.2,gaps=[],world=1}){
   const piece=(a,b,lo,hi)=>{
     if(b-a<.005||hi-lo<.005)return;
     const mid=(a+b)/2,y=(lo+hi)/2,len=b-a,h=hi-lo;
@@ -48,7 +48,8 @@ function shellAndHall(kit,group){
   // structural walls (hall-facing finish; the suites add their own linings)
   wall(kit,panel,{axis:'x',at:22.0,from:83.9,to:108.1,y2:top,gaps:[{center:96,width:2.4,top:2.5}],world:2});
   wall(kit,panel,{axis:'x',at:26.0,from:83.9,to:108.1,y2:top,gaps:['16','17','18'].map(doorGap),world:2});
-  wall(kit,panel,{axis:'z',at:84.0,from:21.9,to:31.8,y2:top,world:2});
+  // south wall: doorway into the bathhouse (24)
+  wall(kit,panel,{axis:'z',at:84.0,from:21.9,to:31.8,y2:top,gaps:[{center:ONSEN.entry,width:1.2,top:2.1}],world:2});
   wall(kit,panel,{axis:'z',at:108.0,from:21.9,to:31.8,y2:top,gaps:[{center:INCLINE.x,width:2.4,top:2.5}],world:2});
   wall(kit,panel,{axis:'x',at:31.7,from:83.9,to:108.1,y2:top,world:2});
   for(const z of [92.0,100.0])wall(kit,panel,{axis:'z',at:z,from:26.1,to:31.6,y2:top,world:2});

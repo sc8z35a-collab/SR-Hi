@@ -1146,6 +1146,74 @@
         "cleanroom-weave-white",
         "wet-dark-rock"
       ]
+    },
+    "onsen-bath-surfaces": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-bath-surfaces.webp",
+      "textures": [
+        "bath-floor-stone",
+        "white-mosaic-tile",
+        "teal-mosaic-tile",
+        "basalt-flagstone",
+        "green-tuff-wall",
+        "hinoki-paneling",
+        "hinoki-slatted",
+        "steam-plaster",
+        "cedar-lattice-ceiling"
+      ]
+    },
+    "onsen-baths": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-baths.webp",
+      "textures": [
+        "hinoki-tub-wet",
+        "bath-rock-wet",
+        "yunohana",
+        "nigori-water",
+        "clear-onsen-water",
+        "white-tamajari",
+        "moss-garden-stone",
+        "fogged-glass",
+        "iron-spring-deposit"
+      ]
+    },
+    "onsen-dressing": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-dressing.webp",
+      "textures": [
+        "rattan-mat",
+        "rattan-weave",
+        "kiri-locker",
+        "towel-pile",
+        "yukata-navy",
+        "noren-vermilion",
+        "sudare-blind",
+        "artificial-marble",
+        "black-leatherette"
+      ]
+    },
+    "onsen-lounge": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/onsen-lounge.webp",
+      "textures": [
+        "ryukyu-tatami",
+        "chestnut-board",
+        "verdigris-copper",
+        "black-granite-polished",
+        "yellow-resin",
+        "sawara-board",
+        "bath-wall-paint",
+        "sulfur-iron",
+        "rubber-coin-mat"
+      ]
     }
   },
   "textures": {
@@ -5314,6 +5382,366 @@
       "targets": [
         "Damp slate | base-rock"
       ]
+    },
+    "bath-floor-stone": {
+      "name": "浴室の床タイル",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 0,
+      "albedo": "bath-floor-stone.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "bath-floor-stone-normal.webp",
+      "meters": 0.9
+    },
+    "white-mosaic-tile": {
+      "name": "白いモザイクタイル",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 1,
+      "albedo": "white-mosaic-tile.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "white-mosaic-tile-normal.webp",
+      "meters": 0.3
+    },
+    "teal-mosaic-tile": {
+      "name": "青緑のモザイクタイル",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 2,
+      "albedo": "teal-mosaic-tile.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "teal-mosaic-tile-normal.webp",
+      "meters": 0.3
+    },
+    "basalt-flagstone": {
+      "name": "黒い玄武岩の敷石",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 3,
+      "albedo": "basalt-flagstone.webp",
+      "roughness": 0.3,
+      "metalness": 0.0,
+      "normal": "basalt-flagstone-normal.webp",
+      "meters": 1.5
+    },
+    "green-tuff-wall": {
+      "name": "緑がかった凝灰岩の石壁",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 4,
+      "albedo": "green-tuff-wall.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "green-tuff-wall-normal.webp",
+      "meters": 1.2
+    },
+    "hinoki-paneling": {
+      "name": "檜の羽目板",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 5,
+      "albedo": "hinoki-paneling.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "hinoki-paneling-normal.webp",
+      "meters": 1.0
+    },
+    "hinoki-slatted": {
+      "name": "檜のすのこ",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 6,
+      "albedo": "hinoki-slatted.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "hinoki-slatted-normal.webp",
+      "meters": 0.8
+    },
+    "steam-plaster": {
+      "name": "湯気で湿った漆喰",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 7,
+      "albedo": "steam-plaster.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "steam-plaster-normal.webp",
+      "meters": 1.5
+    },
+    "cedar-lattice-ceiling": {
+      "name": "杉の格子天井",
+      "sheet": "onsen-bath-surfaces",
+      "cell": 8,
+      "albedo": "cedar-lattice-ceiling.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "cedar-lattice-ceiling-normal.webp",
+      "meters": 1.8
+    },
+    "hinoki-tub-wet": {
+      "name": "檜の浴槽の板",
+      "sheet": "onsen-baths",
+      "cell": 0,
+      "albedo": "hinoki-tub-wet.webp",
+      "roughness": 0.35,
+      "metalness": 0.0,
+      "normal": "hinoki-tub-wet-normal.webp",
+      "meters": 0.9
+    },
+    "bath-rock-wet": {
+      "name": "岩風呂の黒い岩",
+      "sheet": "onsen-baths",
+      "cell": 1,
+      "albedo": "bath-rock-wet.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "bath-rock-wet-normal.webp",
+      "meters": 1.5
+    },
+    "yunohana": {
+      "name": "湯の花の沈着",
+      "sheet": "onsen-baths",
+      "cell": 2,
+      "albedo": "yunohana.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "yunohana-normal.webp",
+      "meters": 0.8
+    },
+    "nigori-water": {
+      "name": "乳白色のにごり湯",
+      "sheet": "onsen-baths",
+      "cell": 3,
+      "albedo": "nigori-water.webp",
+      "roughness": 0.08,
+      "metalness": 0.0,
+      "normal": "nigori-water-normal.webp",
+      "meters": 2.0
+    },
+    "clear-onsen-water": {
+      "name": "淡い緑の透明な湯",
+      "sheet": "onsen-baths",
+      "cell": 4,
+      "albedo": "clear-onsen-water.webp",
+      "roughness": 0.05,
+      "metalness": 0.0,
+      "normal": "clear-onsen-water-normal.webp",
+      "meters": 1.5
+    },
+    "white-tamajari": {
+      "name": "白い玉砂利",
+      "sheet": "onsen-baths",
+      "cell": 5,
+      "albedo": "white-tamajari.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "white-tamajari-normal.webp",
+      "meters": 0.6
+    },
+    "moss-garden-stone": {
+      "name": "苔むした庭石",
+      "sheet": "onsen-baths",
+      "cell": 6,
+      "albedo": "moss-garden-stone.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "moss-garden-stone-normal.webp",
+      "meters": 1.2
+    },
+    "fogged-glass": {
+      "name": "湯気で曇ったガラス",
+      "sheet": "onsen-baths",
+      "cell": 7,
+      "albedo": "fogged-glass.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "fogged-glass-normal.webp",
+      "meters": 1.0
+    },
+    "iron-spring-deposit": {
+      "name": "鉄泉の沈着",
+      "sheet": "onsen-baths",
+      "cell": 8,
+      "albedo": "iron-spring-deposit.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "iron-spring-deposit-normal.webp",
+      "meters": 1.0
+    },
+    "rattan-mat": {
+      "name": "籐むしろの床",
+      "sheet": "onsen-dressing",
+      "cell": 0,
+      "albedo": "rattan-mat.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "rattan-mat-normal.webp",
+      "meters": 0.6
+    },
+    "rattan-weave": {
+      "name": "籐かごの編み目",
+      "sheet": "onsen-dressing",
+      "cell": 1,
+      "albedo": "rattan-weave.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "rattan-weave-normal.webp",
+      "meters": 0.3
+    },
+    "kiri-locker": {
+      "name": "桐の板",
+      "sheet": "onsen-dressing",
+      "cell": 2,
+      "albedo": "kiri-locker.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "kiri-locker-normal.webp",
+      "meters": 1.0
+    },
+    "towel-pile": {
+      "name": "白いタオル地",
+      "sheet": "onsen-dressing",
+      "cell": 3,
+      "albedo": "towel-pile.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "towel-pile-normal.webp",
+      "meters": 0.3
+    },
+    "yukata-navy": {
+      "name": "紺の浴衣の生地",
+      "sheet": "onsen-dressing",
+      "cell": 4,
+      "albedo": "yukata-navy.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "yukata-navy-normal.webp",
+      "meters": 0.4
+    },
+    "noren-vermilion": {
+      "name": "朱色ののれん生地",
+      "sheet": "onsen-dressing",
+      "cell": 5,
+      "albedo": "noren-vermilion.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "noren-vermilion-normal.webp",
+      "meters": 0.6
+    },
+    "sudare-blind": {
+      "name": "竹の簾",
+      "sheet": "onsen-dressing",
+      "cell": 6,
+      "albedo": "sudare-blind.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "sudare-blind-normal.webp",
+      "meters": 0.6
+    },
+    "artificial-marble": {
+      "name": "白い人造大理石",
+      "sheet": "onsen-dressing",
+      "cell": 7,
+      "albedo": "artificial-marble.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "artificial-marble-normal.webp",
+      "meters": 0.8
+    },
+    "black-leatherette": {
+      "name": "黒い合皮",
+      "sheet": "onsen-dressing",
+      "cell": 8,
+      "albedo": "black-leatherette.webp",
+      "roughness": 0.55,
+      "metalness": 0.0,
+      "normal": "black-leatherette-normal.webp",
+      "meters": 0.5
+    },
+    "ryukyu-tatami": {
+      "name": "縁なしの琉球畳",
+      "sheet": "onsen-lounge",
+      "cell": 0,
+      "albedo": "ryukyu-tatami.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "ryukyu-tatami-normal.webp",
+      "meters": 0.88
+    },
+    "chestnut-board": {
+      "name": "栗の板",
+      "sheet": "onsen-lounge",
+      "cell": 1,
+      "albedo": "chestnut-board.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "chestnut-board-normal.webp",
+      "meters": 1.0
+    },
+    "verdigris-copper": {
+      "name": "緑青の銅",
+      "sheet": "onsen-lounge",
+      "cell": 2,
+      "albedo": "verdigris-copper.webp",
+      "roughness": 0.6,
+      "metalness": 0.5,
+      "normal": "verdigris-copper-normal.webp",
+      "meters": 0.6
+    },
+    "black-granite-polished": {
+      "name": "磨いた黒御影石",
+      "sheet": "onsen-lounge",
+      "cell": 3,
+      "albedo": "black-granite-polished.webp",
+      "roughness": 0.15,
+      "metalness": 0.0,
+      "normal": "black-granite-polished-normal.webp",
+      "meters": 0.6
+    },
+    "yellow-resin": {
+      "name": "黄色い樹脂",
+      "sheet": "onsen-lounge",
+      "cell": 4,
+      "albedo": "yellow-resin.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "yellow-resin-normal.webp",
+      "meters": 0.4
+    },
+    "sawara-board": {
+      "name": "さわら材の板",
+      "sheet": "onsen-lounge",
+      "cell": 5,
+      "albedo": "sawara-board.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "sawara-board-normal.webp",
+      "meters": 0.6
+    },
+    "bath-wall-paint": {
+      "name": "防カビ塗装の白い壁",
+      "sheet": "onsen-lounge",
+      "cell": 6,
+      "albedo": "bath-wall-paint.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "bath-wall-paint-normal.webp",
+      "meters": 1.5
+    },
+    "sulfur-iron": {
+      "name": "硫黄で黒ずんだ鉄",
+      "sheet": "onsen-lounge",
+      "cell": 7,
+      "albedo": "sulfur-iron.webp",
+      "roughness": 0.7,
+      "metalness": 0.5,
+      "normal": "sulfur-iron-normal.webp",
+      "meters": 0.6
+    },
+    "rubber-coin-mat": {
+      "name": "黒い防水ゴムマット",
+      "sheet": "onsen-lounge",
+      "cell": 8,
+      "albedo": "rubber-coin-mat.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "rubber-coin-mat-normal.webp",
+      "meters": 0.6
     }
   }
 }

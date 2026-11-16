@@ -1,0 +1,84 @@
+{
+  "id": "onsen-baths",
+  "title": "大浴場 B：湯船・露天風呂",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "baths, hot spring water and rock garden of a Japanese onsen, realistic photographic PBR materials, soft even light, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "hinoki-tub-wet",
+      "name": "檜の浴槽の板",
+      "meters": 0.9,
+      "roughness": 0.35,
+      "normalStrength": 0.6,
+      "flatten": 0.8,
+      "prompt": "wet hinoki cypress bath tub boards laid horizontally, straight-on, about 0.9 m across"
+    },
+    {
+      "id": "bath-rock-wet",
+      "name": "岩風呂の黒い岩",
+      "meters": 1.5,
+      "roughness": 0.4,
+      "normalStrength": 2.0,
+      "prompt": "wet black volcanic rock of a rock bath, glistening, straight-on, about 1.5 m across"
+    },
+    {
+      "id": "yunohana",
+      "name": "湯の花の沈着",
+      "meters": 0.8,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "white and sulfur yellow hot spring mineral deposits, crusty, straight-on, about 0.8 m across"
+    },
+    {
+      "id": "nigori-water",
+      "name": "乳白色のにごり湯",
+      "meters": 2.0,
+      "roughness": 0.08,
+      "normalStrength": 0.5,
+      "prompt": "milky white hot spring water surface with gentle ripples, seen from above, about 2 m across"
+    },
+    {
+      "id": "clear-onsen-water",
+      "name": "淡い緑の透明な湯",
+      "meters": 1.5,
+      "roughness": 0.05,
+      "normalStrength": 0.4,
+      "prompt": "clear pale green hot spring water with rounded stones visible on the bottom and light caustics, seen from above, about 1.5 m across"
+    },
+    {
+      "id": "white-tamajari",
+      "name": "白い玉砂利",
+      "meters": 0.6,
+      "roughness": 0.6,
+      "normalStrength": 1.6,
+      "prompt": "white rounded garden pebbles, seen from directly above, about 0.6 m across"
+    },
+    {
+      "id": "moss-garden-stone",
+      "name": "苔むした庭石",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 1.4,
+      "prompt": "grey garden stone with patches of green moss, straight-on, about 1.2 m across"
+    },
+    {
+      "id": "fogged-glass",
+      "name": "湯気で曇ったガラス",
+      "meters": 1.0,
+      "roughness": 0.2,
+      "normalStrength": 0.4,
+      "flatten": true,
+      "prompt": "steamed-up frosted glass with condensation droplets and runs, straight-on, about 1 m across"
+    },
+    {
+      "id": "iron-spring-deposit",
+      "name": "鉄泉の沈着",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "prompt": "rusty orange iron-rich hot spring deposits on rock, crusty, straight-on, about 1 m across"
+    }
+  ]
+}
