@@ -156,10 +156,11 @@ async function startWalk(){
         el('start-label').textContent='3Dデータを読み込み中 '+Math.min(100,Math.round(fraction*100))+'%';
       };
       engine=await loadWalkthrough(canvas,doors,progress);
-      if(player.z>=ACCESS.z||extensionDoor.open)await engine.loadExpansion(progress);
+      if(player.z>=ACCESS.z||extensionDoor.open)await engine.loadExpansion(progress,{urgent:50});
     }
     if(!engine.available())throw new Error('WebGL context lost while loading');
     if(walkRequested)enterWalk();
+    preloadExpansion();
   }catch(error){
     if(walkRequested)recoverWalk(error);
   }finally{
@@ -167,6 +168,22 @@ async function startWalk(){
     start.disabled=false;
     if(engine?.available())el('start-label').textContent=played?'全画面で探索に戻る':'全画面で探索';
   }
+}
+/**
+ * Load the wing and everything beyond it in the background while the player explores the
+ * corridor, a little each frame (see render.js), so the door opens without a pause. If it fails
+ * the door loads it again when pressed.
+ */
+function preloadExpansion(){
+  const renderer=engine;
+  if(!renderer||renderer.hasExpansion())return;
+  setTimeout(()=>{
+    if(renderer!==engine||renderer.hasExpansion())return;
+    // keep the door button's progress current while the player stands at the door
+    renderer.loadExpansion(()=>{if(activeAction===extensionDoor&&!loadingExtension)setAction(extensionDoor);})
+      .catch(error=>console.warn('STRATA B4 expansion preload:',error))
+      .finally(()=>{if(activeAction===extensionDoor&&!loadingExtension)setAction(extensionDoor);});
+  },250);
 }
 function recoverWalk(error){
   console.warn('STRATA B4 3D renderer:',error);
@@ -296,7 +313,9 @@ function updateZone(room){
 function setAction(action){
   activeAction=action;
   const pending=action===extensionDoor&&loadingExtension;
-  const label=action?(action.kind==='terminal'?'端末を見る':action.open?'扉を閉める':pending?'増設棟を読み込み中':action===extensionDoor?'増設棟を開ける':'扉を開ける'):'';
+  const percent=Math.round((engine?.expansionProgress()??0)*100)+'%';
+  const preparing=action===extensionDoor&&engine&&!engine.hasExpansion();
+  const label=action?(action.kind==='terminal'?'端末を見る':action.open?'扉を閉める':pending?'増設棟を読み込み中 '+percent:preparing?'増設棟を開ける（準備中 '+percent+'）':action===extensionDoor?'増設棟を開ける':'扉を開ける'):'';
   interact.disabled=pending;
   if(label===lastPrompt)return;
   lastPrompt=label;
@@ -317,7 +336,7 @@ async function act(){
       setAction(item);
       const renderer=engine;
       try{
-        await renderer.loadExpansion();
+        await renderer.loadExpansion(()=>{if(activeAction===item)setAction(item);},{urgent:30});
         if(renderer!==engine||mode!=='walk'||activeAction!==item)return;
       }catch(error){
         console.warn('STRATA B4 expansion:',error);

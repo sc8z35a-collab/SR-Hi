@@ -4,9 +4,10 @@ import {GLTFLoader} from './vendor/GLTFLoader.js';
 import {MeshoptDecoder} from './vendor/meshopt_decoder.module.js';
 import {doorProgress} from './layout.js';
 import {THROAT,WING_SPINE,distanceToBounds} from './expansion.js';
-import {applyIndoorLighting,createFixtureController,createLightingData} from './lighting.js';
+import {applyIndoorLighting,createFixtureController,createLightingDataInWorker} from './lighting.js';
 import {applyRetexture,loadRetexture} from './textures.js';
 import {buildExtension} from './cavern.js';
+import {createSlicer} from './kit.js';
 import {CAVERN_FIXTURES,floorHeight} from './cavern-layout.js';
 
 export const QUALITY = {
@@ -212,6 +213,38 @@ function characterFrame(actor,shadow,time,camera,mode) {
   }
 }
 
+/**
+ * Replaces GLTFLoader's EXT_texture_webp handler with one that loads a few images at a time.
+ * The models embed hundreds of images; starting them all at once (a Blob, an object URL and a
+ * decode each) is one long main-thread task that freezes the game for a moment.
+ */
+function throttledWebp(limit){
+  return parser=>{
+    let active=0;
+    const waiting=[];
+    const run=()=>{
+      while(active<limit&&waiting.length){
+        const [job,resolve,reject]=waiting.shift();
+        active++;
+        job().then(resolve,reject).finally(()=>{active--;run();});
+      }
+    };
+    return {
+      name:'EXT_texture_webp',
+      loadTexture(textureIndex){
+        const extension=parser.json.textures[textureIndex].extensions?.EXT_texture_webp;
+        if(!extension)return null;
+        const source=parser.json.images[extension.source];
+        const loader=(source.uri&&parser.options.manager.getHandler(source.uri))||parser.textureLoader;
+        return new Promise((resolve,reject)=>{
+          waiting.push([()=>parser.loadTextureImage(textureIndex,extension.source,loader),resolve,reject]);
+          run();
+        });
+      },
+    };
+  };
+}
+
 export async function loadWalkthrough(canvas, doors, onProgress) {
   const gl=canvas.getContext('webgl2',{alpha:false,antialias:true,powerPreference:'high-performance'})
     ??canvas.getContext('webgl2',{alpha:false,antialias:false,powerPreference:'default'});
@@ -224,7 +257,10 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     renderer.shadowMap.type=THREE.PCFShadowMap;
     renderer.shadowMap.autoUpdate=false;
 
+    // decode the compressed meshes in worker threads instead of on the main thread
+    if(typeof Worker==='function'&&MeshoptDecoder.supported)MeshoptDecoder.useWorkers(2);
     const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+    loader.register(throttledWebp(4));
     const importModel=(source,progress)=>loader.loadAsync(source,event=>{
       if(event.lengthComputable&&event.total)progress?.(event.loaded/event.total);
     });
@@ -245,7 +281,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
     scene.environmentIntensity=.58;
     scene.add(new THREE.HemisphereLight(0xe1edf2,0xac9c83,hasFloat?1.04:1.30));
     const fixtures=model.userData.fixtures??imported.parser.json.scenes[0].extras.fixtures;
-    const lighting=createLightingData(fixtures);
+    const lighting=await createLightingDataInWorker(fixtures,createSlicer({ms:40}));
     const fixtureController=createFixtureController(scene,lighting.sources);
     const island=new THREE.SpotLight(0xe3f4ff,18,10,.83,.76,2);
     island.castShadow=true;
@@ -323,25 +359,142 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
       sectorVisuals.get(key).push(mesh);
     }
 
-    function loadExpansion(progress){
+    // ---- loading the wing and everything beyond it (rooms 06-24 and the open air) ----
+    // Started in the background as soon as the walk begins (main.js). Every heavy step is
+    // time-sliced, shaders are compiled ahead and textures and geometry are sent to the GPU a few
+    // at a time before the wing joins the scene, so no single frame has to absorb the load.
+    const loadBudget={ms:10}, slice=createSlicer(loadBudget), expansionListeners=new Set();
+    let expansionFraction=0;
+    function reportExpansion(fraction){
+      expansionFraction=Math.max(expansionFraction,Math.min(1,fraction));
+      for(const listener of expansionListeners)listener(expansionFraction);
+    }
+    function meshesOf(root){
+      const meshes=[];
+      root.traverse(object=>{if(object.isMesh||object.isLine||object.isPoints)meshes.push(object);});
+      return meshes;
+    }
+    /** Compile the shaders of `root`'s materials one at a time, for this scene's lights and fog. */
+    async function compileGradually(root){
+      const firstUse=new Map();
+      for(const object of meshesOf(root))for(const material of [object.material].flat())if(material&&!firstUse.has(material))firstUse.set(material,object);
+      const entries=[...firstUse];
+      for(let i=0;i<entries.length;i++){
+        const batch=new THREE.Group();
+        for(const [material,object] of entries.slice(i,i+1)){
+          const proxy=new THREE.Mesh(object.geometry,material);
+          proxy.castShadow=object.castShadow;proxy.receiveShadow=object.receiveShadow;
+          batch.add(proxy);
+        }
+        await renderer.compileAsync(batch,camera,scene);
+        await slice();
+      }
+    }
+
+    // ---- GPU streaming: textures and vertex buffers go to the GPU before they come into view ----
+    // three.js uploads a texture or a buffer the first time it is drawn, all in that frame. Instead,
+    // meshes within view distance (+30 m) of the player are uploaded one item at a time with a
+    // small budget per frame, nearest first, so nothing new has to be uploaded when it appears.
+    const warmScene=new THREE.Scene();
+    warmScene.overrideMaterial=new THREE.MeshBasicMaterial();
+    const warmTarget=new THREE.WebGLRenderTarget(1,1);
+    let warmItems=[], warmOrder=[], warmAt={x:Infinity,z:Infinity,frame:-1};
+    function registerWarmup(root){
+      for(const mesh of meshesOf(root)){
+        if(!mesh.isMesh)continue;
+        const textures=new Set();
+        for(const material of [mesh.material].flat()){
+          if(material)for(const value of Object.values(material))if(value?.isTexture)textures.add(value);
+        }
+        const {min,max}=new THREE.Box3().setFromObject(mesh);
+        warmItems.push({mesh,textures:[...textures],geometry:true,bounds:{x1:min.x,x2:max.x,z1:min.z,z2:max.z}});
+      }
+    }
+    /** Upload a mesh's vertex and index buffers by drawing it once into a 1x1 target. */
+    function uploadGeometry(mesh){
+      const parent=mesh.parent,index=parent?parent.children.indexOf(mesh):-1;
+      const {visible,frustumCulled}=mesh;
+      mesh.visible=true;mesh.frustumCulled=false;
+      warmScene.add(mesh);
+      const previous=renderer.getRenderTarget();
+      renderer.setRenderTarget(warmTarget);
+      renderer.render(warmScene,camera);
+      renderer.setRenderTarget(previous);
+      warmScene.remove(mesh);
+      if(parent){parent.children.splice(index,0,mesh);mesh.parent=parent;}
+      mesh.visible=visible;mesh.frustumCulled=frustumCulled;
+    }
+    /** Do one upload for the nearest mesh within range of (x, z). Returns false when nothing is left in range. */
+    function warmStep(x,z){
+      if(!warmItems.length)return false;
+      const range=level.far+30;
+      if(frame-warmAt.frame>45||Math.hypot(x-warmAt.x,z-warmAt.z)>4){
+        warmAt={x,z,frame};
+        warmOrder=warmItems.map(item=>[distanceToBounds(item.bounds,x,z),item]).filter(([d])=>d<range).sort((a,b)=>a[0]-b[0]).map(([,item])=>item);
+      }
+      while(warmOrder.length){
+        const item=warmOrder[0];
+        if(item.textures.length){renderer.initTexture(item.textures.pop());return true;}
+        if(item.geometry){item.geometry=false;uploadGeometry(item.mesh);return true;}
+        warmOrder.shift();
+        warmItems.splice(warmItems.indexOf(item),1);
+      }
+      return false;
+    }
+    function warmFrame(x,z,ms){
+      const until=performance.now()+ms;
+      while(performance.now()<until&&warmStep(x,z));
+    }
+
+    /**
+     * Load the wing. `urgent` (ms of work per frame) speeds the background load up when the
+     * player is waiting for it: at the door, or behind the loading screen.
+     */
+    function loadExpansion(progress,{urgent=0}={}){
+      if(urgent)loadBudget.ms=Math.max(loadBudget.ms,urgent);
       if(expansion)return Promise.resolve();
+      if(progress){expansionListeners.add(progress);progress(expansionFraction);}
       if(expansionRequest)return expansionRequest;
-      expansionRequest=Promise.all([importModel('./assets/expansion-equipped.glb',progress),buildExtension()]).then(([extra,extension])=>{
+      let modelPart=0,buildPart=0;
+      const loadParts=()=>reportExpansion(modelPart*.15+buildPart*.6);
+      const closed=(...roots)=>{
+        if(!destroyed)return false;
+        for(const root of roots)if(root)disposeMeshes(root);
+        throw new Error('3D renderer was closed during load');
+      };
+      expansionRequest=(async()=>{
+        const [extra,extension]=await Promise.all([
+          importModel('./assets/expansion-equipped.glb',f=>{modelPart=f;loadParts();}),
+          buildExtension({slice,progress:f=>{buildPart=f;loadParts();}}),
+        ]);
         const root=extra.scene;
-        if(destroyed){disposeMeshes(root);disposeMeshes(extension);throw new Error('3D renderer was closed during load');}
+        closed(root,extension);
         // the wing's own materials hide the doorway in room 11's back wall (see lighting.js)
         root.traverse(object=>{if(object.isMesh&&!Array.isArray(object.material))object.material.userData.facilityCut=true;});
         applyRetexture(root,retexture);
+        await slice();
         root.add(extension);
-        extensionFrame=extension.userData.frame??null;
         const nextDoors=bindDoorMeshes(root,doors.filter(door=>door.room.entry));
-        const nextLight=createLightingData([...fixtures,...root.userData.fixtures,...CAVERN_FIXTURES]);
+        const nextLight=await createLightingDataInWorker([...fixtures,...root.userData.fixtures,...CAVERN_FIXTURES],slice);
+        closed(root);
+        reportExpansion(.8);
         configureModel(root);
+        applyMaterialQuality();
         root.updateMatrixWorld(true);
-        wingSectors=root.children.map(object=>{
+        const sectors=root.children.map(object=>{
           const {min,max}=new THREE.Box3().setFromObject(object);
           return {object,x1:min.x,x2:max.x,z1:min.z,z2:max.z};
         });
+        await slice();
+        await compileGradually(root);
+        closed(root);
+        reportExpansion(.9);
+        registerWarmup(root);
+        while(warmStep(camera.position.x,camera.position.z))await slice();
+        closed(root);
+        // everything is on the GPU: joining the scene now costs one ordinary frame
+        extensionFrame=extension.userData.frame??null;
+        wingSectors=sectors;
         lighting.texture.image.data.set(nextLight.texture.image.data);
         lighting.texture.needsUpdate=true;
         nextLight.texture.dispose();
@@ -351,7 +504,12 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
         scene.add(root);
         expansion=root;
         setQuality(levelName);
-      }).finally(()=>{expansionRequest=null;});
+        reportExpansion(1);
+      })().finally(()=>{
+        expansionRequest=null;
+        expansionListeners.clear();
+        loadBudget.ms=10;
+      });
       return expansionRequest;
     }
 
@@ -383,6 +541,10 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
       renderer.shadowMap.enabled=level.shadows;
       renderer.shadowMap.needsUpdate=level.shadows;
       scene.environmentIntensity=levelName==='high'?.60:.54;
+      applyMaterialQuality();
+      resize();
+    }
+    function applyMaterialQuality(){
       const detailed=levelName!=='light';
       for(const [material,maps] of materials){
         const normal=detailed?maps.normal:null;
@@ -392,7 +554,6 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
         material.metalnessMap=detailed?maps.metalnessMap:null;
         material.roughness=detailed?maps.roughness:(maps.roughnessMean??maps.roughness);
       }
-      resize();
     }
     function setRenderScale(scale){
       if(renderScale===scale)return;
@@ -446,6 +607,7 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
       for(const bounds of wingSectors)bounds.object.visible=distanceToBounds(bounds,player.x,player.z)<level.far*.85;
       extensionFrame?.(player,camera,scene);
       lightFrame(time);
+      if(expansion&&warmItems.length)warmFrame(player.x,player.z,2.5);
       renderer.render(scene,camera);
     }
     function setLight(on){flashlight.intensity=on?57:0;}
@@ -475,11 +637,13 @@ export async function loadWalkthrough(canvas, doors, onProgress) {
       }
       disposeMeshes(scene,texturePool);
       island.shadow.dispose();
+      warmTarget.dispose();
+      warmScene.overrideMaterial.dispose();
       mirror.dispose();
       environment?.dispose();
       renderer.dispose();
     }
-    return {draw,resize,setQuality,setLight,setRenderScale,dispose,loadExpansion,hasExpansion:()=>Boolean(expansion),available:()=>!gl.isContextLost()};
+    return {draw,resize,setQuality,setLight,setRenderScale,dispose,loadExpansion,hasExpansion:()=>Boolean(expansion),expansionProgress:()=>expansionFraction,available:()=>!gl.isContextLost()};
   } catch(error){
     renderer.dispose();
     throw error;

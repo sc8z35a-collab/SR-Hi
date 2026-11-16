@@ -15,31 +15,45 @@ import {floorHeight} from './cavern-layout.js';
 
 /**
  * Builds everything beyond room 11: the doorway, the cavern (12) with its two-storey hut (13),
- * the lake chamber (14) and the living quarters (15-18). Resolves to one Group named "Wing 12".
+ * the lake chamber (14), the living quarters (15-18, 24) and the open air (19-23).
+ * Resolves to one Group named "Wing 12".
+ *
+ * The work is split into steps; `slice` (see kit.js createSlicer) is awaited between them so the
+ * game keeps drawing while this runs in the background. `progress` receives 0..1.
  */
-export async function buildExtension(){
+export async function buildExtension({slice=async()=>{},progress=()=>{},onStep=null}={}){
   const {textures={}}=await loadManifest();
-  const loaded=await loadTextures(Object.keys(textures));
+  const loaded=await loadTextures(Object.keys(textures),{progress:f=>progress(f*.6)});
   // three kits share one material cache: underground, the shaft (seen from both sides) and the open air
   const under=new Kit(loaded),shaft=new Kit(loaded),open=new Kit(loaded);
   shaft.materials=open.materials=under.materials;
   const group=new THREE.Group(),underground=new THREE.Group(),outdoor=new THREE.Group();
   group.name='Wing 12';underground.name='Underground';outdoor.name='Outdoor';
   group.add(underground,outdoor);
-  doorway(under,underground);
-  tunnels(under);
-  cave(under,underground);
-  hut(under,underground);
-  lake(under,underground);
-  buildQuarters(under,underground);
-  buildOnsen(under,underground);
-  buildUndergroundProps(under,underground);
-  buildUndergroundDetails(under);
-  buildIncline(shaft,group);
-  buildSurface(open,outdoor);
-  const updateSky=buildOutside(open,outdoor);
-  buildOutdoorProps(open,outdoor);
-  buildOutdoorDetails(open);
+  let updateSky=()=>{};
+  const steps=[
+    ['doorway',()=>doorway(under,underground)],
+    ['tunnels',()=>tunnels(under)],
+    ['cave',()=>cave(under,underground,slice)],
+    ['hut',()=>hut(under,underground)],
+    ['lake',()=>lake(under,underground,slice)],
+    ['quarters',()=>buildQuarters(under,underground)],
+    ['onsen',()=>buildOnsen(under,underground)],
+    ['underground props',()=>buildUndergroundProps(under,underground)],
+    ['underground details',()=>buildUndergroundDetails(under)],
+    ['incline',()=>buildIncline(shaft,group)],
+    ['surface',()=>buildSurface(open,outdoor)],
+    ['outside',async()=>{updateSky=await buildOutside(open,outdoor,slice,onStep);}],
+    ['outdoor props',()=>buildOutdoorProps(open,outdoor)],
+    ['outdoor details',()=>buildOutdoorDetails(open)],
+  ];
+  for(const [i,[name,step]] of steps.entries()){
+    const t=performance.now();
+    await step();
+    onStep?.(name,performance.now()-t);
+    progress(.6+.25*(i+1)/steps.length);
+    await slice();
+  }
   group.userData.frame=(player,camera,scene)=>{
     updateSky(player,camera,scene,loaded);
     const level=floorHeight(player.x,player.z);
@@ -58,9 +72,12 @@ export async function buildExtension(){
     };
   };
   for(const k of [under,shaft,open])k.after.push(animate);
-  under.build(underground,'Cavern');
-  shaft.build(group,'Shaft');
-  open.build(outdoor,'Outdoor');
+  for(const [name,k,parent,prefix] of [['merge underground',under,underground,'Cavern'],['merge shaft',shaft,group,'Shaft'],['merge outdoor',open,outdoor,'Outdoor']]){
+    const t=performance.now();
+    await k.buildAsync(parent,prefix,slice);
+    onStep?.(name,performance.now()-t);
+  }
+  progress(.9);
   return group;
 }
 
@@ -160,7 +177,7 @@ function tunnels(kit){
 
 // ---------- cavern (12) ----------
 
-function cave(kit,group){
+async function cave(kit,group,slice=async()=>{}){
   const R=rng(12);
   const holes=[
     {x:0,z:CAVE.cz-CAVE.rz,cut:(x,y,z)=>Math.abs(x)<2.15&&y<3.5&&z<CAVE.cz-CAVE.rz*.6},
@@ -168,6 +185,7 @@ function cave(kit,group){
     {x:16.7,z:EAST_TUNNEL.z,cut:(x,y,z)=>Math.abs(z-EAST_TUNNEL.z)<1.55&&y<3.1&&x>CAVE.cx+CAVE.rx*.6},
   ];
   kit.add(shell(CAVE,{holes,seed:3}),kit.tex('cave-basalt',{variant:'shell',side:THREE.DoubleSide}));
+  await slice();
   kit.add(new THREE.PlaneGeometry(40,33.5),kit.tex('cave-gravel'),{pos:[0,0,101.75],rot:[-Math.PI/2,0,0],world:2});
 
   const flow=kit.tex('iron-flowstone'),crystal=kit.tex('glow-crystal'),steel=kit.tex('dark-steel');
@@ -185,7 +203,9 @@ function cave(kit,group){
   for(const [x,y,z,sx,sy,sz] of [[15.8,.6,100.6,2.4,2,1.4],[-16.3,.8,104.2,2.2,2.3,1.6],[9.3,.3,89.4,1.6,1.4,1.2]])
     kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,3),.25,1.6,x),.8),flow,{pos:[x,y,z],scale:[sx,sy,sz],rot:[0,R()*3,0]});
   for(const p of props(CAVERN,'crystal'))cluster(kit,crystal,p.x,p.z,p.w*.55,R);
+  await slice();
   caveDetails(kit,R);
+  await slice();
 
   // generator
   for(const p of props(CAVERN,'generator')){
@@ -219,7 +239,9 @@ function cave(kit,group){
     kit.add(box(1.22,.3,.03,1),kit.tex('hazard-stripe'),{pos:[p.x,.5,p.z-.17]});
   }
   drillRig(kit,R);
+  await slice();
   tanksAndPipes(kit);
+  await slice();
   // crates and tarp
   for(const p of props(CAVERN,'crates')){
     kit.add(box(2.3,.12,1.2,1),kit.tex('timber-beam'),{pos:[p.x,.06,p.z]});
@@ -465,7 +487,7 @@ function hut(kit,group){
 
 // ---------- lake chamber (14) ----------
 
-function lake(kit,group){
+async function lake(kit,group,slice=async()=>{}){
   const R=rng(14);
   kit.add(shell(LAKE,{seed:9,amp:1.1,meters:2,holes:[
     {x:0,z:LAKE.cz-LAKE.rz,cut:(x,y,z)=>Math.abs(x)<2.15&&y<3.5&&z<LAKE.cz-LAKE.rz*.6},
@@ -478,6 +500,7 @@ function lake(kit,group){
     const y=z>SHORE?-Math.min(1,(z-SHORE)/2.6)*.95:0;
     p.setY(i,y+(z>SHORE-1?(fbm(x*.6,0,z*.6)-.5)*.06:0));
   }
+  await slice();
   g.computeVertexNormals();
   kit.add(g,kit.tex('wet-sand'),{world:2});
   kit.add(new THREE.PlaneGeometry(32,19),kit.tex('lake-water'),{pos:[0,-.3,134.5],rot:[-Math.PI/2,0,0],world:3});
@@ -488,6 +511,7 @@ function lake(kit,group){
     const top=LAKE.ry*Math.sqrt(Math.max(0,1-r*r))+1.4,len=2.2+R()*2,rad=.22+R()*.3;
     kit.add(roundUV(new THREE.ConeGeometry(rad,len,9),1.5,rad),flow,{pos:[x,top-len/2,z],rot:[Math.PI,0,0]});
   }
+  await slice();
   // pier
   const planks=kit.tex('pier-planks'),wood=kit.tex('timber-beam');
   kit.add(box(PIER.x2-PIER.x1,.1,PIER.z2-PIER.z1),planks,{pos:[0,PIER.deck-.05,(PIER.z1+PIER.z2)/2],world:2});

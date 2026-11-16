@@ -10,22 +10,33 @@ import {lantern} from './surface.js';
 const P=(room,type)=>room.props.filter(p=>p.type===type);
 const HAZE=new THREE.Color(0xc4d1da),SKY=new THREE.Color(0x9fc3e6);
 
-export function buildOutside(kit,group){
+/** Builds the open-air world; `slice` (kit.js createSlicer) is awaited between the parts. */
+export async function buildOutside(kit,group,slice=async()=>{},onStep=null){
   const R=rng(20);
-  terrain(kit);
-  water(kit);
-  roads(kit);
-  headquarters(kit,group);
-  plaza(kit,group,R);
-  parking(kit);
-  plateau(kit,group,R);
-  river(kit,R);
-  village(kit,group,R);
-  trees(kit,R);
-  kiosk(kit,group,HQ_ZONE,[HQ_ZONE.terminal[0],HQ_ZONE.terminalY,HQ_ZONE.terminal[1]],Math.PI);
-  kiosk(kit,group,RIVER_ZONE,[RIVER_ZONE.terminal[0],RIVER_ZONE.terminalY,RIVER_ZONE.terminal[1]],-Math.PI/2);
-  kiosk(kit,group,VILLAGE,[VILLAGE.terminal[0],VILLAGE.terminalY,VILLAGE.terminal[1]],-Math.PI/2);
-  kiosk(kit,group,PLATEAU,[PLATEAU.terminal[0],PLATEAU.terminalY,PLATEAU.terminal[1]],Math.PI);
+  const parts=[
+    ['terrain',()=>terrain(kit,slice)],
+    ['water',()=>water(kit)],
+    ['roads',()=>roads(kit)],
+    ['headquarters',()=>headquarters(kit,group)],
+    ['plaza',()=>plaza(kit,group,R)],
+    ['parking',()=>parking(kit)],
+    ['plateau',()=>plateau(kit,group,R)],
+    ['river',()=>river(kit,R)],
+    ['village',()=>village(kit,group,R)],
+    ['trees',()=>trees(kit,R,slice)],
+    ['kiosks',()=>{
+      kiosk(kit,group,HQ_ZONE,[HQ_ZONE.terminal[0],HQ_ZONE.terminalY,HQ_ZONE.terminal[1]],Math.PI);
+      kiosk(kit,group,RIVER_ZONE,[RIVER_ZONE.terminal[0],RIVER_ZONE.terminalY,RIVER_ZONE.terminal[1]],-Math.PI/2);
+      kiosk(kit,group,VILLAGE,[VILLAGE.terminal[0],VILLAGE.terminalY,VILLAGE.terminal[1]],-Math.PI/2);
+      kiosk(kit,group,PLATEAU,[PLATEAU.terminal[0],PLATEAU.terminalY,PLATEAU.terminal[1]],Math.PI);
+    }],
+  ];
+  for(const [name,part] of parts){
+    const t=performance.now();
+    await part();
+    onStep?.('outside/'+name,performance.now()-t);
+    await slice();
+  }
   return sky(group);
 }
 
@@ -78,10 +89,13 @@ function walls(kit,material,{x1,x2,z1,z2,y1,y2,t=.2,world=1.2}){
 const leafy=(kit,id,[x,y,z],[sx,sy,sz],seed)=>kit.add(planarUV(lumpy(new THREE.IcosahedronGeometry(1,2),.3,2.2,seed),1),kit.tex(id,{variant:'leaf',side:THREE.DoubleSide}),{pos:[x,y,z],scale:[sx,sy,sz]});
 
 // ---------- terrain ----------
-function terrain(kit){
+async function terrain(kit,slice=async()=>{}){
   const x1=-72,x2=142,z1=136,z2=348,step=2,nx=(x2-x1)/step,nz=(z2-z1)/step;
   const H=new Float32Array((nx+1)*(nz+1));
-  for(let j=0;j<=nz;j++)for(let i=0;i<=nx;i++)H[j*(nx+1)+i]=G(x1+i*step,z1+j*step);
+  for(let j=0;j<=nz;j++){
+    for(let i=0;i<=nx;i++)H[j*(nx+1)+i]=G(x1+i*step,z1+j*step);
+    await slice();
+  }
   const h=(i,j)=>H[Math.min(nz,Math.max(0,j))*(nx+1)+Math.min(nx,Math.max(0,i))];
   const normal=(i,j)=>{const v=new THREE.Vector3(h(i-1,j)-h(i+1,j),2*step,h(i,j-1)-h(i,j+1));return v.normalize();};
   const buckets={};
@@ -90,6 +104,7 @@ function terrain(kit){
   const trail=[[92,200],[96,192],[100,186],[104,181],[108,178.5]],temple=[[-41,300],[-41,312],[-41,319.5]];
   const nearPath=(x,z,path,w)=>path.some(([ax,az],k)=>{if(!k)return false;const [bx,bz]=path[k-1],dx=bx-ax,dz=bz-az,t=Math.max(0,Math.min(1,((x-ax)*dx+(z-az)*dz)/(dx*dx+dz*dz)));return Math.hypot(x-ax-dx*t,z-az-dz*t)<w;});
   for(let j=0;j<nz;j++)for(let i=0;i<nx;i++){
+    if(i===0)await slice();
     const xa=x1+i*step,za=z1+j*step,cx=xa+step/2,cz=za+step/2;
     const q=[[i,j],[i+1,j],[i+1,j+1],[i,j+1]];
     if(cz<YARD.z1+.6&&Math.abs(cx-INCLINE.x)<3.2&&q.some(([a,b])=>h(a,b)<crown(z1+b*step)))continue;
@@ -125,6 +140,7 @@ function terrain(kit){
     });
     g.setAttribute('uv',new THREE.BufferAttribute(uv,2));
     kit.add(g,kit.tex(id));
+    await slice();
   }
 }
 
@@ -497,9 +513,10 @@ function village(kit,group,R){
 }
 
 // ---------- trees ----------
-function trees(kit,R){
+async function trees(kit,R,slice=async()=>{}){
   const bark=kit.tex('tree-bark');
   for(const t of TREES){
+    await slice();
     const y=G(t.x,t.z)-.15,s=t.s,spin=R()*Math.PI*2;
     const lean=[(R()-.5)*.12,(R()-.5)*.12];
     if(t.kind==='cedar'){

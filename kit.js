@@ -4,6 +4,24 @@ import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 // Small toolkit for building procedural scenery out of the generated textures.
 // Static parts are collected per material and merged, so each material costs one draw call.
 
+/**
+ * Cooperative scheduling for long loads: call `await slice()` often; it only yields (to the next
+ * frame, after it has been drawn) once `budget.ms` of work has run since the last yield, so the
+ * game keeps drawing smoothly while scenery is built in the background.
+ */
+export function createSlicer(budget={ms:6}){
+  let started=performance.now();
+  const yieldFrame=()=>new Promise(resolve=>{
+    if(typeof requestAnimationFrame==='function'&&document.visibilityState!=='hidden')requestAnimationFrame(()=>setTimeout(resolve,0));
+    else setTimeout(resolve,0);
+  });
+  return async function slice(force=false){
+    if(!force&&performance.now()-started<budget.ms)return;
+    await yieldFrame();
+    started=performance.now();
+  };
+}
+
 export const rng=(seed)=>()=>{
   seed|=0;seed=seed+0x6D2B79F5|0;
   let t=Math.imul(seed^seed>>>15,1|seed);
@@ -160,6 +178,22 @@ export class Kit{
   beam(p1,p2,r,material,meters=1,seg=8){
     const {pos,quat,length}=between(p1,p2);
     return this.add(roundUV(new THREE.CylinderGeometry(r,r,length,seg),meters,r),material,{pos,quat});
+  }
+  /** Like build(), but yields between materials so a large merge does not stall a frame. */
+  async buildAsync(group,prefix='Generated',slice=async()=>{}){
+    for(const [material,geos] of [...this.parts]){
+      this.parts.delete(material);
+      const merged=mergeGeometries(geos,false);
+      if(merged){
+        merged.computeBoundingSphere();
+        merged.computeBoundingBox();
+        const mesh=new THREE.Mesh(merged,material);
+        mesh.name=prefix+'_'+material.name.replace(/^Generated /,'').replace(/[^\w-]+/g,'_');
+        group.add(mesh);
+        for(const fn of this.after)fn(mesh);
+      }
+      await slice();
+    }
   }
   /** Merge everything queued into `group`, one mesh per material. */
   build(group,prefix='Generated'){

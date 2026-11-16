@@ -8,6 +8,23 @@ const loader=new THREE.TextureLoader();
 const files=new Map();
 let manifest=null;
 
+// Decode images off the main thread where the browser can (the same rule three.js's GLTFLoader
+// uses): an <img> is decoded on the main thread when it is first drawn, which stalls that frame.
+const agent=typeof navigator==='object'?navigator.userAgent:'';
+const safari=/^((?!chrome|android).)*safari/i.test(agent)?Number(agent.match(/Version\/(\d+)/)?.[1]??0):Infinity;
+const firefox=/firefox/i.test(agent)?Number(agent.match(/Firefox\/(\d+)/)?.[1]??0):Infinity;
+const useBitmaps=typeof createImageBitmap==='function'&&safari>=17&&firefox>=98;
+async function fetchTexture(url){
+  if(!useBitmaps)return loader.loadAsync(url);
+  const response=await fetch(url);
+  if(!response.ok)throw new Error(url+': '+response.status);
+  const bitmap=await createImageBitmap(await response.blob(),{imageOrientation:'flipY',premultiplyAlpha:'none',colorSpaceConversion:'none'});
+  const texture=new THREE.Texture(bitmap);
+  texture.flipY=false;
+  texture.needsUpdate=true;
+  return texture;
+}
+
 export function loadManifest(){
   manifest??=fetch(BASE+'manifest.json')
     .then(response=>response.ok?response.json():{textures:{}})
@@ -17,7 +34,7 @@ export function loadManifest(){
 
 function loadFile(file,color){
   if(!files.has(file)){
-    files.set(file,loader.loadAsync(BASE+file).then(texture=>{
+    files.set(file,fetchTexture(BASE+file).then(texture=>{
       texture.wrapS=texture.wrapT=THREE.RepeatWrapping;
       texture.colorSpace=color?THREE.SRGBColorSpace:THREE.NoColorSpace;
       return texture;
@@ -26,19 +43,29 @@ function loadFile(file,color){
   return files.get(file);
 }
 
-/** Load textures by id. Missing ids or files are skipped, so the scene still builds without them. */
-export async function loadTextures(ids){
+/**
+ * Load textures by id. Missing ids or files are skipped, so the scene still builds without them.
+ * `progress` receives the finished fraction.
+ */
+export async function loadTextures(ids,{progress}={}){
   const {textures={}}=await loadManifest();
   const result=new Map();
-  await Promise.all(ids.map(async id=>{
-    const entry=textures[id];
-    if(!entry)return;
-    const [map,normalMap]=await Promise.all([
-      loadFile(entry.albedo,true),
-      entry.normal?loadFile(entry.normal,false):null,
-    ]);
-    if(map)result.set(id,{...entry,id,map,normalMap});
-  }));
+  let done=0,next=0;
+  // a few downloads at a time: queueing hundreds of requests at once costs a long main-thread task
+  const worker=async()=>{
+    while(next<ids.length){
+      const id=ids[next++],entry=textures[id];
+      if(entry){
+        const [map,normalMap]=await Promise.all([
+          loadFile(entry.albedo,true),
+          entry.normal?loadFile(entry.normal,false):null,
+        ]);
+        if(map)result.set(id,{...entry,id,map,normalMap});
+      }
+      progress?.(++done/ids.length);
+    }
+  };
+  await Promise.all(Array.from({length:Math.min(12,ids.length)},worker));
   return result;
 }
 
