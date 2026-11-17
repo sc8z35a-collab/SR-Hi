@@ -1,0 +1,90 @@
+{
+  "id": "park-facilities",
+  "title": "中央公園 F：園内の設備",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 園内の設備, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "park-wood-lattice",
+      "name": "管理棟の縦格子",
+      "meters": 1.2,
+      "roughness": 0.75,
+      "normalStrength": 0.8,
+      "prompt": "vertical timber lattice screen"
+    },
+    {
+      "id": "park-sign-boards",
+      "name": "案内板の板",
+      "meters": 1.2,
+      "roughness": 0.75,
+      "normalStrength": 0.5,
+      "prompt": "brown wooden boards, no text"
+    },
+    {
+      "id": "park-cast-iron",
+      "name": "黒い鋳鉄の柱",
+      "meters": 0.5,
+      "roughness": 0.55,
+      "metalness": 0.6,
+      "normalStrength": 0.8,
+      "seamless": "x",
+      "prompt": "black fluted cast iron post"
+    },
+    {
+      "id": "park-granite-fountain",
+      "name": "水飲み場の御影石",
+      "meters": 0.8,
+      "roughness": 0.5,
+      "normalStrength": 0.4,
+      "prompt": "speckled grey granite"
+    },
+    {
+      "id": "park-polycarbonate",
+      "name": "ポリカーボネートの波板",
+      "meters": 1.0,
+      "roughness": 0.25,
+      "normalStrength": 0.8,
+      "seamless": "x",
+      "prompt": "clear corrugated polycarbonate sheet"
+    },
+    {
+      "id": "park-tree-grate",
+      "name": "鋳鉄のツリーサークル",
+      "meters": 2.0,
+      "roughness": 0.6,
+      "metalness": 0.6,
+      "normalStrength": 1.2,
+      "prompt": "cast iron tree grates, seen from above"
+    },
+    {
+      "id": "park-granite-bench",
+      "name": "花崗岩のベンチ",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.8,
+      "prompt": "bush-hammered grey granite"
+    },
+    {
+      "id": "park-bin-green",
+      "name": "緑の鋼板",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "metalness": 0.3,
+      "normalStrength": 0.4,
+      "seamless": false,
+      "prompt": "green painted steel panel with rivets"
+    },
+    {
+      "id": "park-roof-steel",
+      "name": "鋼板の屋根",
+      "meters": 1.2,
+      "roughness": 0.5,
+      "metalness": 0.6,
+      "normalStrength": 0.8,
+      "seamless": "x",
+      "prompt": "grey standing seam steel roof"
+    }
+  ]
+}

@@ -51,6 +51,11 @@ export const PADDIES = [
   {x1:-30, x2:1, z1:316, z2:329, y:Y + 2.2},
 ];
 export const TEMPLE = {x1:-50, x2:-32, z1:318, z2:336, y:Y + 5};
+// 26 中央公園: a large park west of the stream, at the end of the avenue. The flat part is levelled;
+// the slope to the west keeps its trees as a forest walk.
+export const PARK = {x1:-44, x2:2, z1:162.5, z2:236};
+export const PARK_FLAT = {x1:-34, x2:1.5, z1:163, z2:236};
+export const POND = {x:-21, z:180, rx:6, rz:5};
 const PADS = [
   {x1:YARD.x1 - .6, x2:YARD.x2 + .6, z1:YARD.z1, z2:YARD.z2 + .6, y:Y, m:.6},
   {x1:-22, x2:66, z1:194.6, z2:262, y:Y, m:7},
@@ -58,6 +63,7 @@ const PADS = [
   {x1:48.5, x2:76, z1:297, z2:332, y:Y + 1.6, m:5},
   {x1:-34, x2:38, z1:296, z2:331, y:Y + 1.4, m:7},
   {...TEMPLE, m:9},
+  {...PARK_FLAT, y:Y, m:7},
 ];
 const roadHeight = z => z < 262 ? Y : z < BRIDGE.z1 ? Y + (z - 262) / (BRIDGE.z1 - 262) * .6 : z <= BRIDGE.z2 ? BRIDGE.y : Y + .6 + Math.min(1, (z - BRIDGE.z2) / 40) * 1.2;
 
@@ -104,7 +110,8 @@ export function outdoorWalkable(x, z) {
   if (x < WORLD.x1 + 2 || x > WORLD.x2 - 2 || z < YARD.z1 + .1 || z > WORLD.z2 - 2) return false;
   if (onBridge(x, z)) return Math.abs(x - (inRect(BRIDGE, x, z) ? 44 : -14)) < (inRect(BRIDGE, x, z) ? 3.0 : .95);
   if (x > RIVER.x1 - 3 && Math.abs(z - RIVER.z(x)) < RIVER.half + 1.6) return false;
-  if (Math.abs(x - STREAM.x) < 1.2 && z > STREAM.z1 && z < STREAM.z2) return false;
+  // the avenue crosses the stream on a culvert
+  if (Math.abs(x - STREAM.x) < 1.2 && z > STREAM.z1 && z < STREAM.z2 && !inRect(ROADS[1], x, z, -.3)) return false;
   if (PADDIES.some(p => inRect(p, x, z, -.2))) return false;
   const e = .7;
   const gx = (groundHeight(x + e, z) - groundHeight(x - e, z)) / (2 * e), gz = (groundHeight(x, z + e) - groundHeight(x, z - e)) / (2 * e);
@@ -118,7 +125,7 @@ const keepClear = [
   {x1:48, x2:77, z1:296, z2:333}, {x1:-34, x2:38, z1:296, z2:331}, TEMPLE,
   {x1:98, x2:118, z1:170, z2:188}, {x1:86, x2:99, z1:176, z2:190},
 ];
-export const TREES = (() => {
+const generatedTrees = (() => {
   // Groves and clearings from low-frequency noise; trees keep their distance from each other,
   // stay off roads, paths, water and steep rock, and species follow the local landscape.
   const R = rng(2024), list = [], cell = 3.4, grid = new Map();
@@ -158,6 +165,8 @@ export const TREES = (() => {
   }
   return list;
 })();
+// the park's flat ground is planted by park.js instead
+export const TREES = generatedTrees.filter(t => !inRect(PARK_FLAT, t.x, t.z, 2));
 
 // ---- zones 20-23 (collision boxes for buildings and tree trunks) ----
 const prop = (type, x, z, w, d) => ({type, x, z, w, d});
@@ -234,8 +243,45 @@ export const PLATEAU = {
     prop('silage', 80, 196, 1.6, 1.4), prop('silage', 82.5, 197.5, 1.6, 1.4), prop('silage', 81, 199.5, 1.6, 1.4),
   ],
 };
+export const PARK_ZONE = {
+  code:'26', name:'中央公園', view:'park', short:'公園', side:0, nested:true,
+  x1:PARK.x1, x2:PARK.x2, z1:PARK.z1, z2:PARK.z2, outdoor:true,
+  entry:{x:PARK.x2, z:208, axis:'x', width:6, height:4, door:false}, terminal:[-19.5, 213.2], terminalY:Y,
+  data:[['面積','約 3,400 m²'],['池','睡蓮が開花中'],['遊具','5 基'],['運動施設','トラック・コート・打撃練習場']],
+  floors:[],
+  props:[
+    // pond (the gap between the two halves is the arched bridge), fountain, buildings
+    prop('pond', -24.4, POND.z, 5.2, 9), prop('pond', -17.6, POND.z, 5.2, 9),
+    prop('fountain', -18, 208, 4.8, 4.8), prop('office', -8.5, 196.5, 7, 7), prop('toilet', -1.5, 195.5, 4, 5),
+    prop('vending', -19.25, 200.9, 2.6, .9), prop('bikes', -27, 211, 6, 1.2), prop('info', -13.6, 203.4, 1.4, .3),
+    // playground
+    prop('slide', -10, 171.5, 1.4, 5), prop('swings', -5, 168.8, 3.4, 1.2), prop('jungle-gym', -6, 174.5, 2.4, 2.4),
+    prop('logs', -5.5, 178.8, 2.4, 1.2), prop('drinking', -2.4, 172, .6, .6),
+    prop('bench', -5.5, 186, 3, .5), prop('bench', -5.5, 189, 3, .5), prop('bench', -30, 196.8, 2, .5),
+    prop('bench', -16.7, 172, .5, 1.8), prop('bench', -16.7, 178, .5, 1.8),
+    // planting
+    prop('bed', -25, 168.7, 5, 2.6), prop('bed', -25, 203.5, 4, 3),
+    prop('hedge', -24.75, 187.4, 4.5, 1.2), prop('hedge', -17.75, 187.4, 3.5, 1.2),
+    prop('hedge', -16.2, 195, .9, 12), prop('hedge', -11.6, 187.5, .9, 7),
+    prop('arch', -22.6, 206.7, .3, .3), prop('arch', -22.6, 210.3, .3, .3),
+    // sports: bleacher, hoop, batting cage walls (entrance on the west), field net
+    prop('bleacher', -15.6, 225, 2.2, 14.2), prop('hoop', -9, 216.4, .4, .4),
+    prop('cage', -3.5, 220.5, .15, 9), prop('cage', -3.5, 231, .15, 8), prop('cage', 1, 225.5, .15, 19.5),
+    prop('cage', -1.25, 216, 4.5, .15), prop('cage', -1.25, 235.2, 4.5, .15), prop('net', -25.5, 235.6, 17, .15),
+    // lamp posts
+    ...[[-12.4, 170], [-12.4, 182], [-12.4, 194], [-28, 210], [-33, 166.9], [-22, 166.9], [-6, 213.8]].map(([x, z]) => prop('lamp', x, z, .3, .3)),
+  ],
+};
+// park trees (species, size); the forest walk on the slope adds keyaki and kunugi
+export const PARK_TREES = [
+  ['sakura', -32.5, 170.5, 1.1], ['sakura', -17.5, 170.3, 1.0], ['sakura', -31.5, 203, 1.15], ['sakura', -2.2, 188, 1.0],
+  ['ginkgo', -21.2, 202.8, 1.0], ['ginkgo', -21.2, 213.2, 1.0], ['ginkgo', -14.8, 213.2, .95],
+  ['keyaki', -38, 186, 1.2], ['keyaki', -38.5, 204, 1.1], ['keyaki', -37.6, 222, 1.15],
+  ['kunugi', -39, 176, 1.0], ['kunugi', -38.5, 195, 1.05], ['kunugi', -39.5, 214, 1.0], ['kunugi', -38, 230, 1.1],
+];
+for (const [, x, z, s] of PARK_TREES) PARK_ZONE.props.push(prop('tree', x, z, .6 * s, .6 * s));
 for (const t of TREES) HQ_ZONE.props.push(prop('tree', t.x, t.z, .55 * t.s, .55 * t.s));
-export const OUTDOOR_ROOMS = [HQ_ZONE, RIVER_ZONE, VILLAGE, PLATEAU];
+export const OUTDOOR_ROOMS = [PARK_ZONE, HQ_ZONE, RIVER_ZONE, VILLAGE, PLATEAU];
 
 // Point lights of the outdoor world (the daylight itself is a directional sun added while outdoors).
 export const OUTDOOR_FIXTURES = [

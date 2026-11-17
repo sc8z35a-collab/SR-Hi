@@ -1,0 +1,83 @@
+{
+  "id": "park-water",
+  "title": "中央公園 C：池と水辺",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 池と水辺, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "park-lily-pond",
+      "name": "睡蓮の池",
+      "meters": 4.0,
+      "roughness": 0.12,
+      "normalStrength": 0.3,
+      "prompt": "pond water surface with floating water-lily pads and flowers, seen from above"
+    },
+    {
+      "id": "park-pond-bed",
+      "name": "池の底",
+      "meters": 1.5,
+      "roughness": 0.6,
+      "normalStrength": 1.0,
+      "prompt": "muddy pond bed with small pebbles"
+    },
+    {
+      "id": "park-stone-revetment",
+      "name": "石積みの護岸",
+      "meters": 2.0,
+      "roughness": 0.85,
+      "normalStrength": 1.6,
+      "prompt": "mossy dry stone retaining wall"
+    },
+    {
+      "id": "park-fountain-tile",
+      "name": "噴水池の青いタイル",
+      "meters": 0.6,
+      "roughness": 0.2,
+      "normalStrength": 0.5,
+      "prompt": "blue glazed mosaic tiles"
+    },
+    {
+      "id": "park-iris",
+      "name": "菖蒲の葉",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 0.8,
+      "prompt": "dense iris leaves"
+    },
+    {
+      "id": "park-wet-moss",
+      "name": "水辺の湿った苔",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 1.2,
+      "prompt": "wet moss on damp ground"
+    },
+    {
+      "id": "park-red-bridge",
+      "name": "朱塗りの橋の板",
+      "meters": 1.2,
+      "roughness": 0.6,
+      "normalStrength": 0.6,
+      "prompt": "weathered vermilion painted wooden boards"
+    },
+    {
+      "id": "park-granite",
+      "name": "御影石",
+      "meters": 1.0,
+      "roughness": 0.6,
+      "normalStrength": 0.6,
+      "prompt": "grey granite"
+    },
+    {
+      "id": "park-bamboo",
+      "name": "青竹",
+      "meters": 1.0,
+      "roughness": 0.5,
+      "normalStrength": 0.8,
+      "seamless": "x",
+      "prompt": "green bamboo poles laid side by side"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "park-forest",
+  "title": "中央公園 G：森の散策路",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 森の散策路, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "park-forest-floor",
+      "name": "雑木林の林床",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 1.0,
+      "prompt": "forest floor with fallen oak leaves and acorns"
+    },
+    {
+      "id": "park-moss-carpet",
+      "name": "苔の絨毯",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 0.8,
+      "prompt": "carpet of green moss"
+    },
+    {
+      "id": "park-kunugi-bark",
+      "name": "クヌギの樹皮",
+      "meters": 1.0,
+      "roughness": 0.9,
+      "normalStrength": 1.6,
+      "prompt": "deeply furrowed oak bark"
+    },
+    {
+      "id": "park-keyaki-bark",
+      "name": "ケヤキの樹皮",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.2,
+      "prompt": "flaking zelkova bark"
+    },
+    {
+      "id": "park-bamboo-litter",
+      "name": "竹の葉の地面",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 0.8,
+      "prompt": "fallen dry bamboo leaves"
+    },
+    {
+      "id": "park-kumazasa",
+      "name": "熊笹",
+      "meters": 1.0,
+      "roughness": 0.75,
+      "normalStrength": 0.8,
+      "prompt": "kumazasa bamboo grass leaves"
+    },
+    {
+      "id": "park-susuki",
+      "name": "すすき",
+      "meters": 1.5,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "Japanese silver grass with feathery plumes"
+    },
+    {
+      "id": "park-boardwalk",
+      "name": "木道の板",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 0.8,
+      "prompt": "weathered boardwalk planks"
+    },
+    {
+      "id": "park-clover",
+      "name": "シロツメクサ",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "white clover meadow with flowers"
+    }
+  ]
+}

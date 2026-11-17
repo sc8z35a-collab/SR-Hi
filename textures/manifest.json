@@ -1282,6 +1282,125 @@
         "vinyl-strip-curtain",
         "worn-counter-wood"
       ]
+    },
+    "park-paths": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-paths.webp",
+      "textures": [
+        "park-washed-aggregate",
+        "park-interlocking",
+        "park-masa-soil",
+        "park-lawn",
+        "park-deck",
+        "park-sleeper-steps",
+        "park-crazy-paving",
+        "park-rubber-chip",
+        "park-sandbox-sand"
+      ]
+    },
+    "park-play": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-play.webp",
+      "textures": [
+        "play-red-paint",
+        "play-yellow-slide",
+        "play-swing-chain",
+        "play-logs",
+        "play-jungle-gym",
+        "play-wisteria-trellis",
+        "play-bark-roof",
+        "play-recycled-bench",
+        "play-toilet-tile"
+      ]
+    },
+    "park-water": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-water.webp",
+      "textures": [
+        "park-lily-pond",
+        "park-pond-bed",
+        "park-stone-revetment",
+        "park-fountain-tile",
+        "park-iris",
+        "park-wet-moss",
+        "park-red-bridge",
+        "park-granite",
+        "park-bamboo"
+      ]
+    },
+    "park-planting": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-planting.webp",
+      "textures": [
+        "park-tulips",
+        "park-hydrangea",
+        "park-azalea",
+        "park-sakura-petals",
+        "park-ginkgo-leaves",
+        "park-mulch",
+        "park-boxwood",
+        "park-moss-phlox",
+        "park-roses"
+      ]
+    },
+    "park-sports": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-sports.webp",
+      "textures": [
+        "park-track-red",
+        "park-turf",
+        "park-court-blue",
+        "park-infield",
+        "park-gateball-sand",
+        "park-ball-net",
+        "park-bleacher",
+        "park-seats",
+        "park-jog-chips"
+      ]
+    },
+    "park-facilities": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-facilities.webp",
+      "textures": [
+        "park-wood-lattice",
+        "park-sign-boards",
+        "park-cast-iron",
+        "park-granite-fountain",
+        "park-polycarbonate",
+        "park-tree-grate",
+        "park-granite-bench",
+        "park-bin-green",
+        "park-roof-steel"
+      ]
+    },
+    "park-forest": {
+      "model": "gpt-image-2.5-sunburst",
+      "size": "1254x1254",
+      "quality": "medium",
+      "preview": "sheets/park-forest.webp",
+      "textures": [
+        "park-forest-floor",
+        "park-moss-carpet",
+        "park-kunugi-bark",
+        "park-keyaki-bark",
+        "park-bamboo-litter",
+        "park-kumazasa",
+        "park-susuki",
+        "park-boardwalk",
+        "park-clover"
+      ]
     }
   },
   "textures": {
@@ -3822,7 +3941,7 @@
         "albedo": 512,
         "normal": 512
       },
-      "shrink": 5
+      "shrink": 3
     },
     "extinguisher-red": {
       "name": "消火器の赤",
@@ -5343,7 +5462,7 @@
         "albedo": 512,
         "normal": 512
       },
-      "shrink": 3
+      "shrink": 5
     },
     "pipe-insulation": {
       "name": "配管の保温材",
@@ -5540,7 +5659,7 @@
         "albedo": 512,
         "normal": 512
       },
-      "shrink": 6
+      "shrink": 5
     },
     "led-bollard": {
       "name": "LEDボラード",
@@ -8457,6 +8576,951 @@
       "roughness": 0.5,
       "metalness": 0.0,
       "normal": "worn-counter-wood-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-washed-aggregate": {
+      "name": "洗い出しの園路",
+      "sheet": "park-paths",
+      "cell": 0,
+      "albedo": "park-washed-aggregate.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-washed-aggregate-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-interlocking": {
+      "name": "インターロッキング舗装",
+      "sheet": "park-paths",
+      "cell": 1,
+      "albedo": "park-interlocking.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-interlocking-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-masa-soil": {
+      "name": "真砂土の園路",
+      "sheet": "park-paths",
+      "cell": 2,
+      "albedo": "park-masa-soil.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-masa-soil-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-lawn": {
+      "name": "芝生広場",
+      "sheet": "park-paths",
+      "cell": 3,
+      "albedo": "park-lawn.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-lawn-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-deck": {
+      "name": "ウッドデッキ",
+      "sheet": "park-paths",
+      "cell": 4,
+      "albedo": "park-deck.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-deck-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-sleeper-steps": {
+      "name": "枕木の階段",
+      "sheet": "park-paths",
+      "cell": 5,
+      "albedo": "park-sleeper-steps.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-sleeper-steps-normal.webp",
+      "meters": 2.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-crazy-paving": {
+      "name": "自然石の乱張り",
+      "sheet": "park-paths",
+      "cell": 6,
+      "albedo": "park-crazy-paving.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-crazy-paving-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-rubber-chip": {
+      "name": "ゴムチップ舗装",
+      "sheet": "park-paths",
+      "cell": 7,
+      "albedo": "park-rubber-chip.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-rubber-chip-normal.webp",
+      "meters": 8.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-sandbox-sand": {
+      "name": "砂場の白い砂",
+      "sheet": "park-paths",
+      "cell": 8,
+      "albedo": "park-sandbox-sand.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-sandbox-sand-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-red-paint": {
+      "name": "赤い遊具の塗装",
+      "sheet": "park-play",
+      "cell": 0,
+      "albedo": "play-red-paint.webp",
+      "roughness": 0.45,
+      "metalness": 0.2,
+      "normal": "play-red-paint-normal.webp",
+      "meters": 0.6,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-yellow-slide": {
+      "name": "黄色い樹脂の滑り台",
+      "sheet": "park-play",
+      "cell": 1,
+      "albedo": "play-yellow-slide.webp",
+      "roughness": 0.3,
+      "metalness": 0.0,
+      "normal": "play-yellow-slide-normal.webp",
+      "meters": 0.8,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 5
+    },
+    "play-swing-chain": {
+      "name": "ブランコの鎖",
+      "sheet": "park-play",
+      "cell": 2,
+      "albedo": "play-swing-chain.webp",
+      "roughness": 0.35,
+      "metalness": 0.85,
+      "normal": "play-swing-chain-normal.webp",
+      "meters": 0.3,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 6
+    },
+    "play-logs": {
+      "name": "丸太",
+      "sheet": "park-play",
+      "cell": 3,
+      "albedo": "play-logs.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "play-logs-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-jungle-gym": {
+      "name": "ジャングルジムの青い塗装",
+      "sheet": "park-play",
+      "cell": 4,
+      "albedo": "play-jungle-gym.webp",
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normal": "play-jungle-gym-normal.webp",
+      "meters": 0.6,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-wisteria-trellis": {
+      "name": "藤棚の格子",
+      "sheet": "park-play",
+      "cell": 5,
+      "albedo": "play-wisteria-trellis.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "play-wisteria-trellis-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-bark-roof": {
+      "name": "杉皮の屋根",
+      "sheet": "park-play",
+      "cell": 6,
+      "albedo": "play-bark-roof.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "play-bark-roof-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-recycled-bench": {
+      "name": "再生木材のベンチ",
+      "sheet": "park-play",
+      "cell": 7,
+      "albedo": "play-recycled-bench.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "play-recycled-bench-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "play-toilet-tile": {
+      "name": "白い外壁タイル",
+      "sheet": "park-play",
+      "cell": 8,
+      "albedo": "play-toilet-tile.webp",
+      "roughness": 0.4,
+      "metalness": 0.0,
+      "normal": "play-toilet-tile-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-lily-pond": {
+      "name": "睡蓮の池",
+      "sheet": "park-water",
+      "cell": 0,
+      "albedo": "park-lily-pond.webp",
+      "roughness": 0.12,
+      "metalness": 0.0,
+      "normal": "park-lily-pond-normal.webp",
+      "meters": 4.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-pond-bed": {
+      "name": "池の底",
+      "sheet": "park-water",
+      "cell": 1,
+      "albedo": "park-pond-bed.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "park-pond-bed-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-stone-revetment": {
+      "name": "石積みの護岸",
+      "sheet": "park-water",
+      "cell": 2,
+      "albedo": "park-stone-revetment.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-stone-revetment-normal.webp",
+      "meters": 2.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-fountain-tile": {
+      "name": "噴水池の青いタイル",
+      "sheet": "park-water",
+      "cell": 3,
+      "albedo": "park-fountain-tile.webp",
+      "roughness": 0.2,
+      "metalness": 0.0,
+      "normal": "park-fountain-tile-normal.webp",
+      "meters": 0.6,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-iris": {
+      "name": "菖蒲の葉",
+      "sheet": "park-water",
+      "cell": 4,
+      "albedo": "park-iris.webp",
+      "roughness": 0.7,
+      "metalness": 0.0,
+      "normal": "park-iris-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-wet-moss": {
+      "name": "水辺の湿った苔",
+      "sheet": "park-water",
+      "cell": 5,
+      "albedo": "park-wet-moss.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "park-wet-moss-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-red-bridge": {
+      "name": "朱塗りの橋の板",
+      "sheet": "park-water",
+      "cell": 6,
+      "albedo": "park-red-bridge.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "park-red-bridge-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-granite": {
+      "name": "御影石",
+      "sheet": "park-water",
+      "cell": 7,
+      "albedo": "park-granite.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "park-granite-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-bamboo": {
+      "name": "青竹",
+      "sheet": "park-water",
+      "cell": 8,
+      "albedo": "park-bamboo.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "park-bamboo-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 6
+    },
+    "park-tulips": {
+      "name": "チューリップの花壇",
+      "sheet": "park-planting",
+      "cell": 0,
+      "albedo": "park-tulips.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-tulips-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-hydrangea": {
+      "name": "紫陽花",
+      "sheet": "park-planting",
+      "cell": 1,
+      "albedo": "park-hydrangea.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-hydrangea-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-azalea": {
+      "name": "つつじ",
+      "sheet": "park-planting",
+      "cell": 2,
+      "albedo": "park-azalea.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-azalea-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-sakura-petals": {
+      "name": "桜の花びらの地面",
+      "sheet": "park-planting",
+      "cell": 3,
+      "albedo": "park-sakura-petals.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-sakura-petals-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-ginkgo-leaves": {
+      "name": "銀杏の落ち葉",
+      "sheet": "park-planting",
+      "cell": 4,
+      "albedo": "park-ginkgo-leaves.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-ginkgo-leaves-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-mulch": {
+      "name": "ウッドチップのマルチ",
+      "sheet": "park-planting",
+      "cell": 5,
+      "albedo": "park-mulch.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-mulch-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-boxwood": {
+      "name": "ツゲの生垣",
+      "sheet": "park-planting",
+      "cell": 6,
+      "albedo": "park-boxwood.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-boxwood-normal.webp",
+      "meters": 0.8,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-moss-phlox": {
+      "name": "芝桜",
+      "sheet": "park-planting",
+      "cell": 7,
+      "albedo": "park-moss-phlox.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-moss-phlox-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-roses": {
+      "name": "バラ",
+      "sheet": "park-planting",
+      "cell": 8,
+      "albedo": "park-roses.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-roses-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-track-red": {
+      "name": "陸上トラック",
+      "sheet": "park-sports",
+      "cell": 0,
+      "albedo": "park-track-red.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-track-red-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-turf": {
+      "name": "砂入り人工芝",
+      "sheet": "park-sports",
+      "cell": 1,
+      "albedo": "park-turf.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-turf-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-court-blue": {
+      "name": "バスケットコート",
+      "sheet": "park-sports",
+      "cell": 2,
+      "albedo": "park-court-blue.webp",
+      "roughness": 0.6,
+      "metalness": 0.0,
+      "normal": "park-court-blue-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-infield": {
+      "name": "野球場の黒土",
+      "sheet": "park-sports",
+      "cell": 3,
+      "albedo": "park-infield.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-infield-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-gateball-sand": {
+      "name": "ゲートボール場の砂",
+      "sheet": "park-sports",
+      "cell": 4,
+      "albedo": "park-gateball-sand.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-gateball-sand-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-ball-net": {
+      "name": "防球ネット",
+      "sheet": "park-sports",
+      "cell": 5,
+      "albedo": "park-ball-net.webp",
+      "roughness": 0.8,
+      "metalness": 0.0,
+      "normal": "park-ball-net-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-bleacher": {
+      "name": "観客席のコンクリート段",
+      "sheet": "park-sports",
+      "cell": 6,
+      "albedo": "park-bleacher.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-bleacher-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-seats": {
+      "name": "青い観客席",
+      "sheet": "park-sports",
+      "cell": 7,
+      "albedo": "park-seats.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "park-seats-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-jog-chips": {
+      "name": "ジョギングコースのウッドチップ",
+      "sheet": "park-sports",
+      "cell": 8,
+      "albedo": "park-jog-chips.webp",
+      "roughness": 0.95,
+      "metalness": 0.0,
+      "normal": "park-jog-chips-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-wood-lattice": {
+      "name": "管理棟の縦格子",
+      "sheet": "park-facilities",
+      "cell": 0,
+      "albedo": "park-wood-lattice.webp",
+      "roughness": 0.75,
+      "metalness": 0.0,
+      "normal": "park-wood-lattice-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-sign-boards": {
+      "name": "案内板の板",
+      "sheet": "park-facilities",
+      "cell": 1,
+      "albedo": "park-sign-boards.webp",
+      "roughness": 0.75,
+      "metalness": 0.0,
+      "normal": "park-sign-boards-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-cast-iron": {
+      "name": "黒い鋳鉄の柱",
+      "sheet": "park-facilities",
+      "cell": 2,
+      "albedo": "park-cast-iron.webp",
+      "roughness": 0.55,
+      "metalness": 0.6,
+      "normal": "park-cast-iron-normal.webp",
+      "meters": 0.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-granite-fountain": {
+      "name": "水飲み場の御影石",
+      "sheet": "park-facilities",
+      "cell": 3,
+      "albedo": "park-granite-fountain.webp",
+      "roughness": 0.5,
+      "metalness": 0.0,
+      "normal": "park-granite-fountain-normal.webp",
+      "meters": 0.8,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 5
+    },
+    "park-polycarbonate": {
+      "name": "ポリカーボネートの波板",
+      "sheet": "park-facilities",
+      "cell": 4,
+      "albedo": "park-polycarbonate.webp",
+      "roughness": 0.25,
+      "metalness": 0.0,
+      "normal": "park-polycarbonate-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-tree-grate": {
+      "name": "鋳鉄のツリーサークル",
+      "sheet": "park-facilities",
+      "cell": 5,
+      "albedo": "park-tree-grate.webp",
+      "roughness": 0.6,
+      "metalness": 0.6,
+      "normal": "park-tree-grate-normal.webp",
+      "meters": 2.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-granite-bench": {
+      "name": "花崗岩のベンチ",
+      "sheet": "park-facilities",
+      "cell": 6,
+      "albedo": "park-granite-bench.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-granite-bench-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-bin-green": {
+      "name": "緑の鋼板",
+      "sheet": "park-facilities",
+      "cell": 7,
+      "albedo": "park-bin-green.webp",
+      "roughness": 0.5,
+      "metalness": 0.3,
+      "normal": "park-bin-green-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-roof-steel": {
+      "name": "鋼板の屋根",
+      "sheet": "park-facilities",
+      "cell": 8,
+      "albedo": "park-roof-steel.webp",
+      "roughness": 0.5,
+      "metalness": 0.6,
+      "normal": "park-roof-steel-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-forest-floor": {
+      "name": "雑木林の林床",
+      "sheet": "park-forest",
+      "cell": 0,
+      "albedo": "park-forest-floor.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-forest-floor-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-moss-carpet": {
+      "name": "苔の絨毯",
+      "sheet": "park-forest",
+      "cell": 1,
+      "albedo": "park-moss-carpet.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-moss-carpet-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-kunugi-bark": {
+      "name": "クヌギの樹皮",
+      "sheet": "park-forest",
+      "cell": 2,
+      "albedo": "park-kunugi-bark.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-kunugi-bark-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-keyaki-bark": {
+      "name": "ケヤキの樹皮",
+      "sheet": "park-forest",
+      "cell": 3,
+      "albedo": "park-keyaki-bark.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-keyaki-bark-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-bamboo-litter": {
+      "name": "竹の葉の地面",
+      "sheet": "park-forest",
+      "cell": 4,
+      "albedo": "park-bamboo-litter.webp",
+      "roughness": 0.9,
+      "metalness": 0.0,
+      "normal": "park-bamboo-litter-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-kumazasa": {
+      "name": "熊笹",
+      "sheet": "park-forest",
+      "cell": 5,
+      "albedo": "park-kumazasa.webp",
+      "roughness": 0.75,
+      "metalness": 0.0,
+      "normal": "park-kumazasa-normal.webp",
+      "meters": 1.0,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-susuki": {
+      "name": "すすき",
+      "sheet": "park-forest",
+      "cell": 6,
+      "albedo": "park-susuki.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-susuki-normal.webp",
+      "meters": 1.5,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-boardwalk": {
+      "name": "木道の板",
+      "sheet": "park-forest",
+      "cell": 7,
+      "albedo": "park-boardwalk.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-boardwalk-normal.webp",
+      "meters": 1.2,
+      "fullSize": {
+        "albedo": 512,
+        "normal": 512
+      },
+      "shrink": 3
+    },
+    "park-clover": {
+      "name": "シロツメクサ",
+      "sheet": "park-forest",
+      "cell": 8,
+      "albedo": "park-clover.webp",
+      "roughness": 0.85,
+      "metalness": 0.0,
+      "normal": "park-clover-normal.webp",
       "meters": 1.0,
       "fullSize": {
         "albedo": 512,

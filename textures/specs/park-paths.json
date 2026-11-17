@@ -1,0 +1,84 @@
+{
+  "id": "park-paths",
+  "title": "中央公園 A：園路と広場",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 園路と広場, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "park-washed-aggregate",
+      "name": "洗い出しの園路",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 1.0,
+      "prompt": "washed aggregate concrete path with small round pebbles, seen from above"
+    },
+    {
+      "id": "park-interlocking",
+      "name": "インターロッキング舗装",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 0.9,
+      "prompt": "grey and red-brown interlocking concrete pavers, seen from above"
+    },
+    {
+      "id": "park-masa-soil",
+      "name": "真砂土の園路",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "prompt": "compacted decomposed granite sand path, seen from above"
+    },
+    {
+      "id": "park-lawn",
+      "name": "芝生広場",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "prompt": "short mown lawn grass, seen from above"
+    },
+    {
+      "id": "park-deck",
+      "name": "ウッドデッキ",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "weathered grey wooden deck boards with screws, seen from above"
+    },
+    {
+      "id": "park-sleeper-steps",
+      "name": "枕木の階段",
+      "meters": 2.0,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "seamless": false,
+      "prompt": "old railway sleeper steps with gravel between them, seen from above"
+    },
+    {
+      "id": "park-crazy-paving",
+      "name": "自然石の乱張り",
+      "meters": 1.5,
+      "roughness": 0.8,
+      "normalStrength": 1.2,
+      "prompt": "natural stone crazy paving with mortar joints, seen from above"
+    },
+    {
+      "id": "park-rubber-chip",
+      "name": "ゴムチップ舗装",
+      "meters": 8.0,
+      "roughness": 0.9,
+      "normalStrength": 0.8,
+      "seamless": false,
+      "prompt": "green and red rubber crumb playground surfacing in a curved two-colour pattern, seen from above"
+    },
+    {
+      "id": "park-sandbox-sand",
+      "name": "砂場の白い砂",
+      "meters": 1.2,
+      "roughness": 0.95,
+      "normalStrength": 1.0,
+      "prompt": "white sandbox sand with soft ripples, seen from above"
+    }
+  ]
+}

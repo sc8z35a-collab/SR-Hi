@@ -8,6 +8,7 @@ import {
 import {buildQuarters} from './quarters.js';
 import {buildOnsen} from './onsen.js';
 import {buildCanteen} from './canteen.js';
+import {buildPark} from './park.js';
 import {buildSurface,buildIncline,extinguisher} from './surface.js';
 import {buildOutside} from './outside.js';
 import {buildOutdoorProps,buildUndergroundProps} from './props.js';
@@ -48,6 +49,7 @@ export async function buildExtension({slice=async()=>{},progress=()=>{},onStep=n
     ['outside',async()=>{updateSky=await buildOutside(open,outdoor,slice,onStep);}],
     ['outdoor props',()=>buildOutdoorProps(open,outdoor)],
     ['outdoor details',()=>buildOutdoorDetails(open)],
+    ['park',()=>buildPark(open,outdoor)],
   ];
   for(const [i,[name,step]] of steps.entries()){
     const t=performance.now();

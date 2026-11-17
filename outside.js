@@ -1,7 +1,7 @@
 import * as THREE from './vendor/three.module.js';
 import {box,cyl,planarUV,roundUV,scaleUV,lumpy,smoothstep,rng,kiosk,sign,blobGeometry} from './kit.js';
 import {
-  Y,INCLINE,YARD,STREAM,RIVER,BRIDGE,FOOTBRIDGE,ROADS,HQ,PLAZA,PARKING,HELIPAD,PADDIES,TEMPLE,TREES,
+  Y,INCLINE,YARD,STREAM,RIVER,BRIDGE,FOOTBRIDGE,ROADS,HQ,PLAZA,PARKING,HELIPAD,PADDIES,TEMPLE,TREES,PARK_FLAT,
   HQ_ZONE,RIVER_ZONE,VILLAGE,PLATEAU,groundHeight as G,inclineFloor,fbm2,inRect,
 } from './outdoor-layout.js';
 import {lantern} from './surface.js';
@@ -112,6 +112,7 @@ async function terrain(kit,slice=async()=>{}){
     const dzr=cx>RIVER.x1-3?Math.abs(cz-RIVER.z(cx)):99,s=Math.abs(cx-STREAM.x);
     let key;
     if(cz<YARD.z1)key=cz>YARD.z1-6?'hillside-soil':'meadow-grass';
+    else if(inRect(PARK_FLAT,cx,cz,-.5))key='park-lawn';
     else if(slope>1.0)key='rocky-cliff';
     else if(dzr<RIVER.bank+.5)key='river-sand';
     else if(s<.9&&cz<STREAM.z2)key='river-pebbles';

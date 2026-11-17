@@ -1,0 +1,82 @@
+{
+  "id": "park-planting",
+  "title": "中央公園 D：植栽と園芸",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 植栽と園芸, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "park-tulips",
+      "name": "チューリップの花壇",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 0.6,
+      "prompt": "red, yellow and white tulips in a bed"
+    },
+    {
+      "id": "park-hydrangea",
+      "name": "紫陽花",
+      "meters": 1.5,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "blue and purple hydrangea bushes"
+    },
+    {
+      "id": "park-azalea",
+      "name": "つつじ",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "pink azalea bushes in bloom"
+    },
+    {
+      "id": "park-sakura-petals",
+      "name": "桜の花びらの地面",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "prompt": "cherry blossom petals scattered on soil"
+    },
+    {
+      "id": "park-ginkgo-leaves",
+      "name": "銀杏の落ち葉",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "fallen yellow ginkgo leaves"
+    },
+    {
+      "id": "park-mulch",
+      "name": "ウッドチップのマルチ",
+      "meters": 1.0,
+      "roughness": 0.95,
+      "normalStrength": 1.0,
+      "prompt": "bark and wood chip mulch"
+    },
+    {
+      "id": "park-boxwood",
+      "name": "ツゲの生垣",
+      "meters": 0.8,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "clipped boxwood hedge leaves"
+    },
+    {
+      "id": "park-moss-phlox",
+      "name": "芝桜",
+      "meters": 1.0,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "pink moss phlox carpet"
+    },
+    {
+      "id": "park-roses",
+      "name": "バラ",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 0.8,
+      "prompt": "pink climbing roses with leaves"
+    }
+  ]
+}

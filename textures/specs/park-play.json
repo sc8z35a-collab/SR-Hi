@@ -1,0 +1,95 @@
+{
+  "id": "park-play",
+  "title": "中央公園 B：遊具と施設",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 遊具と施設, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "play-red-paint",
+      "name": "赤い遊具の塗装",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "metalness": 0.2,
+      "normalStrength": 0.4,
+      "prompt": "red enamel paint on playground steel with chips"
+    },
+    {
+      "id": "play-yellow-slide",
+      "name": "黄色い樹脂の滑り台",
+      "meters": 0.8,
+      "roughness": 0.3,
+      "normalStrength": 0.2,
+      "flatten": true,
+      "prompt": "glossy yellow plastic slide surface"
+    },
+    {
+      "id": "play-swing-chain",
+      "name": "ブランコの鎖",
+      "meters": 0.3,
+      "roughness": 0.35,
+      "metalness": 0.85,
+      "normalStrength": 0.8,
+      "crop": [
+        0.02,
+        0,
+        0.22,
+        1
+      ],
+      "seamless": "y",
+      "prompt": "galvanized steel chain"
+    },
+    {
+      "id": "play-logs",
+      "name": "丸太",
+      "meters": 1.2,
+      "roughness": 0.8,
+      "normalStrength": 1.0,
+      "seamless": "x",
+      "prompt": "stacked round logs of a timber play frame"
+    },
+    {
+      "id": "play-jungle-gym",
+      "name": "ジャングルジムの青い塗装",
+      "meters": 0.6,
+      "roughness": 0.45,
+      "metalness": 0.3,
+      "normalStrength": 0.6,
+      "flatten": true,
+      "prompt": "blue painted steel bars with chipped paint"
+    },
+    {
+      "id": "play-wisteria-trellis",
+      "name": "藤棚の格子",
+      "meters": 1.5,
+      "roughness": 0.85,
+      "normalStrength": 0.8,
+      "prompt": "wooden trellis with climbing leaves"
+    },
+    {
+      "id": "play-bark-roof",
+      "name": "杉皮の屋根",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 1.2,
+      "prompt": "cedar bark shingle roof"
+    },
+    {
+      "id": "play-recycled-bench",
+      "name": "再生木材のベンチ",
+      "meters": 1.0,
+      "roughness": 0.7,
+      "normalStrength": 0.6,
+      "prompt": "recycled composite wood bench slats with screws"
+    },
+    {
+      "id": "play-toilet-tile",
+      "name": "白い外壁タイル",
+      "meters": 1.0,
+      "roughness": 0.4,
+      "normalStrength": 0.6,
+      "prompt": "white square exterior wall tiles with grey grout"
+    }
+  ]
+}

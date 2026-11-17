@@ -1,0 +1,96 @@
+{
+  "id": "park-sports",
+  "title": "中央公園 E：運動施設",
+  "quality": "medium",
+  "tileSize": 512,
+  "normalSize": 512,
+  "theme": "a large Japanese city park: 運動施設, realistic photographic PBR materials, soft daylight, muted natural colours, moderate contrast, not too dark and not oversaturated",
+  "cells": [
+    {
+      "id": "park-track-red",
+      "name": "陸上トラック",
+      "meters": 1.2,
+      "roughness": 0.85,
+      "normalStrength": 0.6,
+      "prompt": "red rubber running track surface"
+    },
+    {
+      "id": "park-turf",
+      "name": "砂入り人工芝",
+      "meters": 1.5,
+      "roughness": 0.9,
+      "normalStrength": 0.6,
+      "prompt": "sand-filled artificial turf"
+    },
+    {
+      "id": "park-court-blue",
+      "name": "バスケットコート",
+      "meters": 1.5,
+      "roughness": 0.6,
+      "normalStrength": 0.2,
+      "prompt": "blue acrylic sports court coating"
+    },
+    {
+      "id": "park-infield",
+      "name": "野球場の黒土",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 0.8,
+      "prompt": "dark baseball infield soil"
+    },
+    {
+      "id": "park-gateball-sand",
+      "name": "ゲートボール場の砂",
+      "meters": 1.5,
+      "roughness": 0.95,
+      "normalStrength": 0.6,
+      "prompt": "fine pale sand court"
+    },
+    {
+      "id": "park-ball-net",
+      "name": "防球ネット",
+      "meters": 1.0,
+      "roughness": 0.8,
+      "normalStrength": 0.6,
+      "prompt": "green knotted ball-stop netting"
+    },
+    {
+      "id": "park-bleacher",
+      "name": "観客席のコンクリート段",
+      "meters": 1.2,
+      "roughness": 0.9,
+      "normalStrength": 0.8,
+      "crop": [
+        0,
+        0,
+        1,
+        0.25
+      ],
+      "seamless": "x",
+      "prompt": "concrete bleacher step"
+    },
+    {
+      "id": "park-seats",
+      "name": "青い観客席",
+      "meters": 1.2,
+      "roughness": 0.5,
+      "normalStrength": 0.6,
+      "crop": [
+        0,
+        0,
+        1,
+        0.25
+      ],
+      "seamless": "x",
+      "prompt": "row of blue stadium seats"
+    },
+    {
+      "id": "park-jog-chips",
+      "name": "ジョギングコースのウッドチップ",
+      "meters": 1.2,
+      "roughness": 0.95,
+      "normalStrength": 1.0,
+      "prompt": "wood chip jogging track surface"
+    }
+  ]
+}
